@@ -1,0 +1,5 @@
+project,overall_risk,java_files,source_files,test_files,high,medium,low,top_patterns
+commons-io-master,High,268,268,0,6,23,5,Algorithmic waste; Concurrency misuse; Data movement bloat; Allocation pressure; Chatty I/O
+jackson-core-3.x,Medium,138,138,0,2,9,12,Allocation pressure; Algorithmic waste; Data movement bloat; Concurrency misuse; Repeated work
+JSON-java-master,High,26,26,0,0,51,9,Data movement bloat; Allocation pressure; Algorithmic waste; Repeated work
+logging-log4j2-2.x,High,1487,1487,0,95,275,96,Algorithmic waste; Allocation pressure; Chatty I/O; Concurrency misuse; Repeated work

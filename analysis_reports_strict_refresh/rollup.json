@@ -1,0 +1,286 @@
+{
+  "projects": [
+    {
+      "project": "commons-io-master",
+      "overall_risk": "High",
+      "java_files": 268,
+      "source_files": 268,
+      "test_files": 0,
+      "findings": {
+        "Low": 5,
+        "Medium": 23,
+        "High": 6
+      },
+      "top_patterns": [
+        "Algorithmic waste",
+        "Concurrency misuse",
+        "Data movement bloat",
+        "Allocation pressure",
+        "Chatty I/O"
+      ],
+      "hotspots": [
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\commons-io-master\\src\\main\\java\\org\\apache\\commons\\io\\input\\Tailer.java",
+          "score": 10,
+          "findings": 4
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\commons-io-master\\src\\main\\java\\org\\apache\\commons\\io\\input\\ReadAheadInputStream.java",
+          "score": 9,
+          "findings": 4
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\commons-io-master\\src\\main\\java\\org\\apache\\commons\\io\\IOUtils.java",
+          "score": 6,
+          "findings": 3
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\commons-io-master\\src\\main\\java\\org\\apache\\commons\\io\\FileUtils.java",
+          "score": 5,
+          "findings": 3
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\commons-io-master\\src\\main\\java\\org\\apache\\commons\\io\\input\\UnsynchronizedBufferedReader.java",
+          "score": 4,
+          "findings": 2
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\commons-io-master\\src\\main\\java\\org\\apache\\commons\\io\\input\\ReaderInputStream.java",
+          "score": 4,
+          "findings": 2
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\commons-io-master\\src\\main\\java\\org\\apache\\commons\\io\\input\\CharSequenceInputStream.java",
+          "score": 4,
+          "findings": 2
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\commons-io-master\\src\\main\\java\\org\\apache\\commons\\io\\file\\PathUtils.java",
+          "score": 4,
+          "findings": 2
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\commons-io-master\\src\\main\\java\\org\\apache\\commons\\io\\FilenameUtils.java",
+          "score": 4,
+          "findings": 2
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\commons-io-master\\src\\main\\java\\org\\apache\\commons\\io\\monitor\\FileAlterationMonitor.java",
+          "score": 3,
+          "findings": 1
+        }
+      ]
+    },
+    {
+      "project": "jackson-core-3.x",
+      "overall_risk": "Medium",
+      "java_files": 138,
+      "source_files": 138,
+      "test_files": 0,
+      "findings": {
+        "Low": 12,
+        "Medium": 9,
+        "High": 2
+      },
+      "top_patterns": [
+        "Allocation pressure",
+        "Algorithmic waste",
+        "Data movement bloat",
+        "Concurrency misuse",
+        "Repeated work"
+      ],
+      "hotspots": [
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\jackson-core-3.x\\src\\main\\java\\tools\\jackson\\core\\JsonPointer.java",
+          "score": 8,
+          "findings": 4
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\jackson-core-3.x\\src\\main\\java\\tools\\jackson\\core\\util\\TextBuffer.java",
+          "score": 6,
+          "findings": 3
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\jackson-core-3.x\\src\\main\\java\\tools\\jackson\\core\\util\\JsonRecyclerPools.java",
+          "score": 6,
+          "findings": 2
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\jackson-core-3.x\\src\\main\\java\\tools\\jackson\\core\\json\\UTF8StreamJsonParser.java",
+          "score": 3,
+          "findings": 3
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\jackson-core-3.x\\src\\main\\java\\tools\\jackson\\core\\json\\UTF8DataInputJsonParser.java",
+          "score": 3,
+          "findings": 3
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\jackson-core-3.x\\src\\main\\java\\tools\\jackson\\core\\sym\\SimpleNameMatcher.java",
+          "score": 2,
+          "findings": 1
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\jackson-core-3.x\\src\\main\\java\\tools\\jackson\\core\\json\\ReaderBasedJsonParser.java",
+          "score": 2,
+          "findings": 2
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\jackson-core-3.x\\src\\main\\java\\tools\\jackson\\core\\JsonGenerator.java",
+          "score": 2,
+          "findings": 2
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\jackson-core-3.x\\src\\main\\java\\tools\\jackson\\core\\JacksonException.java",
+          "score": 2,
+          "findings": 1
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\jackson-core-3.x\\src\\main\\java\\tools\\jackson\\core\\filter\\FilteringParserDelegate.java",
+          "score": 1,
+          "findings": 1
+        }
+      ]
+    },
+    {
+      "project": "JSON-java-master",
+      "overall_risk": "High",
+      "java_files": 26,
+      "source_files": 26,
+      "test_files": 0,
+      "findings": {
+        "Medium": 51,
+        "Low": 9
+      },
+      "top_patterns": [
+        "Data movement bloat",
+        "Allocation pressure",
+        "Algorithmic waste",
+        "Repeated work"
+      ],
+      "hotspots": [
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\XML.java",
+          "score": 33,
+          "findings": 18
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\JSONML.java",
+          "score": 15,
+          "findings": 8
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\JSONObject.java",
+          "score": 14,
+          "findings": 7
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\JSONTokener.java",
+          "score": 11,
+          "findings": 6
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\CDL.java",
+          "score": 11,
+          "findings": 7
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\XMLTokener.java",
+          "score": 9,
+          "findings": 5
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\JSONArray.java",
+          "score": 8,
+          "findings": 4
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\HTTPTokener.java",
+          "score": 4,
+          "findings": 2
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\Property.java",
+          "score": 2,
+          "findings": 1
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\CookieList.java",
+          "score": 2,
+          "findings": 1
+        }
+      ]
+    },
+    {
+      "project": "logging-log4j2-2.x",
+      "overall_risk": "High",
+      "java_files": 1487,
+      "source_files": 1487,
+      "test_files": 0,
+      "findings": {
+        "Medium": 275,
+        "Low": 96,
+        "High": 95
+      },
+      "top_patterns": [
+        "Algorithmic waste",
+        "Allocation pressure",
+        "Chatty I/O",
+        "Concurrency misuse",
+        "Repeated work"
+      ],
+      "hotspots": [
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\logging-log4j2-2.x\\log4j-core\\src\\main\\java\\org\\apache\\logging\\log4j\\core\\tools\\picocli\\CommandLine.java",
+          "score": 40,
+          "findings": 23
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\logging-log4j2-2.x\\log4j-core\\src\\main\\java\\org\\apache\\logging\\log4j\\core\\script\\ScriptManager.java",
+          "score": 23,
+          "findings": 10
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\logging-log4j2-2.x\\log4j-core\\src\\main\\java\\org\\apache\\logging\\log4j\\core\\layout\\Rfc5424Layout.java",
+          "score": 21,
+          "findings": 11
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\logging-log4j2-2.x\\log4j-core\\src\\main\\java\\org\\apache\\logging\\log4j\\core\\config\\composite\\DefaultMergeStrategy.java",
+          "score": 20,
+          "findings": 10
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\logging-log4j2-2.x\\log4j-core\\src\\main\\java\\org\\apache\\logging\\log4j\\core\\filter\\MapFilter.java",
+          "score": 18,
+          "findings": 10
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\logging-log4j2-2.x\\log4j-core\\src\\main\\java\\org\\apache\\logging\\log4j\\core\\appender\\rolling\\DefaultRolloverStrategy.java",
+          "score": 18,
+          "findings": 10
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\logging-log4j2-2.x\\log4j-api\\src\\main\\java\\org\\apache\\logging\\log4j\\util\\Unbox.java",
+          "score": 17,
+          "findings": 7
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\logging-log4j2-2.x\\log4j-core\\src\\main\\java\\org\\apache\\logging\\log4j\\core\\net\\TcpSocketManager.java",
+          "score": 16,
+          "findings": 7
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\logging-log4j2-2.x\\log4j-core\\src\\main\\java\\org\\apache\\logging\\log4j\\core\\lookup\\StrSubstitutor.java",
+          "score": 15,
+          "findings": 7
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\logging-log4j2-2.x\\log4j-core\\src\\main\\java\\org\\apache\\logging\\log4j\\core\\filter\\StructuredDataFilter.java",
+          "score": 15,
+          "findings": 8
+        }
+      ]
+    }
+  ]
+}

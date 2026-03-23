@@ -1,0 +1,4849 @@
+{
+  "summary": {
+    "project": "JSON-java-master",
+    "overall_risk": "High",
+    "java_files": 26,
+    "source_files": 26,
+    "test_files": 0,
+    "findings": {
+      "Medium": 51,
+      "Low": 9
+    },
+    "top_patterns": [
+      "Data movement bloat",
+      "Allocation pressure",
+      "Algorithmic waste",
+      "Repeated work"
+    ],
+    "hotspots": [
+      {
+        "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\XML.java",
+        "score": 33,
+        "findings": 18
+      },
+      {
+        "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\JSONML.java",
+        "score": 15,
+        "findings": 8
+      },
+      {
+        "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\JSONObject.java",
+        "score": 14,
+        "findings": 7
+      },
+      {
+        "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\JSONTokener.java",
+        "score": 11,
+        "findings": 6
+      },
+      {
+        "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\CDL.java",
+        "score": 11,
+        "findings": 7
+      },
+      {
+        "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\XMLTokener.java",
+        "score": 9,
+        "findings": 5
+      },
+      {
+        "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\JSONArray.java",
+        "score": 8,
+        "findings": 4
+      },
+      {
+        "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\HTTPTokener.java",
+        "score": 4,
+        "findings": 2
+      },
+      {
+        "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\Property.java",
+        "score": 2,
+        "findings": 1
+      },
+      {
+        "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\CookieList.java",
+        "score": 2,
+        "findings": 1
+      }
+    ]
+  },
+  "files": [
+    {
+      "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\CDL.java",
+      "is_test": false,
+      "classes": [
+        "CDL",
+        "cannot"
+      ],
+      "methods": [
+        {
+          "name": "CDL",
+          "start_line": 33,
+          "end_line": 34
+        },
+        {
+          "name": "rowToString",
+          "start_line": 167,
+          "end_line": 169
+        },
+        {
+          "name": "rowToString",
+          "start_line": 179,
+          "end_line": 207
+        }
+      ],
+      "loops": [
+        {
+          "line": 50,
+          "kind": "while",
+          "nesting_depth": 3,
+          "body": [
+            "        } while (c == ' ' || c == '\\t');"
+          ]
+        },
+        {
+          "line": 56,
+          "kind": "for",
+          "nesting_depth": 3,
+          "body": [
+            "            for (;;) {",
+            "                c = x.next();",
+            "                if (c == q) {",
+            "                    //Handle escaped double-quote",
+            "                    char nextC = x.next();",
+            "                    if (nextC != '\\\"') {",
+            "                        // if our quote was the end of the file, don't step",
+            "                        if (nextC > 0) {",
+            "                            x.back();",
+            "                        }",
+            "                        break;",
+            "                    }",
+            "                }",
+            "                if (c == 0 || c == '\\n' || c == '\\r') {",
+            "                    throw x.syntaxError(\"Missing close quote '\" + q + \"'.\");",
+            "                }",
+            "                sb.append(c);",
+            "            }"
+          ]
+        },
+        {
+          "line": 102,
+          "kind": "for",
+          "nesting_depth": 2,
+          "body": [
+            "        for (;;) {",
+            "            String value = getValue(x,delimiter);",
+            "            char c = x.next();",
+            "            if (value != null) {",
+            "                ja.put(value);",
+            "            } else if (ja.length() == 0 && c != delimiter) {",
+            "                return null;",
+            "            } else {",
+            "                // This line accounts for CSV ending with no newline",
+            "                ja.put(\"\");",
+            "            }",
+            "",
+            "            for (;;) {",
+            "                if (c == delimiter) {",
+            "                    break;",
+            "                }",
+            "                if (c != ' ') {",
+            "                    if (c == '\\n' || c == '\\r' || c == 0) {",
+            "                        return ja;",
+            "                    }",
+            "                    throw x.syntaxError(\"Bad character '\" + c + \"' (\" +",
+            "                            (int)c + \").\");",
+            "                }",
+            "                c = x.next();",
+            "            }",
+            "        }"
+          ]
+        },
+        {
+          "line": 114,
+          "kind": "for",
+          "nesting_depth": 3,
+          "body": [
+            "            for (;;) {",
+            "                if (c == delimiter) {",
+            "                    break;",
+            "                }",
+            "                if (c != ' ') {",
+            "                    if (c == '\\n' || c == '\\r' || c == 0) {",
+            "                        return ja;",
+            "                    }",
+            "                    throw x.syntaxError(\"Bad character '\" + c + \"' (\" +",
+            "                            (int)c + \").\");",
+            "                }",
+            "                c = x.next();",
+            "            }"
+          ]
+        },
+        {
+          "line": 181,
+          "kind": "for",
+          "nesting_depth": 2,
+          "body": [
+            "        for (int i = 0; i < ja.length(); i += 1) {",
+            "            if (i > 0) {",
+            "                sb.append(delimiter);",
+            "            }",
+            "            Object object = ja.opt(i);",
+            "            if (object != null) {",
+            "                String string = object.toString();",
+            "                if (!string.isEmpty() && (string.indexOf(delimiter) >= 0 ||",
+            "                        string.indexOf('\\n') >= 0 || string.indexOf('\\r') >= 0 ||",
+            "                        string.indexOf(0) >= 0 || string.charAt(0) == '\"')) {",
+            "                    sb.append('\"');",
+            "                    int length = string.length();",
+            "                    for (int j = 0; j < length; j += 1) {",
+            "                        char c = string.charAt(j);",
+            "                        if (c >= ' ' && c != '\"') {",
+            "                            sb.append(c);",
+            "                        }",
+            "                    }",
+            "                    sb.append('\"');",
+            "                } else {",
+            "                    sb.append(string);",
+            "                }",
+            "            }",
+            "        }"
+          ]
+        },
+        {
+          "line": 193,
+          "kind": "for",
+          "nesting_depth": 5,
+          "body": [
+            "                    for (int j = 0; j < length; j += 1) {",
+            "                        char c = string.charAt(j);",
+            "                        if (c >= ' ' && c != '\"') {",
+            "                            sb.append(c);",
+            "                        }",
+            "                    }"
+          ]
+        },
+        {
+          "line": 306,
+          "kind": "for",
+          "nesting_depth": 2,
+          "body": [
+            "        for (;;) {",
+            "            JSONObject jo = rowToJSONObject(names, x, delimiter);",
+            "            if (jo == null) {",
+            "                break;",
+            "            }",
+            "            ja.put(jo);",
+            "        }"
+          ]
+        },
+        {
+          "line": 391,
+          "kind": "for",
+          "nesting_depth": 2,
+          "body": [
+            "        for (int i = 0; i < ja.length(); i += 1) {",
+            "            JSONObject jo = ja.optJSONObject(i);",
+            "            if (jo != null) {",
+            "                sb.append(rowToString(jo.toJSONArray(names), delimiter));",
+            "            }",
+            "        }"
+          ]
+        }
+      ],
+      "stream_pipelines": [],
+      "synchronized_blocks": [],
+      "concurrency_usage": [],
+      "findings": [
+        {
+          "severity": "Medium",
+          "confidence": "Medium",
+          "pattern": "algorithmic-waste",
+          "title": "Nested loop with repeated lookup work",
+          "location": "rowToString (line 181)",
+          "what_was_found": "Loop at line 181 is nested at depth 2 and also performs repeated lookup or transformation work.",
+          "why_it_is_wasteful": "Nested iteration plus repeated lookup operations multiplies work and can become expensive quickly as data grows.",
+          "likely_impact": "Poor scalability, longer batch runtimes, and excess CPU consumption.",
+          "recommended_remediation": "Pre-index shared data, reduce nested scans, or collapse passes where possible.",
+          "low_waste_rationale": "Lowering algorithmic complexity reduces operations and energy for the same user-visible result.",
+          "evidence": [
+            "line 181"
+          ]
+        },
+        {
+          "severity": "Medium",
+          "confidence": "Medium",
+          "pattern": "data-movement-bloat",
+          "title": "Payload construction inside loop",
+          "location": "line 306",
+          "what_was_found": "Loop at line 306 serializes, materializes, or expands payload-like objects during iteration.",
+          "why_it_is_wasteful": "Building full payloads before filtering or aggregating moves more bytes and allocates more intermediate state than needed.",
+          "likely_impact": "Higher memory use, longer serialization time, and avoidable network or logging overhead.",
+          "recommended_remediation": "Filter earlier, narrow the fields being built, or batch serialization closer to the sink.",
+          "low_waste_rationale": "Constructing only the bytes that are actually needed reduces memory traffic and output overhead.",
+          "evidence": [
+            "JSONObject jo = rowToJSONObject(names, x, delimiter);"
+          ]
+        },
+        {
+          "severity": "Medium",
+          "confidence": "Medium",
+          "pattern": "data-movement-bloat",
+          "title": "Payload construction inside loop",
+          "location": "line 391",
+          "what_was_found": "Loop at line 391 serializes, materializes, or expands payload-like objects during iteration.",
+          "why_it_is_wasteful": "Building full payloads before filtering or aggregating moves more bytes and allocates more intermediate state than needed.",
+          "likely_impact": "Higher memory use, longer serialization time, and avoidable network or logging overhead.",
+          "recommended_remediation": "Filter earlier, narrow the fields being built, or batch serialization closer to the sink.",
+          "low_waste_rationale": "Constructing only the bytes that are actually needed reduces memory traffic and output overhead.",
+          "evidence": [
+            "JSONObject jo = ja.optJSONObject(i);",
+            "sb.append(rowToString(jo.toJSONArray(names), delimiter));"
+          ]
+        },
+        {
+          "severity": "Medium",
+          "confidence": "Medium",
+          "pattern": "data-movement-bloat",
+          "title": "Payload construction inside loop",
+          "location": "rowToString (line 181)",
+          "what_was_found": "Loop at line 181 serializes, materializes, or expands payload-like objects during iteration.",
+          "why_it_is_wasteful": "Building full payloads before filtering or aggregating moves more bytes and allocates more intermediate state than needed.",
+          "likely_impact": "Higher memory use, longer serialization time, and avoidable network or logging overhead.",
+          "recommended_remediation": "Filter earlier, narrow the fields being built, or batch serialization closer to the sink.",
+          "low_waste_rationale": "Constructing only the bytes that are actually needed reduces memory traffic and output overhead.",
+          "evidence": [
+            "String string = object.toString();"
+          ]
+        },
+        {
+          "severity": "Low",
+          "confidence": "Medium",
+          "pattern": "allocation-pressure",
+          "title": "String concatenation in loop",
+          "location": "line 102",
+          "what_was_found": "Loop at line 102 builds strings through repeated concatenation.",
+          "why_it_is_wasteful": "Repeated concatenation can allocate many intermediate strings in hot iteration paths.",
+          "likely_impact": "Extra allocation churn and slower formatting-heavy paths.",
+          "recommended_remediation": "Use a shared `StringBuilder` or defer formatting until it is needed.",
+          "low_waste_rationale": "Reducing intermediate strings lowers heap churn and CPU spent copying characters.",
+          "evidence": [
+            "throw x.syntaxError(\"Bad character '\" + c + \"' (\" +"
+          ]
+        },
+        {
+          "severity": "Low",
+          "confidence": "Medium",
+          "pattern": "allocation-pressure",
+          "title": "String concatenation in loop",
+          "location": "line 114",
+          "what_was_found": "Loop at line 114 builds strings through repeated concatenation.",
+          "why_it_is_wasteful": "Repeated concatenation can allocate many intermediate strings in hot iteration paths.",
+          "likely_impact": "Extra allocation churn and slower formatting-heavy paths.",
+          "recommended_remediation": "Use a shared `StringBuilder` or defer formatting until it is needed.",
+          "low_waste_rationale": "Reducing intermediate strings lowers heap churn and CPU spent copying characters.",
+          "evidence": [
+            "throw x.syntaxError(\"Bad character '\" + c + \"' (\" +"
+          ]
+        },
+        {
+          "severity": "Low",
+          "confidence": "Medium",
+          "pattern": "allocation-pressure",
+          "title": "String concatenation in loop",
+          "location": "line 56",
+          "what_was_found": "Loop at line 56 builds strings through repeated concatenation.",
+          "why_it_is_wasteful": "Repeated concatenation can allocate many intermediate strings in hot iteration paths.",
+          "likely_impact": "Extra allocation churn and slower formatting-heavy paths.",
+          "recommended_remediation": "Use a shared `StringBuilder` or defer formatting until it is needed.",
+          "low_waste_rationale": "Reducing intermediate strings lowers heap churn and CPU spent copying characters.",
+          "evidence": [
+            "throw x.syntaxError(\"Missing close quote '\" + q + \"'.\");"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\Cookie.java",
+      "is_test": false,
+      "classes": [
+        "Cookie",
+        "cannot"
+      ],
+      "methods": [
+        {
+          "name": "Cookie",
+          "start_line": 23,
+          "end_line": 24
+        },
+        {
+          "name": "escape",
+          "start_line": 38,
+          "end_line": 54
+        },
+        {
+          "name": "toJSONObject",
+          "start_line": 77,
+          "end_line": 120
+        },
+        {
+          "name": "unescape",
+          "start_line": 193,
+          "end_line": 211
+        }
+      ],
+      "loops": [
+        {
+          "line": 43,
+          "kind": "for",
+          "nesting_depth": 2,
+          "body": [
+            "        for (int i = 0; i < length; i += 1) {",
+            "            c = s.charAt(i);",
+            "            if (c < ' ' || c == '+' || c == '%' || c == '=' || c == ';') {",
+            "                sb.append('%');",
+            "                sb.append(Character.forDigit((char)((c >>> 4) & 0x0f), 16));",
+            "                sb.append(Character.forDigit((char)(c & 0x0f), 16));",
+            "            } else {",
+            "                sb.append(c);",
+            "            }",
+            "        }"
+          ]
+        },
+        {
+          "line": 98,
+          "kind": "while",
+          "nesting_depth": 2,
+          "body": [
+            "        while (x.more()) {",
+            "            name = unescape(x.nextTo(\"=;\")).trim().toLowerCase(Locale.ROOT);",
+            "            // don't allow a cookies attributes to overwrite its name or value.",
+            "            if(\"name\".equalsIgnoreCase(name)) {",
+            "                throw new JSONException(\"Illegal attribute name: 'name'\");",
+            "            }",
+            "            if(\"value\".equalsIgnoreCase(name)) {",
+            "                throw new JSONException(\"Illegal attribute name: 'value'\");",
+            "            }",
+            "            // check to see if it's a flag property",
+            "            if (x.next() != '=') {",
+            "                value = Boolean.TRUE;",
+            "            } else {",
+            "                value = unescape(x.nextTo(';')).trim();",
+            "                x.next();",
+            "            }",
+            "            // only store non-blank attributes",
+            "            if(!\"\".equals(name) && !\"\".equals(value)) {",
+            "                jo.put(name, value);",
+            "            }",
+            "        }"
+          ]
+        },
+        {
+          "line": 139,
+          "kind": "for",
+          "nesting_depth": 2,
+          "body": [
+            "        for(String key : jo.keySet()){",
+            "            if(\"name\".equalsIgnoreCase(key)) {",
+            "                name = jo.getString(key).trim();",
+            "            }",
+            "            if(\"value\".equalsIgnoreCase(key)) {",
+            "                value=jo.getString(key).trim();",
+            "            }",
+            "            if(name != null && value != null) {",
+            "                break;",
+            "            }",
+            "        }"
+          ]
+        },
+        {
+          "line": 162,
+          "kind": "for",
+          "nesting_depth": 2,
+          "body": [
+            "        for(String key : jo.keySet()){",
+            "            if(\"name\".equalsIgnoreCase(key)",
+            "                    || \"value\".equalsIgnoreCase(key)) {",
+            "                // already processed above",
+            "                continue;",
+            "            }",
+            "            value = jo.opt(key);",
+            "            if(value instanceof Boolean) {",
+            "                if(Boolean.TRUE.equals(value)) {",
+            "                    sb.append(';').append(escape(key));",
+            "                }",
+            "                // don't emit false values",
+            "            } else {",
+            "                sb.append(';')",
+            "                    .append(escape(key))",
+            "                    .append('=')",
+            "                    .append(escape(value.toString()));",
+            "            }",
+            "        }"
+          ]
+        },
+        {
+          "line": 196,
+          "kind": "for",
+          "nesting_depth": 2,
+          "body": [
+            "        for (int i = 0; i < length; ++i) {",
+            "            char c = string.charAt(i);",
+            "            if (c == '+') {",
+            "                c = ' ';",
+            "            } else if (c == '%' && i + 2 < length) {",
+            "                int d = JSONTokener.dehexchar(string.charAt(i + 1));",
+            "                int e = JSONTokener.dehexchar(string.charAt(i + 2));",
+            "                if (d >= 0 && e >= 0) {",
+            "                    c = (char)(d * 16 + e);",
+            "                    i += 2;",
+            "                }",
+            "            }",
+            "            sb.append(c);",
+            "        }"
+          ]
+        }
+      ],
+      "stream_pipelines": [],
+      "synchronized_blocks": [],
+      "concurrency_usage": [],
+      "findings": [
+        {
+          "severity": "Medium",
+          "confidence": "Medium",
+          "pattern": "data-movement-bloat",
+          "title": "Payload construction inside loop",
+          "location": "line 162",
+          "what_was_found": "Loop at line 162 serializes, materializes, or expands payload-like objects during iteration.",
+          "why_it_is_wasteful": "Building full payloads before filtering or aggregating moves more bytes and allocates more intermediate state than needed.",
+          "likely_impact": "Higher memory use, longer serialization time, and avoidable network or logging overhead.",
+          "recommended_remediation": "Filter earlier, narrow the fields being built, or batch serialization closer to the sink.",
+          "low_waste_rationale": "Constructing only the bytes that are actually needed reduces memory traffic and output overhead.",
+          "evidence": [
+            ".append(escape(value.toString()));"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\CookieList.java",
+      "is_test": false,
+      "classes": [
+        "CookieList",
+        "cannot"
+      ],
+      "methods": [
+        {
+          "name": "CookieList",
+          "start_line": 19,
+          "end_line": 20
+        }
+      ],
+      "loops": [
+        {
+          "line": 38,
+          "kind": "while",
+          "nesting_depth": 2,
+          "body": [
+            "        while (x.more()) {",
+            "            String name = Cookie.unescape(x.nextTo('='));",
+            "            x.next('=');",
+            "            jo.put(name, Cookie.unescape(x.nextTo(';')));",
+            "            x.next();",
+            "        }"
+          ]
+        },
+        {
+          "line": 60,
+          "kind": "for",
+          "nesting_depth": 2,
+          "body": [
+            "        for (final String key : jo.keySet()) {",
+            "            final Object value = jo.opt(key);",
+            "            if (!JSONObject.NULL.equals(value)) {",
+            "                if (isEndOfPair) {",
+            "                    sb.append(';');",
+            "                }",
+            "                sb.append(Cookie.escape(key));",
+            "                sb.append(\"=\");",
+            "                sb.append(Cookie.escape(value.toString()));",
+            "                isEndOfPair = true;",
+            "            }",
+            "        }"
+          ]
+        }
+      ],
+      "stream_pipelines": [],
+      "synchronized_blocks": [],
+      "concurrency_usage": [],
+      "findings": [
+        {
+          "severity": "Medium",
+          "confidence": "Medium",
+          "pattern": "data-movement-bloat",
+          "title": "Payload construction inside loop",
+          "location": "line 60",
+          "what_was_found": "Loop at line 60 serializes, materializes, or expands payload-like objects during iteration.",
+          "why_it_is_wasteful": "Building full payloads before filtering or aggregating moves more bytes and allocates more intermediate state than needed.",
+          "likely_impact": "Higher memory use, longer serialization time, and avoidable network or logging overhead.",
+          "recommended_remediation": "Filter earlier, narrow the fields being built, or batch serialization closer to the sink.",
+          "low_waste_rationale": "Constructing only the bytes that are actually needed reduces memory traffic and output overhead.",
+          "evidence": [
+            "sb.append(Cookie.escape(value.toString()));"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\HTTP.java",
+      "is_test": false,
+      "classes": [
+        "HTTP"
+      ],
+      "methods": [
+        {
+          "name": "HTTP",
+          "start_line": 19,
+          "end_line": 20
+        }
+      ],
+      "loops": [
+        {
+          "line": 83,
+          "kind": "while",
+          "nesting_depth": 2,
+          "body": [
+            "        while (x.more()) {",
+            "            String name = x.nextTo(':');",
+            "            x.next(':');",
+            "            jo.put(name, x.nextTo('\\0'));",
+            "            x.next();",
+            "        }"
+          ]
+        },
+        {
+          "line": 134,
+          "kind": "for",
+          "nesting_depth": 2,
+          "body": [
+            "        for (final String key : jo.keySet()) {",
+            "            String value = jo.optString(key);",
+            "            if (!\"HTTP-Version\".equals(key)      && !\"Status-Code\".equals(key) &&",
+            "                    !\"Reason-Phrase\".equals(key) && !\"Method\".equals(key) &&",
+            "                    !\"Request-URI\".equals(key)   && !JSONObject.NULL.equals(value)) {",
+            "                sb.append(key);",
+            "                sb.append(\": \");",
+            "                sb.append(jo.optString(key));",
+            "                sb.append(CRLF);",
+            "            }",
+            "        }"
+          ]
+        }
+      ],
+      "stream_pipelines": [],
+      "synchronized_blocks": [],
+      "concurrency_usage": [],
+      "findings": []
+    },
+    {
+      "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\HTTPTokener.java",
+      "is_test": false,
+      "classes": [
+        "HTTPTokener"
+      ],
+      "methods": [
+        {
+          "name": "HTTPTokener",
+          "start_line": 19,
+          "end_line": 21
+        }
+      ],
+      "loops": [
+        {
+          "line": 35,
+          "kind": "while",
+          "nesting_depth": 3,
+          "body": [
+            "        } while (Character.isWhitespace(c));"
+          ]
+        },
+        {
+          "line": 38,
+          "kind": "for",
+          "nesting_depth": 3,
+          "body": [
+            "            for (;;) {",
+            "                c = next();",
+            "                if (c < ' ') {",
+            "                    throw syntaxError(\"Unterminated string.\");",
+            "                }",
+            "                if (c == q) {",
+            "                    return sb.toString();",
+            "                }",
+            "                sb.append(c);",
+            "            }"
+          ]
+        },
+        {
+          "line": 49,
+          "kind": "for",
+          "nesting_depth": 2,
+          "body": [
+            "        for (;;) {",
+            "            if (c == 0 || Character.isWhitespace(c)) {",
+            "                return sb.toString();",
+            "            }",
+            "            sb.append(c);",
+            "            c = next();",
+            "        }"
+          ]
+        }
+      ],
+      "stream_pipelines": [],
+      "synchronized_blocks": [],
+      "concurrency_usage": [],
+      "findings": [
+        {
+          "severity": "Medium",
+          "confidence": "Medium",
+          "pattern": "data-movement-bloat",
+          "title": "Payload construction inside loop",
+          "location": "line 38",
+          "what_was_found": "Loop at line 38 serializes, materializes, or expands payload-like objects during iteration.",
+          "why_it_is_wasteful": "Building full payloads before filtering or aggregating moves more bytes and allocates more intermediate state than needed.",
+          "likely_impact": "Higher memory use, longer serialization time, and avoidable network or logging overhead.",
+          "recommended_remediation": "Filter earlier, narrow the fields being built, or batch serialization closer to the sink.",
+          "low_waste_rationale": "Constructing only the bytes that are actually needed reduces memory traffic and output overhead.",
+          "evidence": [
+            "return sb.toString();"
+          ]
+        },
+        {
+          "severity": "Medium",
+          "confidence": "Medium",
+          "pattern": "data-movement-bloat",
+          "title": "Payload construction inside loop",
+          "location": "line 49",
+          "what_was_found": "Loop at line 49 serializes, materializes, or expands payload-like objects during iteration.",
+          "why_it_is_wasteful": "Building full payloads before filtering or aggregating moves more bytes and allocates more intermediate state than needed.",
+          "likely_impact": "Higher memory use, longer serialization time, and avoidable network or logging overhead.",
+          "recommended_remediation": "Filter earlier, narrow the fields being built, or batch serialization closer to the sink.",
+          "low_waste_rationale": "Constructing only the bytes that are actually needed reduces memory traffic and output overhead.",
+          "evidence": [
+            "return sb.toString();"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\JSONArray.java",
+      "is_test": false,
+      "classes": [
+        "JSONArray",
+        "value",
+        "to",
+        "value",
+        "of",
+        "value",
+        "to",
+        "value",
+        "value",
+        "to",
+        "value"
+      ],
+      "methods": [
+        {
+          "name": "JSONArray",
+          "start_line": 73,
+          "end_line": 75
+        },
+        {
+          "name": "checkForSyntaxError",
+          "start_line": 136,
+          "end_line": 174
+        },
+        {
+          "name": "JSONArray",
+          "start_line": 211,
+          "end_line": 213
+        },
+        {
+          "name": "JSONArray",
+          "start_line": 223,
+          "end_line": 225
+        },
+        {
+          "name": "JSONArray",
+          "start_line": 237,
+          "end_line": 247
+        },
+        {
+          "name": "JSONArray",
+          "start_line": 255,
+          "end_line": 261
+        },
+        {
+          "name": "JSONArray",
+          "start_line": 269,
+          "end_line": 277
+        },
+        {
+          "name": "iterator",
+          "start_line": 317,
+          "end_line": 319
+        },
+        {
+          "name": "isNull",
+          "start_line": 597,
+          "end_line": 599
+        },
+        {
+          "name": "length",
+          "start_line": 633,
+          "end_line": 635
+        },
+        {
+          "name": "clear",
+          "start_line": 641,
+          "end_line": 643
+        },
+        {
+          "name": "opt",
+          "start_line": 652,
+          "end_line": 655
+        },
+        {
+          "name": "optBoolean",
+          "start_line": 666,
+          "end_line": 668
+        },
+        {
+          "name": "optBoolean",
+          "start_line": 681,
+          "end_line": 687
+        },
+        {
+          "name": "optBooleanObject",
+          "start_line": 698,
+          "end_line": 700
+        },
+        {
+          "name": "optBooleanObject",
+          "start_line": 713,
+          "end_line": 719
+        },
+        {
+          "name": "optDouble",
+          "start_line": 730,
+          "end_line": 732
+        },
+        {
+          "name": "optDouble",
+          "start_line": 745,
+          "end_line": 751
+        },
+        {
+          "name": "optDoubleObject",
+          "start_line": 762,
+          "end_line": 764
+        },
+        {
+          "name": "optDoubleObject",
+          "start_line": 777,
+          "end_line": 783
+        },
+        {
+          "name": "optFloat",
+          "start_line": 794,
+          "end_line": 796
+        },
+        {
+          "name": "optFloat",
+          "start_line": 809,
+          "end_line": 815
+        },
+        {
+          "name": "optFloatObject",
+          "start_line": 826,
+          "end_line": 828
+        },
+        {
+          "name": "optFloatObject",
+          "start_line": 841,
+          "end_line": 847
+        },
+        {
+          "name": "optInt",
+          "start_line": 858,
+          "end_line": 860
+        },
+        {
+          "name": "optInt",
+          "start_line": 873,
+          "end_line": 879
+        },
+        {
+          "name": "optIntegerObject",
+          "start_line": 890,
+          "end_line": 892
+        },
+        {
+          "name": "optIntegerObject",
+          "start_line": 905,
+          "end_line": 911
+        },
+        {
+          "name": "optEnum",
+          "start_line": 924,
+          "end_line": 926
+        },
+        {
+          "name": "optEnum",
+          "start_line": 942,
+          "end_line": 960
+        },
+        {
+          "name": "optBigInteger",
+          "start_line": 973,
+          "end_line": 976
+        },
+        {
+          "name": "optBigDecimal",
+          "start_line": 992,
+          "end_line": 995
+        },
+        {
+          "name": "optJSONArray",
+          "start_line": 1005,
+          "end_line": 1007
+        },
+        {
+          "name": "optJSONArray",
+          "start_line": 1019,
+          "end_line": 1022
+        },
+        {
+          "name": "optJSONObject",
+          "start_line": 1032,
+          "end_line": 1034
+        },
+        {
+          "name": "optJSONObject",
+          "start_line": 1046,
+          "end_line": 1049
+        },
+        {
+          "name": "optLong",
+          "start_line": 1060,
+          "end_line": 1062
+        },
+        {
+          "name": "optLong",
+          "start_line": 1075,
+          "end_line": 1081
+        },
+        {
+          "name": "optLongObject",
+          "start_line": 1092,
+          "end_line": 1094
+        },
+        {
+          "name": "optLongObject",
+          "start_line": 1107,
+          "end_line": 1113
+        },
+        {
+          "name": "optNumber",
+          "start_line": 1125,
+          "end_line": 1127
+        },
+        {
+          "name": "optNumber",
+          "start_line": 1141,
+          "end_line": 1158
+        },
+        {
+          "name": "optString",
+          "start_line": 1169,
+          "end_line": 1171
+        },
+        {
+          "name": "optString",
+          "start_line": 1183,
+          "end_line": 1187
+        },
+        {
+          "name": "put",
+          "start_line": 1196,
+          "end_line": 1198
+        },
+        {
+          "name": "put",
+          "start_line": 1210,
+          "end_line": 1212
+        },
+        {
+          "name": "put",
+          "start_line": 1247,
+          "end_line": 1249
+        },
+        {
+          "name": "put",
+          "start_line": 1258,
+          "end_line": 1260
+        },
+        {
+          "name": "put",
+          "start_line": 1274,
+          "end_line": 1276
+        },
+        {
+          "name": "put",
+          "start_line": 1289,
+          "end_line": 1293
+        },
+        {
+          "name": "putAll",
+          "start_line": 1483,
+          "end_line": 1486
+        },
+        {
+          "name": "putAll",
+          "start_line": 1495,
+          "end_line": 1498
+        },
+        {
+          "name": "putAll",
+          "start_line": 1507,
+          "end_line": 1512
+        },
+        {
+          "name": "query",
+          "start_line": 1551,
+          "end_line": 1553
+        },
+        {
+          "name": "query",
+          "start_line": 1574,
+          "end_line": 1576
+        },
+        {
+          "name": "optQuery",
+          "start_line": 1586,
+          "end_line": 1588
+        },
+        {
+          "name": "optQuery",
+          "start_line": 1598,
+          "end_line": 1604
+        },
+        {
+          "name": "remove",
+          "start_line": 1614,
+          "end_line": 1618
+        },
+        {
+          "name": "similar",
+          "start_line": 1627,
+          "end_line": 1649
+        },
+        {
+          "name": "isSimilar",
+          "start_line": 1659,
+          "end_line": 1680
+        },
+        {
+          "name": "toString",
+          "start_line": 1718,
+          "end_line": 1724
+        },
+        {
+          "name": "writeArrayAttempt",
+          "start_line": 1851,
+          "end_line": 1858
+        },
+        {
+          "name": "toList",
+          "start_line": 1869,
+          "end_line": 1883
+        },
+        {
+          "name": "isEmpty",
+          "start_line": 1890,
+          "end_line": 1892
+        },
+        {
+          "name": "addAll",
+          "start_line": 1905,
+          "end_line": 1916
+        },
+        {
+          "name": "addAll",
+          "start_line": 1927,
+          "end_line": 1937
+        },
+        {
+          "name": "addAll",
+          "start_line": 1969,
+          "end_line": 1971
+        }
+      ],
+      "loops": [
+        {
+          "line": 113,
+          "kind": "for",
+          "nesting_depth": 3,
+          "body": [
+            "            for (;;) {",
+            "                if (x.nextClean() == ',') {",
+            "                    x.back();",
+            "                    this.myArrayList.add(JSONObject.NULL);",
+            "                } else {",
+            "                    x.back();",
+            "                    this.myArrayList.add(x.nextValue());",
+            "                }",
+            "                if (checkForSyntaxError(x, jsonParserConfiguration, isInitial)) return;",
+            "            }"
+          ]
+        },
+        {
+          "line": 621,
+          "kind": "for",
+          "nesting_depth": 2,
+          "body": [
+            "        for (int i = 1; i < len; i++) {",
+            "            sb.append(separator)",
+            "              .append(JSONObject.valueToString(this.myArrayList.get(i)));",
+            "        }"
+          ]
+        },
+        {
+          "line": 1469,
+          "kind": "while",
+          "nesting_depth": 2,
+          "body": [
+            "        while (index != this.length()) {",
+            "            // we don't need to test validity of NULL objects",
+            "            this.myArrayList.add(JSONObject.NULL);",
+            "        }"
+          ]
+        },
+        {
+          "line": 1635,
+          "kind": "for",
+          "nesting_depth": 2,
+          "body": [
+            "        for (int i = 0; i < len; i += 1) {",
+            "            Object valueThis = this.myArrayList.get(i);",
+            "            Object valueOther = ((JSONArray)other).myArrayList.get(i);",
+            "            if(valueThis == valueOther) {",
+            "            \tcontinue;",
+            "            }",
+            "            if(valueThis == null) {",
+            "            \treturn false;",
+            "            }",
+            "            if (!isSimilar(valueThis, valueOther)) {",
+            "                return false;",
+            "            }",
+            "        }"
+          ]
+        },
+        {
+          "line": 1699,
+          "kind": "for",
+          "nesting_depth": 2,
+          "body": [
+            "        for (int i = 0; i < names.length(); i += 1) {",
+            "            jo.put(names.getString(i), this.opt(i));",
+            "        }"
+          ]
+        },
+        {
+          "line": 1817,
+          "kind": "for",
+          "nesting_depth": 4,
+          "body": [
+            "                for (int i = 0; i < length; i += 1) {",
+            "                    if (needsComma) {",
+            "                        writer.write(',');",
+            "                    }",
+            "                    if (indentFactor > 0) {",
+            "                        writer.write('\\n');",
+            "                    }",
+            "                    JSONObject.indent(writer, newIndent);",
+            "                    writeArrayAttempt(writer, indentFactor, newIndent, i);",
+            "                    needsComma = true;",
+            "                }"
+          ]
+        },
+        {
+          "line": 1871,
+          "kind": "for",
+          "nesting_depth": 2,
+          "body": [
+            "        for (Object element : this.myArrayList) {",
+            "            if (element == null || JSONObject.NULL.equals(element)) {",
+            "                results.add(null);",
+            "            } else if (element instanceof JSONArray) {",
+            "                results.add(((JSONArray) element).toList());",
+            "            } else if (element instanceof JSONObject) {",
+            "                results.add(((JSONObject) element).toMap());",
+            "            } else {",
+            "                results.add(element);",
+            "            }",
+            "        }"
+          ]
+        },
+        {
+          "line": 1908,
+          "kind": "for",
+          "nesting_depth": 3,
+          "body": [
+            "            for (Object o: collection){",
+            "                this.put(JSONObject.wrap(o, recursionDepth + 1, jsonParserConfiguration));",
+            "            }"
+          ]
+        },
+        {
+          "line": 1912,
+          "kind": "for",
+          "nesting_depth": 3,
+          "body": [
+            "            for (Object o: collection){",
+            "                this.put(o);",
+            "            }"
+          ]
+        },
+        {
+          "line": 1929,
+          "kind": "for",
+          "nesting_depth": 3,
+          "body": [
+            "            for (Object o: iter){",
+            "                this.put(JSONObject.wrap(o));",
+            "            }"
+          ]
+        },
+        {
+          "line": 1933,
+          "kind": "for",
+          "nesting_depth": 3,
+          "body": [
+            "            for (Object o: iter){",
+            "                this.put(o);",
+            "            }"
+          ]
+        },
+        {
+          "line": 1996,
+          "kind": "for",
+          "nesting_depth": 4,
+          "body": [
+            "                for (int i = 0; i < length; i += 1) {",
+            "                    this.put(JSONObject.wrap(Array.get(array, i), recursionDepth + 1, jsonParserConfiguration));",
+            "                }"
+          ]
+        },
+        {
+          "line": 2000,
+          "kind": "for",
+          "nesting_depth": 4,
+          "body": [
+            "                for (int i = 0; i < length; i += 1) {",
+            "                    this.put(Array.get(array, i));",
+            "                }"
+          ]
+        }
+      ],
+      "stream_pipelines": [],
+      "synchronized_blocks": [],
+      "concurrency_usage": [],
+      "findings": [
+        {
+          "severity": "Medium",
+          "confidence": "Medium",
+          "pattern": "algorithmic-waste",
+          "title": "Nested loop with repeated lookup work",
+          "location": "line 1996",
+          "what_was_found": "Loop at line 1996 is nested at depth 4 and also performs repeated lookup or transformation work.",
+          "why_it_is_wasteful": "Nested iteration plus repeated lookup operations multiplies work and can become expensive quickly as data grows.",
+          "likely_impact": "Poor scalability, longer batch runtimes, and excess CPU consumption.",
+          "recommended_remediation": "Pre-index shared data, reduce nested scans, or collapse passes where possible.",
+          "low_waste_rationale": "Lowering algorithmic complexity reduces operations and energy for the same user-visible result.",
+          "evidence": [
+            "line 1996"
+          ]
+        },
+        {
+          "severity": "Medium",
+          "confidence": "Medium",
+          "pattern": "algorithmic-waste",
+          "title": "Nested loop with repeated lookup work",
+          "location": "line 2000",
+          "what_was_found": "Loop at line 2000 is nested at depth 4 and also performs repeated lookup or transformation work.",
+          "why_it_is_wasteful": "Nested iteration plus repeated lookup operations multiplies work and can become expensive quickly as data grows.",
+          "likely_impact": "Poor scalability, longer batch runtimes, and excess CPU consumption.",
+          "recommended_remediation": "Pre-index shared data, reduce nested scans, or collapse passes where possible.",
+          "low_waste_rationale": "Lowering algorithmic complexity reduces operations and energy for the same user-visible result.",
+          "evidence": [
+            "line 2000"
+          ]
+        },
+        {
+          "severity": "Medium",
+          "confidence": "Medium",
+          "pattern": "algorithmic-waste",
+          "title": "Nested loop with repeated lookup work",
+          "location": "line 621",
+          "what_was_found": "Loop at line 621 is nested at depth 2 and also performs repeated lookup or transformation work.",
+          "why_it_is_wasteful": "Nested iteration plus repeated lookup operations multiplies work and can become expensive quickly as data grows.",
+          "likely_impact": "Poor scalability, longer batch runtimes, and excess CPU consumption.",
+          "recommended_remediation": "Pre-index shared data, reduce nested scans, or collapse passes where possible.",
+          "low_waste_rationale": "Lowering algorithmic complexity reduces operations and energy for the same user-visible result.",
+          "evidence": [
+            "line 621"
+          ]
+        },
+        {
+          "severity": "Medium",
+          "confidence": "Medium",
+          "pattern": "algorithmic-waste",
+          "title": "Nested loop with repeated lookup work",
+          "location": "similar (line 1635)",
+          "what_was_found": "Loop at line 1635 is nested at depth 2 and also performs repeated lookup or transformation work.",
+          "why_it_is_wasteful": "Nested iteration plus repeated lookup operations multiplies work and can become expensive quickly as data grows.",
+          "likely_impact": "Poor scalability, longer batch runtimes, and excess CPU consumption.",
+          "recommended_remediation": "Pre-index shared data, reduce nested scans, or collapse passes where possible.",
+          "low_waste_rationale": "Lowering algorithmic complexity reduces operations and energy for the same user-visible result.",
+          "evidence": [
+            "line 1635"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\JSONException.java",
+      "is_test": false,
+      "classes": [
+        "JSONException"
+      ],
+      "methods": [
+        {
+          "name": "JSONException",
+          "start_line": 23,
+          "end_line": 25
+        },
+        {
+          "name": "JSONException",
+          "start_line": 35,
+          "end_line": 37
+        },
+        {
+          "name": "JSONException",
+          "start_line": 45,
+          "end_line": 47
+        }
+      ],
+      "loops": [],
+      "stream_pipelines": [],
+      "synchronized_blocks": [],
+      "concurrency_usage": [],
+      "findings": []
+    },
+    {
+      "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\JSONML.java",
+      "is_test": false,
+      "classes": [
+        "JSONML",
+        "cannot"
+      ],
+      "methods": [
+        {
+          "name": "JSONML",
+          "start_line": 22,
+          "end_line": 23
+        }
+      ],
+      "loops": [
+        {
+          "line": 109,
+          "kind": "while",
+          "nesting_depth": 2,
+          "body": [
+            "        while (true) {",
+            "            if (!x.more()) {",
+            "                throw x.syntaxError(\"Bad XML\");",
+            "            }",
+            "            token = x.nextContent();",
+            "            if (token == XML.LT) {",
+            "                token = x.nextToken();",
+            "                if (token instanceof Character) {",
+            "                    if (token == XML.SLASH) {",
+            "",
+            "// Close tag </",
+            "",
+            "                        token = x.nextToken();",
+            "                        if (!(token instanceof String)) {",
+            "                            throw new JSONException(",
+            "                                    \"Expected a closing name instead of '\" +",
+            "                                    token + \"'.\");",
+            "                        }",
+            "                        if (x.nextToken() != XML.GT) {",
+            "                            throw x.syntaxError(\"Misshaped close tag\");",
+            "                        }",
+            "                        return token;",
+            "                    } else if (token == XML.BANG) {",
+            "",
+            "// <!",
+            "",
+            "                        c = x.next();",
+            "                        if (c == '-') {",
+            "                            if (x.next() == '-') {",
+            "                                x.skipPast(\"-->\");",
+            "                            } else {",
+            "                                x.back();",
+            "                            }",
+            "                        } else if (c == '[') {",
+            "                            token = x.nextToken();",
+            "                            if (\"CDATA\".equals(token) && x.next() == '[') {",
+            "                                if (ja != null) {",
+            "                                    ja.put(x.nextCDATA());",
+            "                                }",
+            "                            } else {",
+            "                                throw x.syntaxError(\"Expected 'CDATA['\");",
+            "                            }",
+            "                        } else {",
+            "                            i = 1;",
+            "                            do {",
+            "                                token = x.nextMeta();",
+            "                                if (token == null) {",
+            "                                    throw x.syntaxError(\"Missing '>' after '<!'.\");",
+            "                                } else if (token == XML.LT) {",
+            "                                    i += 1;",
+            "                                } else if (token == XML.GT) {",
+            "                                    i -= 1;",
+            "                                }",
+            "                            } while (i > 0);",
+            "                        }",
+            "                    } else if (token == XML.QUEST) {",
+            "",
+            "// <?",
+            "",
+            "                        x.skipPast(\"?>\");",
+            "                    } else {",
+            "                        throw x.syntaxError(\"Misshaped tag\");",
+            "                    }",
+            "",
+            "// Open tag <",
+            "",
+            "                } else {",
+            "                    if (!(token instanceof String)) {",
+            "                        throw x.syntaxError(\"Bad tagName '\" + token + \"'.\");",
+            "                    }",
+            "                    tagName = (String)token;",
+            "                    newja = new JSONArray();",
+            "                    newjo = new JSONObject();",
+            "                    if (arrayForm) {",
+            "                        newja.put(tagName);",
+            "                        if (ja != null) {",
+            "                            ja.put(newja);",
+            "                        }",
+            "                    } else {",
+            "                        newjo.put(\"tagName\", tagName);",
+            "                        if (ja != null) {",
+            "                            ja.put(newjo);",
+            "                        }",
+            "                    }",
+            "                    token = null;",
+            "                    for (;;) {",
+            "                        if (token == null) {",
+            "                            token = x.nextToken();",
+            "                        }",
+            "                        if (token == null) {",
+            "                            throw x.syntaxError(\"Misshaped tag\");",
+            "                        }",
+            "                        if (!(token instanceof String)) {",
+            "                            break;",
+            "                        }",
+            "",
+            "// attribute = value",
+            "",
+            "                        attribute = (String)token;",
+            "                        if (!arrayForm && (\"tagName\".equals(attribute) || \"childNode\".equals(attribute))) {",
+            "                            throw x.syntaxError(\"Reserved attribute.\");",
+            "                        }",
+            "                        token = x.nextToken();",
+            "                        if (token == XML.EQ) {",
+            "                            token = x.nextToken();",
+            "                            if (!(token instanceof String)) {",
+            "                                throw x.syntaxError(\"Missing value\");",
+            "                            }",
+            "                            newjo.accumulate(attribute, config.isKeepStrings() ? ((String)token) :XML.stringToValue((String)token));",
+            "                            token = null;",
+            "                        } else {",
+            "                            newjo.accumulate(attribute, \"\");",
+            "                        }",
+            "                    }",
+            "                    if (arrayForm && newjo.length() > 0) {",
+            "                        newja.put(newjo);",
+            "                    }",
+            "",
+            "// Empty tag <.../>",
+            "",
+            "                    if (token == XML.SLASH) {",
+            "                        if (x.nextToken() != XML.GT) {",
+            "                            throw x.syntaxError(\"Misshaped tag\");",
+            "                        }",
+            "                        if (ja == null) {",
+            "                            if (arrayForm) {",
+            "                                return newja;",
+            "                            }",
+            "                            return newjo;",
+            "                        }",
+            "",
+            "// Content, between <...> and </...>",
+            "",
+            "                    } else {",
+            "                        if (token != XML.GT) {",
+            "                            throw x.syntaxError(\"Misshaped tag\");",
+            "                        }",
+            "",
+            "                        if (currentNestingDepth == config.getMaxNestingDepth()) {",
+            "                            throw x.syntaxError(\"Maximum nesting depth of \" + config.getMaxNestingDepth() + \" reached\");",
+            "                        }",
+            "",
+            "                        closeTag = (String)parse(x, arrayForm, newja, config, currentNestingDepth + 1);",
+            "                        if (closeTag != null) {",
+            "                            if (!closeTag.equals(tagName)) {",
+            "                                throw x.syntaxError(\"Mismatched '\" + tagName +",
+            "                                        \"' and '\" + closeTag + \"'\");",
+            "                            }",
+            "                            tagName = null;",
+            "                            if (!arrayForm && newja.length() > 0) {",
+            "                                newjo.put(\"childNodes\", newja);",
+            "                            }",
+            "                            if (ja == null) {",
+            "                                if (arrayForm) {",
+            "                                    return newja;",
+            "                                }",
+            "                                return newjo;",
+            "                            }",
+            "                        }",
+            "                    }",
+            "                }",
+            "            } else {",
+            "                if (ja != null) {",
+            "                    Object value;",
+            "",
+            "                    if (token instanceof String) {",
+            "                        String strToken = (String) token;",
+            "                        if (config.isKeepStrings()) {",
+            "                            value = XML.unescape(strToken);",
+            "                        } else {",
+            "                            value = XML.stringToValue(strToken);",
+            "                        }",
+            "                    } else {",
+            "                        value = token;",
+            "                    }",
+            "",
+            "                    ja.put(value);",
+            "",
+            "                }",
+            "            }",
+            "        }"
+          ]
+        },
+        {
+          "line": 162,
+          "kind": "while",
+          "nesting_depth": 8,
+          "body": [
+            "                            } while (i > 0);"
+          ]
+        },
+        {
+          "line": 194,
+          "kind": "for",
+          "nesting_depth": 5,
+          "body": [
+            "                    for (;;) {",
+            "                        if (token == null) {",
+            "                            token = x.nextToken();",
+            "                        }",
+            "                        if (token == null) {",
+            "                            throw x.syntaxError(\"Misshaped tag\");",
+            "                        }",
+            "                        if (!(token instanceof String)) {",
+            "                            break;",
+            "                        }",
+            "",
+            "// attribute = value",
+            "",
+            "                        attribute = (String)token;",
+            "                        if (!arrayForm && (\"tagName\".equals(attribute) || \"childNode\".equals(attribute))) {",
+            "                            throw x.syntaxError(\"Reserved attribute.\");",
+            "                        }",
+            "                        token = x.nextToken();",
+            "                        if (token == XML.EQ) {",
+            "                            token = x.nextToken();",
+            "                            if (!(token instanceof String)) {",
+            "                                throw x.syntaxError(\"Missing value\");",
+            "                            }",
+            "                            newjo.accumulate(attribute, config.isKeepStrings() ? ((String)token) :XML.stringToValue((String)token));",
+            "                            token = null;",
+            "                        } else {",
+            "                            newjo.accumulate(attribute, \"\");",
+            "                        }",
+            "                    }"
+          ]
+        },
+        {
+          "line": 570,
+          "kind": "for",
+          "nesting_depth": 3,
+          "body": [
+            "            for (final String key : jo.keySet()) {",
+            "                final Object value = jo.opt(key);",
+            "                XML.noSpace(key);",
+            "                if (value != null) {",
+            "                    sb.append(' ');",
+            "                    sb.append(XML.escape(key));",
+            "                    sb.append('=');",
+            "                    sb.append('\"');",
+            "                    sb.append(XML.escape(value.toString()));",
+            "                    sb.append('\"');",
+            "                }",
+            "            }"
+          ]
+        },
+        {
+          "line": 608,
+          "kind": "while",
+          "nesting_depth": 4,
+          "body": [
+            "            } while (i < length);"
+          ]
+        },
+        {
+          "line": 650,
+          "kind": "for",
+          "nesting_depth": 2,
+          "body": [
+            "        for (final String key : jo.keySet()) {",
+            "            if (!\"tagName\".equals(key) && !\"childNodes\".equals(key)) {",
+            "                XML.noSpace(key);",
+            "                value = jo.opt(key);",
+            "                if (value != null) {",
+            "                    sb.append(' ');",
+            "                    sb.append(XML.escape(key));",
+            "                    sb.append('=');",
+            "                    sb.append('\"');",
+            "                    sb.append(XML.escape(value.toString()));",
+            "                    sb.append('\"');",
+            "                }",
+            "            }",
+            "        }"
+          ]
+        },
+        {
+          "line": 674,
+          "kind": "for",
+          "nesting_depth": 3,
+          "body": [
+            "            for (i = 0; i < length; i += 1) {",
+            "                object = ja.get(i);",
+            "                if (object != null) {",
+            "                    if (object instanceof String) {",
+            "                        sb.append(XML.escape(object.toString()));",
+            "                    } else if (object instanceof JSONObject) {",
+            "                        sb.append(toString((JSONObject)object));",
+            "                    } else if (object instanceof JSONArray) {",
+            "                        sb.append(toString((JSONArray)object));",
+            "                    } else {",
+            "                        sb.append(object.toString());",
+            "                    }",
+            "                }",
+            "            }"
+          ]
+        }
+      ],
+      "stream_pipelines": [],
+      "synchronized_blocks": [],
+      "concurrency_usage": [],
+      "findings": [
+        {
+          "severity": "Medium",
+          "confidence": "High",
+          "pattern": "allocation-pressure",
+          "title": "Allocation-heavy loop body",
+          "location": "line 109",
+          "what_was_found": "Loop at line 109 allocates new collections, builders, or mapping helpers during iteration.",
+          "why_it_is_wasteful": "Frequent temporary allocations increase GC activity and memory traffic without adding durable value.",
+          "likely_impact": "Higher heap pressure, more garbage collection, and reduced steady-state performance.",
+          "recommended_remediation": "Reuse mutable helpers where safe, pre-size collections, or move allocations outside the loop.",
+          "low_waste_rationale": "Cutting temporary objects reduces bytes allocated and the CPU spent reclaiming them.",
+          "evidence": [
+            "newja = new JSONArray();",
+            "newjo = new JSONObject();"
+          ]
+        },
+        {
+          "severity": "Medium",
+          "confidence": "Medium",
+          "pattern": "algorithmic-waste",
+          "title": "Nested loop with repeated lookup work",
+          "location": "line 674",
+          "what_was_found": "Loop at line 674 is nested at depth 3 and also performs repeated lookup or transformation work.",
+          "why_it_is_wasteful": "Nested iteration plus repeated lookup operations multiplies work and can become expensive quickly as data grows.",
+          "likely_impact": "Poor scalability, longer batch runtimes, and excess CPU consumption.",
+          "recommended_remediation": "Pre-index shared data, reduce nested scans, or collapse passes where possible.",
+          "low_waste_rationale": "Lowering algorithmic complexity reduces operations and energy for the same user-visible result.",
+          "evidence": [
+            "line 674"
+          ]
+        },
+        {
+          "severity": "Medium",
+          "confidence": "Medium",
+          "pattern": "data-movement-bloat",
+          "title": "Payload construction inside loop",
+          "location": "line 109",
+          "what_was_found": "Loop at line 109 serializes, materializes, or expands payload-like objects during iteration.",
+          "why_it_is_wasteful": "Building full payloads before filtering or aggregating moves more bytes and allocates more intermediate state than needed.",
+          "likely_impact": "Higher memory use, longer serialization time, and avoidable network or logging overhead.",
+          "recommended_remediation": "Filter earlier, narrow the fields being built, or batch serialization closer to the sink.",
+          "low_waste_rationale": "Constructing only the bytes that are actually needed reduces memory traffic and output overhead.",
+          "evidence": [
+            "newja = new JSONArray();",
+            "newjo = new JSONObject();"
+          ]
+        },
+        {
+          "severity": "Medium",
+          "confidence": "Medium",
+          "pattern": "data-movement-bloat",
+          "title": "Payload construction inside loop",
+          "location": "line 570",
+          "what_was_found": "Loop at line 570 serializes, materializes, or expands payload-like objects during iteration.",
+          "why_it_is_wasteful": "Building full payloads before filtering or aggregating moves more bytes and allocates more intermediate state than needed.",
+          "likely_impact": "Higher memory use, longer serialization time, and avoidable network or logging overhead.",
+          "recommended_remediation": "Filter earlier, narrow the fields being built, or batch serialization closer to the sink.",
+          "low_waste_rationale": "Constructing only the bytes that are actually needed reduces memory traffic and output overhead.",
+          "evidence": [
+            "sb.append(XML.escape(value.toString()));"
+          ]
+        },
+        {
+          "severity": "Medium",
+          "confidence": "Medium",
+          "pattern": "data-movement-bloat",
+          "title": "Payload construction inside loop",
+          "location": "line 650",
+          "what_was_found": "Loop at line 650 serializes, materializes, or expands payload-like objects during iteration.",
+          "why_it_is_wasteful": "Building full payloads before filtering or aggregating moves more bytes and allocates more intermediate state than needed.",
+          "likely_impact": "Higher memory use, longer serialization time, and avoidable network or logging overhead.",
+          "recommended_remediation": "Filter earlier, narrow the fields being built, or batch serialization closer to the sink.",
+          "low_waste_rationale": "Constructing only the bytes that are actually needed reduces memory traffic and output overhead.",
+          "evidence": [
+            "sb.append(XML.escape(value.toString()));"
+          ]
+        },
+        {
+          "severity": "Medium",
+          "confidence": "Medium",
+          "pattern": "data-movement-bloat",
+          "title": "Payload construction inside loop",
+          "location": "line 674",
+          "what_was_found": "Loop at line 674 serializes, materializes, or expands payload-like objects during iteration.",
+          "why_it_is_wasteful": "Building full payloads before filtering or aggregating moves more bytes and allocates more intermediate state than needed.",
+          "likely_impact": "Higher memory use, longer serialization time, and avoidable network or logging overhead.",
+          "recommended_remediation": "Filter earlier, narrow the fields being built, or batch serialization closer to the sink.",
+          "low_waste_rationale": "Constructing only the bytes that are actually needed reduces memory traffic and output overhead.",
+          "evidence": [
+            "sb.append(XML.escape(object.toString()));",
+            "sb.append(object.toString());"
+          ]
+        },
+        {
+          "severity": "Medium",
+          "confidence": "High",
+          "pattern": "repeated-work",
+          "title": "Repeated setup or parsing inside loop",
+          "location": "line 109",
+          "what_was_found": "Loop at line 109 recreates parsers, formatters, mappers, regexes, or other setup-heavy objects.",
+          "why_it_is_wasteful": "Rebuilding invariant helpers during each iteration spends CPU cycles and allocations on work that can usually be reused.",
+          "likely_impact": "Higher latency, avoidable GC churn, and lower throughput on larger collections.",
+          "recommended_remediation": "Hoist reusable helpers outside the loop and cache invariant computations.",
+          "low_waste_rationale": "Reusing expensive helpers reduces instructions executed and memory churn per item processed.",
+          "evidence": [
+            "newja = new JSONArray();",
+            "newjo = new JSONObject();",
+            "closeTag = (String)parse(x, arrayForm, newja, config, currentNestingDepth + 1);"
+          ]
+        },
+        {
+          "severity": "Low",
+          "confidence": "Medium",
+          "pattern": "allocation-pressure",
+          "title": "String concatenation in loop",
+          "location": "line 109",
+          "what_was_found": "Loop at line 109 builds strings through repeated concatenation.",
+          "why_it_is_wasteful": "Repeated concatenation can allocate many intermediate strings in hot iteration paths.",
+          "likely_impact": "Extra allocation churn and slower formatting-heavy paths.",
+          "recommended_remediation": "Use a shared `StringBuilder` or defer formatting until it is needed.",
+          "low_waste_rationale": "Reducing intermediate strings lowers heap churn and CPU spent copying characters.",
+          "evidence": [
+            "\"Expected a closing name instead of '\" +",
+            "throw x.syntaxError(\"Bad tagName '\" + token + \"'.\");",
+            "throw x.syntaxError(\"Maximum nesting depth of \" + config.getMaxNestingDepth() + \" reached\");"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\JSONMLParserConfiguration.java",
+      "is_test": false,
+      "classes": [
+        "JSONMLParserConfiguration"
+      ],
+      "methods": [
+        {
+          "name": "JSONMLParserConfiguration",
+          "start_line": 27,
+          "end_line": 30
+        },
+        {
+          "name": "JSONMLParserConfiguration",
+          "start_line": 38,
+          "end_line": 40
+        },
+        {
+          "name": "clone",
+          "start_line": 46,
+          "end_line": 56
+        },
+        {
+          "name": "withKeepStrings",
+          "start_line": 60,
+          "end_line": 62
+        },
+        {
+          "name": "withMaxNestingDepth",
+          "start_line": 66,
+          "end_line": 68
+        }
+      ],
+      "loops": [],
+      "stream_pipelines": [],
+      "synchronized_blocks": [],
+      "concurrency_usage": [],
+      "findings": []
+    },
+    {
+      "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\JSONObject.java",
+      "is_test": false,
+      "classes": [
+        "JSONObject",
+        "Null",
+        "object",
+        "being",
+        "value",
+        "to",
+        "value",
+        "of",
+        "value",
+        "to",
+        "value",
+        "value",
+        "to",
+        "value",
+        "then",
+        "type",
+        "is",
+        "type",
+        "to",
+        "is",
+        "type",
+        "type",
+        "hierarchy",
+        "definitions",
+        "hierarchy",
+        "to",
+        "must",
+        "must",
+        "of",
+        "must",
+        "is",
+        "of",
+        "is",
+        "for"
+      ],
+      "methods": [
+        {
+          "name": "equals",
+          "start_line": 95,
+          "end_line": 97
+        },
+        {
+          "name": "hashCode",
+          "start_line": 104,
+          "end_line": 106
+        },
+        {
+          "name": "toString",
+          "start_line": 114,
+          "end_line": 116
+        },
+        {
+          "name": "getMapType",
+          "start_line": 135,
+          "end_line": 137
+        },
+        {
+          "name": "JSONObject",
+          "start_line": 162,
+          "end_line": 170
+        },
+        {
+          "name": "JSONObject",
+          "start_line": 182,
+          "end_line": 190
+        },
+        {
+          "name": "parseJSONObject",
+          "start_line": 238,
+          "end_line": 247
+        },
+        {
+          "name": "parseEndOfKeyValuePair",
+          "start_line": 295,
+          "end_line": 314
+        },
+        {
+          "name": "checkKeyForStrictMode",
+          "start_line": 336,
+          "end_line": 348
+        },
+        {
+          "name": "JSONObject",
+          "start_line": 361,
+          "end_line": 363
+        },
+        {
+          "name": "JSONObject",
+          "start_line": 374,
+          "end_line": 376
+        },
+        {
+          "name": "JSONObject",
+          "start_line": 381,
+          "end_line": 400
+        },
+        {
+          "name": "JSONObject",
+          "start_line": 461,
+          "end_line": 464
+        },
+        {
+          "name": "JSONObject",
+          "start_line": 466,
+          "end_line": 469
+        },
+        {
+          "name": "JSONObject",
+          "start_line": 471,
+          "end_line": 474
+        },
+        {
+          "name": "JSONObject",
+          "start_line": 490,
+          "end_line": 501
+        },
+        {
+          "name": "JSONObject",
+          "start_line": 587,
+          "end_line": 589
+        },
+        {
+          "name": "doubleToString",
+          "start_line": 665,
+          "end_line": 683
+        },
+        {
+          "name": "getNames",
+          "start_line": 944,
+          "end_line": 949
+        },
+        {
+          "name": "getNames",
+          "start_line": 958,
+          "end_line": 973
+        },
+        {
+          "name": "has",
+          "start_line": 999,
+          "end_line": 1001
+        },
+        {
+          "name": "isNull",
+          "start_line": 1049,
+          "end_line": 1051
+        },
+        {
+          "name": "keys",
+          "start_line": 1061,
+          "end_line": 1063
+        },
+        {
+          "name": "keySet",
+          "start_line": 1073,
+          "end_line": 1075
+        },
+        {
+          "name": "entrySet",
+          "start_line": 1089,
+          "end_line": 1091
+        },
+        {
+          "name": "length",
+          "start_line": 1098,
+          "end_line": 1100
+        },
+        {
+          "name": "clear",
+          "start_line": 1106,
+          "end_line": 1108
+        },
+        {
+          "name": "isEmpty",
+          "start_line": 1115,
+          "end_line": 1117
+        },
+        {
+          "name": "names",
+          "start_line": 1126,
+          "end_line": 1131
+        },
+        {
+          "name": "opt",
+          "start_line": 1170,
+          "end_line": 1172
+        },
+        {
+          "name": "optEnum",
+          "start_line": 1185,
+          "end_line": 1187
+        },
+        {
+          "name": "optEnum",
+          "start_line": 1203,
+          "end_line": 1221
+        },
+        {
+          "name": "optBoolean",
+          "start_line": 1231,
+          "end_line": 1233
+        },
+        {
+          "name": "optBoolean",
+          "start_line": 1246,
+          "end_line": 1260
+        },
+        {
+          "name": "optBooleanObject",
+          "start_line": 1270,
+          "end_line": 1272
+        },
+        {
+          "name": "optBooleanObject",
+          "start_line": 1285,
+          "end_line": 1299
+        },
+        {
+          "name": "optBigDecimal",
+          "start_line": 1315,
+          "end_line": 1318
+        },
+        {
+          "name": "objectToBigDecimal",
+          "start_line": 1326,
+          "end_line": 1328
+        },
+        {
+          "name": "objectToBigDecimal",
+          "start_line": 1338,
+          "end_line": 1370
+        },
+        {
+          "name": "optBigInteger",
+          "start_line": 1383,
+          "end_line": 1386
+        },
+        {
+          "name": "objectToBigInteger",
+          "start_line": 1394,
+          "end_line": 1431
+        },
+        {
+          "name": "optDouble",
+          "start_line": 1442,
+          "end_line": 1444
+        },
+        {
+          "name": "optDouble",
+          "start_line": 1457,
+          "end_line": 1463
+        },
+        {
+          "name": "optDoubleObject",
+          "start_line": 1474,
+          "end_line": 1476
+        },
+        {
+          "name": "optDoubleObject",
+          "start_line": 1489,
+          "end_line": 1495
+        },
+        {
+          "name": "optFloat",
+          "start_line": 1506,
+          "end_line": 1508
+        },
+        {
+          "name": "optFloat",
+          "start_line": 1521,
+          "end_line": 1527
+        },
+        {
+          "name": "optFloatObject",
+          "start_line": 1538,
+          "end_line": 1540
+        },
+        {
+          "name": "optFloatObject",
+          "start_line": 1553,
+          "end_line": 1559
+        },
+        {
+          "name": "optInt",
+          "start_line": 1570,
+          "end_line": 1572
+        },
+        {
+          "name": "optInt",
+          "start_line": 1585,
+          "end_line": 1591
+        },
+        {
+          "name": "optIntegerObject",
+          "start_line": 1602,
+          "end_line": 1604
+        },
+        {
+          "name": "optIntegerObject",
+          "start_line": 1617,
+          "end_line": 1623
+        },
+        {
+          "name": "optJSONArray",
+          "start_line": 1633,
+          "end_line": 1635
+        },
+        {
+          "name": "optJSONArray",
+          "start_line": 1647,
+          "end_line": 1650
+        },
+        {
+          "name": "optJSONObject",
+          "start_line": 1660,
+          "end_line": 3537
+        }
+      ],
+      "loops": [
+        {
+          "line": 184,
+          "kind": "for",
+          "nesting_depth": 2,
+          "body": [
+            "        for (int i = 0; i < names.length; i += 1) {",
+            "            try {",
+            "                this.putOnce(names[i], jo.opt(names[i]));",
+            "            } catch (Exception ignore) { // exception thrown for missing key",
+            "            }",
+            "        }"
+          ]
+        },
+        {
+          "line": 223,
+          "kind": "for",
+          "nesting_depth": 4,
+          "body": [
+            "        for (;;) {",
+            "            if (parseJSONObject(x, jsonParserConfiguration, isInitial)) {",
+            "                return;",
+            "            }",
+            "        }"
+          ]
+        },
+        {
+          "line": 389,
+          "kind": "for",
+          "nesting_depth": 0,
+          "body": [
+            "        \tfor (final Entry<?, ?> e : m.entrySet()) {",
+            "        \t    if(e.getKey() == null) {",
+            "        \t        throw new NullPointerException(\"Null key.\");",
+            "        \t    }",
+            "                final Object value = e.getValue();",
+            "                if (value != null || jsonParserConfiguration.isUseNativeNulls()) {",
+            "                    testValidity(value);",
+            "                    this.map.put(String.valueOf(e.getKey()), wrap(value, recursionDepth + 1, jsonParserConfiguration));",
+            "                }",
+            "            }"
+          ]
+        },
+        {
+          "line": 493,
+          "kind": "for",
+          "nesting_depth": 0,
+          "body": [
+            "        for (int i = 0; i < names.length; i += 1) {",
+            "            String name = names[i];",
+            "            try {",
+            "                this.putOpt(name, c.getField(name).get(object));",
+            "            } catch (Exception ignore) {",
+            "                // if invalid, do not include key:value pair in JSONObject",
+            "            }",
+            "        }"
+          ]
+        },
+        {
+          "line": 555,
+          "kind": "while",
+          "nesting_depth": 0,
+          "body": [
+            "        while (keys.hasMoreElements()) {",
+            "            Object key = keys.nextElement();",
+            "            if (key != null) {",
+            "",
+            "// Go through the path, ensuring that there is a nested JSONObject for each",
+            "// segment except the last. Add the value using the last segment's name into",
+            "// the deepest nested JSONObject.",
+            "",
+            "                String[] path = ((String) key).split(\"\\\\.\");",
+            "                int last = path.length - 1;",
+            "                JSONObject target = this;",
+            "                for (int i = 0; i < last; i += 1) {",
+            "                    String segment = path[i];",
+            "                    JSONObject nextTarget = target.optJSONObject(segment);",
+            "                    if (nextTarget == null) {",
+            "                        nextTarget = new JSONObject();",
+            "                        target.put(segment, nextTarget);",
+            "                    }",
+            "                    target = nextTarget;",
+            "                }",
+            "                target.put(path[last], bundle.getString((String) key));",
+            "            }",
+            "        }"
+          ]
+        },
+        {
+          "line": 566,
+          "kind": "for",
+          "nesting_depth": 0,
+          "body": [
+            "                for (int i = 0; i < last; i += 1) {",
+            "                    String segment = path[i];",
+            "                    JSONObject nextTarget = target.optJSONObject(segment);",
+            "                    if (nextTarget == null) {",
+            "                        nextTarget = new JSONObject();",
+            "                        target.put(segment, nextTarget);",
+            "                    }",
+            "                    target = nextTarget;",
+            "                }"
+          ]
+        },
+        {
+          "line": 675,
+          "kind": "while",
+          "nesting_depth": 0,
+          "body": [
+            "            while (string.endsWith(\"0\")) {",
+            "                string = string.substring(0, string.length() - 1);",
+            "            }"
+          ]
+        },
+        {
+          "line": 969,
+          "kind": "for",
+          "nesting_depth": 0,
+          "body": [
+            "        for (int i = 0; i < length; i += 1) {",
+            "            names[i] = fields[i].getName();",
+            "        }"
+          ]
+        },
+        {
+          "line": 1153,
+          "kind": "while",
+          "nesting_depth": 0,
+          "body": [
+            "            while (string.endsWith(\"0\")) {",
+            "                string = string.substring(0, string.length() - 1);",
+            "            }"
+          ]
+        },
+        {
+          "line": 1843,
+          "kind": "for",
+          "nesting_depth": 0,
+          "body": [
+            "        for (final Method method : methods) {",
+            "            if (isValidMethod(method)) {",
+            "                final String key = getKeyNameFromMethod(method, isRecord);",
+            "                if (key != null && !key.isEmpty()) {",
+            "                    processMethod(bean, objectsRecord, jsonParserConfiguration, method, key);",
+            "                }",
+            "            }",
+            "        }"
+          ]
+        },
+        {
+          "line": 2075,
+          "kind": "for",
+          "nesting_depth": 0,
+          "body": [
+            "        for (Class<?> i : c.getInterfaces()) {",
+            "            try {",
+            "                Method im = i.getMethod(m.getName(), m.getParameterTypes());",
+            "                return getAnnotation(im, annotationClass);",
+            "            } catch (final SecurityException ex) {",
+            "                // ignore this exception",
+            "            } catch (final NoSuchMethodException ex) {",
+            "                // ignore this excpetion",
+            "            }",
+            "        }"
+          ]
+        },
+        {
+          "line": 2129,
+          "kind": "for",
+          "nesting_depth": 0,
+          "body": [
+            "        for (Class<?> i : c.getInterfaces()) {",
+            "            try {",
+            "                Method im = i.getMethod(m.getName(), m.getParameterTypes());",
+            "                int d = getAnnotationDepth(im, annotationClass);",
+            "                if (d > 0) {",
+            "                    // since the annotation was on the interface, add 1",
+            "                    return d + 1;",
+            "                }",
+            "            } catch (final SecurityException ex) {",
+            "                // Nothing to do here",
+            "            } catch (final NoSuchMethodException ex) {",
+            "                // Nothing to do here",
+            "            }",
+            "        }"
+          ]
+        },
+        {
+          "line": 2476,
+          "kind": "for",
+          "nesting_depth": 0,
+          "body": [
+            "        for (i = 0; i < len; i += 1) {",
+            "            b = c;",
+            "            c = string.charAt(i);",
+            "            switch (c) {",
+            "            case '\\\\':",
+            "            case '\"':",
+            "                w.write('\\\\');",
+            "                w.write(c);",
+            "                break;",
+            "            case '/':",
+            "                if (b == '<') {",
+            "                    w.write('\\\\');",
+            "                }",
+            "                w.write(c);",
+            "                break;",
+            "            case '\\b':",
+            "                w.write(\"\\\\b\");",
+            "                break;",
+            "            case '\\t':",
+            "                w.write(\"\\\\t\");",
+            "                break;",
+            "            case '\\n':",
+            "                w.write(\"\\\\n\");",
+            "                break;",
+            "            case '\\f':",
+            "                w.write(\"\\\\f\");",
+            "                break;",
+            "            case '\\r':",
+            "                w.write(\"\\\\r\");",
+            "                break;",
+            "            default:",
+            "                writeAsHex(w, c);",
+            "            }",
+            "        }"
+          ]
+        },
+        {
+          "line": 2568,
+          "kind": "for",
+          "nesting_depth": 0,
+          "body": [
+            "        for (final Entry<String,?> entry : this.entrySet()) {",
+            "            String name = entry.getKey();",
+            "            Object valueThis = entry.getValue();",
+            "            Object valueOther = ((JSONObject)other).get(name);",
+            "            if(valueThis == valueOther) {",
+            "                continue;",
+            "            }",
+            "            if(valueThis == null) {",
+            "                return false;",
+            "            }",
+            "",
+            "            if (!checkObjectType(valueThis, valueOther)) {",
+            "                return false;",
+            "            }",
+            "        }"
+          ]
+        },
+        {
+          "line": 2831,
+          "kind": "for",
+          "nesting_depth": 0,
+          "body": [
+            "        for (int i = 0; i < names.length(); i += 1) {",
+            "            ja.put(this.opt(names.getString(i)));",
+            "        }"
+          ]
+        },
+        {
+          "line": 3100,
+          "kind": "for",
+          "nesting_depth": 0,
+          "body": [
+            "        for (int i = 0; i < indent; i += 1) {",
+            "            writer.write(' ');",
+            "        }"
+          ]
+        },
+        {
+          "line": 3175,
+          "kind": "for",
+          "nesting_depth": 0,
+          "body": [
+            "        for (final Entry<String,?> entry : this.entrySet()) {",
+            "            if (needsComma) {",
+            "                writer.write(',');",
+            "            }",
+            "            if (indentFactor > 0) {",
+            "                writer.write('\\n');",
+            "            }",
+            "            indent(writer, newIndent);",
+            "            final String key = entry.getKey();",
+            "            writer.write(quote(key));",
+            "            writer.write(':');",
+            "            if (indentFactor > 0) {",
+            "                writer.write(' ');",
+            "            }",
+            "            attemptWriteValue(writer, indentFactor, newIndent, entry, key);",
+            "            needsComma = true;",
+            "        }"
+          ]
+        },
+        {
+          "line": 3233,
+          "kind": "for",
+          "nesting_depth": 0,
+          "body": [
+            "        for (Entry<String, Object> entry : this.entrySet()) {",
+            "            Object value;",
+            "            if (entry.getValue() == null || NULL.equals(entry.getValue())) {",
+            "                value = null;",
+            "            } else if (entry.getValue() instanceof JSONObject) {",
+            "                value = ((JSONObject) entry.getValue()).toMap();",
+            "            } else if (entry.getValue() instanceof JSONArray) {",
+            "                value = ((JSONArray) entry.getValue()).toList();",
+            "            } else {",
+            "                value = entry.getValue();",
+            "            }",
+            "            results.put(entry.getKey(), value);",
+            "        }"
+          ]
+        },
+        {
+          "line": 3368,
+          "kind": "for",
+          "nesting_depth": 0,
+          "body": [
+            "            for (Field field : clazz.getDeclaredFields()) {",
+            "                if (Modifier.isStatic(field.getModifiers())) {",
+            "                    continue;",
+            "                }",
+            "                field.setAccessible(true);",
+            "                String fieldName = field.getName();",
+            "                if (has(fieldName)) {",
+            "                    Object value = get(fieldName);",
+            "                    Type fieldType = field.getGenericType();",
+            "                    Object convertedValue = convertValue(value, fieldType);",
+            "                    field.set(obj, convertedValue);",
+            "                }",
+            "            }"
+          ]
+        },
+        {
+          "line": 3460,
+          "kind": "for",
+          "nesting_depth": 0,
+          "body": [
+            "            for (Object keyObj : jsonMap.keySet()) {",
+            "                String keyStr = (String) keyObj;",
+            "                Object mapValue = jsonMap.get(keyStr);",
+            "                // Convert key (e.g., String to Integer for Map<Integer, ...>)",
+            "                Object convertedKey = convertValue(keyStr, keyType);",
+            "                // Convert value recursively (handles nesting)",
+            "                Object convertedValue = convertValue(mapValue, valueType);",
+            "                createdMap.put(convertedKey, convertedValue);",
+            "            }"
+          ]
+        },
+        {
+          "line": 3498,
+          "kind": "for",
+          "nesting_depth": 0,
+          "body": [
+            "            for (int i = 0; i < jsonArray.length(); i++) {",
+            "                Object jsonElement = jsonArray.get(i);",
+            "                // Recursively convert each element using the full element Type (handles nesting)",
+            "                Object convertedValue = convertValue(jsonElement, elementType);",
+            "                collection.add((T) convertedValue);",
+            "            }"
+          ]
+        }
+      ],
+      "stream_pipelines": [],
+      "synchronized_blocks": [],
+      "concurrency_usage": [],
+      "findings": [
+        {
+          "severity": "Medium",
+          "confidence": "High",
+          "pattern": "allocation-pressure",
+          "title": "Allocation-heavy loop body",
+          "location": "line 555",
+          "what_was_found": "Loop at line 555 allocates new collections, builders, or mapping helpers during iteration.",
+          "why_it_is_wasteful": "Frequent temporary allocations increase GC activity and memory traffic without adding durable value.",
+          "likely_impact": "Higher heap pressure, more garbage collection, and reduced steady-state performance.",
+          "recommended_remediation": "Reuse mutable helpers where safe, pre-size collections, or move allocations outside the loop.",
+          "low_waste_rationale": "Cutting temporary objects reduces bytes allocated and the CPU spent reclaiming them.",
+          "evidence": [
+            "nextTarget = new JSONObject();"
+          ]
+        },
+        {
+          "severity": "Medium",
+          "confidence": "High",
+          "pattern": "allocation-pressure",
+          "title": "Allocation-heavy loop body",
+          "location": "line 566",
+          "what_was_found": "Loop at line 566 allocates new collections, builders, or mapping helpers during iteration.",
+          "why_it_is_wasteful": "Frequent temporary allocations increase GC activity and memory traffic without adding durable value.",
+          "likely_impact": "Higher heap pressure, more garbage collection, and reduced steady-state performance.",
+          "recommended_remediation": "Reuse mutable helpers where safe, pre-size collections, or move allocations outside the loop.",
+          "low_waste_rationale": "Cutting temporary objects reduces bytes allocated and the CPU spent reclaiming them.",
+          "evidence": [
+            "nextTarget = new JSONObject();"
+          ]
+        },
+        {
+          "severity": "Medium",
+          "confidence": "Medium",
+          "pattern": "data-movement-bloat",
+          "title": "Payload construction inside loop",
+          "location": "line 223",
+          "what_was_found": "Loop at line 223 serializes, materializes, or expands payload-like objects during iteration.",
+          "why_it_is_wasteful": "Building full payloads before filtering or aggregating moves more bytes and allocates more intermediate state than needed.",
+          "likely_impact": "Higher memory use, longer serialization time, and avoidable network or logging overhead.",
+          "recommended_remediation": "Filter earlier, narrow the fields being built, or batch serialization closer to the sink.",
+          "low_waste_rationale": "Constructing only the bytes that are actually needed reduces memory traffic and output overhead.",
+          "evidence": [
+            "if (parseJSONObject(x, jsonParserConfiguration, isInitial)) {"
+          ]
+        },
+        {
+          "severity": "Medium",
+          "confidence": "Medium",
+          "pattern": "data-movement-bloat",
+          "title": "Payload construction inside loop",
+          "location": "line 555",
+          "what_was_found": "Loop at line 555 serializes, materializes, or expands payload-like objects during iteration.",
+          "why_it_is_wasteful": "Building full payloads before filtering or aggregating moves more bytes and allocates more intermediate state than needed.",
+          "likely_impact": "Higher memory use, longer serialization time, and avoidable network or logging overhead.",
+          "recommended_remediation": "Filter earlier, narrow the fields being built, or batch serialization closer to the sink.",
+          "low_waste_rationale": "Constructing only the bytes that are actually needed reduces memory traffic and output overhead.",
+          "evidence": [
+            "JSONObject nextTarget = target.optJSONObject(segment);",
+            "nextTarget = new JSONObject();"
+          ]
+        },
+        {
+          "severity": "Medium",
+          "confidence": "Medium",
+          "pattern": "data-movement-bloat",
+          "title": "Payload construction inside loop",
+          "location": "line 566",
+          "what_was_found": "Loop at line 566 serializes, materializes, or expands payload-like objects during iteration.",
+          "why_it_is_wasteful": "Building full payloads before filtering or aggregating moves more bytes and allocates more intermediate state than needed.",
+          "likely_impact": "Higher memory use, longer serialization time, and avoidable network or logging overhead.",
+          "recommended_remediation": "Filter earlier, narrow the fields being built, or batch serialization closer to the sink.",
+          "low_waste_rationale": "Constructing only the bytes that are actually needed reduces memory traffic and output overhead.",
+          "evidence": [
+            "JSONObject nextTarget = target.optJSONObject(segment);",
+            "nextTarget = new JSONObject();"
+          ]
+        },
+        {
+          "severity": "Medium",
+          "confidence": "High",
+          "pattern": "repeated-work",
+          "title": "Repeated setup or parsing inside loop",
+          "location": "line 555",
+          "what_was_found": "Loop at line 555 recreates parsers, formatters, mappers, regexes, or other setup-heavy objects.",
+          "why_it_is_wasteful": "Rebuilding invariant helpers during each iteration spends CPU cycles and allocations on work that can usually be reused.",
+          "likely_impact": "Higher latency, avoidable GC churn, and lower throughput on larger collections.",
+          "recommended_remediation": "Hoist reusable helpers outside the loop and cache invariant computations.",
+          "low_waste_rationale": "Reusing expensive helpers reduces instructions executed and memory churn per item processed.",
+          "evidence": [
+            "nextTarget = new JSONObject();"
+          ]
+        },
+        {
+          "severity": "Medium",
+          "confidence": "High",
+          "pattern": "repeated-work",
+          "title": "Repeated setup or parsing inside loop",
+          "location": "line 566",
+          "what_was_found": "Loop at line 566 recreates parsers, formatters, mappers, regexes, or other setup-heavy objects.",
+          "why_it_is_wasteful": "Rebuilding invariant helpers during each iteration spends CPU cycles and allocations on work that can usually be reused.",
+          "likely_impact": "Higher latency, avoidable GC churn, and lower throughput on larger collections.",
+          "recommended_remediation": "Hoist reusable helpers outside the loop and cache invariant computations.",
+          "low_waste_rationale": "Reusing expensive helpers reduces instructions executed and memory churn per item processed.",
+          "evidence": [
+            "nextTarget = new JSONObject();"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\JSONParserConfiguration.java",
+      "is_test": false,
+      "classes": [
+        "JSONParserConfiguration"
+      ],
+      "methods": [
+        {
+          "name": "JSONParserConfiguration",
+          "start_line": 20,
+          "end_line": 25
+        },
+        {
+          "name": "clone",
+          "start_line": 34,
+          "end_line": 42
+        },
+        {
+          "name": "withMaxNestingDepth",
+          "start_line": 55,
+          "end_line": 60
+        },
+        {
+          "name": "withOverwriteDuplicateKey",
+          "start_line": 70,
+          "end_line": 75
+        },
+        {
+          "name": "withUseNativeNulls",
+          "start_line": 85,
+          "end_line": 90
+        },
+        {
+          "name": "withStrictMode",
+          "start_line": 100,
+          "end_line": 102
+        },
+        {
+          "name": "withStrictMode",
+          "start_line": 114,
+          "end_line": 119
+        },
+        {
+          "name": "isOverwriteDuplicateKey",
+          "start_line": 127,
+          "end_line": 129
+        },
+        {
+          "name": "isUseNativeNulls",
+          "start_line": 138,
+          "end_line": 140
+        },
+        {
+          "name": "isStrictMode",
+          "start_line": 149,
+          "end_line": 151
+        }
+      ],
+      "loops": [],
+      "stream_pipelines": [],
+      "synchronized_blocks": [],
+      "concurrency_usage": [],
+      "findings": []
+    },
+    {
+      "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\JSONPointer.java",
+      "is_test": false,
+      "classes": [
+        "JSONPointer",
+        "allows",
+        "Builder"
+      ],
+      "methods": [
+        {
+          "name": "Builder",
+          "start_line": 48,
+          "end_line": 49
+        },
+        {
+          "name": "build",
+          "start_line": 59,
+          "end_line": 61
+        },
+        {
+          "name": "append",
+          "start_line": 75,
+          "end_line": 81
+        },
+        {
+          "name": "append",
+          "start_line": 90,
+          "end_line": 93
+        },
+        {
+          "name": "builder",
+          "start_line": 111,
+          "end_line": 113
+        },
+        {
+          "name": "JSONPointer",
+          "start_line": 126,
+          "end_line": 170
+        },
+        {
+          "name": "JSONPointer",
+          "start_line": 178,
+          "end_line": 180
+        },
+        {
+          "name": "unescape",
+          "start_line": 185,
+          "end_line": 187
+        },
+        {
+          "name": "toString",
+          "start_line": 248,
+          "end_line": 254
+        },
+        {
+          "name": "escape",
+          "start_line": 265,
+          "end_line": 268
+        },
+        {
+          "name": "toURIFragment",
+          "start_line": 275,
+          "end_line": 285
+        }
+      ],
+      "loops": [
+        {
+          "line": 165,
+          "kind": "while",
+          "nesting_depth": 3,
+          "body": [
+            "        } while (slashIdx >= 0);"
+          ]
+        },
+        {
+          "line": 167,
+          "kind": "for",
+          "nesting_depth": 2,
+          "body": [
+            "        //for (String token : refs.split(\"/\")) {",
+            "        //    this.refTokens.add(unescape(token));",
+            "        //}"
+          ]
+        },
+        {
+          "line": 204,
+          "kind": "for",
+          "nesting_depth": 2,
+          "body": [
+            "        for (String token : this.refTokens) {",
+            "            if (current instanceof JSONObject) {",
+            "                current = ((JSONObject) current).opt(unescape(token));",
+            "            } else if (current instanceof JSONArray) {",
+            "                current = readByIndexToken(current, token);",
+            "            } else {",
+            "                throw new JSONPointerException(format(",
+            "                        \"value [%s] is not an array or object therefore its key %s cannot be resolved\", current,",
+            "                        token));",
+            "            }",
+            "        }"
+          ]
+        },
+        {
+          "line": 250,
+          "kind": "for",
+          "nesting_depth": 2,
+          "body": [
+            "        for (String token: this.refTokens) {",
+            "            rval.append('/').append(escape(token));",
+            "        }"
+          ]
+        },
+        {
+          "line": 278,
+          "kind": "for",
+          "nesting_depth": 3,
+          "body": [
+            "            for (String token : this.refTokens) {",
+            "                rval.append('/').append(URLEncoder.encode(token, ENCODING));",
+            "            }"
+          ]
+        }
+      ],
+      "stream_pipelines": [],
+      "synchronized_blocks": [],
+      "concurrency_usage": [],
+      "findings": []
+    },
+    {
+      "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\JSONPointerException.java",
+      "is_test": false,
+      "classes": [
+        "JSONPointerException"
+      ],
+      "methods": [
+        {
+          "name": "JSONPointerException",
+          "start_line": 22,
+          "end_line": 24
+        },
+        {
+          "name": "JSONPointerException",
+          "start_line": 32,
+          "end_line": 34
+        }
+      ],
+      "loops": [],
+      "stream_pipelines": [],
+      "synchronized_blocks": [],
+      "concurrency_usage": [],
+      "findings": []
+    },
+    {
+      "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\JSONPropertyIgnore.java",
+      "is_test": false,
+      "classes": [
+        "hierarchy",
+        "JSONPropertyIgnore"
+      ],
+      "methods": [],
+      "loops": [],
+      "stream_pipelines": [],
+      "synchronized_blocks": [],
+      "concurrency_usage": [],
+      "findings": []
+    },
+    {
+      "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\JSONPropertyName.java",
+      "is_test": false,
+      "classes": [
+        "JSONPropertyName"
+      ],
+      "methods": [],
+      "loops": [],
+      "stream_pipelines": [],
+      "synchronized_blocks": [],
+      "concurrency_usage": [],
+      "findings": []
+    },
+    {
+      "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\JSONString.java",
+      "is_test": false,
+      "classes": [
+        "allows",
+        "can",
+        "JSONString",
+        "to"
+      ],
+      "methods": [],
+      "loops": [],
+      "stream_pipelines": [],
+      "synchronized_blocks": [],
+      "concurrency_usage": [],
+      "findings": []
+    },
+    {
+      "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\JSONStringer.java",
+      "is_test": false,
+      "classes": [
+        "JSONStringer"
+      ],
+      "methods": [
+        {
+          "name": "JSONStringer",
+          "start_line": 43,
+          "end_line": 45
+        },
+        {
+          "name": "toString",
+          "start_line": 56,
+          "end_line": 58
+        }
+      ],
+      "loops": [],
+      "stream_pipelines": [],
+      "synchronized_blocks": [],
+      "concurrency_usage": [],
+      "findings": []
+    },
+    {
+      "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\JSONTokener.java",
+      "is_test": false,
+      "classes": [
+        "JSONTokener"
+      ],
+      "methods": [
+        {
+          "name": "JSONTokener",
+          "start_line": 43,
+          "end_line": 45
+        },
+        {
+          "name": "JSONTokener",
+          "start_line": 54,
+          "end_line": 66
+        },
+        {
+          "name": "JSONTokener",
+          "start_line": 72,
+          "end_line": 74
+        },
+        {
+          "name": "JSONTokener",
+          "start_line": 81,
+          "end_line": 83
+        },
+        {
+          "name": "JSONTokener",
+          "start_line": 91,
+          "end_line": 93
+        },
+        {
+          "name": "JSONTokener",
+          "start_line": 100,
+          "end_line": 102
+        },
+        {
+          "name": "getJsonParserConfiguration",
+          "start_line": 108,
+          "end_line": 110
+        },
+        {
+          "name": "setJsonParserConfiguration",
+          "start_line": 119,
+          "end_line": 121
+        },
+        {
+          "name": "decrementIndexes",
+          "start_line": 142,
+          "end_line": 150
+        },
+        {
+          "name": "dehexchar",
+          "start_line": 158,
+          "end_line": 169
+        },
+        {
+          "name": "end",
+          "start_line": 176,
+          "end_line": 178
+        },
+        {
+          "name": "getPrevious",
+          "start_line": 242,
+          "end_line": 616
+        }
+      ],
+      "loops": [
+        {
+          "line": 305,
+          "kind": "while",
+          "nesting_depth": 2,
+          "body": [
+            "        while (pos < n) {",
+            "            chars[pos] = this.next();",
+            "            if (this.end()) {",
+            "                throw this.syntaxError(\"Substring bounds error\");",
+            "            }",
+            "            pos += 1;",
+            "        }"
+          ]
+        },
+        {
+          "line": 322,
+          "kind": "for",
+          "nesting_depth": 2,
+          "body": [
+            "        for (;;) {",
+            "            char c = this.next();",
+            "            if (c == 0 || c > ' ') {",
+            "                return c;",
+            "            }",
+            "        }"
+          ]
+        },
+        {
+          "line": 345,
+          "kind": "for",
+          "nesting_depth": 2,
+          "body": [
+            "        for (;;) {",
+            "            c = this.next();",
+            "            switch (c) {",
+            "            case 0:",
+            "            case '\\n':",
+            "            case '\\r':",
+            "                throw this.syntaxError(\"Unterminated string. \" +",
+            "                        \"Character with int code \" + (int) c + \" is not allowed within a quoted string.\");",
+            "            case '\\\\':",
+            "                c = this.next();",
+            "                switch (c) {",
+            "                case 'b':",
+            "                    sb.append('\\b');",
+            "                    break;",
+            "                case 't':",
+            "                    sb.append('\\t');",
+            "                    break;",
+            "                case 'n':",
+            "                    sb.append('\\n');",
+            "                    break;",
+            "                case 'f':",
+            "                    sb.append('\\f');",
+            "                    break;",
+            "                case 'r':",
+            "                    sb.append('\\r');",
+            "                    break;",
+            "                case 'u':",
+            "                    String next = this.next(4);",
+            "                    try {",
+            "                        sb.append((char)Integer.parseInt(next, 16));",
+            "                    } catch (NumberFormatException e) {",
+            "                        throw this.syntaxError(\"Illegal escape. \" +",
+            "                                \"\\\\u must be followed by a 4 digit hexadecimal number. \\\\\" + next + \" is not valid.\", e);",
+            "                    }",
+            "                    break;",
+            "                case '\"':",
+            "                case '\\'':",
+            "                case '\\\\':",
+            "                case '/':",
+            "                    sb.append(c);",
+            "                    break;",
+            "                default:",
+            "                    throw this.syntaxError(\"Illegal escape. Escape sequence  \\\\\" + c + \" is not valid.\");",
+            "                }",
+            "                break;",
+            "            default:",
+            "                if (c == quote) {",
+            "                    return sb.toString();",
+            "                }",
+            "                sb.append(c);",
+            "            }",
+            "        }"
+          ]
+        },
+        {
+          "line": 410,
+          "kind": "for",
+          "nesting_depth": 2,
+          "body": [
+            "        for (;;) {",
+            "            char c = this.next();",
+            "            if (c == delimiter || c == 0 || c == '\\n' || c == '\\r') {",
+            "                if (c != 0) {",
+            "                    this.back();",
+            "                }",
+            "                return sb.toString().trim();",
+            "            }",
+            "            sb.append(c);",
+            "        }"
+          ]
+        },
+        {
+          "line": 434,
+          "kind": "for",
+          "nesting_depth": 2,
+          "body": [
+            "        for (;;) {",
+            "            c = this.next();",
+            "            if (delimiters.indexOf(c) >= 0 || c == 0 ||",
+            "                    c == '\\n' || c == '\\r') {",
+            "                if (c != 0) {",
+            "                    this.back();",
+            "                }",
+            "                return sb.toString().trim();",
+            "            }",
+            "            sb.append(c);",
+            "        }"
+          ]
+        },
+        {
+          "line": 501,
+          "kind": "while",
+          "nesting_depth": 3,
+          "body": [
+            "        while (c >= ' ' && \",:]}/\\\\\\\"[{;=#\".indexOf(c) < 0) {",
+            "            sb.append(c);",
+            "            c = this.next();",
+            "        }"
+          ]
+        },
+        {
+          "line": 565,
+          "kind": "while",
+          "nesting_depth": 5,
+          "body": [
+            "            } while (c != to);"
+          ]
+        }
+      ],
+      "stream_pipelines": [],
+      "synchronized_blocks": [],
+      "concurrency_usage": [],
+      "findings": [
+        {
+          "severity": "Medium",
+          "confidence": "Medium",
+          "pattern": "algorithmic-waste",
+          "title": "Nested loop with repeated lookup work",
+          "location": "getPrevious (line 434)",
+          "what_was_found": "Loop at line 434 is nested at depth 2 and also performs repeated lookup or transformation work.",
+          "why_it_is_wasteful": "Nested iteration plus repeated lookup operations multiplies work and can become expensive quickly as data grows.",
+          "likely_impact": "Poor scalability, longer batch runtimes, and excess CPU consumption.",
+          "recommended_remediation": "Pre-index shared data, reduce nested scans, or collapse passes where possible.",
+          "low_waste_rationale": "Lowering algorithmic complexity reduces operations and energy for the same user-visible result.",
+          "evidence": [
+            "line 434"
+          ]
+        },
+        {
+          "severity": "Medium",
+          "confidence": "Medium",
+          "pattern": "algorithmic-waste",
+          "title": "Nested loop with repeated lookup work",
+          "location": "getPrevious (line 501)",
+          "what_was_found": "Loop at line 501 is nested at depth 3 and also performs repeated lookup or transformation work.",
+          "why_it_is_wasteful": "Nested iteration plus repeated lookup operations multiplies work and can become expensive quickly as data grows.",
+          "likely_impact": "Poor scalability, longer batch runtimes, and excess CPU consumption.",
+          "recommended_remediation": "Pre-index shared data, reduce nested scans, or collapse passes where possible.",
+          "low_waste_rationale": "Lowering algorithmic complexity reduces operations and energy for the same user-visible result.",
+          "evidence": [
+            "line 501"
+          ]
+        },
+        {
+          "severity": "Medium",
+          "confidence": "Medium",
+          "pattern": "data-movement-bloat",
+          "title": "Payload construction inside loop",
+          "location": "getPrevious (line 345)",
+          "what_was_found": "Loop at line 345 serializes, materializes, or expands payload-like objects during iteration.",
+          "why_it_is_wasteful": "Building full payloads before filtering or aggregating moves more bytes and allocates more intermediate state than needed.",
+          "likely_impact": "Higher memory use, longer serialization time, and avoidable network or logging overhead.",
+          "recommended_remediation": "Filter earlier, narrow the fields being built, or batch serialization closer to the sink.",
+          "low_waste_rationale": "Constructing only the bytes that are actually needed reduces memory traffic and output overhead.",
+          "evidence": [
+            "return sb.toString();"
+          ]
+        },
+        {
+          "severity": "Medium",
+          "confidence": "Medium",
+          "pattern": "data-movement-bloat",
+          "title": "Payload construction inside loop",
+          "location": "getPrevious (line 410)",
+          "what_was_found": "Loop at line 410 serializes, materializes, or expands payload-like objects during iteration.",
+          "why_it_is_wasteful": "Building full payloads before filtering or aggregating moves more bytes and allocates more intermediate state than needed.",
+          "likely_impact": "Higher memory use, longer serialization time, and avoidable network or logging overhead.",
+          "recommended_remediation": "Filter earlier, narrow the fields being built, or batch serialization closer to the sink.",
+          "low_waste_rationale": "Constructing only the bytes that are actually needed reduces memory traffic and output overhead.",
+          "evidence": [
+            "return sb.toString().trim();"
+          ]
+        },
+        {
+          "severity": "Medium",
+          "confidence": "Medium",
+          "pattern": "data-movement-bloat",
+          "title": "Payload construction inside loop",
+          "location": "getPrevious (line 434)",
+          "what_was_found": "Loop at line 434 serializes, materializes, or expands payload-like objects during iteration.",
+          "why_it_is_wasteful": "Building full payloads before filtering or aggregating moves more bytes and allocates more intermediate state than needed.",
+          "likely_impact": "Higher memory use, longer serialization time, and avoidable network or logging overhead.",
+          "recommended_remediation": "Filter earlier, narrow the fields being built, or batch serialization closer to the sink.",
+          "low_waste_rationale": "Constructing only the bytes that are actually needed reduces memory traffic and output overhead.",
+          "evidence": [
+            "return sb.toString().trim();"
+          ]
+        },
+        {
+          "severity": "Low",
+          "confidence": "Medium",
+          "pattern": "allocation-pressure",
+          "title": "String concatenation in loop",
+          "location": "getPrevious (line 345)",
+          "what_was_found": "Loop at line 345 builds strings through repeated concatenation.",
+          "why_it_is_wasteful": "Repeated concatenation can allocate many intermediate strings in hot iteration paths.",
+          "likely_impact": "Extra allocation churn and slower formatting-heavy paths.",
+          "recommended_remediation": "Use a shared `StringBuilder` or defer formatting until it is needed.",
+          "low_waste_rationale": "Reducing intermediate strings lowers heap churn and CPU spent copying characters.",
+          "evidence": [
+            "throw this.syntaxError(\"Unterminated string. \" +",
+            "\"Character with int code \" + (int) c + \" is not allowed within a quoted string.\");",
+            "throw this.syntaxError(\"Illegal escape. \" +"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\JSONWriter.java",
+      "is_test": false,
+      "classes": [
+        "JSONWriter"
+      ],
+      "methods": [
+        {
+          "name": "JSONWriter",
+          "start_line": 78,
+          "end_line": 84
+        }
+      ],
+      "loops": [],
+      "stream_pipelines": [],
+      "synchronized_blocks": [],
+      "concurrency_usage": [],
+      "findings": []
+    },
+    {
+      "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\ParserConfiguration.java",
+      "is_test": false,
+      "classes": [
+        "ParserConfiguration"
+      ],
+      "methods": [
+        {
+          "name": "ParserConfiguration",
+          "start_line": 35,
+          "end_line": 38
+        },
+        {
+          "name": "ParserConfiguration",
+          "start_line": 46,
+          "end_line": 49
+        },
+        {
+          "name": "clone",
+          "start_line": 55,
+          "end_line": 65
+        },
+        {
+          "name": "isKeepStrings",
+          "start_line": 73,
+          "end_line": 75
+        },
+        {
+          "name": "withKeepStrings",
+          "start_line": 86,
+          "end_line": 90
+        },
+        {
+          "name": "getMaxNestingDepth",
+          "start_line": 98,
+          "end_line": 100
+        },
+        {
+          "name": "withMaxNestingDepth",
+          "start_line": 115,
+          "end_line": 125
+        }
+      ],
+      "loops": [],
+      "stream_pipelines": [],
+      "synchronized_blocks": [],
+      "concurrency_usage": [],
+      "findings": []
+    },
+    {
+      "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\Property.java",
+      "is_test": false,
+      "classes": [
+        "Property"
+      ],
+      "methods": [
+        {
+          "name": "Property",
+          "start_line": 20,
+          "end_line": 21
+        }
+      ],
+      "loops": [
+        {
+          "line": 35,
+          "kind": "while",
+          "nesting_depth": 3,
+          "body": [
+            "            while(enumProperties.hasMoreElements()) {",
+            "                String name = (String)enumProperties.nextElement();",
+            "                jo.put(name, properties.getProperty(name));",
+            "            }"
+          ]
+        },
+        {
+          "line": 53,
+          "kind": "for",
+          "nesting_depth": 3,
+          "body": [
+            "            for (final String key : jo.keySet()) {",
+            "                Object value = jo.opt(key);",
+            "                if (!JSONObject.NULL.equals(value)) {",
+            "                    properties.put(key, value.toString());",
+            "                }",
+            "            }"
+          ]
+        }
+      ],
+      "stream_pipelines": [],
+      "synchronized_blocks": [],
+      "concurrency_usage": [],
+      "findings": [
+        {
+          "severity": "Medium",
+          "confidence": "Medium",
+          "pattern": "data-movement-bloat",
+          "title": "Payload construction inside loop",
+          "location": "line 53",
+          "what_was_found": "Loop at line 53 serializes, materializes, or expands payload-like objects during iteration.",
+          "why_it_is_wasteful": "Building full payloads before filtering or aggregating moves more bytes and allocates more intermediate state than needed.",
+          "likely_impact": "Higher memory use, longer serialization time, and avoidable network or logging overhead.",
+          "recommended_remediation": "Filter earlier, narrow the fields being built, or batch serialization closer to the sink.",
+          "low_waste_rationale": "Constructing only the bytes that are actually needed reduces memory traffic and output overhead.",
+          "evidence": [
+            "properties.put(key, value.toString());"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\StringBuilderWriter.java",
+      "is_test": false,
+      "classes": [
+        "StringBuilderWriter"
+      ],
+      "methods": [
+        {
+          "name": "StringBuilderWriter",
+          "start_line": 16,
+          "end_line": 19
+        },
+        {
+          "name": "StringBuilderWriter",
+          "start_line": 29,
+          "end_line": 32
+        },
+        {
+          "name": "write",
+          "start_line": 35,
+          "end_line": 37
+        },
+        {
+          "name": "write",
+          "start_line": 40,
+          "end_line": 48
+        },
+        {
+          "name": "write",
+          "start_line": 51,
+          "end_line": 53
+        },
+        {
+          "name": "write",
+          "start_line": 56,
+          "end_line": 58
+        },
+        {
+          "name": "append",
+          "start_line": 61,
+          "end_line": 64
+        },
+        {
+          "name": "append",
+          "start_line": 67,
+          "end_line": 72
+        },
+        {
+          "name": "append",
+          "start_line": 75,
+          "end_line": 78
+        },
+        {
+          "name": "toString",
+          "start_line": 81,
+          "end_line": 83
+        },
+        {
+          "name": "flush",
+          "start_line": 86,
+          "end_line": 87
+        }
+      ],
+      "loops": [],
+      "stream_pipelines": [],
+      "synchronized_blocks": [],
+      "concurrency_usage": [],
+      "findings": []
+    },
+    {
+      "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\XML.java",
+      "is_test": false,
+      "classes": [
+        "XML"
+      ],
+      "methods": [
+        {
+          "name": "XML",
+          "start_line": 27,
+          "end_line": 28
+        },
+        {
+          "name": "codePointIterator",
+          "start_line": 78,
+          "end_line": 108
+        },
+        {
+          "name": "escape",
+          "start_line": 125,
+          "end_line": 155
+        },
+        {
+          "name": "mustEscape",
+          "start_line": 161,
+          "end_line": 181
+        },
+        {
+          "name": "unescape",
+          "start_line": 190,
+          "end_line": 212
+        },
+        {
+          "name": "removeEmpty",
+          "start_line": 500,
+          "end_line": 524
+        },
+        {
+          "name": "isStringAllWhiteSpace",
+          "start_line": 526,
+          "end_line": 534
+        },
+        {
+          "name": "isDecimalNotation",
+          "start_line": 602,
+          "end_line": 605
+        },
+        {
+          "name": "stringToValue",
+          "start_line": 613,
+          "end_line": 618
+        },
+        {
+          "name": "stringToValue",
+          "start_line": 629,
+          "end_line": 658
+        },
+        {
+          "name": "toString",
+          "start_line": 904,
+          "end_line": 906
+        },
+        {
+          "name": "toString",
+          "start_line": 1095,
+          "end_line": 1097
+        },
+        {
+          "name": "toString",
+          "start_line": 1111,
+          "end_line": 1113
+        },
+        {
+          "name": "indent",
+          "start_line": 1141,
+          "end_line": 1147
+        }
+      ],
+      "loops": [
+        {
+          "line": 127,
+          "kind": "for",
+          "nesting_depth": 2,
+          "body": [
+            "        for (final int cp : codePointIterator(string)) {",
+            "            switch (cp) {",
+            "            case '&':",
+            "                sb.append(\"&amp;\");",
+            "                break;",
+            "            case '<':",
+            "                sb.append(\"&lt;\");",
+            "                break;",
+            "            case '>':",
+            "                sb.append(\"&gt;\");",
+            "                break;",
+            "            case '\"':",
+            "                sb.append(\"&quot;\");",
+            "                break;",
+            "            case '\\'':",
+            "                sb.append(\"&apos;\");",
+            "                break;",
+            "            default:",
+            "                if (mustEscape(cp)) {",
+            "                    sb.append(\"&#x\");",
+            "                    sb.append(Integer.toHexString(cp));",
+            "                    sb.append(';');",
+            "                } else {",
+            "                    sb.appendCodePoint(cp);",
+            "                }",
+            "            }",
+            "        }"
+          ]
+        },
+        {
+          "line": 192,
+          "kind": "for",
+          "nesting_depth": 2,
+          "body": [
+            "        for (int i = 0, length = string.length(); i < length; i++) {",
+            "            char c = string.charAt(i);",
+            "            if (c == '&') {",
+            "                final int semic = string.indexOf(';', i);",
+            "                if (semic > i) {",
+            "                    final String entity = string.substring(i + 1, semic);",
+            "                    sb.append(XMLTokener.unescapeEntity(entity));",
+            "                    // skip past the entity we just parsed.",
+            "                    i += entity.length() + 1;",
+            "                } else {",
+            "                    // this shouldn't happen in most cases since the parser",
+            "                    // errors on unclosed entries.",
+            "                    sb.append(c);",
+            "                }",
+            "            } else {",
+            "                // not part of an entity",
+            "                sb.append(c);",
+            "            }",
+            "        }"
+          ]
+        },
+        {
+          "line": 227,
+          "kind": "for",
+          "nesting_depth": 2,
+          "body": [
+            "        for (i = 0; i < length; i += 1) {",
+            "            if (Character.isWhitespace(string.charAt(i))) {",
+            "                throw new JSONException(\"'\" + string",
+            "                        + \"' contains a space character.\");",
+            "            }",
+            "        }"
+          ]
+        },
+        {
+          "line": 306,
+          "kind": "while",
+          "nesting_depth": 4,
+          "body": [
+            "            } while (i > 0);"
+          ]
+        },
+        {
+          "line": 340,
+          "kind": "for",
+          "nesting_depth": 3,
+          "body": [
+            "            for (;;) {",
+            "                if (token == null) {",
+            "                    token = x.nextToken();",
+            "                }",
+            "                // attribute = value",
+            "                if (token instanceof String) {",
+            "                    string = (String) token;",
+            "                    token = x.nextToken();",
+            "                    if (token == EQ) {",
+            "                        token = x.nextToken();",
+            "                        if (!(token instanceof String)) {",
+            "                            throw x.syntaxError(\"Missing value\");",
+            "                        }",
+            "",
+            "                        if (config.isConvertNilAttributeToNull()",
+            "                                && NULL_ATTR.equals(string)",
+            "                                && Boolean.parseBoolean((String) token)) {",
+            "                            nilAttributeFound = true;",
+            "                        } else if(config.getXsiTypeMap() != null && !config.getXsiTypeMap().isEmpty()",
+            "                                && TYPE_ATTR.equals(string)) {",
+            "                            xmlXsiTypeConverter = config.getXsiTypeMap().get(token);",
+            "                        } else if (!nilAttributeFound) {",
+            "                            Object obj = stringToValue((String) token);",
+            "                            if (obj instanceof Boolean) {",
+            "                                jsonObject.accumulate(string,",
+            "                                        config.isKeepBooleanAsString()",
+            "                                                ? ((String) token)",
+            "                                                : obj);",
+            "                            } else if (obj instanceof Number) {",
+            "                                jsonObject.accumulate(string,",
+            "                                        config.isKeepNumberAsString()",
+            "                                                ? ((String) token)",
+            "                                                : obj);",
+            "                            } else {",
+            "                                jsonObject.accumulate(string, stringToValue((String) token));",
+            "                            }",
+            "                        }",
+            "                        token = null;",
+            "                    } else {",
+            "                        jsonObject.accumulate(string, \"\");",
+            "                    }",
+            "",
+            "",
+            "                } else if (token == SLASH) {",
+            "                    // Empty tag <.../>",
+            "                    if (x.nextToken() != GT) {",
+            "                        throw x.syntaxError(\"Misshaped tag\");",
+            "                    }",
+            "                    if (config.getForceList().contains(tagName)) {",
+            "                        // Force the value to be an array",
+            "                        if (nilAttributeFound) {",
+            "                            context.append(tagName, JSONObject.NULL);",
+            "                        } else if (jsonObject.length() > 0) {",
+            "                            context.append(tagName, jsonObject);",
+            "                        } else if(context.isEmpty()) { //avoids resetting the array in case of an empty tag in the middle or end",
+            "                            context.put(tagName, new JSONArray());",
+            "                            if (jsonObject.isEmpty()){",
+            "                                context.append(tagName, \"\");",
+            "                            }",
+            "                        } else {",
+            "                            context.append(tagName, \"\");",
+            "                        }",
+            "                    } else {",
+            "                        if (nilAttributeFound) {",
+            "                            context.accumulate(tagName, JSONObject.NULL);",
+            "                        } else if (jsonObject.length() > 0) {",
+            "                            context.accumulate(tagName, jsonObject);",
+            "                        } else {",
+            "                            context.accumulate(tagName, \"\");",
+            "                        }",
+            "                    }",
+            "                    return false;",
+            "",
+            "                } else if (token == GT) {",
+            "                    // Content, between <...> and </...>",
+            "                    for (;;) {",
+            "                        token = x.nextContent();",
+            "                        if (token == null) {",
+            "                            if (tagName != null) {",
+            "                                throw x.syntaxError(\"Unclosed tag \" + tagName);",
+            "                            }",
+            "                            return false;",
+            "                        } else if (token instanceof String) {",
+            "                            string = (String) token;",
+            "                            if (string.length() > 0) {",
+            "                                if(xmlXsiTypeConverter != null) {",
+            "                                    jsonObject.accumulate(config.getcDataTagName(),",
+            "                                            stringToValue(string, xmlXsiTypeConverter));",
+            "                                } else {",
+            "                                    Object obj = stringToValue((String) token);",
+            "                                    if (obj instanceof Boolean) {",
+            "                                        jsonObject.accumulate(config.getcDataTagName(),",
+            "                                                config.isKeepBooleanAsString()",
+            "                                                        ? ((String) token)",
+            "                                                        : obj);",
+            "                                    } else if (obj instanceof Number) {",
+            "                                        jsonObject.accumulate(config.getcDataTagName(),",
+            "                                                config.isKeepNumberAsString()",
+            "                                                        ? ((String) token)",
+            "                                                        : obj);",
+            "                                    } else if (obj == JSONObject.NULL) {",
+            "                                        jsonObject.accumulate(config.getcDataTagName(),",
+            "                                                config.isKeepStrings() ? ((String) token) : obj);",
+            "                                    } else {",
+            "                                        jsonObject.accumulate(config.getcDataTagName(), stringToValue((String) token));",
+            "                                    }",
+            "                                }",
+            "                            }",
+            "",
+            "                        } else if (token == LT) {",
+            "                            // Nested element",
+            "                            if (currentNestingDepth == config.getMaxNestingDepth()) {",
+            "                                throw x.syntaxError(\"Maximum nesting depth of \" + config.getMaxNestingDepth() + \" reached\");",
+            "                            }",
+            "",
+            "                            if (parse(x, jsonObject, tagName, config, currentNestingDepth + 1)) {",
+            "                                if (config.getForceList().contains(tagName)) {",
+            "                                    // Force the value to be an array",
+            "                                    if (jsonObject.length() == 0) {",
+            "                                        //avoids resetting the array in case of an empty element in the middle or end",
+            "                                        if(context.isEmpty()) {",
+            "                                            context.put(tagName, new JSONArray());",
+            "                                        }",
+            "                                        context.append(tagName, \"\");",
+            "                                    } else if (jsonObject.length() == 1",
+            "                                            && jsonObject.opt(config.getcDataTagName()) != null) {",
+            "                                        context.append(tagName, jsonObject.opt(config.getcDataTagName()));",
+            "                                    } else {",
+            "                                        context.append(tagName, jsonObject);",
+            "                                    }",
+            "                                } else {",
+            "                                    if (jsonObject.length() == 0) {",
+            "                                        context.accumulate(tagName, \"\");",
+            "                                    } else if (jsonObject.length() == 1",
+            "                                            && jsonObject.opt(config.getcDataTagName()) != null) {",
+            "                                        context.accumulate(tagName, jsonObject.opt(config.getcDataTagName()));",
+            "                                    } else {",
+            "                                        if (!config.shouldTrimWhiteSpace()) {",
+            "                                            removeEmpty(jsonObject, config);",
+            "                                        }",
+            "                                        context.accumulate(tagName, jsonObject);",
+            "                                    }",
+            "                                }",
+            "",
+            "                                return false;",
+            "                            }",
+            "                        }",
+            "                    }",
+            "                } else {",
+            "                    throw x.syntaxError(\"Misshaped tag\");",
+            "                }",
+            "            }"
+          ]
+        },
+        {
+          "line": 415,
+          "kind": "for",
+          "nesting_depth": 5,
+          "body": [
+            "                    for (;;) {",
+            "                        token = x.nextContent();",
+            "                        if (token == null) {",
+            "                            if (tagName != null) {",
+            "                                throw x.syntaxError(\"Unclosed tag \" + tagName);",
+            "                            }",
+            "                            return false;",
+            "                        } else if (token instanceof String) {",
+            "                            string = (String) token;",
+            "                            if (string.length() > 0) {",
+            "                                if(xmlXsiTypeConverter != null) {",
+            "                                    jsonObject.accumulate(config.getcDataTagName(),",
+            "                                            stringToValue(string, xmlXsiTypeConverter));",
+            "                                } else {",
+            "                                    Object obj = stringToValue((String) token);",
+            "                                    if (obj instanceof Boolean) {",
+            "                                        jsonObject.accumulate(config.getcDataTagName(),",
+            "                                                config.isKeepBooleanAsString()",
+            "                                                        ? ((String) token)",
+            "                                                        : obj);",
+            "                                    } else if (obj instanceof Number) {",
+            "                                        jsonObject.accumulate(config.getcDataTagName(),",
+            "                                                config.isKeepNumberAsString()",
+            "                                                        ? ((String) token)",
+            "                                                        : obj);",
+            "                                    } else if (obj == JSONObject.NULL) {",
+            "                                        jsonObject.accumulate(config.getcDataTagName(),",
+            "                                                config.isKeepStrings() ? ((String) token) : obj);",
+            "                                    } else {",
+            "                                        jsonObject.accumulate(config.getcDataTagName(), stringToValue((String) token));",
+            "                                    }",
+            "                                }",
+            "                            }",
+            "",
+            "                        } else if (token == LT) {",
+            "                            // Nested element",
+            "                            if (currentNestingDepth == config.getMaxNestingDepth()) {",
+            "                                throw x.syntaxError(\"Maximum nesting depth of \" + config.getMaxNestingDepth() + \" reached\");",
+            "                            }",
+            "",
+            "                            if (parse(x, jsonObject, tagName, config, currentNestingDepth + 1)) {",
+            "                                if (config.getForceList().contains(tagName)) {",
+            "                                    // Force the value to be an array",
+            "                                    if (jsonObject.length() == 0) {",
+            "                                        //avoids resetting the array in case of an empty element in the middle or end",
+            "                                        if(context.isEmpty()) {",
+            "                                            context.put(tagName, new JSONArray());",
+            "                                        }",
+            "                                        context.append(tagName, \"\");",
+            "                                    } else if (jsonObject.length() == 1",
+            "                                            && jsonObject.opt(config.getcDataTagName()) != null) {",
+            "                                        context.append(tagName, jsonObject.opt(config.getcDataTagName()));",
+            "                                    } else {",
+            "                                        context.append(tagName, jsonObject);",
+            "                                    }",
+            "                                } else {",
+            "                                    if (jsonObject.length() == 0) {",
+            "                                        context.accumulate(tagName, \"\");",
+            "                                    } else if (jsonObject.length() == 1",
+            "                                            && jsonObject.opt(config.getcDataTagName()) != null) {",
+            "                                        context.accumulate(tagName, jsonObject.opt(config.getcDataTagName()));",
+            "                                    } else {",
+            "                                        if (!config.shouldTrimWhiteSpace()) {",
+            "                                            removeEmpty(jsonObject, config);",
+            "                                        }",
+            "                                        context.accumulate(tagName, jsonObject);",
+            "                                    }",
+            "                                }",
+            "",
+            "                                return false;",
+            "                            }",
+            "                        }",
+            "                    }"
+          ]
+        },
+        {
+          "line": 510,
+          "kind": "for",
+          "nesting_depth": 4,
+          "body": [
+            "                for (int k = sArray.length()-1; k >= 0; k--){",
+            "                    final Object eachString = sArray.get(k);",
+            "                    if (eachString instanceof String) {",
+            "                        String s1 = (String) eachString;",
+            "                        if (isStringAllWhiteSpace(s1)) {",
+            "                            sArray.remove(k);",
+            "                        }",
+            "                    }",
+            "                }"
+          ]
+        },
+        {
+          "line": 527,
+          "kind": "for",
+          "nesting_depth": 2,
+          "body": [
+            "        for (int k = 0; k<s.length(); k++){",
+            "            final char eachChar = s.charAt(k);",
+            "            if (!Character.isWhitespace(eachChar)) {",
+            "                return false;",
+            "            }",
+            "        }"
+          ]
+        },
+        {
+          "line": 790,
+          "kind": "while",
+          "nesting_depth": 2,
+          "body": [
+            "        while (x.more()) {",
+            "            x.skipPast(\"<\");",
+            "            if(x.more()) {",
+            "                parse(x, jo, null, config, 0);",
+            "            }",
+            "        }"
+          ]
+        },
+        {
+          "line": 966,
+          "kind": "for",
+          "nesting_depth": 3,
+          "body": [
+            "            for (final String key : jo.keySet()) {",
+            "                Object value = jo.opt(key);",
+            "                if (value == null) {",
+            "                    value = \"\";",
+            "                } else if (value.getClass().isArray()) {",
+            "                    value = new JSONArray(value);",
+            "                }",
+            "",
+            "                // Emit content in body",
+            "                if (key.equals(config.getcDataTagName())) {",
+            "                    if (value instanceof JSONArray) {",
+            "                        ja = (JSONArray) value;",
+            "                        int jaLength = ja.length();",
+            "                        // don't use the new iterator API to maintain support for Android",
+            "\t\t\t\t\t\tfor (int i = 0; i < jaLength; i++) {",
+            "                            if (i > 0) {",
+            "                                sb.append('\\n');",
+            "                            }",
+            "                            Object val = ja.opt(i);",
+            "                            sb.append(escape(val.toString()));",
+            "                        }",
+            "                    } else {",
+            "                        sb.append(escape(value.toString()));",
+            "                    }",
+            "",
+            "                    // Emit an array of similar keys",
+            "",
+            "                } else if (value instanceof JSONArray) {",
+            "                    ja = (JSONArray) value;",
+            "                    int jaLength = ja.length();",
+            "                    // don't use the new iterator API to maintain support for Android",
+            "\t\t\t\t\tfor (int i = 0; i < jaLength; i++) {",
+            "                        Object val = ja.opt(i);",
+            "                        if (val instanceof JSONArray) {",
+            "                            sb.append('<');",
+            "                            sb.append(key);",
+            "                            sb.append('>');",
+            "                            sb.append(toString(val, null, config, indentFactor, indent));",
+            "                            sb.append(\"</\");",
+            "                            sb.append(key);",
+            "                            sb.append('>');",
+            "                        } else {",
+            "                            sb.append(toString(val, key, config, indentFactor, indent));",
+            "                        }",
+            "                    }",
+            "                } else if (\"\".equals(value)) {",
+            "                    if (config.isCloseEmptyTag()){",
+            "                        sb.append(indent(indent));",
+            "                        sb.append('<');",
+            "                        sb.append(key);",
+            "                        sb.append(\">\");",
+            "                        sb.append(\"</\");",
+            "                        sb.append(key);",
+            "                        sb.append(\">\");",
+            "                        if (indentFactor > 0) {",
+            "                            sb.append(\"\\n\");",
+            "                        }",
+            "                    }else {",
+            "                        sb.append(indent(indent));",
+            "                        sb.append('<');",
+            "                        sb.append(key);",
+            "                        sb.append(\"/>\");",
+            "                        if (indentFactor > 0) {",
+            "                            sb.append(\"\\n\");",
+            "                        }",
+            "                    }",
+            "",
+            "                    // Emit a new tag <k>",
+            "",
+            "                } else {",
+            "                    sb.append(toString(value, key, config, indentFactor, indent));",
+            "                }",
+            "            }"
+          ]
+        },
+        {
+          "line": 980,
+          "kind": "for",
+          "nesting_depth": 6,
+          "body": [
+            "\t\t\t\t\t\tfor (int i = 0; i < jaLength; i++) {",
+            "                            if (i > 0) {",
+            "                                sb.append('\\n');",
+            "                            }",
+            "                            Object val = ja.opt(i);",
+            "                            sb.append(escape(val.toString()));",
+            "                        }"
+          ]
+        },
+        {
+          "line": 997,
+          "kind": "for",
+          "nesting_depth": 5,
+          "body": [
+            "\t\t\t\t\tfor (int i = 0; i < jaLength; i++) {",
+            "                        Object val = ja.opt(i);",
+            "                        if (val instanceof JSONArray) {",
+            "                            sb.append('<');",
+            "                            sb.append(key);",
+            "                            sb.append('>');",
+            "                            sb.append(toString(val, null, config, indentFactor, indent));",
+            "                            sb.append(\"</\");",
+            "                            sb.append(key);",
+            "                            sb.append('>');",
+            "                        } else {",
+            "                            sb.append(toString(val, key, config, indentFactor, indent));",
+            "                        }",
+            "                    }"
+          ]
+        },
+        {
+          "line": 1062,
+          "kind": "for",
+          "nesting_depth": 3,
+          "body": [
+            "\t\t\tfor (int i = 0; i < jaLength; i++) {",
+            "                Object val = ja.opt(i);",
+            "                // XML does not have good support for arrays. If an array",
+            "                // appears in a place where XML is lacking, synthesize an",
+            "                // <array> element.",
+            "                sb.append(toString(val, tagName == null ? \"array\" : tagName, config, indentFactor, indent));",
+            "            }"
+          ]
+        },
+        {
+          "line": 1143,
+          "kind": "for",
+          "nesting_depth": 2,
+          "body": [
+            "        for (int i = 0; i < indent; i++) {",
+            "            sb.append(' ');",
+            "        }"
+          ]
+        }
+      ],
+      "stream_pipelines": [],
+      "synchronized_blocks": [],
+      "concurrency_usage": [],
+      "findings": [
+        {
+          "severity": "Medium",
+          "confidence": "High",
+          "pattern": "allocation-pressure",
+          "title": "Allocation-heavy loop body",
+          "location": "line 340",
+          "what_was_found": "Loop at line 340 allocates new collections, builders, or mapping helpers during iteration.",
+          "why_it_is_wasteful": "Frequent temporary allocations increase GC activity and memory traffic without adding durable value.",
+          "likely_impact": "Higher heap pressure, more garbage collection, and reduced steady-state performance.",
+          "recommended_remediation": "Reuse mutable helpers where safe, pre-size collections, or move allocations outside the loop.",
+          "low_waste_rationale": "Cutting temporary objects reduces bytes allocated and the CPU spent reclaiming them.",
+          "evidence": [
+            "context.put(tagName, new JSONArray());",
+            "context.put(tagName, new JSONArray());"
+          ]
+        },
+        {
+          "severity": "Medium",
+          "confidence": "High",
+          "pattern": "allocation-pressure",
+          "title": "Allocation-heavy loop body",
+          "location": "line 415",
+          "what_was_found": "Loop at line 415 allocates new collections, builders, or mapping helpers during iteration.",
+          "why_it_is_wasteful": "Frequent temporary allocations increase GC activity and memory traffic without adding durable value.",
+          "likely_impact": "Higher heap pressure, more garbage collection, and reduced steady-state performance.",
+          "recommended_remediation": "Reuse mutable helpers where safe, pre-size collections, or move allocations outside the loop.",
+          "low_waste_rationale": "Cutting temporary objects reduces bytes allocated and the CPU spent reclaiming them.",
+          "evidence": [
+            "context.put(tagName, new JSONArray());"
+          ]
+        },
+        {
+          "severity": "Medium",
+          "confidence": "High",
+          "pattern": "allocation-pressure",
+          "title": "Allocation-heavy loop body",
+          "location": "line 966",
+          "what_was_found": "Loop at line 966 allocates new collections, builders, or mapping helpers during iteration.",
+          "why_it_is_wasteful": "Frequent temporary allocations increase GC activity and memory traffic without adding durable value.",
+          "likely_impact": "Higher heap pressure, more garbage collection, and reduced steady-state performance.",
+          "recommended_remediation": "Reuse mutable helpers where safe, pre-size collections, or move allocations outside the loop.",
+          "low_waste_rationale": "Cutting temporary objects reduces bytes allocated and the CPU spent reclaiming them.",
+          "evidence": [
+            "value = new JSONArray(value);"
+          ]
+        },
+        {
+          "severity": "Medium",
+          "confidence": "Medium",
+          "pattern": "algorithmic-waste",
+          "title": "Nested loop with repeated lookup work",
+          "location": "line 340",
+          "what_was_found": "Loop at line 340 is nested at depth 3 and also performs repeated lookup or transformation work.",
+          "why_it_is_wasteful": "Nested iteration plus repeated lookup operations multiplies work and can become expensive quickly as data grows.",
+          "likely_impact": "Poor scalability, longer batch runtimes, and excess CPU consumption.",
+          "recommended_remediation": "Pre-index shared data, reduce nested scans, or collapse passes where possible.",
+          "low_waste_rationale": "Lowering algorithmic complexity reduces operations and energy for the same user-visible result.",
+          "evidence": [
+            "line 340"
+          ]
+        },
+        {
+          "severity": "Medium",
+          "confidence": "Medium",
+          "pattern": "algorithmic-waste",
+          "title": "Nested loop with repeated lookup work",
+          "location": "line 415",
+          "what_was_found": "Loop at line 415 is nested at depth 5 and also performs repeated lookup or transformation work.",
+          "why_it_is_wasteful": "Nested iteration plus repeated lookup operations multiplies work and can become expensive quickly as data grows.",
+          "likely_impact": "Poor scalability, longer batch runtimes, and excess CPU consumption.",
+          "recommended_remediation": "Pre-index shared data, reduce nested scans, or collapse passes where possible.",
+          "low_waste_rationale": "Lowering algorithmic complexity reduces operations and energy for the same user-visible result.",
+          "evidence": [
+            "line 415"
+          ]
+        },
+        {
+          "severity": "Medium",
+          "confidence": "Medium",
+          "pattern": "algorithmic-waste",
+          "title": "Nested loop with repeated lookup work",
+          "location": "removeEmpty (line 510)",
+          "what_was_found": "Loop at line 510 is nested at depth 4 and also performs repeated lookup or transformation work.",
+          "why_it_is_wasteful": "Nested iteration plus repeated lookup operations multiplies work and can become expensive quickly as data grows.",
+          "likely_impact": "Poor scalability, longer batch runtimes, and excess CPU consumption.",
+          "recommended_remediation": "Pre-index shared data, reduce nested scans, or collapse passes where possible.",
+          "low_waste_rationale": "Lowering algorithmic complexity reduces operations and energy for the same user-visible result.",
+          "evidence": [
+            "line 510"
+          ]
+        },
+        {
+          "severity": "Medium",
+          "confidence": "Medium",
+          "pattern": "algorithmic-waste",
+          "title": "Nested loop with repeated lookup work",
+          "location": "unescape (line 192)",
+          "what_was_found": "Loop at line 192 is nested at depth 2 and also performs repeated lookup or transformation work.",
+          "why_it_is_wasteful": "Nested iteration plus repeated lookup operations multiplies work and can become expensive quickly as data grows.",
+          "likely_impact": "Poor scalability, longer batch runtimes, and excess CPU consumption.",
+          "recommended_remediation": "Pre-index shared data, reduce nested scans, or collapse passes where possible.",
+          "low_waste_rationale": "Lowering algorithmic complexity reduces operations and energy for the same user-visible result.",
+          "evidence": [
+            "line 192"
+          ]
+        },
+        {
+          "severity": "Medium",
+          "confidence": "Medium",
+          "pattern": "data-movement-bloat",
+          "title": "Payload construction inside loop",
+          "location": "line 340",
+          "what_was_found": "Loop at line 340 serializes, materializes, or expands payload-like objects during iteration.",
+          "why_it_is_wasteful": "Building full payloads before filtering or aggregating moves more bytes and allocates more intermediate state than needed.",
+          "likely_impact": "Higher memory use, longer serialization time, and avoidable network or logging overhead.",
+          "recommended_remediation": "Filter earlier, narrow the fields being built, or batch serialization closer to the sink.",
+          "low_waste_rationale": "Constructing only the bytes that are actually needed reduces memory traffic and output overhead.",
+          "evidence": [
+            "context.put(tagName, new JSONArray());",
+            "context.put(tagName, new JSONArray());"
+          ]
+        },
+        {
+          "severity": "Medium",
+          "confidence": "Medium",
+          "pattern": "data-movement-bloat",
+          "title": "Payload construction inside loop",
+          "location": "line 415",
+          "what_was_found": "Loop at line 415 serializes, materializes, or expands payload-like objects during iteration.",
+          "why_it_is_wasteful": "Building full payloads before filtering or aggregating moves more bytes and allocates more intermediate state than needed.",
+          "likely_impact": "Higher memory use, longer serialization time, and avoidable network or logging overhead.",
+          "recommended_remediation": "Filter earlier, narrow the fields being built, or batch serialization closer to the sink.",
+          "low_waste_rationale": "Constructing only the bytes that are actually needed reduces memory traffic and output overhead.",
+          "evidence": [
+            "context.put(tagName, new JSONArray());"
+          ]
+        },
+        {
+          "severity": "Medium",
+          "confidence": "Medium",
+          "pattern": "data-movement-bloat",
+          "title": "Payload construction inside loop",
+          "location": "line 966",
+          "what_was_found": "Loop at line 966 serializes, materializes, or expands payload-like objects during iteration.",
+          "why_it_is_wasteful": "Building full payloads before filtering or aggregating moves more bytes and allocates more intermediate state than needed.",
+          "likely_impact": "Higher memory use, longer serialization time, and avoidable network or logging overhead.",
+          "recommended_remediation": "Filter earlier, narrow the fields being built, or batch serialization closer to the sink.",
+          "low_waste_rationale": "Constructing only the bytes that are actually needed reduces memory traffic and output overhead.",
+          "evidence": [
+            "value = new JSONArray(value);",
+            "sb.append(escape(val.toString()));",
+            "sb.append(escape(value.toString()));"
+          ]
+        },
+        {
+          "severity": "Medium",
+          "confidence": "Medium",
+          "pattern": "data-movement-bloat",
+          "title": "Payload construction inside loop",
+          "location": "line 980",
+          "what_was_found": "Loop at line 980 serializes, materializes, or expands payload-like objects during iteration.",
+          "why_it_is_wasteful": "Building full payloads before filtering or aggregating moves more bytes and allocates more intermediate state than needed.",
+          "likely_impact": "Higher memory use, longer serialization time, and avoidable network or logging overhead.",
+          "recommended_remediation": "Filter earlier, narrow the fields being built, or batch serialization closer to the sink.",
+          "low_waste_rationale": "Constructing only the bytes that are actually needed reduces memory traffic and output overhead.",
+          "evidence": [
+            "sb.append(escape(val.toString()));"
+          ]
+        },
+        {
+          "severity": "Medium",
+          "confidence": "High",
+          "pattern": "repeated-work",
+          "title": "Repeated setup or parsing inside loop",
+          "location": "line 340",
+          "what_was_found": "Loop at line 340 recreates parsers, formatters, mappers, regexes, or other setup-heavy objects.",
+          "why_it_is_wasteful": "Rebuilding invariant helpers during each iteration spends CPU cycles and allocations on work that can usually be reused.",
+          "likely_impact": "Higher latency, avoidable GC churn, and lower throughput on larger collections.",
+          "recommended_remediation": "Hoist reusable helpers outside the loop and cache invariant computations.",
+          "low_waste_rationale": "Reusing expensive helpers reduces instructions executed and memory churn per item processed.",
+          "evidence": [
+            "context.put(tagName, new JSONArray());",
+            "if (parse(x, jsonObject, tagName, config, currentNestingDepth + 1)) {",
+            "context.put(tagName, new JSONArray());"
+          ]
+        },
+        {
+          "severity": "Medium",
+          "confidence": "High",
+          "pattern": "repeated-work",
+          "title": "Repeated setup or parsing inside loop",
+          "location": "line 415",
+          "what_was_found": "Loop at line 415 recreates parsers, formatters, mappers, regexes, or other setup-heavy objects.",
+          "why_it_is_wasteful": "Rebuilding invariant helpers during each iteration spends CPU cycles and allocations on work that can usually be reused.",
+          "likely_impact": "Higher latency, avoidable GC churn, and lower throughput on larger collections.",
+          "recommended_remediation": "Hoist reusable helpers outside the loop and cache invariant computations.",
+          "low_waste_rationale": "Reusing expensive helpers reduces instructions executed and memory churn per item processed.",
+          "evidence": [
+            "if (parse(x, jsonObject, tagName, config, currentNestingDepth + 1)) {",
+            "context.put(tagName, new JSONArray());"
+          ]
+        },
+        {
+          "severity": "Medium",
+          "confidence": "High",
+          "pattern": "repeated-work",
+          "title": "Repeated setup or parsing inside loop",
+          "location": "line 790",
+          "what_was_found": "Loop at line 790 recreates parsers, formatters, mappers, regexes, or other setup-heavy objects.",
+          "why_it_is_wasteful": "Rebuilding invariant helpers during each iteration spends CPU cycles and allocations on work that can usually be reused.",
+          "likely_impact": "Higher latency, avoidable GC churn, and lower throughput on larger collections.",
+          "recommended_remediation": "Hoist reusable helpers outside the loop and cache invariant computations.",
+          "low_waste_rationale": "Reusing expensive helpers reduces instructions executed and memory churn per item processed.",
+          "evidence": [
+            "parse(x, jo, null, config, 0);"
+          ]
+        },
+        {
+          "severity": "Medium",
+          "confidence": "High",
+          "pattern": "repeated-work",
+          "title": "Repeated setup or parsing inside loop",
+          "location": "line 966",
+          "what_was_found": "Loop at line 966 recreates parsers, formatters, mappers, regexes, or other setup-heavy objects.",
+          "why_it_is_wasteful": "Rebuilding invariant helpers during each iteration spends CPU cycles and allocations on work that can usually be reused.",
+          "likely_impact": "Higher latency, avoidable GC churn, and lower throughput on larger collections.",
+          "recommended_remediation": "Hoist reusable helpers outside the loop and cache invariant computations.",
+          "low_waste_rationale": "Reusing expensive helpers reduces instructions executed and memory churn per item processed.",
+          "evidence": [
+            "value = new JSONArray(value);"
+          ]
+        },
+        {
+          "severity": "Low",
+          "confidence": "Medium",
+          "pattern": "allocation-pressure",
+          "title": "String concatenation in loop",
+          "location": "line 227",
+          "what_was_found": "Loop at line 227 builds strings through repeated concatenation.",
+          "why_it_is_wasteful": "Repeated concatenation can allocate many intermediate strings in hot iteration paths.",
+          "likely_impact": "Extra allocation churn and slower formatting-heavy paths.",
+          "recommended_remediation": "Use a shared `StringBuilder` or defer formatting until it is needed.",
+          "low_waste_rationale": "Reducing intermediate strings lowers heap churn and CPU spent copying characters.",
+          "evidence": [
+            "throw new JSONException(\"'\" + string"
+          ]
+        },
+        {
+          "severity": "Low",
+          "confidence": "Medium",
+          "pattern": "allocation-pressure",
+          "title": "String concatenation in loop",
+          "location": "line 340",
+          "what_was_found": "Loop at line 340 builds strings through repeated concatenation.",
+          "why_it_is_wasteful": "Repeated concatenation can allocate many intermediate strings in hot iteration paths.",
+          "likely_impact": "Extra allocation churn and slower formatting-heavy paths.",
+          "recommended_remediation": "Use a shared `StringBuilder` or defer formatting until it is needed.",
+          "low_waste_rationale": "Reducing intermediate strings lowers heap churn and CPU spent copying characters.",
+          "evidence": [
+            "throw x.syntaxError(\"Unclosed tag \" + tagName);",
+            "throw x.syntaxError(\"Maximum nesting depth of \" + config.getMaxNestingDepth() + \" reached\");"
+          ]
+        },
+        {
+          "severity": "Low",
+          "confidence": "Medium",
+          "pattern": "allocation-pressure",
+          "title": "String concatenation in loop",
+          "location": "line 415",
+          "what_was_found": "Loop at line 415 builds strings through repeated concatenation.",
+          "why_it_is_wasteful": "Repeated concatenation can allocate many intermediate strings in hot iteration paths.",
+          "likely_impact": "Extra allocation churn and slower formatting-heavy paths.",
+          "recommended_remediation": "Use a shared `StringBuilder` or defer formatting until it is needed.",
+          "low_waste_rationale": "Reducing intermediate strings lowers heap churn and CPU spent copying characters.",
+          "evidence": [
+            "throw x.syntaxError(\"Unclosed tag \" + tagName);",
+            "throw x.syntaxError(\"Maximum nesting depth of \" + config.getMaxNestingDepth() + \" reached\");"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\XMLParserConfiguration.java",
+      "is_test": false,
+      "classes": [
+        "XMLParserConfiguration"
+      ],
+      "methods": [
+        {
+          "name": "XMLParserConfiguration",
+          "start_line": 87,
+          "end_line": 94
+        },
+        {
+          "name": "XMLParserConfiguration",
+          "start_line": 105,
+          "end_line": 107
+        },
+        {
+          "name": "XMLParserConfiguration",
+          "start_line": 120,
+          "end_line": 122
+        },
+        {
+          "name": "XMLParserConfiguration",
+          "start_line": 135,
+          "end_line": 139
+        },
+        {
+          "name": "XMLParserConfiguration",
+          "start_line": 154,
+          "end_line": 160
+        },
+        {
+          "name": "clone",
+          "start_line": 193,
+          "end_line": 212
+        },
+        {
+          "name": "withKeepStrings",
+          "start_line": 225,
+          "end_line": 231
+        },
+        {
+          "name": "withKeepNumberAsString",
+          "start_line": 242,
+          "end_line": 247
+        },
+        {
+          "name": "withKeepBooleanAsString",
+          "start_line": 258,
+          "end_line": 263
+        },
+        {
+          "name": "getcDataTagName",
+          "start_line": 272,
+          "end_line": 274
+        },
+        {
+          "name": "isKeepNumberAsString",
+          "start_line": 282,
+          "end_line": 284
+        },
+        {
+          "name": "isKeepBooleanAsString",
+          "start_line": 292,
+          "end_line": 294
+        },
+        {
+          "name": "withcDataTagName",
+          "start_line": 306,
+          "end_line": 310
+        },
+        {
+          "name": "isConvertNilAttributeToNull",
+          "start_line": 319,
+          "end_line": 321
+        },
+        {
+          "name": "withConvertNilAttributeToNull",
+          "start_line": 333,
+          "end_line": 337
+        },
+        {
+          "name": "getXsiTypeMap",
+          "start_line": 346,
+          "end_line": 348
+        },
+        {
+          "name": "withXsiTypeMap",
+          "start_line": 359,
+          "end_line": 364
+        },
+        {
+          "name": "getForceList",
+          "start_line": 371,
+          "end_line": 373
+        },
+        {
+          "name": "withForceList",
+          "start_line": 381,
+          "end_line": 386
+        },
+        {
+          "name": "withMaxNestingDepth",
+          "start_line": 399,
+          "end_line": 401
+        },
+        {
+          "name": "withCloseEmptyTag",
+          "start_line": 408,
+          "end_line": 412
+        },
+        {
+          "name": "withShouldTrimWhitespace",
+          "start_line": 421,
+          "end_line": 425
+        },
+        {
+          "name": "isCloseEmptyTag",
+          "start_line": 432,
+          "end_line": 434
+        },
+        {
+          "name": "shouldTrimWhiteSpace",
+          "start_line": 441,
+          "end_line": 443
+        }
+      ],
+      "loops": [],
+      "stream_pipelines": [],
+      "synchronized_blocks": [],
+      "concurrency_usage": [],
+      "findings": []
+    },
+    {
+      "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\XMLTokener.java",
+      "is_test": false,
+      "classes": [
+        "XMLTokener"
+      ],
+      "methods": [
+        {
+          "name": "XMLTokener",
+          "start_line": 38,
+          "end_line": 40
+        },
+        {
+          "name": "XMLTokener",
+          "start_line": 46,
+          "end_line": 48
+        },
+        {
+          "name": "XMLTokener",
+          "start_line": 55,
+          "end_line": 58
+        },
+        {
+          "name": "isValidHex",
+          "start_line": 225,
+          "end_line": 236
+        },
+        {
+          "name": "isValidDecimal",
+          "start_line": 243,
+          "end_line": 254
+        },
+        {
+          "name": "skipPast",
+          "start_line": 421,
+          "end_line": 484
+        }
+      ],
+      "loops": [
+        {
+          "line": 69,
+          "kind": "while",
+          "nesting_depth": 2,
+          "body": [
+            "        while (more()) {",
+            "            c = next();",
+            "            sb.append(c);",
+            "            i = sb.length() - 3;",
+            "            if (i >= 0 && sb.charAt(i) == ']' &&",
+            "                          sb.charAt(i + 1) == ']' && sb.charAt(i + 2) == '>') {",
+            "                sb.setLength(i);",
+            "                return sb.toString();",
+            "            }",
+            "        }"
+          ]
+        },
+        {
+          "line": 98,
+          "kind": "while",
+          "nesting_depth": 3,
+          "body": [
+            "        } while (Character.isWhitespace(c) && configuration.shouldTrimWhiteSpace());"
+          ]
+        },
+        {
+          "line": 106,
+          "kind": "for",
+          "nesting_depth": 2,
+          "body": [
+            "        for (;;) {",
+            "            if (c == 0) {",
+            "                return sb.toString().trim();",
+            "            }",
+            "            if (c == '<') {",
+            "                back();",
+            "                if (configuration.shouldTrimWhiteSpace()) {",
+            "                    return sb.toString().trim();",
+            "                } else return sb.toString();",
+            "            }",
+            "            if (c == '&') {",
+            "                sb.append(nextEntity(c));",
+            "            } else {",
+            "                sb.append(c);",
+            "            }",
+            "            c = next();",
+            "        }"
+          ]
+        },
+        {
+          "line": 137,
+          "kind": "for",
+          "nesting_depth": 2,
+          "body": [
+            "        for (;;) {",
+            "            char c = next();",
+            "            if (Character.isLetterOrDigit(c) || c == '#') {",
+            "                sb.append(Character.toLowerCase(c));",
+            "            } else if (c == ';') {",
+            "                break;",
+            "            } else {",
+            "                throw syntaxError(\"Missing ';' in XML entity: &\" + sb);",
+            "            }",
+            "        }"
+          ]
+        },
+        {
+          "line": 229,
+          "kind": "for",
+          "nesting_depth": 2,
+          "body": [
+            "        for (int i = 0; i < s.length(); i++) {",
+            "            char c = s.charAt(i);",
+            "            if (!((c >= '0' && c <= '9') || (c >= 'a' && c <= 'f') || (c >= 'A' && c <= 'F'))) {",
+            "                return false;",
+            "            }",
+            "        }"
+          ]
+        },
+        {
+          "line": 247,
+          "kind": "for",
+          "nesting_depth": 2,
+          "body": [
+            "        for (int i = 0; i < s.length(); i++) {",
+            "            char c = s.charAt(i);",
+            "            if (c < '0' || c > '9') {",
+            "                return false;",
+            "            }",
+            "        }"
+          ]
+        },
+        {
+          "line": 274,
+          "kind": "while",
+          "nesting_depth": 3,
+          "body": [
+            "        } while (Character.isWhitespace(c));"
+          ]
+        },
+        {
+          "line": 293,
+          "kind": "for",
+          "nesting_depth": 3,
+          "body": [
+            "            for (;;) {",
+            "                c = next();",
+            "                if (c == 0) {",
+            "                    throw syntaxError(\"Unterminated string\");",
+            "                }",
+            "                if (c == q) {",
+            "                    return Boolean.TRUE;",
+            "                }",
+            "            }"
+          ]
+        },
+        {
+          "line": 303,
+          "kind": "for",
+          "nesting_depth": 3,
+          "body": [
+            "            for (;;) {",
+            "                c = next();",
+            "                if (Character.isWhitespace(c)) {",
+            "                    return Boolean.TRUE;",
+            "                }",
+            "                switch (c) {",
+            "                case 0:",
+            "                    throw syntaxError(\"Unterminated string\");",
+            "                case '<':",
+            "                case '>':",
+            "                case '/':",
+            "                case '=':",
+            "                case '!':",
+            "                case '?':",
+            "                case '\"':",
+            "                case '\\'':",
+            "                    back();",
+            "                    return Boolean.TRUE;",
+            "                }",
+            "            }"
+          ]
+        },
+        {
+          "line": 343,
+          "kind": "while",
+          "nesting_depth": 3,
+          "body": [
+            "        } while (Character.isWhitespace(c));"
+          ]
+        },
+        {
+          "line": 366,
+          "kind": "for",
+          "nesting_depth": 3,
+          "body": [
+            "            for (;;) {",
+            "                c = next();",
+            "                if (c == 0) {",
+            "                    throw syntaxError(\"Unterminated string\");",
+            "                }",
+            "                if (c == q) {",
+            "                    return sb.toString();",
+            "                }",
+            "                if (c == '&') {",
+            "                    sb.append(nextEntity(c));",
+            "                } else {",
+            "                    sb.append(c);",
+            "                }",
+            "            }"
+          ]
+        },
+        {
+          "line": 385,
+          "kind": "for",
+          "nesting_depth": 3,
+          "body": [
+            "            for (;;) {",
+            "                sb.append(c);",
+            "                c = next();",
+            "                if (Character.isWhitespace(c)) {",
+            "                    return sb.toString();",
+            "                }",
+            "                switch (c) {",
+            "                case 0:",
+            "                    return sb.toString();",
+            "                case '>':",
+            "                case '/':",
+            "                case '=':",
+            "                case '!':",
+            "                case '?':",
+            "                case '[':",
+            "                case ']':",
+            "                    back();",
+            "                    return sb.toString();",
+            "                case '<':",
+            "                case '\"':",
+            "                case '\\'':",
+            "                    throw syntaxError(\"Bad character in a name\");",
+            "                }",
+            "            }"
+          ]
+        },
+        {
+          "line": 435,
+          "kind": "for",
+          "nesting_depth": 2,
+          "body": [
+            "        for (i = 0; i < length; i += 1) {",
+            "            c = next();",
+            "            if (c == 0) {",
+            "                return;",
+            "            }",
+            "            circle[i] = c;",
+            "        }"
+          ]
+        },
+        {
+          "line": 445,
+          "kind": "for",
+          "nesting_depth": 2,
+          "body": [
+            "        for (;;) {",
+            "            j = offset;",
+            "            b = true;",
+            "",
+            "            /* Compare the circle buffer with the to string. */",
+            "",
+            "            for (i = 0; i < length; i += 1) {",
+            "                if (circle[j] != to.charAt(i)) {",
+            "                    b = false;",
+            "                    break;",
+            "                }",
+            "                j += 1;",
+            "                if (j >= length) {",
+            "                    j -= length;",
+            "                }",
+            "            }",
+            "",
+            "            /* If we exit the loop with b intact, then victory is ours. */",
+            "",
+            "            if (b) {",
+            "                return;",
+            "            }",
+            "",
+            "            /* Get the next character. If there isn't one, then defeat is ours. */",
+            "",
+            "            c = next();",
+            "            if (c == 0) {",
+            "                return;",
+            "            }",
+            "            /*",
+            "             * Shove the character in the circle buffer and advance the",
+            "             * circle offset. The offset is mod n.",
+            "             */",
+            "            circle[offset] = c;",
+            "            offset += 1;",
+            "            if (offset >= length) {",
+            "                offset -= length;",
+            "            }",
+            "        }"
+          ]
+        },
+        {
+          "line": 451,
+          "kind": "for",
+          "nesting_depth": 3,
+          "body": [
+            "            for (i = 0; i < length; i += 1) {",
+            "                if (circle[j] != to.charAt(i)) {",
+            "                    b = false;",
+            "                    break;",
+            "                }",
+            "                j += 1;",
+            "                if (j >= length) {",
+            "                    j -= length;",
+            "                }",
+            "            }"
+          ]
+        }
+      ],
+      "stream_pipelines": [],
+      "synchronized_blocks": [],
+      "concurrency_usage": [],
+      "findings": [
+        {
+          "severity": "Medium",
+          "confidence": "Medium",
+          "pattern": "data-movement-bloat",
+          "title": "Payload construction inside loop",
+          "location": "line 106",
+          "what_was_found": "Loop at line 106 serializes, materializes, or expands payload-like objects during iteration.",
+          "why_it_is_wasteful": "Building full payloads before filtering or aggregating moves more bytes and allocates more intermediate state than needed.",
+          "likely_impact": "Higher memory use, longer serialization time, and avoidable network or logging overhead.",
+          "recommended_remediation": "Filter earlier, narrow the fields being built, or batch serialization closer to the sink.",
+          "low_waste_rationale": "Constructing only the bytes that are actually needed reduces memory traffic and output overhead.",
+          "evidence": [
+            "return sb.toString().trim();",
+            "return sb.toString().trim();",
+            "} else return sb.toString();"
+          ]
+        },
+        {
+          "severity": "Medium",
+          "confidence": "Medium",
+          "pattern": "data-movement-bloat",
+          "title": "Payload construction inside loop",
+          "location": "line 366",
+          "what_was_found": "Loop at line 366 serializes, materializes, or expands payload-like objects during iteration.",
+          "why_it_is_wasteful": "Building full payloads before filtering or aggregating moves more bytes and allocates more intermediate state than needed.",
+          "likely_impact": "Higher memory use, longer serialization time, and avoidable network or logging overhead.",
+          "recommended_remediation": "Filter earlier, narrow the fields being built, or batch serialization closer to the sink.",
+          "low_waste_rationale": "Constructing only the bytes that are actually needed reduces memory traffic and output overhead.",
+          "evidence": [
+            "return sb.toString();"
+          ]
+        },
+        {
+          "severity": "Medium",
+          "confidence": "Medium",
+          "pattern": "data-movement-bloat",
+          "title": "Payload construction inside loop",
+          "location": "line 385",
+          "what_was_found": "Loop at line 385 serializes, materializes, or expands payload-like objects during iteration.",
+          "why_it_is_wasteful": "Building full payloads before filtering or aggregating moves more bytes and allocates more intermediate state than needed.",
+          "likely_impact": "Higher memory use, longer serialization time, and avoidable network or logging overhead.",
+          "recommended_remediation": "Filter earlier, narrow the fields being built, or batch serialization closer to the sink.",
+          "low_waste_rationale": "Constructing only the bytes that are actually needed reduces memory traffic and output overhead.",
+          "evidence": [
+            "return sb.toString();",
+            "return sb.toString();",
+            "return sb.toString();"
+          ]
+        },
+        {
+          "severity": "Medium",
+          "confidence": "Medium",
+          "pattern": "data-movement-bloat",
+          "title": "Payload construction inside loop",
+          "location": "line 69",
+          "what_was_found": "Loop at line 69 serializes, materializes, or expands payload-like objects during iteration.",
+          "why_it_is_wasteful": "Building full payloads before filtering or aggregating moves more bytes and allocates more intermediate state than needed.",
+          "likely_impact": "Higher memory use, longer serialization time, and avoidable network or logging overhead.",
+          "recommended_remediation": "Filter earlier, narrow the fields being built, or batch serialization closer to the sink.",
+          "low_waste_rationale": "Constructing only the bytes that are actually needed reduces memory traffic and output overhead.",
+          "evidence": [
+            "return sb.toString();"
+          ]
+        },
+        {
+          "severity": "Low",
+          "confidence": "Medium",
+          "pattern": "allocation-pressure",
+          "title": "String concatenation in loop",
+          "location": "line 137",
+          "what_was_found": "Loop at line 137 builds strings through repeated concatenation.",
+          "why_it_is_wasteful": "Repeated concatenation can allocate many intermediate strings in hot iteration paths.",
+          "likely_impact": "Extra allocation churn and slower formatting-heavy paths.",
+          "recommended_remediation": "Use a shared `StringBuilder` or defer formatting until it is needed.",
+          "low_waste_rationale": "Reducing intermediate strings lowers heap churn and CPU spent copying characters.",
+          "evidence": [
+            "throw syntaxError(\"Missing ';' in XML entity: &\" + sb);"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\XMLXsiTypeConverter.java",
+      "is_test": false,
+      "classes": [
+        "to",
+        "XMLXsiTypeConverter"
+      ],
+      "methods": [],
+      "loops": [],
+      "stream_pipelines": [],
+      "synchronized_blocks": [],
+      "concurrency_usage": [],
+      "findings": []
+    }
+  ]
+}

@@ -1,0 +1,151 @@
+From 8e4cef5850a1651aa66d65452f6047c4dd78c4b7 Mon Sep 17 00:00:00 2001
+From: xtonik <xtonik@proton.me>
+Date: Tue, 17 Mar 2026 07:04:09 +0100
+Subject: [PATCH 1/2] use intrinsified Math.multiplyHigh()
+
+---
+ .../jackson/core/io/schubfach/DoubleToDecimal.java   | 11 +++++------
+ .../jackson/core/io/schubfach/FloatToDecimal.java    |  5 ++---
+ .../tools/jackson/core/io/schubfach/MathUtils.java   | 12 ------------
+ 3 files changed, 7 insertions(+), 21 deletions(-)
+
+diff --git a/src/main/java/tools/jackson/core/io/schubfach/DoubleToDecimal.java b/src/main/java/tools/jackson/core/io/schubfach/DoubleToDecimal.java
+index be6d3d3059..3f3eeaf894 100644
+--- a/src/main/java/tools/jackson/core/io/schubfach/DoubleToDecimal.java
++++ b/src/main/java/tools/jackson/core/io/schubfach/DoubleToDecimal.java
+@@ -27,7 +27,6 @@
+ import static tools.jackson.core.io.schubfach.MathUtils.flog2pow10;
+ import static tools.jackson.core.io.schubfach.MathUtils.g0;
+ import static tools.jackson.core.io.schubfach.MathUtils.g1;
+-import static tools.jackson.core.io.schubfach.MathUtils.multiplyHigh;
+ import static tools.jackson.core.io.schubfach.MathUtils.pow10;
+ 
+ import static java.lang.Double.doubleToRawLongBits;
+@@ -365,7 +364,7 @@ private int toDecimal(int q, long c, int dk) {
+             wpin    iff    w' = tp10 10^k in Rv
+             See section 9.4 of [1].
+              */
+-            long sp10 = 10 * multiplyHigh(s, 115_292_150_460_684_698L << 4);
++            long sp10 = 10 * Math.multiplyHigh(s, 115_292_150_460_684_698L << 4);
+             long tp10 = sp10 + 10;
+             boolean upin = vbl + out <= sp10 << 2;
+             boolean wpin = (tp10 << 2) + out <= vbr;
+@@ -400,9 +399,9 @@ Computes rop(cp g 2^(-127)), where g = g1 2^63 + g0
+     See section 9.10 and figure 5 of [1].
+      */
+     private static long rop(long g1, long g0, long cp) {
+-        long x1 = multiplyHigh(g0, cp);
++        long x1 = Math.multiplyHigh(g0, cp);
+         long y0 = g1 * cp;
+-        long y1 = multiplyHigh(g1, cp);
++        long y1 = Math.multiplyHigh(g1, cp);
+         long z = (y0 >>> 1) + x1;
+         long vbp = y1 + (z >>> 63);
+         return vbp | (z & MASK_63) + MASK_63 >>> 63;
+@@ -446,7 +445,7 @@ private int toChars(long f, int e) {
+         and for n = 9, m = 8
+             floor(hm / 10^8) = floor(1_441_151_881 hm / 2^57)
+          */
+-        long hm = multiplyHigh(f, 193_428_131_138_340_668L) >>> 20;
++        long hm = Math.multiplyHigh(f, 193_428_131_138_340_668L) >>> 20;
+         int l = (int) (f - 100_000_000L * hm);
+         int h = (int) (hm * 1_441_151_881L >>> 57);
+         int m = (int) (hm - 100_000_000 * h);
+@@ -547,7 +546,7 @@ private int y(int a) {
+             (a + 1) 2^n <= 10^8 2^28 < 10^17
+         For n = 17, m = 8 the table in section 10 of [1] leads to:
+          */
+-        return (int) (multiplyHigh(
++        return (int) (Math.multiplyHigh(
+                 (long) (a + 1) << 28,
+                 193_428_131_138_340_668L) >>> 20) - 1;
+     }
+diff --git a/src/main/java/tools/jackson/core/io/schubfach/FloatToDecimal.java b/src/main/java/tools/jackson/core/io/schubfach/FloatToDecimal.java
+index bad0a1a7f9..538fa9406c 100644
+--- a/src/main/java/tools/jackson/core/io/schubfach/FloatToDecimal.java
++++ b/src/main/java/tools/jackson/core/io/schubfach/FloatToDecimal.java
+@@ -26,7 +26,6 @@
+ import static tools.jackson.core.io.schubfach.MathUtils.flog10threeQuartersPow2;
+ import static tools.jackson.core.io.schubfach.MathUtils.flog2pow10;
+ import static tools.jackson.core.io.schubfach.MathUtils.g1;
+-import static tools.jackson.core.io.schubfach.MathUtils.multiplyHigh;
+ import static tools.jackson.core.io.schubfach.MathUtils.pow10;
+ 
+ import static java.lang.Float.floatToRawIntBits;
+@@ -398,7 +397,7 @@ Computes rop(cp g 2^(-95))
+     See appendix and figure 8 of [1].
+      */
+     private static int rop(long g, long cp) {
+-        long x1 = multiplyHigh(g, cp);
++        long x1 = Math.multiplyHigh(g, cp);
+         long vbp = x1 >>> 31;
+         return (int) (vbp | (x1 & MASK_32) + MASK_32 >>> 32);
+     }
+@@ -529,7 +528,7 @@ private int y(int a) {
+             (a + 1) 2^n <= 10^8 2^28 < 10^17
+         For n = 17, m = 8 the table in section 10 of [1] leads to:
+          */
+-        return (int) (multiplyHigh(
++        return (int) (Math.multiplyHigh(
+                 (long) (a + 1) << 28,
+                 193_428_131_138_340_668L) >>> 20) - 1;
+     }
+diff --git a/src/main/java/tools/jackson/core/io/schubfach/MathUtils.java b/src/main/java/tools/jackson/core/io/schubfach/MathUtils.java
+index f95ecd20ee..52356f3b24 100644
+--- a/src/main/java/tools/jackson/core/io/schubfach/MathUtils.java
++++ b/src/main/java/tools/jackson/core/io/schubfach/MathUtils.java
+@@ -185,18 +185,6 @@ public static long g0(int k) {
+         return g[k - K_MIN << 1 | 1];
+     }
+ 
+-    //a Java port of https://github.com/plokhotnyuk/jsoniter-scala/blob/c70a293ac802dc2eb44165471d76d7df2d4657b6/jsoniter-scala-core/native/src/main/scala/com/github/plokhotnyuk/jsoniter_scala/core/JsonWriter.scala#L2027
+-    static long multiplyHigh(long x, long y) {
+-        // Karatsuba technique for two positive ints
+-        long x2 = x & 0xFFFFFFFFL;
+-        long y2 = y & 0xFFFFFFFFL;
+-        long b = x2 * y2;
+-        long x1 = x >>> 32;
+-        long y1 = y >>> 32;
+-        long a = x1 * y1;
+-        return (((b >>> 32) + (x1 + x2) * (y1 + y2) - b - a) >>> 32) + a;
+-    }
+-
+     /*
+     The precomputed values for g1(int) and g0(int).
+     The first entry must be for an exponent of K_MIN or less.
+
+From 01894756aba99fed3f8327d0bf5e4a340a87b60b Mon Sep 17 00:00:00 2001
+From: Tatu Saloranta <tatu.saloranta@iki.fi>
+Date: Tue, 17 Mar 2026 16:26:49 -0700
+Subject: [PATCH 2/2] Add release notes
+
+---
+ release-notes/CREDITS | 4 ++++
+ release-notes/VERSION | 2 ++
+ 2 files changed, 6 insertions(+)
+
+diff --git a/release-notes/CREDITS b/release-notes/CREDITS
+index df515f870a..a1ada9a6cf 100644
+--- a/release-notes/CREDITS
++++ b/release-notes/CREDITS
+@@ -40,3 +40,7 @@ Rohan Nagendra (@rohan-repos)
+  * Reported #1553: Max Depth validation not working for `DataInput`-backed `JsonParser`s
+    in 3.0
+   (3.1.0)
++
++Antonin Janec (@xtonik)
++ * Contributed #1576: Use Java 17 intrinstics for long multiplication
++  (3.2.0)
+diff --git a/release-notes/VERSION b/release-notes/VERSION
+index 71ee544af7..9adde184f1 100644
+--- a/release-notes/VERSION
++++ b/release-notes/VERSION
+@@ -26,6 +26,8 @@ JSON library.
+ #1570: Fail parsing from `DataInput` if
+  `StreamReadConstraints.getMaxDocumentLength()` set
+  (fix by @cowtowncoder, w/ Claude code)
++#1576: Use Java 17 intrinstics for long multiplication
++ (contributed by @xtonik)
+ 
+ 3.1.1 (not yet released)
+ 

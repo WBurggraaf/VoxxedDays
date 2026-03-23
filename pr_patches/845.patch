@@ -1,0 +1,35 @@
+From 23ac2e7bcaf6ec2c62d7e21d8d4254feaf56bbff Mon Sep 17 00:00:00 2001
+From: Thomas Gress <thomas@gress.at>
+Date: Fri, 29 Dec 2023 12:28:24 +0100
+Subject: [PATCH] improved annotation search performance
+
+---
+ src/main/java/org/json/JSONObject.java | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/src/main/java/org/json/JSONObject.java b/src/main/java/org/json/JSONObject.java
+index 4bd032bdb..039f136de 100644
+--- a/src/main/java/org/json/JSONObject.java
++++ b/src/main/java/org/json/JSONObject.java
+@@ -1865,6 +1865,10 @@ private static <A extends Annotation> A getAnnotation(final Method m, final Clas
+             }
+         }
+ 
++        //If the superclass is Object, no annotations will be found any more
++        if (c.getSuperclass().equals(Object.class))
++            return null;
++
+         try {
+             return getAnnotation(
+                     c.getSuperclass().getMethod(m.getName(), m.getParameterTypes()),
+@@ -1919,6 +1923,10 @@ private static int getAnnotationDepth(final Method m, final Class<? extends Anno
+             }
+         }
+ 
++        //If the superclass is Object, no annotations will be found any more
++        if (c.getSuperclass().equals(Object.class))
++            return -1;
++
+         try {
+             int d = getAnnotationDepth(
+                     c.getSuperclass().getMethod(m.getName(), m.getParameterTypes()),

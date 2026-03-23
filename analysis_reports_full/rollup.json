@@ -1,0 +1,217 @@
+{
+  "projects": [
+    {
+      "project": "commons-io-master",
+      "overall_risk": "High",
+      "java_files": 555,
+      "source_files": 268,
+      "test_files": 287,
+      "findings": {
+        "Low": 73,
+        "Medium": 66,
+        "High": 44
+      },
+      "top_patterns": [
+        "Allocation pressure",
+        "Algorithmic waste",
+        "Concurrency misuse",
+        "Chatty I/O",
+        "Data movement bloat"
+      ],
+      "hotspots": [
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\commons-io-master\\src\\test\\java\\org\\apache\\commons\\io\\input\\TailerTest.java",
+          "score": 60,
+          "findings": 22
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\commons-io-master\\src\\test\\java\\org\\apache\\commons\\io\\IOUtilsMultithreadedSkipTest.java",
+          "score": 14,
+          "findings": 8
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\commons-io-master\\src\\test\\java\\org\\apache\\commons\\io\\LineIteratorTest.java",
+          "score": 13,
+          "findings": 9
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\commons-io-master\\src\\main\\java\\org\\apache\\commons\\io\\input\\Tailer.java",
+          "score": 13,
+          "findings": 5
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\commons-io-master\\src\\test\\java\\org\\apache\\commons\\io\\FileUtilsTest.java",
+          "score": 12,
+          "findings": 7
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\commons-io-master\\src\\test\\java\\org\\apache\\commons\\io\\FileSystemTest.java",
+          "score": 12,
+          "findings": 7
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\commons-io-master\\src\\main\\java\\org\\apache\\commons\\io\\IOUtils.java",
+          "score": 12,
+          "findings": 5
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\commons-io-master\\src\\test\\java\\org\\apache\\commons\\io\\input\\BoundedInputStreamTest.java",
+          "score": 10,
+          "findings": 10
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\commons-io-master\\src\\test\\java\\org\\apache\\commons\\io\\IOUtilsConcurrentTest.java",
+          "score": 10,
+          "findings": 4
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\commons-io-master\\src\\main\\java\\org\\apache\\commons\\io\\input\\ReadAheadInputStream.java",
+          "score": 9,
+          "findings": 4
+        }
+      ]
+    },
+    {
+      "project": "guava-master",
+      "overall_risk": "High",
+      "java_files": 3243,
+      "source_files": 1989,
+      "test_files": 1254,
+      "findings": {
+        "Medium": 1773,
+        "High": 792,
+        "Low": 298
+      },
+      "top_patterns": [
+        "Algorithmic waste",
+        "Chatty I/O",
+        "Allocation pressure",
+        "Concurrency misuse",
+        "Repeated work"
+      ],
+      "hotspots": [
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\guava-master\\guava-tests\\test\\com\\google\\common\\util\\concurrent\\AtomicDoubleArrayTest.java",
+          "score": 124,
+          "findings": 56
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\guava-master\\guava-tests\\test\\com\\google\\common\\collect\\TreeRangeMapTest.java",
+          "score": 110,
+          "findings": 53
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\guava-master\\guava-tests\\test\\com\\google\\common\\cache\\LocalCacheTest.java",
+          "score": 102,
+          "findings": 46
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\guava-master\\android\\guava-tests\\test\\com\\google\\common\\cache\\LocalCacheTest.java",
+          "score": 102,
+          "findings": 46
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\guava-master\\guava-tests\\test\\com\\google\\common\\collect\\TreeRangeSetTest.java",
+          "score": 97,
+          "findings": 34
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\guava-master\\android\\guava-tests\\test\\com\\google\\common\\collect\\TreeRangeSetTest.java",
+          "score": 97,
+          "findings": 34
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\guava-master\\android\\guava-tests\\test\\com\\google\\common\\collect\\TreeRangeMapTest.java",
+          "score": 96,
+          "findings": 46
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\guava-master\\android\\guava\\src\\com\\google\\common\\cache\\LocalCache.java",
+          "score": 87,
+          "findings": 38
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\guava-master\\guava\\src\\com\\google\\common\\cache\\LocalCache.java",
+          "score": 86,
+          "findings": 38
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\guava-master\\guava-tests\\test\\com\\google\\common\\cache\\PopulatedCachesTest.java",
+          "score": 84,
+          "findings": 36
+        }
+      ]
+    },
+    {
+      "project": "JSON-java-master",
+      "overall_risk": "High",
+      "java_files": 85,
+      "source_files": 26,
+      "test_files": 59,
+      "findings": {
+        "Medium": 92,
+        "Low": 22,
+        "High": 2
+      },
+      "top_patterns": [
+        "Data movement bloat",
+        "Allocation pressure",
+        "Algorithmic waste",
+        "Repeated work",
+        "Chatty I/O"
+      ],
+      "hotspots": [
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\test\\java\\org\\json\\junit\\JSONParserConfigurationTest.java",
+          "score": 36,
+          "findings": 20
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\XML.java",
+          "score": 33,
+          "findings": 18
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\test\\java\\org\\json\\junit\\JSONObjectTest.java",
+          "score": 27,
+          "findings": 15
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\JSONML.java",
+          "score": 15,
+          "findings": 8
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\test\\java\\org\\json\\junit\\JSONArrayTest.java",
+          "score": 14,
+          "findings": 8
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\JSONObject.java",
+          "score": 14,
+          "findings": 7
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\test\\java\\org\\json\\junit\\JSONTokenerTest.java",
+          "score": 12,
+          "findings": 8
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\JSONTokener.java",
+          "score": 11,
+          "findings": 6
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\CDL.java",
+          "score": 11,
+          "findings": 7
+        },
+        {
+          "file": "C:\\VoxxedDays\\GitRepos\\JSON-java-master\\src\\main\\java\\org\\json\\XMLTokener.java",
+          "score": 9,
+          "findings": 5
+        }
+      ]
+    }
+  ]
+}

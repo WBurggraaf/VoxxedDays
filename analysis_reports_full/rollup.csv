@@ -1,0 +1,4 @@
+project,overall_risk,java_files,source_files,test_files,high,medium,low,top_patterns
+commons-io-master,High,555,268,287,44,66,73,Allocation pressure; Algorithmic waste; Concurrency misuse; Chatty I/O; Data movement bloat
+guava-master,High,3243,1989,1254,792,1773,298,Algorithmic waste; Chatty I/O; Allocation pressure; Concurrency misuse; Repeated work
+JSON-java-master,High,85,26,59,2,92,22,Data movement bloat; Allocation pressure; Algorithmic waste; Repeated work; Chatty I/O

@@ -1,0 +1,4 @@
+version: 1
+display_name: Green Java PR Report
+short_description: Build strict PR-backed Java energy/performance talk reports
+default_prompt: Build or refine a talk-ready HTML report of Java examples focused on CPU usage, waiting, and bottlenecks, using real source snippets and upstream PR-backed before/after diffs where available.

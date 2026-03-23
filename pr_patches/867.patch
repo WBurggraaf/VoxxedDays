@@ -1,0 +1,1044 @@
+From 7c7a98da71f925abb9b4b81574fe70b7459ec791 Mon Sep 17 00:00:00 2001
+From: Simulant <nfaupel.dev@gmail.com>
+Date: Fri, 23 Feb 2024 21:48:25 +0100
+Subject: [PATCH 01/20] #863 use StringBuilderWriter to toString methods
+
+resulting in a faster toString generation.
+---
+ src/main/java/org/json/JSONArray.java         |  3 +-
+ src/main/java/org/json/JSONObject.java        |  5 +-
+ .../java/org/json/StringBuilderWriter.java    | 82 +++++++++++++++++++
+ 3 files changed, 85 insertions(+), 5 deletions(-)
+ create mode 100644 src/main/java/org/json/StringBuilderWriter.java
+
+diff --git a/src/main/java/org/json/JSONArray.java b/src/main/java/org/json/JSONArray.java
+index 38b0b31ae..cda56944a 100644
+--- a/src/main/java/org/json/JSONArray.java
++++ b/src/main/java/org/json/JSONArray.java
+@@ -5,7 +5,6 @@
+  */
+ 
+ import java.io.IOException;
+-import java.io.StringWriter;
+ import java.io.Writer;
+ import java.lang.reflect.Array;
+ import java.math.BigDecimal;
+@@ -1695,7 +1694,7 @@ public String toString() {
+      */
+     @SuppressWarnings("resource")
+     public String toString(int indentFactor) throws JSONException {
+-        StringWriter sw = new StringWriter();
++        Writer sw = new StringBuilderWriter();
+         return this.write(sw, indentFactor, 0).toString();
+     }
+ 
+diff --git a/src/main/java/org/json/JSONObject.java b/src/main/java/org/json/JSONObject.java
+index 4c08b0b9c..36a7c7fe3 100644
+--- a/src/main/java/org/json/JSONObject.java
++++ b/src/main/java/org/json/JSONObject.java
+@@ -6,7 +6,6 @@
+ 
+ import java.io.Closeable;
+ import java.io.IOException;
+-import java.io.StringWriter;
+ import java.io.Writer;
+ import java.lang.annotation.Annotation;
+ import java.lang.reflect.Field;
+@@ -2227,7 +2226,7 @@ public Object optQuery(JSONPointer jsonPointer) {
+      */
+     @SuppressWarnings("resource")
+     public static String quote(String string) {
+-        StringWriter sw = new StringWriter();
++        Writer sw = new StringBuilderWriter();
+         try {
+             return quote(string, sw).toString();
+         } catch (IOException ignored) {
+@@ -2558,7 +2557,7 @@ public String toString() {
+      */
+     @SuppressWarnings("resource")
+     public String toString(int indentFactor) throws JSONException {
+-        StringWriter w = new StringWriter();
++        Writer w = new StringBuilderWriter();
+         return this.write(w, indentFactor, 0).toString();
+     }
+ 
+diff --git a/src/main/java/org/json/StringBuilderWriter.java b/src/main/java/org/json/StringBuilderWriter.java
+new file mode 100644
+index 000000000..25d2dbe87
+--- /dev/null
++++ b/src/main/java/org/json/StringBuilderWriter.java
+@@ -0,0 +1,82 @@
++package org.json;
++
++import java.io.IOException;
++import java.io.Writer;
++
++/**
++ * Performance optimised alternative for {@link java.io.StringWriter}
++ * using internally a {@link StringBuilder} instead of a {@link StringBuffer}.
++ */
++class StringBuilderWriter extends Writer {
++    private final StringBuilder builder;
++
++    StringBuilderWriter() {
++        builder = new StringBuilder();
++        lock = builder;
++    }
++
++    StringBuilderWriter(int initialSize) {
++        if (initialSize < 0) {
++            throw new IllegalArgumentException("Negative buffer size");
++        }
++        builder = new StringBuilder(initialSize);
++        lock = builder;
++    }
++
++    @Override
++    public void write(int c) {
++        builder.append((char) c);
++    }
++
++    @Override
++    public void write(char cbuf[], int offset, int length) {
++        if ((offset < 0) || (offset > cbuf.length) || (length < 0) ||
++                ((offset + length) > cbuf.length) || ((offset + length) < 0)) {
++            throw new IndexOutOfBoundsException();
++        } else if (length == 0) {
++            return;
++        }
++        builder.append(cbuf, offset, length);
++    }
++
++    @Override
++    public void write(String str) {
++        builder.append(str);
++    }
++
++    @Override
++    public void write(String str, int offset, int length) {
++        builder.append(str, offset, offset + length);
++    }
++
++    @Override
++    public StringBuilderWriter append(CharSequence csq) {
++        write(String.valueOf(csq));
++        return this;
++    }
++
++    @Override
++    public StringBuilderWriter append(CharSequence csq, int start, int end) {
++        if (csq == null) csq = "null";
++        return append(csq.subSequence(start, end));
++    }
++
++    @Override
++    public StringBuilderWriter append(char c) {
++        write(c);
++        return this;
++    }
++
++    @Override
++    public String toString() {
++        return builder.toString();
++    }
++
++    @Override
++    public void flush() {
++    }
++
++    @Override
++    public void close() throws IOException {
++    }
++}
+
+From 0ff635c456d92d6f85b3585cc4e85a04cc0ed27f Mon Sep 17 00:00:00 2001
+From: Simulant <nfaupel.dev@gmail.com>
+Date: Fri, 23 Feb 2024 21:56:40 +0100
+Subject: [PATCH 02/20] #863 improve formatting
+
+---
+ src/main/java/org/json/StringBuilderWriter.java | 17 +++++++----------
+ 1 file changed, 7 insertions(+), 10 deletions(-)
+
+diff --git a/src/main/java/org/json/StringBuilderWriter.java b/src/main/java/org/json/StringBuilderWriter.java
+index 25d2dbe87..26b4c372b 100644
+--- a/src/main/java/org/json/StringBuilderWriter.java
++++ b/src/main/java/org/json/StringBuilderWriter.java
+@@ -10,26 +10,21 @@
+ class StringBuilderWriter extends Writer {
+     private final StringBuilder builder;
+ 
++    /**
++     * Create a new string builder writer using the default initial string-builder buffer size.
++     */
+     StringBuilderWriter() {
+         builder = new StringBuilder();
+         lock = builder;
+     }
+ 
+-    StringBuilderWriter(int initialSize) {
+-        if (initialSize < 0) {
+-            throw new IllegalArgumentException("Negative buffer size");
+-        }
+-        builder = new StringBuilder(initialSize);
+-        lock = builder;
+-    }
+-
+     @Override
+     public void write(int c) {
+         builder.append((char) c);
+     }
+ 
+     @Override
+-    public void write(char cbuf[], int offset, int length) {
++    public void write(char[] cbuf, int offset, int length) {
+         if ((offset < 0) || (offset > cbuf.length) || (length < 0) ||
+                 ((offset + length) > cbuf.length) || ((offset + length) < 0)) {
+             throw new IndexOutOfBoundsException();
+@@ -57,7 +52,9 @@ public StringBuilderWriter append(CharSequence csq) {
+ 
+     @Override
+     public StringBuilderWriter append(CharSequence csq, int start, int end) {
+-        if (csq == null) csq = "null";
++        if (csq == null) {
++            csq = "null";
++        }
+         return append(csq.subSequence(start, end));
+     }
+ 
+
+From 6660e4091569fc48e582ab77c6626491f8bab8db Mon Sep 17 00:00:00 2001
+From: Simulant <nfaupel.dev@gmail.com>
+Date: Fri, 23 Feb 2024 22:02:35 +0100
+Subject: [PATCH 03/20] #863 increase compiler stack size on build pipeline
+
+---
+ .github/workflows/pipeline.yml | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/.github/workflows/pipeline.yml b/.github/workflows/pipeline.yml
+index 63540cc6c..92b55283a 100644
+--- a/.github/workflows/pipeline.yml
++++ b/.github/workflows/pipeline.yml
+@@ -52,6 +52,8 @@ jobs:
+           java-version: ${{ matrix.java }}
+           cache: 'maven'
+       - name: Compile Java ${{ matrix.java }}
++        env:
++          MAVEN_OPTS: -Xss4m
+         run: mvn clean compile -D maven.compiler.source=${{ matrix.java }} -D maven.compiler.target=${{ matrix.java }} -D maven.test.skip=true -D maven.site.skip=true -D maven.javadoc.skip=true
+       - name: Run Tests ${{ matrix.java }}
+         run: |
+
+From 06778bd2d9ffe761812cc1040e67f89603ead4ca Mon Sep 17 00:00:00 2001
+From: Simulant <nfaupel.dev@gmail.com>
+Date: Sat, 24 Feb 2024 21:21:06 +0100
+Subject: [PATCH 04/20] #863 compute initial capacity for StringBuilderWriter
+
+---
+ src/main/java/org/json/JSONArray.java           |  5 ++++-
+ src/main/java/org/json/JSONObject.java          | 16 +++++++++++++---
+ src/main/java/org/json/StringBuilderWriter.java | 13 +++++++++++++
+ 3 files changed, 30 insertions(+), 4 deletions(-)
+
+diff --git a/src/main/java/org/json/JSONArray.java b/src/main/java/org/json/JSONArray.java
+index cda56944a..ba4c1d5cf 100644
+--- a/src/main/java/org/json/JSONArray.java
++++ b/src/main/java/org/json/JSONArray.java
+@@ -1694,7 +1694,10 @@ public String toString() {
+      */
+     @SuppressWarnings("resource")
+     public String toString(int indentFactor) throws JSONException {
+-        Writer sw = new StringBuilderWriter();
++        // each value requires a comma, so multiply the count my 2
++        // We don't want to oversize the initial capacity
++        int initialSize = myArrayList.size() * 2;
++        Writer sw = new StringBuilderWriter(Math.max(initialSize, 16));
+         return this.write(sw, indentFactor, 0).toString();
+     }
+ 
+diff --git a/src/main/java/org/json/JSONObject.java b/src/main/java/org/json/JSONObject.java
+index 36a7c7fe3..5980c87ab 100644
+--- a/src/main/java/org/json/JSONObject.java
++++ b/src/main/java/org/json/JSONObject.java
+@@ -2226,7 +2226,10 @@ public Object optQuery(JSONPointer jsonPointer) {
+      */
+     @SuppressWarnings("resource")
+     public static String quote(String string) {
+-        Writer sw = new StringBuilderWriter();
++        if (string == null || string.isEmpty()) {
++            return "\"\"";
++        }
++        Writer sw = new StringBuilderWriter(string.length() + 2);
+         try {
+             return quote(string, sw).toString();
+         } catch (IOException ignored) {
+@@ -2557,7 +2560,10 @@ public String toString() {
+      */
+     @SuppressWarnings("resource")
+     public String toString(int indentFactor) throws JSONException {
+-        Writer w = new StringBuilderWriter();
++        // 6 characters are the minimum to serialise a key value pair e.g.: "k":1,
++        // and we don't want to oversize the initial capacity
++        int initialSize = map.size() * 6;
++        Writer w = new StringBuilderWriter(Math.max(initialSize, 16));
+         return this.write(w, indentFactor, 0).toString();
+     }
+ 
+@@ -2699,6 +2705,10 @@ static final Writer writeValue(Writer writer, Object value,
+             int indentFactor, int indent) throws JSONException, IOException {
+         if (value == null || value.equals(null)) {
+             writer.write("null");
++        } else if (value instanceof String) {
++            // assuming most values are Strings, so testing it earlier
++            quote(value.toString(), writer);
++            return writer;
+         } else if (value instanceof JSONString) {
+             Object o;
+             try {
+@@ -2706,7 +2716,7 @@ static final Writer writeValue(Writer writer, Object value,
+             } catch (Exception e) {
+                 throw new JSONException(e);
+             }
+-            writer.write(o != null ? o.toString() : quote(value.toString()));
++            writer.write(o != null ? o.toString() : "\"\"");
+         } else if (value instanceof Number) {
+             // not all Numbers may match actual JSON Numbers. i.e. fractions or Imaginary
+             final String numberAsString = numberToString((Number) value);
+diff --git a/src/main/java/org/json/StringBuilderWriter.java b/src/main/java/org/json/StringBuilderWriter.java
+index 26b4c372b..b598482ef 100644
+--- a/src/main/java/org/json/StringBuilderWriter.java
++++ b/src/main/java/org/json/StringBuilderWriter.java
+@@ -18,6 +18,19 @@ class StringBuilderWriter extends Writer {
+         lock = builder;
+     }
+ 
++    /**
++     * Create a new string builder writer using the specified initial string-builder buffer size.
++     *
++     * @param initialSize The number of {@code char} values that will fit into this buffer
++     *                    before it is automatically expanded
++     *
++     * @throws IllegalArgumentException If {@code initialSize} is negative
++     */
++    StringBuilderWriter(int initialSize) {
++        builder = new StringBuilder(initialSize);
++        lock = builder;
++    }
++
+     @Override
+     public void write(int c) {
+         builder.append((char) c);
+
+From d672b44a259868dc85c6bd090cb80f1c1051ae15 Mon Sep 17 00:00:00 2001
+From: Simulant <nfaupel.dev@gmail.com>
+Date: Sat, 24 Feb 2024 21:29:28 +0100
+Subject: [PATCH 05/20] #863 add StringBuilderWriter unit test
+
+---
+ .../org/json/StringBuilderWriterTest.java     | 59 +++++++++++++++++++
+ 1 file changed, 59 insertions(+)
+ create mode 100644 src/test/java/org/json/StringBuilderWriterTest.java
+
+diff --git a/src/test/java/org/json/StringBuilderWriterTest.java b/src/test/java/org/json/StringBuilderWriterTest.java
+new file mode 100644
+index 000000000..00f9d3c2c
+--- /dev/null
++++ b/src/test/java/org/json/StringBuilderWriterTest.java
+@@ -0,0 +1,59 @@
++package org.json;
++
++import static org.junit.Assert.assertEquals;
++
++import org.junit.Before;
++import org.junit.Test;
++
++public class StringBuilderWriterTest {
++    private StringBuilderWriter writer;
++
++    @Before
++    public void setUp() {
++        writer = new StringBuilderWriter();
++    }
++
++    @Test
++    public void testWriteChar() {
++        writer.write('a');
++        assertEquals("a", writer.toString());
++    }
++
++    @Test
++    public void testWriteCharArray() {
++        char[] chars = {'a', 'b', 'c'};
++        writer.write(chars, 0, 3);
++        assertEquals("abc", writer.toString());
++    }
++
++    @Test
++    public void testWriteString() {
++        writer.write("hello");
++        assertEquals("hello", writer.toString());
++    }
++
++    @Test
++    public void testWriteStringWithOffsetAndLength() {
++        writer.write("hello world", 6, 5);
++        assertEquals("world", writer.toString());
++    }
++
++    @Test
++    public void testAppendCharSequence() {
++        writer.append("hello");
++        assertEquals("hello", writer.toString());
++    }
++
++    @Test
++    public void testAppendCharSequenceWithStartAndEnd() {
++        CharSequence csq = "hello world";
++        writer.append(csq, 6, 11);
++        assertEquals("world", writer.toString());
++    }
++
++    @Test
++    public void testAppendChar() {
++        writer.append('a');
++        assertEquals("a", writer.toString());
++    }
++}
+\ No newline at end of file
+
+From e2194bc1909f39ee8afd383abda6f2791cd4457e Mon Sep 17 00:00:00 2001
+From: Simulant <nfaupel.dev@gmail.com>
+Date: Sat, 24 Feb 2024 21:35:29 +0100
+Subject: [PATCH 06/20] #863 undo wrong optimisation, fixing failing test
+
+---
+ src/main/java/org/json/JSONObject.java | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/main/java/org/json/JSONObject.java b/src/main/java/org/json/JSONObject.java
+index 5980c87ab..98105efea 100644
+--- a/src/main/java/org/json/JSONObject.java
++++ b/src/main/java/org/json/JSONObject.java
+@@ -2716,7 +2716,7 @@ static final Writer writeValue(Writer writer, Object value,
+             } catch (Exception e) {
+                 throw new JSONException(e);
+             }
+-            writer.write(o != null ? o.toString() : "\"\"");
++            writer.write(o != null ? o.toString() : quote(value.toString()));
+         } else if (value instanceof Number) {
+             // not all Numbers may match actual JSON Numbers. i.e. fractions or Imaginary
+             final String numberAsString = numberToString((Number) value);
+
+From d878c38d4071fd38c4b7fe1272d2e5649020449b Mon Sep 17 00:00:00 2001
+From: Simulant <nfaupel.dev@gmail.com>
+Date: Sat, 24 Feb 2024 22:36:14 +0100
+Subject: [PATCH 07/20] #863 reorder instanceof checks by assumed frequency
+
+---
+ src/main/java/org/json/JSONObject.java | 22 +++++++++++-----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/src/main/java/org/json/JSONObject.java b/src/main/java/org/json/JSONObject.java
+index 98105efea..37c8a5e9c 100644
+--- a/src/main/java/org/json/JSONObject.java
++++ b/src/main/java/org/json/JSONObject.java
+@@ -2706,17 +2706,9 @@ static final Writer writeValue(Writer writer, Object value,
+         if (value == null || value.equals(null)) {
+             writer.write("null");
+         } else if (value instanceof String) {
+-            // assuming most values are Strings, so testing it earlier
++            // assuming most values are Strings, so testing it early
+             quote(value.toString(), writer);
+             return writer;
+-        } else if (value instanceof JSONString) {
+-            Object o;
+-            try {
+-                o = ((JSONString) value).toJSONString();
+-            } catch (Exception e) {
+-                throw new JSONException(e);
+-            }
+-            writer.write(o != null ? o.toString() : quote(value.toString()));
+         } else if (value instanceof Number) {
+             // not all Numbers may match actual JSON Numbers. i.e. fractions or Imaginary
+             final String numberAsString = numberToString((Number) value);
+@@ -2729,8 +2721,6 @@ static final Writer writeValue(Writer writer, Object value,
+             }
+         } else if (value instanceof Boolean) {
+             writer.write(value.toString());
+-        } else if (value instanceof Enum<?>) {
+-            writer.write(quote(((Enum<?>)value).name()));
+         } else if (value instanceof JSONObject) {
+             ((JSONObject) value).write(writer, indentFactor, indent);
+         } else if (value instanceof JSONArray) {
+@@ -2741,6 +2731,16 @@ static final Writer writeValue(Writer writer, Object value,
+         } else if (value instanceof Collection) {
+             Collection<?> coll = (Collection<?>) value;
+             new JSONArray(coll).write(writer, indentFactor, indent);
++        } else if (value instanceof Enum<?>) {
++            writer.write(quote(((Enum<?>)value).name()));
++        } else if (value instanceof JSONString) {
++            Object o;
++            try {
++                o = ((JSONString) value).toJSONString();
++            } catch (Exception e) {
++                throw new JSONException(e);
++            }
++            writer.write(o != null ? o.toString() : quote(value.toString()));
+         } else if (value.getClass().isArray()) {
+             new JSONArray(value).write(writer, indentFactor, indent);
+         } else {
+
+From 4f456d94324e661e6499a9bcf1b29c8db975a097 Mon Sep 17 00:00:00 2001
+From: Simulant <nfaupel.dev@gmail.com>
+Date: Sun, 25 Feb 2024 09:42:06 +0100
+Subject: [PATCH 08/20] #863 fix changed behaviour of changing order in
+ writeValue with JSONString
+
+---
+ src/main/java/org/json/JSONObject.java | 17 +++++++++--------
+ 1 file changed, 9 insertions(+), 8 deletions(-)
+
+diff --git a/src/main/java/org/json/JSONObject.java b/src/main/java/org/json/JSONObject.java
+index 37c8a5e9c..d18429a24 100644
+--- a/src/main/java/org/json/JSONObject.java
++++ b/src/main/java/org/json/JSONObject.java
+@@ -2705,6 +2705,15 @@ static final Writer writeValue(Writer writer, Object value,
+             int indentFactor, int indent) throws JSONException, IOException {
+         if (value == null || value.equals(null)) {
+             writer.write("null");
++        } else if (value instanceof JSONString) {
++            // JSONString must be checked first, so it can overwrite behaviour of other types
++            Object o;
++            try {
++                o = ((JSONString) value).toJSONString();
++            } catch (Exception e) {
++                throw new JSONException(e);
++            }
++            writer.write(o != null ? o.toString() : quote(value.toString()));
+         } else if (value instanceof String) {
+             // assuming most values are Strings, so testing it early
+             quote(value.toString(), writer);
+@@ -2733,14 +2742,6 @@ static final Writer writeValue(Writer writer, Object value,
+             new JSONArray(coll).write(writer, indentFactor, indent);
+         } else if (value instanceof Enum<?>) {
+             writer.write(quote(((Enum<?>)value).name()));
+-        } else if (value instanceof JSONString) {
+-            Object o;
+-            try {
+-                o = ((JSONString) value).toJSONString();
+-            } catch (Exception e) {
+-                throw new JSONException(e);
+-            }
+-            writer.write(o != null ? o.toString() : quote(value.toString()));
+         } else if (value.getClass().isArray()) {
+             new JSONArray(value).write(writer, indentFactor, indent);
+         } else {
+
+From f38452a00c3f17edf718b09c43f1570138ac2e9c Mon Sep 17 00:00:00 2001
+From: Simulant <nfaupel.dev@gmail.com>
+Date: Sun, 25 Feb 2024 09:47:40 +0100
+Subject: [PATCH 09/20] add a comment explaining the ordering
+
+(cherry picked from commit df0e3e9ab73d99f1256055a17bd86c8a1a000b59)
+---
+ src/main/java/org/json/JSONObject.java | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/main/java/org/json/JSONObject.java b/src/main/java/org/json/JSONObject.java
+index d18429a24..0f56c496e 100644
+--- a/src/main/java/org/json/JSONObject.java
++++ b/src/main/java/org/json/JSONObject.java
+@@ -2706,7 +2706,7 @@ static final Writer writeValue(Writer writer, Object value,
+         if (value == null || value.equals(null)) {
+             writer.write("null");
+         } else if (value instanceof JSONString) {
+-            // JSONString must be checked first, so it can overwrite behaviour of other types
++            // JSONString must be checked first, so it can overwrite behaviour of other types below
+             Object o;
+             try {
+                 o = ((JSONString) value).toJSONString();
+
+From 63625b3c622407273d2654660be7659ac5d74db7 Mon Sep 17 00:00:00 2001
+From: Simulant <nfaupel.dev@gmail.com>
+Date: Tue, 5 Mar 2024 09:43:54 +0100
+Subject: [PATCH 10/20] #863 improve performance of JSONTokener#nextString
+
+replacing a switch-case statement with few branches
+by if-else cases
+---
+ src/main/java/org/json/JSONTokener.java | 17 ++++++-----------
+ 1 file changed, 6 insertions(+), 11 deletions(-)
+
+diff --git a/src/main/java/org/json/JSONTokener.java b/src/main/java/org/json/JSONTokener.java
+index 0bc6dfb68..96dc71c72 100644
+--- a/src/main/java/org/json/JSONTokener.java
++++ b/src/main/java/org/json/JSONTokener.java
+@@ -295,12 +295,9 @@ public String nextString(char quote) throws JSONException {
+         StringBuilder sb = new StringBuilder();
+         for (;;) {
+             c = this.next();
+-            switch (c) {
+-            case 0:
+-            case '\n':
+-            case '\r':
+-                throw this.syntaxError("Unterminated string");
+-            case '\\':
++            if (c == quote) {
++                return sb.toString();
++            } else if (c == '\\') {
+                 c = this.next();
+                 switch (c) {
+                 case 'b':
+@@ -334,11 +331,9 @@ public String nextString(char quote) throws JSONException {
+                 default:
+                     throw this.syntaxError("Illegal escape.");
+                 }
+-                break;
+-            default:
+-                if (c == quote) {
+-                    return sb.toString();
+-                }
++            } else if (c == 0 || c == '\n' || c == '\r') {
++                throw this.syntaxError("Unterminated string");
++            } else {
+                 sb.append(c);
+             }
+         }
+
+From 5407423e439dfb4095e371666a65cf4f6603606d Mon Sep 17 00:00:00 2001
+From: Simulant <nfaupel.dev@gmail.com>
+Date: Tue, 5 Mar 2024 22:11:24 +0100
+Subject: [PATCH 11/20] #863 replace usage of back() method in JSONObject
+ parsing
+
+---
+ src/main/java/org/json/JSONObject.java | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/main/java/org/json/JSONObject.java b/src/main/java/org/json/JSONObject.java
+index 0f56c496e..8b74607aa 100644
+--- a/src/main/java/org/json/JSONObject.java
++++ b/src/main/java/org/json/JSONObject.java
+@@ -214,8 +214,8 @@ public JSONObject(JSONTokener x) throws JSONException {
+         if (x.nextClean() != '{') {
+             throw x.syntaxError("A JSONObject text must begin with '{'");
+         }
++        c = x.nextClean();
+         for (;;) {
+-            c = x.nextClean();
+             switch (c) {
+             case 0:
+                 throw x.syntaxError("A JSONObject text must end with '}'");
+@@ -252,13 +252,13 @@ public JSONObject(JSONTokener x) throws JSONException {
+             switch (x.nextClean()) {
+             case ';':
+             case ',':
+-                if (x.nextClean() == '}') {
++                c = x.nextClean();
++                if (c == '}') {
+                     return;
+                 }
+                 if (x.end()) {
+                     throw x.syntaxError("A JSONObject text must end with '}'");
+                 }
+-                x.back();
+                 break;
+             case '}':
+                 return;
+
+From c010033591c192a0821bdd8fe23bc61cdc6fe738 Mon Sep 17 00:00:00 2001
+From: Simulant <nfaupel.dev@gmail.com>
+Date: Tue, 5 Mar 2024 22:12:57 +0100
+Subject: [PATCH 12/20] #863 replace short switch statements with if-else
+
+---
+ src/main/java/org/json/JSONObject.java  | 7 +++----
+ src/main/java/org/json/JSONTokener.java | 9 +++------
+ 2 files changed, 6 insertions(+), 10 deletions(-)
+
+diff --git a/src/main/java/org/json/JSONObject.java b/src/main/java/org/json/JSONObject.java
+index 8b74607aa..38c6852b6 100644
+--- a/src/main/java/org/json/JSONObject.java
++++ b/src/main/java/org/json/JSONObject.java
+@@ -216,12 +216,11 @@ public JSONObject(JSONTokener x) throws JSONException {
+         }
+         c = x.nextClean();
+         for (;;) {
+-            switch (c) {
+-            case 0:
++            if (c == 0) {
+                 throw x.syntaxError("A JSONObject text must end with '}'");
+-            case '}':
++            } else if (c == '}') {
+                 return;
+-            default:
++            } else {
+                 key = x.nextSimpleValue(c).toString();
+             }
+ 
+diff --git a/src/main/java/org/json/JSONTokener.java b/src/main/java/org/json/JSONTokener.java
+index 96dc71c72..0e78909ef 100644
+--- a/src/main/java/org/json/JSONTokener.java
++++ b/src/main/java/org/json/JSONTokener.java
+@@ -397,15 +397,14 @@ public String nextTo(String delimiters) throws JSONException {
+      */
+     public Object nextValue() throws JSONException {
+         char c = this.nextClean();
+-        switch (c) {
+-        case '{':
++        if (c == '{') {
+             this.back();
+             try {
+                 return new JSONObject(this);
+             } catch (StackOverflowError e) {
+                 throw new JSONException("JSON Array or Object depth too large to process.", e);
+             }
+-        case '[':
++        } else if (c == '[') {
+             this.back();
+             try {
+                 return new JSONArray(this);
+@@ -419,9 +418,7 @@ public Object nextValue() throws JSONException {
+     Object nextSimpleValue(char c) {
+         String string;
+ 
+-        switch (c) {
+-        case '"':
+-        case '\'':
++        if (c == '"' || c == '\'') {
+             return this.nextString(c);
+         }
+ 
+
+From eda08415cadc8bdd24d4a20073fe6d584482dfad Mon Sep 17 00:00:00 2001
+From: Simulant <nfaupel.dev@gmail.com>
+Date: Sun, 10 Mar 2024 21:05:22 +0100
+Subject: [PATCH 13/20] Revert "#863 increase compiler stack size on build
+ pipeline"
+
+This reverts commit 6660e4091569fc48e582ab77c6626491f8bab8db.
+---
+ .github/workflows/pipeline.yml | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/.github/workflows/pipeline.yml b/.github/workflows/pipeline.yml
+index 92b55283a..63540cc6c 100644
+--- a/.github/workflows/pipeline.yml
++++ b/.github/workflows/pipeline.yml
+@@ -52,8 +52,6 @@ jobs:
+           java-version: ${{ matrix.java }}
+           cache: 'maven'
+       - name: Compile Java ${{ matrix.java }}
+-        env:
+-          MAVEN_OPTS: -Xss4m
+         run: mvn clean compile -D maven.compiler.source=${{ matrix.java }} -D maven.compiler.target=${{ matrix.java }} -D maven.test.skip=true -D maven.site.skip=true -D maven.javadoc.skip=true
+       - name: Run Tests ${{ matrix.java }}
+         run: |
+
+From 045324ab42a0415f8cd65bc0a11dcbbc8626ba91 Mon Sep 17 00:00:00 2001
+From: Simulant <nfaupel.dev@gmail.com>
+Date: Sun, 10 Mar 2024 21:08:10 +0100
+Subject: [PATCH 14/20] Revert "#863 replace short switch statements with
+ if-else"
+
+This reverts commit c010033591c192a0821bdd8fe23bc61cdc6fe738.
+---
+ src/main/java/org/json/JSONObject.java  | 7 ++++---
+ src/main/java/org/json/JSONTokener.java | 9 ++++++---
+ 2 files changed, 10 insertions(+), 6 deletions(-)
+
+diff --git a/src/main/java/org/json/JSONObject.java b/src/main/java/org/json/JSONObject.java
+index 38c6852b6..8b74607aa 100644
+--- a/src/main/java/org/json/JSONObject.java
++++ b/src/main/java/org/json/JSONObject.java
+@@ -216,11 +216,12 @@ public JSONObject(JSONTokener x) throws JSONException {
+         }
+         c = x.nextClean();
+         for (;;) {
+-            if (c == 0) {
++            switch (c) {
++            case 0:
+                 throw x.syntaxError("A JSONObject text must end with '}'");
+-            } else if (c == '}') {
++            case '}':
+                 return;
+-            } else {
++            default:
+                 key = x.nextSimpleValue(c).toString();
+             }
+ 
+diff --git a/src/main/java/org/json/JSONTokener.java b/src/main/java/org/json/JSONTokener.java
+index 0e78909ef..96dc71c72 100644
+--- a/src/main/java/org/json/JSONTokener.java
++++ b/src/main/java/org/json/JSONTokener.java
+@@ -397,14 +397,15 @@ public String nextTo(String delimiters) throws JSONException {
+      */
+     public Object nextValue() throws JSONException {
+         char c = this.nextClean();
+-        if (c == '{') {
++        switch (c) {
++        case '{':
+             this.back();
+             try {
+                 return new JSONObject(this);
+             } catch (StackOverflowError e) {
+                 throw new JSONException("JSON Array or Object depth too large to process.", e);
+             }
+-        } else if (c == '[') {
++        case '[':
+             this.back();
+             try {
+                 return new JSONArray(this);
+@@ -418,7 +419,9 @@ public Object nextValue() throws JSONException {
+     Object nextSimpleValue(char c) {
+         String string;
+ 
+-        if (c == '"' || c == '\'') {
++        switch (c) {
++        case '"':
++        case '\'':
+             return this.nextString(c);
+         }
+ 
+
+From a3f15e588301c6d7b12352117e6d4dcb1fd17ebe Mon Sep 17 00:00:00 2001
+From: Simulant <nfaupel.dev@gmail.com>
+Date: Sun, 10 Mar 2024 21:08:31 +0100
+Subject: [PATCH 15/20] Revert "#863 replace usage of back() method in
+ JSONObject parsing"
+
+This reverts commit 5407423e439dfb4095e371666a65cf4f6603606d.
+---
+ src/main/java/org/json/JSONObject.java | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/main/java/org/json/JSONObject.java b/src/main/java/org/json/JSONObject.java
+index 8b74607aa..0f56c496e 100644
+--- a/src/main/java/org/json/JSONObject.java
++++ b/src/main/java/org/json/JSONObject.java
+@@ -214,8 +214,8 @@ public JSONObject(JSONTokener x) throws JSONException {
+         if (x.nextClean() != '{') {
+             throw x.syntaxError("A JSONObject text must begin with '{'");
+         }
+-        c = x.nextClean();
+         for (;;) {
++            c = x.nextClean();
+             switch (c) {
+             case 0:
+                 throw x.syntaxError("A JSONObject text must end with '}'");
+@@ -252,13 +252,13 @@ public JSONObject(JSONTokener x) throws JSONException {
+             switch (x.nextClean()) {
+             case ';':
+             case ',':
+-                c = x.nextClean();
+-                if (c == '}') {
++                if (x.nextClean() == '}') {
+                     return;
+                 }
+                 if (x.end()) {
+                     throw x.syntaxError("A JSONObject text must end with '}'");
+                 }
++                x.back();
+                 break;
+             case '}':
+                 return;
+
+From 0c5cf182552f0c2564c0d0d0b253829988d8a1e1 Mon Sep 17 00:00:00 2001
+From: Simulant <nfaupel.dev@gmail.com>
+Date: Sun, 10 Mar 2024 21:12:28 +0100
+Subject: [PATCH 16/20] Revert "#863 improve performance of
+ JSONTokener#nextString"
+
+This reverts commit 63625b3c622407273d2654660be7659ac5d74db7.
+---
+ src/main/java/org/json/JSONTokener.java | 17 +++++++++++------
+ 1 file changed, 11 insertions(+), 6 deletions(-)
+
+diff --git a/src/main/java/org/json/JSONTokener.java b/src/main/java/org/json/JSONTokener.java
+index 96dc71c72..0bc6dfb68 100644
+--- a/src/main/java/org/json/JSONTokener.java
++++ b/src/main/java/org/json/JSONTokener.java
+@@ -295,9 +295,12 @@ public String nextString(char quote) throws JSONException {
+         StringBuilder sb = new StringBuilder();
+         for (;;) {
+             c = this.next();
+-            if (c == quote) {
+-                return sb.toString();
+-            } else if (c == '\\') {
++            switch (c) {
++            case 0:
++            case '\n':
++            case '\r':
++                throw this.syntaxError("Unterminated string");
++            case '\\':
+                 c = this.next();
+                 switch (c) {
+                 case 'b':
+@@ -331,9 +334,11 @@ public String nextString(char quote) throws JSONException {
+                 default:
+                     throw this.syntaxError("Illegal escape.");
+                 }
+-            } else if (c == 0 || c == '\n' || c == '\r') {
+-                throw this.syntaxError("Unterminated string");
+-            } else {
++                break;
++            default:
++                if (c == quote) {
++                    return sb.toString();
++                }
+                 sb.append(c);
+             }
+         }
+
+From 60090a7167bf86f3cd9af10863b42c18e7ee754d Mon Sep 17 00:00:00 2001
+From: Simulant <nfaupel.dev@gmail.com>
+Date: Sun, 25 Feb 2024 09:45:57 +0100
+Subject: [PATCH 17/20] add a test case for an enum implementing JSONString
+
+(cherry picked from commit d17bbbd4174b3d84f70a6f0fdce9edc10d846a1a)
+---
+ src/test/java/org/json/junit/JSONStringTest.java | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
+
+diff --git a/src/test/java/org/json/junit/JSONStringTest.java b/src/test/java/org/json/junit/JSONStringTest.java
+index b4fee3eb7..235df1806 100644
+--- a/src/test/java/org/json/junit/JSONStringTest.java
++++ b/src/test/java/org/json/junit/JSONStringTest.java
+@@ -319,6 +319,22 @@ public void testNullStringValue() throws Exception {
+         }
+     }
+ 
++    @Test
++    public void testEnumJSONString() {
++        JSONObject jsonObject = new JSONObject();
++        jsonObject.put("key", MyEnum.MY_ENUM);
++        assertEquals("{\"key\":\"myJsonString\"}", jsonObject.toString());
++    }
++
++    private enum MyEnum implements JSONString {
++        MY_ENUM;
++
++        @Override
++        public String toJSONString() {
++            return "\"myJsonString\"";
++        }
++    }
++
+     /**
+      * A JSONString that returns a valid JSON string value.
+      */
+
+From 6c35b08ad64b65256b0ab2a9f932a84224bb10c9 Mon Sep 17 00:00:00 2001
+From: Simulant <nfaupel.dev@gmail.com>
+Date: Sun, 10 Mar 2024 23:20:09 +0100
+Subject: [PATCH 18/20] #863 make StringBuilderWriter public and move test
+
+---
+ src/main/java/org/json/StringBuilderWriter.java             | 6 +++---
+ .../java/org/json/{ => junit}/StringBuilderWriterTest.java  | 3 ++-
+ 2 files changed, 5 insertions(+), 4 deletions(-)
+ rename src/test/java/org/json/{ => junit}/StringBuilderWriterTest.java (95%)
+
+diff --git a/src/main/java/org/json/StringBuilderWriter.java b/src/main/java/org/json/StringBuilderWriter.java
+index b598482ef..4aaa4903f 100644
+--- a/src/main/java/org/json/StringBuilderWriter.java
++++ b/src/main/java/org/json/StringBuilderWriter.java
+@@ -7,13 +7,13 @@
+  * Performance optimised alternative for {@link java.io.StringWriter}
+  * using internally a {@link StringBuilder} instead of a {@link StringBuffer}.
+  */
+-class StringBuilderWriter extends Writer {
++public class StringBuilderWriter extends Writer {
+     private final StringBuilder builder;
+ 
+     /**
+      * Create a new string builder writer using the default initial string-builder buffer size.
+      */
+-    StringBuilderWriter() {
++    public StringBuilderWriter() {
+         builder = new StringBuilder();
+         lock = builder;
+     }
+@@ -26,7 +26,7 @@ class StringBuilderWriter extends Writer {
+      *
+      * @throws IllegalArgumentException If {@code initialSize} is negative
+      */
+-    StringBuilderWriter(int initialSize) {
++    public StringBuilderWriter(int initialSize) {
+         builder = new StringBuilder(initialSize);
+         lock = builder;
+     }
+diff --git a/src/test/java/org/json/StringBuilderWriterTest.java b/src/test/java/org/json/junit/StringBuilderWriterTest.java
+similarity index 95%
+rename from src/test/java/org/json/StringBuilderWriterTest.java
+rename to src/test/java/org/json/junit/StringBuilderWriterTest.java
+index 00f9d3c2c..b12f5db0c 100644
+--- a/src/test/java/org/json/StringBuilderWriterTest.java
++++ b/src/test/java/org/json/junit/StringBuilderWriterTest.java
+@@ -1,7 +1,8 @@
+-package org.json;
++package org.json.junit;
+ 
+ import static org.junit.Assert.assertEquals;
+ 
++import org.json.StringBuilderWriter;
+ import org.junit.Before;
+ import org.junit.Test;
+ 
+
+From b75da0754519194e20e84712eab24c71ac524d3d Mon Sep 17 00:00:00 2001
+From: Simulant <nfaupel.dev@gmail.com>
+Date: Sun, 10 Mar 2024 23:21:47 +0100
+Subject: [PATCH 19/20] #863 move instanceof Enum check back to original
+ position
+
+---
+ src/main/java/org/json/JSONObject.java | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/main/java/org/json/JSONObject.java b/src/main/java/org/json/JSONObject.java
+index b8989297e..26a68c6dc 100644
+--- a/src/main/java/org/json/JSONObject.java
++++ b/src/main/java/org/json/JSONObject.java
+@@ -2819,6 +2819,8 @@ static final Writer writeValue(Writer writer, Object value,
+             }
+         } else if (value instanceof Boolean) {
+             writer.write(value.toString());
++        } else if (value instanceof Enum<?>) {
++            writer.write(quote(((Enum<?>)value).name()));
+         } else if (value instanceof JSONObject) {
+             ((JSONObject) value).write(writer, indentFactor, indent);
+         } else if (value instanceof JSONArray) {
+@@ -2829,8 +2831,6 @@ static final Writer writeValue(Writer writer, Object value,
+         } else if (value instanceof Collection) {
+             Collection<?> coll = (Collection<?>) value;
+             new JSONArray(coll).write(writer, indentFactor, indent);
+-        } else if (value instanceof Enum<?>) {
+-            writer.write(quote(((Enum<?>)value).name()));
+         } else if (value.getClass().isArray()) {
+             new JSONArray(value).write(writer, indentFactor, indent);
+         } else {
+
+From 6aed1cfeb6458cc0f533dbda29c44564bb67017b Mon Sep 17 00:00:00 2001
+From: Simulant87 <kult.nils@googlemail.com>
+Date: Mon, 18 Mar 2024 23:07:22 +0100
+Subject: [PATCH 20/20] fix typo
+
+---
+ src/main/java/org/json/JSONArray.java | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/main/java/org/json/JSONArray.java b/src/main/java/org/json/JSONArray.java
+index 015a21bd1..df0b2994b 100644
+--- a/src/main/java/org/json/JSONArray.java
++++ b/src/main/java/org/json/JSONArray.java
+@@ -1694,7 +1694,7 @@ public String toString() {
+      */
+     @SuppressWarnings("resource")
+     public String toString(int indentFactor) throws JSONException {
+-        // each value requires a comma, so multiply the count my 2
++        // each value requires a comma, so multiply the count by 2
+         // We don't want to oversize the initial capacity
+         int initialSize = myArrayList.size() * 2;
+         Writer sw = new StringBuilderWriter(Math.max(initialSize, 16));

@@ -1,0 +1,766 @@
+From 98b79ae7bf182397dded8a669c2432d618d03a07 Mon Sep 17 00:00:00 2001
+From: rudrajyoti biswas <rudrajyoti.biswas@outlook.com>
+Date: Mon, 23 Oct 2023 19:16:25 +0530
+Subject: [PATCH 1/3] #813 - moved number conversion related common changes to
+ utility static method.
+
+---
+ src/main/java/org/json/JSONArray.java         |   4 +-
+ src/main/java/org/json/JSONObject.java        | 120 +-----------
+ .../java/org/json/NumberConversionUtil.java   | 142 ++++++++++++++
+ src/main/java/org/json/XML.java               | 112 +----------
+ .../json/junit/NumberConversionUtilTest.java  | 175 ++++++++++++++++++
+ 5 files changed, 326 insertions(+), 227 deletions(-)
+ create mode 100644 src/main/java/org/json/NumberConversionUtil.java
+ create mode 100644 src/test/java/org/json/junit/NumberConversionUtilTest.java
+
+diff --git a/src/main/java/org/json/JSONArray.java b/src/main/java/org/json/JSONArray.java
+index b0c912d1f..ed7982f8a 100644
+--- a/src/main/java/org/json/JSONArray.java
++++ b/src/main/java/org/json/JSONArray.java
+@@ -331,7 +331,7 @@ public Number getNumber(int index) throws JSONException {
+             if (object instanceof Number) {
+                 return (Number)object;
+             }
+-            return JSONObject.stringToNumber(object.toString());
++            return NumberConversionUtil.stringToNumber(object.toString());
+         } catch (Exception e) {
+             throw wrongValueFormatException(index, "number", object, e);
+         }
+@@ -1078,7 +1078,7 @@ public Number optNumber(int index, Number defaultValue) {
+         
+         if (val instanceof String) {
+             try {
+-                return JSONObject.stringToNumber((String) val);
++                return NumberConversionUtil.stringToNumber((String) val);
+             } catch (Exception e) {
+                 return defaultValue;
+             }
+diff --git a/src/main/java/org/json/JSONObject.java b/src/main/java/org/json/JSONObject.java
+index fbf225e9f..7f4885e00 100644
+--- a/src/main/java/org/json/JSONObject.java
++++ b/src/main/java/org/json/JSONObject.java
+@@ -28,6 +28,9 @@
+ import java.util.Set;
+ import java.util.regex.Pattern;
+ 
++import static org.json.NumberConversionUtil.potentialNumber;
++import static org.json.NumberConversionUtil.stringToNumber;
++
+ /**
+  * A JSONObject is an unordered collection of name/value pairs. Its external
+  * form is a string wrapped in curly braces with colons between the names and
+@@ -2380,84 +2383,6 @@ protected static boolean isDecimalNotation(final String val) {
+                 || val.indexOf('E') > -1 || "-0".equals(val);
+     }
+ 
+-    /**
+-     * Converts a string to a number using the narrowest possible type. Possible
+-     * returns for this function are BigDecimal, Double, BigInteger, Long, and Integer.
+-     * When a Double is returned, it should always be a valid Double and not NaN or +-infinity.
+-     *
+-     * @param input value to convert
+-     * @return Number representation of the value.
+-     * @throws NumberFormatException thrown if the value is not a valid number. A public
+-     *      caller should catch this and wrap it in a {@link JSONException} if applicable.
+-     */
+-    protected static Number stringToNumber(final String input) throws NumberFormatException {
+-        String val = input;
+-        if (val.startsWith(".")){
+-            val = "0"+val;
+-        }
+-        if (val.startsWith("-.")){
+-            val = "-0."+val.substring(2);
+-        }
+-        char initial = val.charAt(0);
+-        if ((initial >= '0' && initial <= '9') || initial == '-' ) {
+-            // decimal representation
+-            if (isDecimalNotation(val)) {
+-                // Use a BigDecimal all the time so we keep the original
+-                // representation. BigDecimal doesn't support -0.0, ensure we
+-                // keep that by forcing a decimal.
+-                try {
+-                    BigDecimal bd = new BigDecimal(val);
+-                    if(initial == '-' && BigDecimal.ZERO.compareTo(bd)==0) {
+-                        return Double.valueOf(-0.0);
+-                    }
+-                    return bd;
+-                } catch (NumberFormatException retryAsDouble) {
+-                    // this is to support "Hex Floats" like this: 0x1.0P-1074
+-                    try {
+-                        Double d = Double.valueOf(val);
+-                        if(d.isNaN() || d.isInfinite()) {
+-                            throw new NumberFormatException("val ["+input+"] is not a valid number.");
+-                        }
+-                        return d;
+-                    } catch (NumberFormatException ignore) {
+-                        throw new NumberFormatException("val ["+input+"] is not a valid number.");
+-                    }
+-                }
+-            }
+-            val = removeLeadingZerosOfNumber(input);
+-            initial = val.charAt(0);
+-            if(initial == '0' && val.length() > 1) {
+-                char at1 = val.charAt(1);
+-                if(at1 >= '0' && at1 <= '9') {
+-                    throw new NumberFormatException("val ["+input+"] is not a valid number.");
+-                }
+-            } else if (initial == '-' && val.length() > 2) {
+-                char at1 = val.charAt(1);
+-                char at2 = val.charAt(2);
+-                if(at1 == '0' && at2 >= '0' && at2 <= '9') {
+-                    throw new NumberFormatException("val ["+input+"] is not a valid number.");
+-                }
+-            }
+-            // integer representation.
+-            // This will narrow any values to the smallest reasonable Object representation
+-            // (Integer, Long, or BigInteger)
+-
+-            // BigInteger down conversion: We use a similar bitLength compare as
+-            // BigInteger#intValueExact uses. Increases GC, but objects hold
+-            // only what they need. i.e. Less runtime overhead if the value is
+-            // long lived.
+-            BigInteger bi = new BigInteger(val);
+-            if(bi.bitLength() <= 31){
+-                return Integer.valueOf(bi.intValue());
+-            }
+-            if(bi.bitLength() <= 63){
+-                return Long.valueOf(bi.longValue());
+-            }
+-            return bi;
+-        }
+-        throw new NumberFormatException("val ["+input+"] is not a valid number.");
+-    }
+-
+     /**
+      * Try to convert a string into a number, boolean, or null. If the string
+      * can't be converted, return the string.
+@@ -2501,26 +2426,7 @@ public static Object stringToValue(String string) {
+     }
+ 
+ 
+-    private static boolean potentialNumber(String value){
+-        if (value == null || value.isEmpty()){
+-            return false;
+-        }
+-        return potentialPositiveNumberStartingAtIndex(value, (value.charAt(0)=='-'?1:0));
+-    }
+-
+-    private static boolean potentialPositiveNumberStartingAtIndex(String value,int index){
+-        if (index >= value.length()){
+-            return false;
+-        }
+-        return digitAtIndex(value, (value.charAt(index)=='.'?index+1:index));
+-    }
+ 
+-    private static boolean digitAtIndex(String value, int index){
+-        if (index >= value.length()){
+-            return false;
+-        }
+-        return value.charAt(index) >= '0' && value.charAt(index) <= '9';
+-    }
+ 
+     /**
+      * Throw an exception if the object is a NaN or infinite number.
+@@ -2922,23 +2828,5 @@ private static JSONException recursivelyDefinedObjectException(String key) {
+         );
+     }
+ 
+-    /**
+-     * For a prospective number, remove the leading zeros
+-     * @param value prospective number
+-     * @return number without leading zeros
+-     */
+-    private static String removeLeadingZerosOfNumber(String value){
+-        if (value.equals("-")){return value;}
+-        boolean negativeFirstChar = (value.charAt(0) == '-');
+-        int counter = negativeFirstChar ? 1:0;
+-        while (counter < value.length()){
+-            if (value.charAt(counter) != '0'){
+-                if (negativeFirstChar) {return "-".concat(value.substring(counter));}
+-                return value.substring(counter);
+-            }
+-            ++counter;
+-        }
+-        if (negativeFirstChar) {return "-0";}
+-        return "0";
+-    }
++
+ }
+diff --git a/src/main/java/org/json/NumberConversionUtil.java b/src/main/java/org/json/NumberConversionUtil.java
+new file mode 100644
+index 000000000..08da6bdfa
+--- /dev/null
++++ b/src/main/java/org/json/NumberConversionUtil.java
+@@ -0,0 +1,142 @@
++package org.json;
++
++import java.math.BigDecimal;
++import java.math.BigInteger;
++
++public class NumberConversionUtil {
++
++    /**
++     * Converts a string to a number using the narrowest possible type. Possible
++     * returns for this function are BigDecimal, Double, BigInteger, Long, and Integer.
++     * When a Double is returned, it should always be a valid Double and not NaN or +-infinity.
++     *
++     * @param input value to convert
++     * @return Number representation of the value.
++     * @throws NumberFormatException thrown if the value is not a valid number. A public
++     *      caller should catch this and wrap it in a {@link JSONException} if applicable.
++     */
++    public static Number stringToNumber(final String input) throws NumberFormatException {
++        String val = input;
++        if (val.startsWith(".")){
++            val = "0"+val;
++        }
++        if (val.startsWith("-.")){
++            val = "-0."+val.substring(2);
++        }
++        char initial = val.charAt(0);
++        if ((initial >= '0' && initial <= '9') || initial == '-' ) {
++            // decimal representation
++            if (isDecimalNotation(val)) {
++                // Use a BigDecimal all the time so we keep the original
++                // representation. BigDecimal doesn't support -0.0, ensure we
++                // keep that by forcing a decimal.
++                try {
++                    BigDecimal bd = new BigDecimal(val);
++                    if(initial == '-' && BigDecimal.ZERO.compareTo(bd)==0) {
++                        return Double.valueOf(-0.0);
++                    }
++                    return bd;
++                } catch (NumberFormatException retryAsDouble) {
++                    // this is to support "Hex Floats" like this: 0x1.0P-1074
++                    try {
++                        Double d = Double.valueOf(val);
++                        if(d.isNaN() || d.isInfinite()) {
++                            throw new NumberFormatException("val ["+input+"] is not a valid number.");
++                        }
++                        return d;
++                    } catch (NumberFormatException ignore) {
++                        throw new NumberFormatException("val ["+input+"] is not a valid number.");
++                    }
++                }
++            }
++            val = removeLeadingZerosOfNumber(input);
++            initial = val.charAt(0);
++            if(initial == '0' && val.length() > 1) {
++                char at1 = val.charAt(1);
++                if(at1 >= '0' && at1 <= '9') {
++                    throw new NumberFormatException("val ["+input+"] is not a valid number.");
++                }
++            } else if (initial == '-' && val.length() > 2) {
++                char at1 = val.charAt(1);
++                char at2 = val.charAt(2);
++                if(at1 == '0' && at2 >= '0' && at2 <= '9') {
++                    throw new NumberFormatException("val ["+input+"] is not a valid number.");
++                }
++            }
++            // integer representation.
++            // This will narrow any values to the smallest reasonable Object representation
++            // (Integer, Long, or BigInteger)
++
++            // BigInteger down conversion: We use a similar bitLength compare as
++            // BigInteger#intValueExact uses. Increases GC, but objects hold
++            // only what they need. i.e. Less runtime overhead if the value is
++            // long lived.
++            BigInteger bi = new BigInteger(val);
++            if(bi.bitLength() <= 31){
++                return Integer.valueOf(bi.intValue());
++            }
++            if(bi.bitLength() <= 63){
++                return Long.valueOf(bi.longValue());
++            }
++            return bi;
++        }
++        throw new NumberFormatException("val ["+input+"] is not a valid number.");
++    }
++
++    /**
++     * Checks if the value could be considered a number in decimal number system.
++     * @param value
++     * @return
++     */
++    public static boolean potentialNumber(String value){
++        if (value == null || value.isEmpty()){
++            return false;
++        }
++        return potentialPositiveNumberStartingAtIndex(value, (value.charAt(0)=='-'?1:0));
++    }
++
++    /**
++     * Tests if the value should be tried as a decimal. It makes no test if there are actual digits.
++     *
++     * @param val value to test
++     * @return true if the string is "-0" or if it contains '.', 'e', or 'E', false otherwise.
++     */
++    private static boolean isDecimalNotation(final String val) {
++        return val.indexOf('.') > -1 || val.indexOf('e') > -1
++                || val.indexOf('E') > -1 || "-0".equals(val);
++    }
++
++    private static boolean potentialPositiveNumberStartingAtIndex(String value,int index){
++        if (index >= value.length()){
++            return false;
++        }
++        return digitAtIndex(value, (value.charAt(index)=='.'?index+1:index));
++    }
++
++    private static boolean digitAtIndex(String value, int index){
++        if (index >= value.length()){
++            return false;
++        }
++        return value.charAt(index) >= '0' && value.charAt(index) <= '9';
++    }
++
++    /**
++     * For a prospective number, remove the leading zeros
++     * @param value prospective number
++     * @return number without leading zeros
++     */
++    private static String removeLeadingZerosOfNumber(String value){
++        if (value.equals("-")){return value;}
++        boolean negativeFirstChar = (value.charAt(0) == '-');
++        int counter = negativeFirstChar ? 1:0;
++        while (counter < value.length()){
++            if (value.charAt(counter) != '0'){
++                if (negativeFirstChar) {return "-".concat(value.substring(counter));}
++                return value.substring(counter);
++            }
++            ++counter;
++        }
++        if (negativeFirstChar) {return "-0";}
++        return "0";
++    }
++}
+diff --git a/src/main/java/org/json/XML.java b/src/main/java/org/json/XML.java
+index 533192313..5105a9e9e 100644
+--- a/src/main/java/org/json/XML.java
++++ b/src/main/java/org/json/XML.java
+@@ -10,6 +10,9 @@
+ import java.math.BigInteger;
+ import java.util.Iterator;
+ 
++import static org.json.NumberConversionUtil.potentialNumber;
++import static org.json.NumberConversionUtil.stringToNumber;
++
+ 
+ /**
+  * This provides static methods to convert an XML text into a JSONObject, and to
+@@ -495,104 +498,9 @@ public static Object stringToValue(String string) {
+         return string;
+     }
+ 
+-    private static boolean potentialNumber(String value){
+-        if (value == null || value.isEmpty()){
+-            return false;
+-        }
+-        return potentialPositiveNumberStartingAtIndex(value, (value.charAt(0)=='-'?1:0));
+-    }
+ 
+-    private static boolean potentialPositiveNumberStartingAtIndex(String value,int index){
+-        if (index >= value.length()){
+-            return false;
+-        }
+-        return digitAtIndex(value, (value.charAt(index)=='.'?index+1:index));
+-    }
+ 
+-    private static boolean digitAtIndex(String value, int index){
+-        if (index >= value.length()){
+-            return false;
+-        }
+-        return value.charAt(index) >= '0' && value.charAt(index) <= '9';
+-    }
+ 
+-    /**
+-     * direct copy of {@link JSONObject#stringToNumber(String)} to maintain Android support.
+-     */
+-    private static Number stringToNumber(final String input) throws NumberFormatException {
+-        String val = input;
+-        if (val.startsWith(".")){
+-            val = "0"+val;
+-        }
+-        if (val.startsWith("-.")){
+-            val = "-0."+val.substring(2);
+-        }
+-        char initial = val.charAt(0);
+-        if ((initial >= '0' && initial <= '9') || initial == '-') {
+-            // decimal representation
+-            if (isDecimalNotation(val)) {
+-                // Use a BigDecimal all the time so we keep the original
+-                // representation. BigDecimal doesn't support -0.0, ensure we
+-                // keep that by forcing a decimal.
+-                try {
+-                    BigDecimal bd = new BigDecimal(val);
+-                    if(initial == '-' && BigDecimal.ZERO.compareTo(bd)==0) {
+-                        return Double.valueOf(-0.0);
+-                    }
+-                    return bd;
+-                } catch (NumberFormatException retryAsDouble) {
+-                    // this is to support "Hex Floats" like this: 0x1.0P-1074
+-                    try {
+-                        Double d = Double.valueOf(val);
+-                        if(d.isNaN() || d.isInfinite()) {
+-                            throw new NumberFormatException("val ["+input+"] is not a valid number.");
+-                        }
+-                        return d;
+-                    } catch (NumberFormatException ignore) {
+-                        throw new NumberFormatException("val ["+input+"] is not a valid number.");
+-                    }
+-                }
+-            }
+-            val = removeLeadingZerosOfNumber(input);
+-            if(initial == '0' && val.length() > 1) {
+-                char at1 = val.charAt(1);
+-                if(at1 >= '0' && at1 <= '9') {
+-                    throw new NumberFormatException("val ["+input+"] is not a valid number.");
+-                }
+-            } else if (initial == '-' && val.length() > 2) {
+-                char at1 = val.charAt(1);
+-                char at2 = val.charAt(2);
+-                if(at1 == '0' && at2 >= '0' && at2 <= '9') {
+-                    throw new NumberFormatException("val ["+input+"] is not a valid number.");
+-                }
+-            }
+-            // integer representation.
+-            // This will narrow any values to the smallest reasonable Object representation
+-            // (Integer, Long, or BigInteger)
+-
+-            // BigInteger down conversion: We use a similar bitLength compare as
+-            // BigInteger#intValueExact uses. Increases GC, but objects hold
+-            // only what they need. i.e. Less runtime overhead if the value is
+-            // long lived.
+-            BigInteger bi = new BigInteger(val);
+-            if(bi.bitLength() <= 31){
+-                return Integer.valueOf(bi.intValue());
+-            }
+-            if(bi.bitLength() <= 63){
+-                return Long.valueOf(bi.longValue());
+-            }
+-            return bi;
+-        }
+-        throw new NumberFormatException("val ["+input+"] is not a valid number.");
+-    }
+-
+-    /**
+-     * direct copy of {@link JSONObject#isDecimalNotation(String)} to maintain Android support.
+-     */
+-    private static boolean isDecimalNotation(final String val) {
+-        return val.indexOf('.') > -1 || val.indexOf('e') > -1
+-                || val.indexOf('E') > -1 || "-0".equals(val);
+-    }
+ 
+ 
+     /**
+@@ -1001,18 +909,4 @@ private static final String indent(int indent) {
+         return sb.toString();
+     }
+ 
+-    private static String removeLeadingZerosOfNumber(String value){
+-        if (value.equals("-")){return value;}
+-        boolean negativeFirstChar = (value.charAt(0) == '-');
+-        int counter = negativeFirstChar ? 1:0;
+-        while (counter < value.length()){
+-            if (value.charAt(counter) != '0'){
+-                if (negativeFirstChar) {return "-".concat(value.substring(counter));}
+-                return value.substring(counter);
+-            }
+-            ++counter;
+-        }
+-        if (negativeFirstChar) {return "-0";}
+-        return "0";
+-    }
+ }
+diff --git a/src/test/java/org/json/junit/NumberConversionUtilTest.java b/src/test/java/org/json/junit/NumberConversionUtilTest.java
+new file mode 100644
+index 000000000..bf2586d40
+--- /dev/null
++++ b/src/test/java/org/json/junit/NumberConversionUtilTest.java
+@@ -0,0 +1,175 @@
++package org.json.junit;
++
++import org.json.NumberConversionUtil;
++import org.junit.Test;
++
++import java.math.BigDecimal;
++import java.math.BigInteger;
++
++import static org.junit.Assert.*;
++
++public class NumberConversionUtilTest {
++
++    @Test
++    public void shouldParseDecimalFractionNumbersWithMultipleLeadingZeros(){
++        Number number = NumberConversionUtil.stringToNumber("00.10d");
++        assertEquals("Do not match",  0.10d, number.doubleValue(),0.0d);
++        assertEquals("Do not match",  0.10f, number.floatValue(),0.0f);
++        assertEquals("Do not match",  0, number.longValue(),0);
++        assertEquals("Do not match",  0, number.intValue(),0);
++    }
++
++    @Test
++    public void shouldParseDecimalFractionNumbersWithSingleLeadingZero(){
++        Number number = NumberConversionUtil.stringToNumber("0.10d");
++        assertEquals("Do not match",  0.10d, number.doubleValue(),0.0d);
++        assertEquals("Do not match",  0.10f, number.floatValue(),0.0f);
++        assertEquals("Do not match",  0, number.longValue(),0);
++        assertEquals("Do not match",  0, number.intValue(),0);
++    }
++
++
++     @Test
++    public void shouldParseDecimalFractionNumbersWithZerosAfterDecimalPoint(){
++        Number number = NumberConversionUtil.stringToNumber("0.010d");
++        assertEquals("Do not match",  0.010d, number.doubleValue(),0.0d);
++        assertEquals("Do not match",  0.010f, number.floatValue(),0.0f);
++        assertEquals("Do not match",  0, number.longValue(),0);
++        assertEquals("Do not match",  0, number.intValue(),0);
++    }
++
++    @Test
++    public void shouldParseMixedDecimalFractionNumbersWithMultipleLeadingZeros(){
++        Number number = NumberConversionUtil.stringToNumber("00200.10d");
++        assertEquals("Do not match",  200.10d, number.doubleValue(),0.0d);
++        assertEquals("Do not match",  200.10f, number.floatValue(),0.0f);
++        assertEquals("Do not match",  200, number.longValue(),0);
++        assertEquals("Do not match",  200, number.intValue(),0);
++    }
++
++    @Test
++    public void shouldParseMixedDecimalFractionNumbersWithoutLeadingZero(){
++        Number number = NumberConversionUtil.stringToNumber("200.10d");
++        assertEquals("Do not match",  200.10d, number.doubleValue(),0.0d);
++        assertEquals("Do not match",  200.10f, number.floatValue(),0.0f);
++        assertEquals("Do not match",  200, number.longValue(),0);
++        assertEquals("Do not match",  200, number.intValue(),0);
++    }
++
++
++     @Test
++    public void shouldParseMixedDecimalFractionNumbersWithZerosAfterDecimalPoint(){
++        Number number = NumberConversionUtil.stringToNumber("200.010d");
++        assertEquals("Do not match",  200.010d, number.doubleValue(),0.0d);
++        assertEquals("Do not match",  200.010f, number.floatValue(),0.0f);
++        assertEquals("Do not match",  200, number.longValue(),0);
++        assertEquals("Do not match",  200, number.intValue(),0);
++    }
++
++
++    @Test
++    public void shouldParseNegativeDecimalFractionNumbersWithMultipleLeadingZeros(){
++        Number number = NumberConversionUtil.stringToNumber("-00.10d");
++        assertEquals("Do not match",  -0.10d, number.doubleValue(),0.0d);
++        assertEquals("Do not match",  -0.10f, number.floatValue(),0.0f);
++        assertEquals("Do not match",  -0, number.longValue(),0);
++        assertEquals("Do not match",  -0, number.intValue(),0);
++    }
++
++    @Test
++    public void shouldParseNegativeDecimalFractionNumbersWithSingleLeadingZero(){
++        Number number = NumberConversionUtil.stringToNumber("-0.10d");
++        assertEquals("Do not match",  -0.10d, number.doubleValue(),0.0d);
++        assertEquals("Do not match",  -0.10f, number.floatValue(),0.0f);
++        assertEquals("Do not match",  -0, number.longValue(),0);
++        assertEquals("Do not match",  -0, number.intValue(),0);
++    }
++
++
++     @Test
++    public void shouldParseNegativeDecimalFractionNumbersWithZerosAfterDecimalPoint(){
++        Number number = NumberConversionUtil.stringToNumber("-0.010d");
++        assertEquals("Do not match",  -0.010d, number.doubleValue(),0.0d);
++        assertEquals("Do not match",  -0.010f, number.floatValue(),0.0f);
++        assertEquals("Do not match",  -0, number.longValue(),0);
++        assertEquals("Do not match",  -0, number.intValue(),0);
++    }
++
++    @Test
++    public void shouldParseNegativeMixedDecimalFractionNumbersWithMultipleLeadingZeros(){
++        Number number = NumberConversionUtil.stringToNumber("-00200.10d");
++        assertEquals("Do not match",  -200.10d, number.doubleValue(),0.0d);
++        assertEquals("Do not match",  -200.10f, number.floatValue(),0.0f);
++        assertEquals("Do not match",  -200, number.longValue(),0);
++        assertEquals("Do not match",  -200, number.intValue(),0);
++    }
++
++    @Test
++    public void shouldParseNegativeMixedDecimalFractionNumbersWithoutLeadingZero(){
++        Number number = NumberConversionUtil.stringToNumber("-200.10d");
++        assertEquals("Do not match",  -200.10d, number.doubleValue(),0.0d);
++        assertEquals("Do not match",  -200.10f, number.floatValue(),0.0f);
++        assertEquals("Do not match",  -200, number.longValue(),0);
++        assertEquals("Do not match",  -200, number.intValue(),0);
++    }
++
++
++     @Test
++    public void shouldParseNegativeMixedDecimalFractionNumbersWithZerosAfterDecimalPoint(){
++        Number number = NumberConversionUtil.stringToNumber("-200.010d");
++        assertEquals("Do not match",  -200.010d, number.doubleValue(),0.0d);
++        assertEquals("Do not match",  -200.010f, number.floatValue(),0.0f);
++        assertEquals("Do not match",  -200, number.longValue(),0);
++        assertEquals("Do not match",  -200, number.intValue(),0);
++    }
++
++    @Test
++    public void shouldParseNumbersWithExponents(){
++        Number number = NumberConversionUtil.stringToNumber("23.45e7");
++        assertEquals("Do not match",  23.45e7d, number.doubleValue(),0.0d);
++        assertEquals("Do not match",  23.45e7f, number.floatValue(),0.0f);
++        assertEquals("Do not match",  2.345E8, number.longValue(),0);
++        assertEquals("Do not match",  2.345E8, number.intValue(),0);
++    }
++
++
++    @Test
++    public void shouldParseNegativeNumbersWithExponents(){
++        Number number = NumberConversionUtil.stringToNumber("-23.45e7");
++        assertEquals("Do not match",  -23.45e7d, number.doubleValue(),0.0d);
++        assertEquals("Do not match",  -23.45e7f, number.floatValue(),0.0f);
++        assertEquals("Do not match",  -2.345E8, number.longValue(),0);
++        assertEquals("Do not match",  -2.345E8, number.intValue(),0);
++    }
++
++    @Test
++    public void shouldParseBigDecimal(){
++        Number number = NumberConversionUtil.stringToNumber("19007199254740993.35481234487103587486413587843213584");
++        assertTrue(number instanceof BigDecimal);
++    }
++
++    @Test
++    public void shouldParseBigInteger(){
++        Number number = NumberConversionUtil.stringToNumber("1900719925474099335481234487103587486413587843213584");
++        assertTrue(number instanceof BigInteger);
++    }
++
++    @Test
++    public void shouldIdentifyPotentialNumber(){
++        assertTrue("Does not identify as number", NumberConversionUtil.potentialNumber("112.123"));
++        assertTrue("Does not identify as number", NumberConversionUtil.potentialNumber("112e123"));
++        assertTrue("Does not identify as number", NumberConversionUtil.potentialNumber("-112.123"));
++        assertTrue("Does not identify as number", NumberConversionUtil.potentialNumber("-112e23"));
++        assertFalse("Does not identify as not number", NumberConversionUtil.potentialNumber("--112.123"));
++        assertFalse("Does not identify as not number", NumberConversionUtil.potentialNumber("-a112.123"));
++        assertFalse("Does not identify as not number", NumberConversionUtil.potentialNumber("a112.123"));
++        assertFalse("Does not identify as not number", NumberConversionUtil.potentialNumber("e112.123"));
++    }
++
++    @Test(expected = NumberFormatException.class)
++    public void shouldExpectExceptionWhenNumberIsNotFormatted(){
++        NumberConversionUtil.stringToNumber("112.aa123");
++    }
++
++
++}
+\ No newline at end of file
+
+From 5539722c693d4b19ec61fce4d584af5f0e37c86d Mon Sep 17 00:00:00 2001
+From: rudrajyoti biswas <rudrajyoti.biswas@outlook.com>
+Date: Mon, 23 Oct 2023 23:03:35 +0530
+Subject: [PATCH 2/3] #813 - address PR review comment - brought down
+ visibility.
+
+---
+ src/main/java/org/json/NumberConversionUtil.java            | 6 +++---
+ .../java/org/json/{junit => }/NumberConversionUtilTest.java | 3 +--
+ 2 files changed, 4 insertions(+), 5 deletions(-)
+ rename src/test/java/org/json/{junit => }/NumberConversionUtilTest.java (99%)
+
+diff --git a/src/main/java/org/json/NumberConversionUtil.java b/src/main/java/org/json/NumberConversionUtil.java
+index 08da6bdfa..d53c5e277 100644
+--- a/src/main/java/org/json/NumberConversionUtil.java
++++ b/src/main/java/org/json/NumberConversionUtil.java
+@@ -3,7 +3,7 @@
+ import java.math.BigDecimal;
+ import java.math.BigInteger;
+ 
+-public class NumberConversionUtil {
++class NumberConversionUtil {
+ 
+     /**
+      * Converts a string to a number using the narrowest possible type. Possible
+@@ -15,7 +15,7 @@ public class NumberConversionUtil {
+      * @throws NumberFormatException thrown if the value is not a valid number. A public
+      *      caller should catch this and wrap it in a {@link JSONException} if applicable.
+      */
+-    public static Number stringToNumber(final String input) throws NumberFormatException {
++    static Number stringToNumber(final String input) throws NumberFormatException {
+         String val = input;
+         if (val.startsWith(".")){
+             val = "0"+val;
+@@ -88,7 +88,7 @@ public static Number stringToNumber(final String input) throws NumberFormatExcep
+      * @param value
+      * @return
+      */
+-    public static boolean potentialNumber(String value){
++    static boolean potentialNumber(String value){
+         if (value == null || value.isEmpty()){
+             return false;
+         }
+diff --git a/src/test/java/org/json/junit/NumberConversionUtilTest.java b/src/test/java/org/json/NumberConversionUtilTest.java
+similarity index 99%
+rename from src/test/java/org/json/junit/NumberConversionUtilTest.java
+rename to src/test/java/org/json/NumberConversionUtilTest.java
+index bf2586d40..0fedcebb9 100644
+--- a/src/test/java/org/json/junit/NumberConversionUtilTest.java
++++ b/src/test/java/org/json/NumberConversionUtilTest.java
+@@ -1,6 +1,5 @@
+-package org.json.junit;
++package org.json;
+ 
+-import org.json.NumberConversionUtil;
+ import org.junit.Test;
+ 
+ import java.math.BigDecimal;
+
+From 1ceb70b525c9a0e6bd3c36cd8ce219ad42ec7985 Mon Sep 17 00:00:00 2001
+From: rudrajyoti biswas <rudrajyoti.biswas@outlook.com>
+Date: Sat, 28 Oct 2023 07:09:37 +0530
+Subject: [PATCH 3/3] #813 - PR comments - alignments
+
+---
+ src/test/java/org/json/NumberConversionUtilTest.java | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/test/java/org/json/NumberConversionUtilTest.java b/src/test/java/org/json/NumberConversionUtilTest.java
+index 0fedcebb9..c6f07254d 100644
+--- a/src/test/java/org/json/NumberConversionUtilTest.java
++++ b/src/test/java/org/json/NumberConversionUtilTest.java
+@@ -28,7 +28,7 @@ public void shouldParseDecimalFractionNumbersWithSingleLeadingZero(){
+     }
+ 
+ 
+-     @Test
++    @Test
+     public void shouldParseDecimalFractionNumbersWithZerosAfterDecimalPoint(){
+         Number number = NumberConversionUtil.stringToNumber("0.010d");
+         assertEquals("Do not match",  0.010d, number.doubleValue(),0.0d);
+@@ -56,7 +56,7 @@ public void shouldParseMixedDecimalFractionNumbersWithoutLeadingZero(){
+     }
+ 
+ 
+-     @Test
++    @Test
+     public void shouldParseMixedDecimalFractionNumbersWithZerosAfterDecimalPoint(){
+         Number number = NumberConversionUtil.stringToNumber("200.010d");
+         assertEquals("Do not match",  200.010d, number.doubleValue(),0.0d);
+@@ -85,7 +85,7 @@ public void shouldParseNegativeDecimalFractionNumbersWithSingleLeadingZero(){
+     }
+ 
+ 
+-     @Test
++    @Test
+     public void shouldParseNegativeDecimalFractionNumbersWithZerosAfterDecimalPoint(){
+         Number number = NumberConversionUtil.stringToNumber("-0.010d");
+         assertEquals("Do not match",  -0.010d, number.doubleValue(),0.0d);
+@@ -113,7 +113,7 @@ public void shouldParseNegativeMixedDecimalFractionNumbersWithoutLeadingZero(){
+     }
+ 
+ 
+-     @Test
++    @Test
+     public void shouldParseNegativeMixedDecimalFractionNumbersWithZerosAfterDecimalPoint(){
+         Number number = NumberConversionUtil.stringToNumber("-200.010d");
+         assertEquals("Do not match",  -200.010d, number.doubleValue(),0.0d);
