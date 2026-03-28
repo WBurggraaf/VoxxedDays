@@ -1,0 +1,261 @@
+{
+  "id": "jackson-readstring",
+  "repo_id": "jackson-core",
+  "command_id": "reader-string-streaming",
+  "proof_id": "readerbasedjsonparser-readstring",
+  "title": "Jackson-core / readString(Writer) buffered streaming",
+  "repo_path": "C:\\VoxxedDays\\GitRepos\\jackson-core-3.x",
+  "patch_path": "C:\\VoxxedDays\\pr_patches_new\\jackson-1543.patch",
+  "patch_subject": "Subject: [PATCH 03/15] #1288: Optimize readString(Writer) with buffered writes",
+  "focus_terms": [
+    "tools.jackson.core.json.ReaderBasedJsonParser.readString",
+    "tools.jackson.core.json.ReaderBasedJsonParser._streamString",
+    "tools.jackson.core.util.TextBuffer.contentsToWriter"
+  ],
+  "generated_at": "2026-03-28T07:54:22.814499+00:00",
+  "before": {
+    "samples": 0,
+    "focused_samples": 0,
+    "svg": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-readstring\\before\\before.svg",
+    "focused_svg": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-readstring\\before\\before.focused.svg",
+    "folded": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-readstring\\before\\before.folded.txt",
+    "focused_folded": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-readstring\\before\\before.focused.folded.txt",
+    "runs": [
+      {
+        "iteration": 1,
+        "command": [
+          "mvn.cmd",
+          "-B",
+          "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+          "-Djacoco.skip=true",
+          "-Dtest=tools.jackson.core.unittest.read.ReadStringProofProfileTest",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-DfailIfNoTests=false",
+          "-DforkCount=1",
+          "-DreuseForks=false",
+          "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-readstring\\before\\before-run01.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+          "test"
+        ],
+        "recording_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-readstring\\before\\before-run01.jfr",
+        "log_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-readstring\\before\\before-run01.log",
+        "duration_seconds": 18.663639
+      },
+      {
+        "iteration": 2,
+        "command": [
+          "mvn.cmd",
+          "-B",
+          "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+          "-Djacoco.skip=true",
+          "-Dtest=tools.jackson.core.unittest.read.ReadStringProofProfileTest",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-DfailIfNoTests=false",
+          "-DforkCount=1",
+          "-DreuseForks=false",
+          "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-readstring\\before\\before-run02.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+          "test"
+        ],
+        "recording_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-readstring\\before\\before-run02.jfr",
+        "log_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-readstring\\before\\before-run02.log",
+        "duration_seconds": 18.595613
+      },
+      {
+        "iteration": 3,
+        "command": [
+          "mvn.cmd",
+          "-B",
+          "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+          "-Djacoco.skip=true",
+          "-Dtest=tools.jackson.core.unittest.read.ReadStringProofProfileTest",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-DfailIfNoTests=false",
+          "-DforkCount=1",
+          "-DreuseForks=false",
+          "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-readstring\\before\\before-run03.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+          "test"
+        ],
+        "recording_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-readstring\\before\\before-run03.jfr",
+        "log_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-readstring\\before\\before-run03.log",
+        "duration_seconds": 25.904479
+      },
+      {
+        "iteration": 4,
+        "command": [
+          "mvn.cmd",
+          "-B",
+          "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+          "-Djacoco.skip=true",
+          "-Dtest=tools.jackson.core.unittest.read.ReadStringProofProfileTest",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-DfailIfNoTests=false",
+          "-DforkCount=1",
+          "-DreuseForks=false",
+          "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-readstring\\before\\before-run04.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+          "test"
+        ],
+        "recording_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-readstring\\before\\before-run04.jfr",
+        "log_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-readstring\\before\\before-run04.log",
+        "duration_seconds": 27.652011
+      },
+      {
+        "iteration": 5,
+        "command": [
+          "mvn.cmd",
+          "-B",
+          "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+          "-Djacoco.skip=true",
+          "-Dtest=tools.jackson.core.unittest.read.ReadStringProofProfileTest",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-DfailIfNoTests=false",
+          "-DforkCount=1",
+          "-DreuseForks=false",
+          "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-readstring\\before\\before-run05.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+          "test"
+        ],
+        "recording_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-readstring\\before\\before-run05.jfr",
+        "log_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-readstring\\before\\before-run05.log",
+        "duration_seconds": 27.721712
+      }
+    ],
+    "timing": {
+      "durations_ms": [
+        18663.639,
+        18595.613,
+        25904.479,
+        27652.011,
+        27721.712
+      ],
+      "average_ms": 23707.491,
+      "min_ms": 18595.613,
+      "max_ms": 27721.712
+    },
+    "patch": "C:\\VoxxedDays\\flamegraph\\pairs\\jackson-readstring\\patches\\before.patch"
+  },
+  "after": {
+    "samples": 0,
+    "focused_samples": 0,
+    "svg": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-readstring\\after\\after.svg",
+    "focused_svg": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-readstring\\after\\after.focused.svg",
+    "folded": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-readstring\\after\\after.folded.txt",
+    "focused_folded": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-readstring\\after\\after.focused.folded.txt",
+    "runs": [
+      {
+        "iteration": 1,
+        "command": [
+          "mvn.cmd",
+          "-B",
+          "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+          "-Djacoco.skip=true",
+          "-Dtest=tools.jackson.core.unittest.read.ReadStringProofProfileTest",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-DfailIfNoTests=false",
+          "-DforkCount=1",
+          "-DreuseForks=false",
+          "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-readstring\\after\\after-run01.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+          "test"
+        ],
+        "recording_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-readstring\\after\\after-run01.jfr",
+        "log_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-readstring\\after\\after-run01.log",
+        "duration_seconds": 27.499046
+      },
+      {
+        "iteration": 2,
+        "command": [
+          "mvn.cmd",
+          "-B",
+          "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+          "-Djacoco.skip=true",
+          "-Dtest=tools.jackson.core.unittest.read.ReadStringProofProfileTest",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-DfailIfNoTests=false",
+          "-DforkCount=1",
+          "-DreuseForks=false",
+          "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-readstring\\after\\after-run02.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+          "test"
+        ],
+        "recording_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-readstring\\after\\after-run02.jfr",
+        "log_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-readstring\\after\\after-run02.log",
+        "duration_seconds": 27.410671
+      },
+      {
+        "iteration": 3,
+        "command": [
+          "mvn.cmd",
+          "-B",
+          "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+          "-Djacoco.skip=true",
+          "-Dtest=tools.jackson.core.unittest.read.ReadStringProofProfileTest",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-DfailIfNoTests=false",
+          "-DforkCount=1",
+          "-DreuseForks=false",
+          "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-readstring\\after\\after-run03.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+          "test"
+        ],
+        "recording_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-readstring\\after\\after-run03.jfr",
+        "log_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-readstring\\after\\after-run03.log",
+        "duration_seconds": 27.454037
+      },
+      {
+        "iteration": 4,
+        "command": [
+          "mvn.cmd",
+          "-B",
+          "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+          "-Djacoco.skip=true",
+          "-Dtest=tools.jackson.core.unittest.read.ReadStringProofProfileTest",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-DfailIfNoTests=false",
+          "-DforkCount=1",
+          "-DreuseForks=false",
+          "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-readstring\\after\\after-run04.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+          "test"
+        ],
+        "recording_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-readstring\\after\\after-run04.jfr",
+        "log_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-readstring\\after\\after-run04.log",
+        "duration_seconds": 27.57547
+      },
+      {
+        "iteration": 5,
+        "command": [
+          "mvn.cmd",
+          "-B",
+          "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+          "-Djacoco.skip=true",
+          "-Dtest=tools.jackson.core.unittest.read.ReadStringProofProfileTest",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-DfailIfNoTests=false",
+          "-DforkCount=1",
+          "-DreuseForks=false",
+          "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-readstring\\after\\after-run05.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+          "test"
+        ],
+        "recording_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-readstring\\after\\after-run05.jfr",
+        "log_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-readstring\\after\\after-run05.log",
+        "duration_seconds": 27.718907
+      }
+    ],
+    "timing": {
+      "durations_ms": [
+        27499.046,
+        27410.671,
+        27454.037,
+        27575.47,
+        27718.907
+      ],
+      "average_ms": 27531.626,
+      "min_ms": 27410.671,
+      "max_ms": 27718.907
+    },
+    "patch": "C:\\VoxxedDays\\flamegraph\\pairs\\jackson-readstring\\patches\\after.patch"
+  },
+  "delta": {
+    "average_ms_before": 23707.491,
+    "average_ms_after": 27531.626,
+    "average_ms_saved": -3824.135,
+    "average_ms_saved_pct": -16.13,
+    "focused_samples_before": 0,
+    "focused_samples_after": 0,
+    "focused_sample_delta": 0
+  }
+}

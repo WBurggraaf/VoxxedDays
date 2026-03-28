@@ -1,0 +1,54 @@
+Manifest-Version: 1.0
+Bundle-Description: The Apache Log4j 1.x Compatibility API
+Bundle-License: "Apache-2.0";link="https://www.apache.org/licenses/LIC
+ ENSE-2.0.txt"
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache Log4j 1.x Compatibility API
+Bundle-SymbolicName: org.apache.logging.log4j.1.2.api
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 2.26.0.SNAPSHOT
+Export-Package: org.apache.log4j;version="2.25.3";uses:="org.apache.lo
+ g4j.helpers,org.apache.log4j.or,org.apache.log4j.spi,org.apache.loggi
+ ng.log4j.message,org.apache.logging.log4j.spi",org.apache.log4j.build
+ ers;version="2.20.1";uses:="org.apache.log4j,org.apache.log4j.config,
+ org.apache.log4j.rewrite,org.apache.log4j.spi,org.apache.log4j.xml,or
+ g.w3c.dom",org.apache.log4j.config;version="2.20.1";uses:="org.apache
+ .log4j,org.apache.log4j.builders,org.apache.log4j.spi,org.apache.logg
+ ing.log4j.spi",org.apache.log4j.helpers;version="2.25.3";uses:="org.a
+ pache.log4j,org.apache.log4j.spi",org.apache.log4j.jmx;version="2.20.
+ 1";uses:="javax.management,org.apache.log4j,org.apache.log4j.spi",org
+ .apache.log4j.or;version="2.20.1";uses:="org.apache.log4j.spi",org.ap
+ ache.log4j.or.jms;version="2.20.1";uses:="org.apache.log4j.or",org.ap
+ ache.log4j.pattern;version="2.20.1",org.apache.log4j.rewrite;version=
+ "2.20.1";uses:="org.apache.log4j.spi",org.apache.log4j.spi;version="2
+ .20.1";uses:="org.apache.log4j,org.apache.log4j.or",org.apache.log4j.
+ varia;version="2.20.1";uses:="org.apache.log4j,org.apache.log4j.spi",
+ org.apache.log4j.xml;version="2.25.3";uses:="javax.xml.parsers,org.ap
+ ache.log4j,org.apache.log4j.config,org.apache.log4j.rewrite,org.apach
+ e.log4j.spi,org.w3c.dom,org.xml.sax"
+Fragment-Host: org.apache.logging.log4j.core
+Implementation-Title: Apache Log4j 1.x Compatibility API
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Version: 2.26.0-SNAPSHOT
+Import-Package: javax.jms;version="[1.1,3)";resolution:=optional,java.
+ beans,java.io,java.lang,java.lang.annotation,java.lang.invoke,java.la
+ ng.reflect,java.net,java.nio.charset,java.nio.file,java.nio.file.attr
+ ibute,java.text,java.util,java.util.concurrent,java.util.concurrent.a
+ tomic,java.util.function,java.util.stream,javax.management,javax.xml.
+ parsers,javax.xml.transform,javax.xml.transform.stream,org.apache.log
+ 4j.helpers;version="[2.25,3)",org.apache.log4j.or;version="[2.20,3)",
+ org.apache.logging.log4j.message;version="[2.24,3)",org.apache.loggin
+ g.log4j.spi;version="[2.25,3)",org.apache.logging.log4j.status;versio
+ n="[2.25,3)",org.apache.logging.log4j.util;version="[2.25,3)",org.w3c
+ .dom,org.xml.sax,com.sun.jdmk.comm;resolution:=optional
+Multi-Release: false
+Private-Package: org.apache.log4j.bridge,org.apache.log4j.builders.app
+ ender,org.apache.log4j.builders.filter,org.apache.log4j.builders.layo
+ ut,org.apache.log4j.builders.rewrite,org.apache.log4j.builders.rollin
+ g,org.apache.log4j.component.helpers,org.apache.log4j.internal.annota
+ tion,org.apache.log4j.layout,org.apache.log4j.legacy.core
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Specification-Title: Apache Log4j 1.x Compatibility API
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 2.26
+

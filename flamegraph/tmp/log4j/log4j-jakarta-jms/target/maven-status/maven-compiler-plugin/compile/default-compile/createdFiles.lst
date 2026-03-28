@@ -1,0 +1,9 @@
+org\apache\logging\log4j\core\appender\mom\jakarta\JmsAppender.class
+org\apache\logging\log4j\core\appender\mom\jakarta\JmsAppender$1.class
+org\apache\logging\log4j\core\appender\mom\jakarta\package-info.class
+org\apache\logging\log4j\core\appender\mom\jakarta\JmsManager.class
+org\apache\logging\log4j\core\appender\mom\jakarta\JmsAppender$Builder.class
+org\apache\logging\log4j\core\appender\mom\jakarta\JmsManager$Reconnector.class
+org\apache\logging\log4j\core\appender\mom\jakarta\JmsManager$JmsManagerConfiguration.class
+org\apache\logging\log4j\core\appender\mom\jakarta\JmsManager$JmsManagerFactory.class
+org\apache\logging\log4j\core\appender\mom\jakarta\JmsManager$1.class

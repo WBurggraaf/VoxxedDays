@@ -1,0 +1,15 @@
+org\apache\logging\log4j\mongodb\MongoDbResolver.class
+org\apache\logging\log4j\mongodb\MongoDbMapMessageIT.class
+org\apache\logging\log4j\mongodb\MongoDbCollectionNameIT.class
+org\apache\logging\log4j\mongodb\MongoDbDatabaseAndCollectionNameIT.class
+org\apache\logging\log4j\mongodb\MongoDbCappedLongIT.class
+org\apache\logging\log4j\mongodb\MongoDbIT.class
+org\apache\logging\log4j\mongodb\MongoDbCappedIntIT.class
+org\apache\logging\log4j\mongodb\MongoDbResolver$MongoClientHolder.class
+org\apache\logging\log4j\mongodb\UsingMongoDb.class
+org\apache\logging\log4j\mongodb\MongoDbResolverIT.class
+org\apache\logging\log4j\mongodb\AbstractMongoDbCappedIT.class
+org\apache\logging\log4j\mongodb\MongoDbTestConstants.class
+org\apache\logging\log4j\mongodb\MongoDbAdditionalFieldsIT.class
+org\apache\logging\log4j\mongodb\MongoDbAuthFailureIT.class
+org\apache\logging\log4j\mongodb\MongoDbNoDatabaseAndCollectionNameIT.class

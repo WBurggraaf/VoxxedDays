@@ -1,0 +1,1 @@
+[{"name":"org.apache.logging.log4j.layout.template.json.JsonTemplateLayoutTest$CustomResolverFactory","methods":[{"name":"getInstance","parameterTypes":[]}],"fields":[]},{"name":"org.apache.logging.log4j.layout.template.json.util.RecyclerFactoryCustomConverter","methods":[{"name":"<init>","parameterTypes":[]}],"fields":[]}]

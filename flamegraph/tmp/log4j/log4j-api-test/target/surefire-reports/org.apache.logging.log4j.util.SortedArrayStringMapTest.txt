@@ -1,0 +1,50 @@
+-------------------------------------------------------------------------------
+Test set: org.apache.logging.log4j.util.SortedArrayStringMapTest
+-------------------------------------------------------------------------------
+Tests run: 57, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.635 s <<< FAILURE! -- in org.apache.logging.log4j.util.SortedArrayStringMapTest
+org.apache.logging.log4j.util.SortedArrayStringMapTest.testSerialization -- Time elapsed: 0.106 s <<< ERROR!
+java.lang.IllegalStateException: Could not deserialize
+	at org.apache.logging.log4j.test.junit.SerialUtil.deserialize(SerialUtil.java:78)
+	at org.apache.logging.log4j.util.SortedArrayStringMapTest.testSerialization(SortedArrayStringMapTest.java:93)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.reflect.Method.invoke(Object, Object[])" because "org.apache.logging.log4j.util.internal.SerializationUtil.newObjectInputFilter" is null
+	at org.apache.logging.log4j.util.internal.SerializationUtil.readWrappedObject(SerializationUtil.java:118)
+	at org.apache.logging.log4j.util.SortedArrayStringMap.readObject(SortedArrayStringMap.java:527)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.io.ObjectStreamClass.invokeReadObject(ObjectStreamClass.java:1100)
+	at java.base/java.io.ObjectInputStream.readSerialData(ObjectInputStream.java:2423)
+	at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2257)
+	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1733)
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:509)
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:467)
+	at org.apache.logging.log4j.test.junit.SerialUtil.deserialize(SerialUtil.java:76)
+	... 4 more
+
+org.apache.logging.log4j.util.SortedArrayStringMapTest.testSerializationOfNonSerializableValue -- Time elapsed: 0.005 s <<< ERROR!
+java.lang.IllegalStateException: Could not deserialize
+	at org.apache.logging.log4j.test.junit.SerialUtil.deserialize(SerialUtil.java:78)
+	at org.apache.logging.log4j.util.SortedArrayStringMapTest.testSerializationOfNonSerializableValue(SortedArrayStringMapTest.java:113)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.reflect.Method.invoke(Object, Object[])" because "org.apache.logging.log4j.util.internal.SerializationUtil.newObjectInputFilter" is null
+	at org.apache.logging.log4j.util.internal.SerializationUtil.readWrappedObject(SerializationUtil.java:118)
+	at org.apache.logging.log4j.util.SortedArrayStringMap.readObject(SortedArrayStringMap.java:527)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.io.ObjectStreamClass.invokeReadObject(ObjectStreamClass.java:1100)
+	at java.base/java.io.ObjectInputStream.readSerialData(ObjectInputStream.java:2423)
+	at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2257)
+	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1733)
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:509)
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:467)
+	at org.apache.logging.log4j.test.junit.SerialUtil.deserialize(SerialUtil.java:76)
+	... 4 more
+

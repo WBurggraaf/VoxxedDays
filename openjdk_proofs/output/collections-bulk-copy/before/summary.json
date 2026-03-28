@@ -1,0 +1,12 @@
+﻿{
+    "label":  "before",
+    "case":  "collections-bulk-copy",
+    "java_home":  "C:\\Program Files\\Microsoft\\jdk-17.0.14.7-hotspot",
+    "elapsed_ns":  5868400,
+    "ops":  20000,
+    "ns_per_op":  293.42,
+    "threads":  1,
+    "sink":  4560000,
+    "stdout":  "C:\\VoxxedDays\\openjdk_proofs\\output\\collections-bulk-copy\\before\\stdout.txt",
+    "jfr":  "C:\\VoxxedDays\\openjdk_proofs\\output\\collections-bulk-copy\\before\\profile.jfr"
+}

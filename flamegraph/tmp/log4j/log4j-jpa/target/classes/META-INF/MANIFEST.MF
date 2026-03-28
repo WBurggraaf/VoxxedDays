@@ -1,0 +1,33 @@
+Manifest-Version: 1.0
+Bundle-Description: Apache Log4j Java Persistence API Appender.
+Bundle-License: "Apache-2.0";link="https://www.apache.org/licenses/LIC
+ ENSE-2.0.txt"
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache Log4j JPA
+Bundle-SymbolicName: org.apache.logging.log4j.jpa
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 2.26.0.SNAPSHOT
+Export-Package: org.apache.logging.log4j.core.appender.db.jpa;version=
+ "2.20.1";uses:="javax.persistence,org.apache.logging.log4j.core.appen
+ der.db.jpa.converter,org.apache.logging.log4j.message,org.apache.logg
+ ing.log4j.util",org.apache.logging.log4j.core.appender.db.jpa.convert
+ er;version="2.20.1";uses:="javax.persistence,org.apache.logging.log4j
+ .message,org.apache.logging.log4j.util"
+Fragment-Host: org.apache.logging.log4j.core
+Implementation-Title: Apache Log4j JPA
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Version: 2.26.0-SNAPSHOT
+Import-Package: com.fasterxml.jackson.core.type;version="[2.19,3)",com
+ .fasterxml.jackson.databind;version="[2.19,3)",com.fasterxml.jackson.
+ databind.node;version="[2.19,3)",java.io,java.lang,java.lang.invoke,j
+ ava.lang.reflect,java.util,javax.persistence;version="[2.2,3)",org.ap
+ ache.logging.log4j.core.appender.db.jpa.converter;version="[2.20,3)",
+ org.apache.logging.log4j.message;version="[2.24,3)",org.apache.loggin
+ g.log4j.spi;version="[2.25,3)",org.apache.logging.log4j.status;versio
+ n="[2.25,3)",org.apache.logging.log4j.util;version="[2.25,3)"
+Multi-Release: false
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Specification-Title: Apache Log4j JPA
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 2.26
+

@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Balanced GitHub Examples For Voxxed Days</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/diff2html/bundles/css/diff2html.min.css">
+  <style>
+    :root {
+      --bg: #f5f1e8;
+      --surface: rgba(255, 252, 247, 0.92);
+      --surface-strong: #fffdf9;
+      --ink: #20312b;
+      --muted: #5f6d67;
+      --line: #ecdfcd;
+      --shadow: 0 18px 42px rgba(32, 42, 37, 0.10);
+      --shadow-soft: 0 10px 26px rgba(32, 42, 37, 0.08);
+      --brand: #c26a07;
+      --brand-deep: #163d34;
+      --brand-teal: #1f766b;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Manrope', sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(245,158,11,.16), transparent 24%),
+        radial-gradient(circle at top right, rgba(13,148,136,.16), transparent 30%),
+        linear-gradient(180deg, #f8f3ea 0%, var(--bg) 100%);
+      color: var(--ink);
+    }
+    .container { width: min(1380px, 94vw); }
+    header { padding: 28px 0 16px; }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border-radius: 30px;
+      padding: 34px 34px 30px;
+      background: linear-gradient(135deg, #163d34 0%, #1f5a4f 48%, #c26a07 140%);
+      color: #fff;
+      box-shadow: 0 20px 50px rgba(22,61,52,.20);
+      border: 1px solid rgba(255,255,255,.12);
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: auto -80px -100px auto;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,.18), transparent 65%);
+      pointer-events: none;
+    }
+    .hero h3 {
+      margin-top: 0;
+      margin-bottom: 14px;
+      font-size: clamp(2rem, 3vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -.03em;
+    }
+    .hero p { color: rgba(255,255,255,.92); font-size: 1.05rem; max-width: 1000px; }
+    .chip-panel { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+    .chip-panel .chip {
+      background: rgba(255,255,255,.12);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.14);
+      backdrop-filter: blur(8px);
+      font-weight: 700;
+      margin: 0;
+    }
+    .section-card, .repo-card {
+      border-radius: 24px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(194,106,7,.08);
+    }
+    .section-card {
+      background: var(--surface);
+      backdrop-filter: blur(12px);
+    }
+    .repo-card {
+      padding: 22px;
+      background: linear-gradient(180deg, #fffaf2 0%, #fff 100%);
+      min-height: 190px;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .repo-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 34px rgba(32,42,37,.12);
+    }
+    .repo-card a { font-weight: 700; }
+    .repo-title { font-size: 1.35rem; font-weight: 800; margin-bottom: 8px; letter-spacing: -.02em; }
+    .repo-band {
+      margin: 36px 0 16px;
+      padding: 16px 20px;
+      border-left: 6px solid var(--brand);
+      background: linear-gradient(90deg, #fff8ef 0%, rgba(255,248,239,.85) 100%);
+      border-radius: 18px;
+      box-shadow: inset 0 0 0 1px rgba(194,106,7,.08);
+    }
+    .repo-band small { color: var(--muted); }
+    .collapsible {
+      border: none;
+      box-shadow: var(--shadow);
+      border-radius: 26px;
+      overflow: hidden;
+      background: transparent;
+    }
+    .collapsible li { border-bottom: 1px solid var(--line); }
+    .collapsible li:last-child { border-bottom: none; }
+    .collapsible-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 22px 26px;
+      background: rgba(255,253,250,.96);
+      transition: background .18s ease, transform .18s ease;
+    }
+    .collapsible-header:hover { background: #ffffff; }
+    .collapsible-header > i.material-icons {
+      flex: 0 0 auto;
+      margin-top: 2px;
+      color: var(--brand-teal);
+      background: rgba(31,118,107,.08);
+      border-radius: 14px;
+      padding: 10px;
+      font-size: 1.65rem;
+    }
+    .active .collapsible-header {
+      background: linear-gradient(180deg, #fffefd 0%, #fff8f1 100%);
+    }
+    .example-copy { flex: 1 1 calc(100% - 56px); min-width: 0; }
+    .collapsible-body {
+      border-top: 1px solid var(--line);
+      background: linear-gradient(180deg, #fff9f2 0%, #fffdf9 100%);
+      padding: 26px;
+    }
+    .example-title {
+      font-size: 1.14rem;
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1.35;
+      letter-spacing: -.02em;
+    }
+    .example-subtitle { margin-top: 6px; color: var(--muted); line-height: 1.45; font-size: 1rem; }
+    .tag-wrap {
+      margin-left: 52px;
+      flex: 0 0 calc(100% - 52px);
+      max-width: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-start;
+      align-self: flex-start;
+      padding-top: 4px;
+    }
+    .pill {
+      border-radius: 999px;
+      padding: 7px 12px;
+      font-size: .79rem;
+      font-weight: 800;
+      letter-spacing: .01em;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,.03);
+    }
+    .pill-cpu { background: #d1fae5; color: #065f46; }
+    .pill-wait { background: #dbeafe; color: #1d4ed8; }
+    .pill-bottle { background: #ffedd5; color: #c2410c; }
+    .pill-strong { background: #dcfce7; color: #166534; }
+    .pill-good { background: #fef3c7; color: #92400e; }
+    .pill-context { background: #e5e7eb; color: #374151; }
+    .pill-estimate { background: #ede9fe; color: #6d28d9; }
+    .mini-card {
+      background: linear-gradient(180deg, #ffffff 0%, #fffcf7 100%);
+      border-radius: 20px;
+      padding: 18px 18px 16px;
+      margin-bottom: 16px;
+      box-shadow: inset 0 0 0 1px rgba(194,106,7,.08), 0 6px 16px rgba(32,42,37,.04);
+    }
+    .mini-card h6 {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .98rem;
+      font-weight: 800;
+      margin-top: 0;
+      margin-bottom: 10px;
+      color: var(--brand-deep);
+      letter-spacing: -.01em;
+    }
+    .mini-card h6::before {
+      content: '';
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--brand), #e99a2d);
+      box-shadow: 0 0 0 4px rgba(194,106,7,.10);
+    }
+    .mini-card p, .mini-card li { color: #2d3b36; }
+    .meta-list { margin: 0; padding-left: 18px; }
+    .meta-list li { margin-bottom: 6px; }
+    .link-list a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin: 0 10px 10px 0;
+      font-weight: 700;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #fff3df;
+      color: #9a5206;
+      box-shadow: inset 0 0 0 1px rgba(194,106,7,.12);
+    }
+    .link-list a:hover { background: #ffe9c5; }
+    .diff-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+    .diff-label { font-size: .82rem; font-weight: 800; letter-spacing: .03em; text-transform: uppercase; color: #6b7280; margin-bottom: 8px; }
+    .diff-note { margin-bottom: 12px; }
+    .diff-render { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: inset 0 0 0 1px rgba(22,61,52,.08); }
+    .d2h-wrapper { margin: 0; }
+    .d2h-file-header { display: none; }
+    .d2h-file-side-diff { overflow-x: auto; }
+    .d2h-code-line, .d2h-code-side-line { font-size: .95rem; }
+    @media (max-width: 900px) { .diff-grid { grid-template-columns: 1fr; } }
+
+    pre[class*="language-"] {
+      border-radius: 18px;
+      font-size: 1.12rem;
+      line-height: 1.65;
+      padding: 22px 24px;
+      box-shadow: inset 0 0 0 1px rgba(22,61,52,.06);
+      overflow-x: auto;
+    }
+    code[class*="language-"] {
+      white-space: pre-wrap;
+      font-size: 1.12rem;
+      line-height: 1.65;
+    }
+    .section-heading {
+      margin: 30px 0 16px;
+      font-size: 1.65rem;
+      font-weight: 800;
+      letter-spacing: -.03em;
+    }
+    footer {
+      margin: 40px 0 30px;
+      color: var(--muted);
+      background: rgba(255,255,255,.62);
+      padding: 16px 18px;
+      border-radius: 18px;
+      box-shadow: inset 0 0 0 1px rgba(194,106,7,.08);
+    }
+    a { color: #0b7fab; }
+    a:hover { color: #0a6287; }
+    @media (max-width: 900px) {
+      .container { width: min(96vw, 100%); }
+      .hero { padding: 28px 22px 24px; }
+      .tag-wrap { margin-left: 0; flex-basis: 100%; }
+      .collapsible-header, .collapsible-body { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="hero">
+        <h3>Strict PR-Backed GitHub Examples For The Talk</h3>
+        <p>This report now keeps only <strong>examples with a real upstream PR diff trail</strong>. Examples without a usable PR-backed before/after source have been removed rather than stretched.</p>
+        <div class="chip-panel">
+          <div class="chip">8 strict examples</div>
+          <div class="chip">Repo split: 4 / 1 / 2 / 1</div>
+          <div class="chip">Strict PR-backed only</div>
+          <div class="chip">CPU usage, waiting, bottlenecks</div>
+          <div class="chip">Only linked upstream fixes kept</div>
+        </div>
+      </div>
+    </header>
+
+    <div class="card section-card"><div class="card-content"><span class="card-title">How To Read This Report</span><p>Every example is grouped under its GitHub repository so a first-time reader can immediately see what project it comes from. The prediction sections explain what the code shape already hinted at before the upstream discussion: repeated work, avoidable waiting, or concentrated hotspot behavior. Inline code comments also include an aggregate view over <strong>100,000 calls or iterations</strong> where that makes the leak easier to understand.</p><ul class="meta-list"><li><strong>Strong provenance</strong>: file, upstream discussion, and fix trail line up clearly.</li><li><strong>Good provenance</strong>: useful fix trail, but not every part is one neat PR-to-file story.</li><li><strong>Context-backed</strong>: strong code and usage context, but weaker direct fix mapping.</li></ul></div></div><div class="card section-card"><div class="card-content"><span class="card-title">Recommended 5 For A 15-Minute Talk</span><p>If you want the clearest flow with minimum context switching, open with one example from each theme and then deepen selectively.</p><ol class="browser-default"><li><strong>JSON-java / JSONObject: faster toString() path</strong></li><li><strong>Commons IO / Tailer: dedicated thread plus polling loop</strong></li><li><strong>JSON-java / XML: nesting-depth limit</strong></li></ol></div></div>
+
+    <h4 class="section-heading">Repository Groups</h4>
+    <div class="row"><div class="col s12 m6 l3"><div class="repo-card"><div class="repo-title">stleary/JSON-java</div><p>4 strict PR-backed examples. Still the strongest source for simple, explainable before/after diffs.</p><a href="https://github.com/stleary/JSON-java" target="_blank" rel="noopener">Open repository</a></div></div><div class="col s12 m6 l3"><div class="repo-card"><div class="repo-title">apache/commons-io</div><p>1 strict PR-backed example kept: Tailer PR #2.</p><a href="https://github.com/apache/commons-io" target="_blank" rel="noopener">Open repository</a></div></div><div class="col s12 m6 l3"><div class="repo-card"><div class="repo-title">FasterXML/jackson-core</div><p>2 strict PR-backed examples added from parser and buffer-management paths.</p><a href="https://github.com/FasterXML/jackson-core" target="_blank" rel="noopener">Open repository</a></div></div><div class="col s12 m6 l3"><div class="repo-card"><div class="repo-title">apache/logging-log4j2</div><p>1 strict PR-backed logging example added from thread-context copy overhead.</p><a href="https://github.com/apache/logging-log4j2" target="_blank" rel="noopener">Open repository</a></div></div></div>
+
+    <div class="repo-band"><div><strong>Repository Group 1: stleary/JSON-java</strong></div><small>4 strict PR-backed examples. Repository: <a href="https://github.com/stleary/JSON-java" target="_blank" rel="noopener">github.com/stleary/JSON-java</a></small></div>
+    <ul class="collapsible expandable"><li><div class="collapsible-header"><i class="material-icons">speed</i><div class="example-copy"><div class="example-title">JSON-java / JSONObject: faster toString() path</div><div class="example-subtitle">The only serialization example in the set. Clear hotspot story: repeated append and formatting work in a visible path.</div></div><div class="tag-wrap"><span class="pill pill-cpu">CPU</span><span class="pill pill-bottle">Bottleneck</span><span class="pill pill-strong">Strong provenance</span><span class="pill pill-estimate">8% to 20%</span></div></div><div class="collapsible-body"><div class="mini-card"><h6>Source Repository and File</h6><p><strong>Repository:</strong> <a href="https://github.com/stleary/JSON-java" target="_blank" rel="noopener">stleary/JSON-java</a><br><strong>File:</strong> <a href="https://github.com/stleary/JSON-java/blob/master/src/main/java/org/json/JSONObject.java#L2851-L2891" target="_blank" rel="noopener">src/main/java/org/json/JSONObject.java</a><br><strong>Estimated before -> after improvement:</strong> 8% to 20%</p></div><div class="mini-card link-list"><h6>Upstream Trail</h6><a href="https://github.com/stleary/JSON-java/pull/867" target="_blank" rel="noopener">Upstream PR</a><a href="https://github.com/stleary/JSON-java/pull/867/files" target="_blank" rel="noopener">PR Files</a><a href="https://github.com/stleary/JSON-java/compare/20240303...20241224" target="_blank" rel="noopener">Release Compare Window</a></div><div class="mini-card"><h6>PR Commit Before / After</h6><p class="diff-note">Actual before and after lines from the upstream PR commit series. This example has a direct code diff in the PR files.</p><div class="diff-grid"><div class="diff-render"><script type="text/plain" class="diff-source">--- before.java
++++ after.java
+@@ -1,5 +1,8 @@
+ @SuppressWarnings(&quot;resource&quot;)
+ public String toString(int indentFactor) throws JSONException {
+-    Writer w = new StringBuilderWriter();
++    // 6 characters are the minimum to serialise a key value pair e.g.: &quot;k&quot;:1,
++    // and we don&#x27;t want to oversize the initial capacity
++    int initialSize = map.size() * 6;
++    Writer w = new StringBuilderWriter(Math.max(initialSize, 16));
+     return this.write(w, indentFactor, 0).toString();
+ }
+</script><div class="diff-target"></div></div></div></div><div class="mini-card"><h6>PR / Discussion Summary</h6><p>The upstream PR is about making JSON serialization cheaper without changing output semantics. The discussion is not about business rules or feature behavior. It is about helper-code cost in a method that can sit on every request path in services that log, cache, or return JSON. The maintainers focus on reducing unnecessary formatting work, extra append pressure, and avoidable allocation. That makes the PR a strong example for your talk because it shows an upstream team explicitly treating library helper code as a place where repeated micro-costs matter. The before-and-after story is simple: same JSON contract, less work spent producing it.</p></div><div class="mini-card"><h6>Explainer</h6><p>Before the fix, the code already looked like a concentrated instruction hotspot: create a writer, walk entries, emit punctuation, recurse into values, and materialize a final string. In a theoretical instruction-budget model, that means repeated branches, virtual dispatch, buffer growth, and character writes. A likely tracer outcome would be <code>span=json.serialize object=JSONObject p95=4.8ms cpu=81% alloc=high top=write,toString</code>. A flamegraph would likely widen around append-heavy write paths instead of service logic. That is enough to predict the issue before reading the PR discussion. The PR simply confirms what the code shape already implied: this helper is doing too much repeated formatting work for a path that can be called constantly. The before-to-after estimate of `8% to 20%` is therefore plausible in stringify-heavy flows because the optimization trims instruction-dense helper work without changing semantics. The key talk point is that the energy and CPU story was predictable from the helper structure itself, not only from a benchmark graph.</p></div><div class="mini-card"><h6>Prediction Signal</h6><p><strong>Before signal:</strong> repeated writer calls, indentation logic, and final string materialization. <strong>After direction:</strong> fewer formatting steps and less temporary text handling. <strong>Predicted trace outcome:</strong> <code>span=json.serialize object=JSONObject p95=4.8ms cpu=81% alloc=high top=write,toString</code>.</p></div><div class="mini-card"><h6>Code Clues With Inline uOps and mWh</h6><p><strong>Project term:</strong> <code>recencyQueue</code> records recent cache touches, while <code>accessQueue</code> helps Guava maintain eviction order.</p><p><strong>Project term:</strong> <code>Tailer</code> means a helper that follows a file like <code>tail -f</code>, waking up to read newly appended lines.</p><p><strong>Project term:</strong> <code>StringBuilderWriter</code> is Commons IO's writer backed by a growable string buffer, used here to assemble JSON output.</p><pre><code class="language-java">@Override
+public String toString() {
+<span class="diff-del">    try {</span>
+        return this.toString(0);
+    } catch (Exception e) {
+        return null;
+    }
+}
+
+@SuppressWarnings("resource")
+public String toString(int indentFactor) throws JSONException {
+    // 6 characters are the minimum to serialise a key value pair e.g.: "k":1,
+    // and we don't want to oversize the initial capacity
+    int initialSize = map.size() * 6;
+<span class="line-focus">    Writer w = new StringBuilderWriter(Math.max(initialSize, 16));</span>
+    // Buffer grows for JSON output assembly here. | ~30 uOps | ~0.00001 mWh
+<span class="line-focus">    return this.write(w, indentFactor, 0).toString();</span>
+    // Main issue line: full formatted serialization work happens here. | ~250 uOps | ~0.00008 mWh
+}</code></pre></div></div></li><li><div class="collapsible-header"><i class="material-icons">search</i><div class="example-copy"><div class="example-title">JSON-java / JSONObject: improved annotation search performance</div><div class="example-subtitle">Reflection work in a mapper path. Strong example of small helper logic becoming a hotspot.</div></div><div class="tag-wrap"><span class="pill pill-cpu">CPU</span><span class="pill pill-bottle">Bottleneck</span><span class="pill pill-strong">Strong provenance</span><span class="pill pill-estimate">12% to 30%</span></div></div><div class="collapsible-body"><div class="mini-card"><h6>Source Repository and File</h6><p><strong>Repository:</strong> <a href="https://github.com/stleary/JSON-java" target="_blank" rel="noopener">stleary/JSON-java</a><br><strong>File:</strong> <a href="https://github.com/stleary/JSON-java/blob/master/src/main/java/org/json/JSONObject.java#L2058-L2153" target="_blank" rel="noopener">src/main/java/org/json/JSONObject.java</a><br><strong>Estimated before -> after improvement:</strong> 12% to 30%</p></div><div class="mini-card link-list"><h6>Upstream Trail</h6><a href="https://github.com/stleary/JSON-java/pull/845" target="_blank" rel="noopener">Upstream PR</a><a href="https://github.com/stleary/JSON-java/pull/845/files" target="_blank" rel="noopener">PR Files</a><a href="https://github.com/stleary/JSON-java/compare/20231013...20240205" target="_blank" rel="noopener">Release Compare Window</a></div><div class="mini-card"><h6>PR Commit Before / After</h6><p class="diff-note">Actual before and after lines from the upstream PR commit. The change adds an earlier exit before climbing farther up the type hierarchy.</p><div class="diff-grid"><div class="diff-render"><script type="text/plain" class="diff-source">--- before.java
++++ after.java
+@@ -7,6 +7,10 @@
+     }
+ }
+ 
++// If the superclass is Object, no annotations will be found any more
++if (c.getSuperclass().equals(Object.class))
++    return null;
++
+ try {
+     return getAnnotation(
+             c.getSuperclass().getMethod(m.getName(), m.getParameterTypes()),
+</script><div class="diff-target"></div></div></div></div><div class="mini-card"><h6>PR / Discussion Summary</h6><p>The PR focuses on annotation-search performance in reflective bean mapping. The maintainers are not changing mapping semantics; they are reducing the amount of metadata traversal needed to reach the same answer. That makes the discussion especially useful because it shows a mature library improving helper behavior that many teams rely on indirectly. The issue is not one expensive call, but repeated lookup across methods, interfaces, and hierarchy depth. The change direction is to reduce repeated traversal and make exits earlier once the relevant metadata is found.</p></div><div class="mini-card"><h6>Explainer</h6><p>This hotspot was predictable before the PR because the code already tells a clear story: repeated reflective checks, repeated annotation probes, and hierarchy walking in a path that may run for every mapped getter. In a simple instruction-budget model, each probe is small, but the repeated path becomes significant under heavy DTO mapping. A likely trace would show <code>span=json.bean.map bean=OrderDto p95=6.1ms cpu=88% top=isAnnotationPresent,getAnnotationDepth,getInterfaces</code>. A flamegraph would likely broaden in reflection helpers rather than field access or JSON emission. That is a classic sign that helper metadata logic has become a bottleneck. The before-to-after estimate of `12% to 30%` is plausible in reflection-heavy mapping flows because reducing repeated metadata traversal can cut a large amount of invisible CPU work without changing output behavior. For the talk, the point is that abstraction is not free: the helper structure itself already predicted the cost long before the PR formalized it.</p></div><div class="mini-card"><h6>Prediction Signal</h6><p><strong>Before signal:</strong> nested reflection checks and repeated annotation lookup across interfaces and parent types. <strong>After direction:</strong> earlier exits and less repeated traversal depth. <strong>Predicted trace outcome:</strong> <code>span=json.bean.map bean=OrderDto p95=6.1ms cpu=88% top=isAnnotationPresent,getAnnotationDepth</code>.</p></div><div class="mini-card"><h6>Code Clues With Inline uOps and mWh</h6><pre><code class="language-java">private static <A extends Annotation> A getAnnotation(final Method m, final Class<A> annotationClass) {
+    // If we have invalid data the result is null
+    if (m == null || annotationClass == null) {
+        return null;
+    }
+
+    if (m.isAnnotationPresent(annotationClass)) {
+        return m.getAnnotation(annotationClass);
+        // Fast path: annotation already exists on this method. | ~60 uOps | ~0.00002 mWh
+    }
+
+    // If we've already reached the Object class, return null;
+    Class<?> c = m.getDeclaringClass();
+    if (c.getSuperclass() == null) {
+        return null;
+    }
+
+    for (Class<?> i : c.getInterfaces()) {
+    // Issue starts here: each interface extends the reflective search. | ~25 uOps / iter | ~0.00001 mWh / iter | 100k iters ~= 2.5M uOps
+        try {
+            Method im = i.getMethod(m.getName(), m.getParameterTypes());
+            return getAnnotation(im, annotationClass);              // Recursive lookup repeats work across hierarchy levels and grows the cost of one metadata lookup.
+        } catch (final SecurityException ex) {
+        } catch (final NoSuchMethodException ex) {
+        }
+    }
+
+    if (Object.class.equals(c.getSuperclass()))
+        return null;
+
+    try {
+        return getAnnotation(c.getSuperclass().getMethod(m.getName(), m.getParameterTypes()), annotationClass);
+    } catch (final SecurityException ex) {
+        return null;
+    } catch (final NoSuchMethodException ex) {
+        return null;
+    }
+}</code></pre></div></div></li><li><div class="collapsible-header"><i class="material-icons">layers_clear</i><div class="example-copy"><div class="example-title">JSON-java / XML: nesting-depth limit</div><div class="example-subtitle">Very deep XML can tie up a worker, raise CPU, and delay other requests.</div></div><div class="tag-wrap"><span class="pill pill-cpu">CPU</span><span class="pill pill-wait">Waiting</span><span class="pill pill-bottle">Bottleneck</span><span class="pill pill-strong">Strong provenance</span><span class="pill pill-estimate">20% to 60%</span></div></div><div class="collapsible-body"><div class="mini-card"><h6>Source Repository and File</h6><p><strong>Repository:</strong> <a href="https://github.com/stleary/JSON-java" target="_blank" rel="noopener">stleary/JSON-java</a><br><strong>File:</strong> <a href="https://github.com/stleary/JSON-java/blob/master/src/main/java/org/json/XML.java#L452" target="_blank" rel="noopener">src/main/java/org/json/XML.java</a><br><strong>Estimated before -> after improvement:</strong> 20% to 60% on very deep nesting, with most avoidable worst-case work removed</p></div><div class="mini-card link-list"><h6>Upstream Trail</h6><a href="https://github.com/stleary/JSON-java/pull/720" target="_blank" rel="noopener">Upstream PR</a><a href="https://github.com/stleary/JSON-java/pull/720/files" target="_blank" rel="noopener">PR Files</a><a href="https://github.com/stleary/JSON-java/compare/20220924...20230227" target="_blank" rel="noopener">Release Compare Window</a></div><div class="mini-card"><h6>PR Commit Before / After</h6><p class="diff-note">Actual before and after lines from the upstream PR commit. This is a clear fail-fast bound added to the recursive parser path.</p><div class="diff-grid"><div class="diff-render"><script type="text/plain" class="diff-source">--- before.java
++++ after.java
+@@ -1,8 +1,12 @@
+-private static boolean parse(XMLTokener x, JSONObject context, String name, XMLParserConfiguration config)
++private static boolean parse(XMLTokener x, JSONObject context, String name, XMLParserConfiguration config, int currentNestingDepth)
+         throws JSONException {
+     ...
+ 
+     } else if (token == LT) {
+         // Nested element
+-        if (parse(x, jsonObject, tagName, config)) {
++        if (currentNestingDepth == config.getMaxNestingDepth()) {
++            throw x.syntaxError(&quot;Maximum nesting depth of &quot; + config.getMaxNestingDepth() + &quot; reached&quot;);
++        }
++
++        if (parse(x, jsonObject, tagName, config, currentNestingDepth + 1)) {
+             if (config.getForceList().contains(tagName)) {
+</script><div class="diff-target"></div></div></div></div><div class="mini-card"><h6>PR / Discussion Summary</h6><p>The PR is about adding a hard nesting limit to XML parsing so the library stops spending unbounded CPU on deeply nested input. The issue matters because the failure mode is not just correctness. One unusually deep document can keep a worker busy long enough for unrelated requests to queue behind it. The maintainers fix that by making the parser fail fast once depth exceeds a configured bound. That changes the resource story from open-ended worst-case work to bounded, predictable behavior.</p></div><div class="mini-card"><h6>Explainer</h6><p>The recursive structure made this predictable before the PR existed. Each deeper level means another parse descent, more branches, more object work, and more stack growth, with no explicit budget in the original flow. In a theoretical model, that is exactly how worst-case instruction burn emerges from otherwise ordinary parser code. A likely trace would look like <code>span=xml.parse depth=540 cpu=99% p99=2.8s blocked_downstream=12</code>. The important clue is not just high CPU, but the fact that downstream work starts waiting while one request monopolizes the worker. The before-to-after estimate of `20% to 60%` on extreme inputs, with near-total removal of pathological waste, is therefore reasonable. The PR discussion simply confirms what the code shape and trace prediction already suggested: the parser needed a hard stop. This is a strong example for the talk because it shows that some of the highest-value savings come from bounding work rather than merely speeding it up.</p></div><div class="mini-card"><h6>Prediction Signal</h6><p><strong>Before signal:</strong> recursive descent with no hard depth stop. <strong>After direction:</strong> explicit fail-fast bound. <strong>Predicted trace outcome:</strong> <code>span=xml.parse depth=540 cpu=99% p99=2.8s blocked_downstream=12</code>.</p></div><div class="mini-card"><h6>Code Clues With Inline uOps and mWh</h6><p><strong>Project term:</strong> <code>accumulate</code> in this project means append another value under the same JSON key, often turning one value into an array.</p><pre><code class="language-java">} else if (token == LT) {
+    // Nested element
+    <span class="line-focus">if (currentNestingDepth == config.getMaxNestingDepth()) {</span>
+        <span class="line-focus">throw x.syntaxError("Maximum nesting depth of " + config.getMaxNestingDepth() + " reached");</span>
+        // Fix line: this is the new fail-fast bound that stops runaway recursive work.
+    }
+
+    <span class="line-focus">if (parse(x, jsonObject, tagName, config, currentNestingDepth + 1)) {</span> // Issue line before fix: recursion keeps growing work with depth and can monopolize a worker.
+        if (config.getForceList().contains(tagName)) {
+            if (jsonObject.length() == 0) {
+                if(context.isEmpty()) {
+                    context.put(tagName, new JSONArray());
+                }
+                context.append(tagName, "");
+            } else if (jsonObject.length() == 1 && jsonObject.opt(config.getcDataTagName()) != null) {
+                context.append(tagName, jsonObject.opt(config.getcDataTagName()));
+            } else {
+                context.append(tagName, jsonObject);
+            }
+        } else {
+            if (jsonObject.length() == 0) {
+                context.accumulate(tagName, "");
+            } else if (jsonObject.length() == 1 && jsonObject.opt(config.getcDataTagName()) != null) {
+                context.accumulate(tagName, jsonObject.opt(config.getcDataTagName()));
+            } else {
+                if (!config.shouldTrimWhiteSpace()) {
+                    removeEmpty(jsonObject, config);
+                }
+                context.accumulate(tagName, jsonObject);
+            }
+        }
+
+        return false;
+    }
+}</code></pre></div></div></li><li><div class="collapsible-header"><i class="material-icons">calculate</i><div class="example-copy"><div class="example-title">JSON-java / JSONObject: duplicate numeric-conversion paths</div><div class="example-subtitle">Small repeated parsing costs in getters and coercion helpers.</div></div><div class="tag-wrap"><span class="pill pill-cpu">CPU</span><span class="pill pill-good">Good provenance</span><span class="pill pill-estimate">5% to 15%</span></div></div><div class="collapsible-body"><div class="mini-card"><h6>Source Repository and File</h6><p><strong>Repository:</strong> <a href="https://github.com/stleary/JSON-java" target="_blank" rel="noopener">stleary/JSON-java</a><br><strong>Files:</strong> <a href="https://github.com/stleary/JSON-java/blob/master/src/main/java/org/json/JSONObject.java#L925-L931" target="_blank" rel="noopener">getter path</a>, <a href="https://github.com/stleary/JSON-java/blob/master/src/main/java/org/json/JSONObject.java#L2721-L2790" target="_blank" rel="noopener">number conversion helpers</a><br><strong>Estimated before -> after improvement:</strong> 5% to 15%</p></div><div class="mini-card link-list"><h6>Upstream Trail</h6><a href="https://github.com/stleary/JSON-java/pull/814" target="_blank" rel="noopener">Upstream PR #814</a><a href="https://github.com/stleary/JSON-java/pull/794" target="_blank" rel="noopener">Upstream PR #794</a><a href="https://github.com/stleary/JSON-java/pull/814/files" target="_blank" rel="noopener">PR Files</a><a href="https://github.com/stleary/JSON-java/compare/20231013...20240205" target="_blank" rel="noopener">Release Compare Window</a></div><div class="mini-card"><h6>PR Commit Before / After</h6><p class="diff-note">Actual before and after lines from the upstream PR commit. The PR centralizes string-to-number parsing instead of leaving duplicate entry points around the codebase.</p><div class="diff-grid"><div class="diff-render"><script type="text/plain" class="diff-source">--- before.java
++++ after.java
+@@ -4,7 +4,7 @@
+         if (object instanceof Number) {
+             return (Number)object;
+         }
+-        return JSONObject.stringToNumber(object.toString());
++        return NumberConversionUtil.stringToNumber(object.toString());
+     } catch (Exception e) {
+         throw wrongValueFormatException(index, &quot;number&quot;, object, e);
+     }
+</script><div class="diff-target"></div></div></div></div><div class="mini-card"><h6>PR / Discussion Summary</h6><p>The upstream work here is about deduplicating numeric conversion logic and aligning behavior across getters and parsing helpers. That matters because parallel conversion paths usually mean both more maintenance risk and a larger instruction budget than necessary. The discussion mixes correctness and efficiency in a way that suits your talk well: repeated coercion logic is both harder to maintain and more expensive under repetition. The fix direction is to reduce duplicate parsing paths and reuse already-typed values more consistently.</p></div><div class="mini-card"><h6>Explainer</h6><p>This is a classic mature-code example where no single line looks alarming until you aggregate the repetitions. A single <code>Long.parseLong(object.toString())</code> call looks normal. But if getters and helper paths keep routing values through string conversion, the instruction budget rises through repeated parsing, branching, and conversion logic. A likely trace would show <code>span=json.numeric.read top=parseLong,stringToNumber repeated_callers=getLong,optLong</code>. A flamegraph would not show one giant red block. It would show many small conversion frames spread across hot request paths. That is exactly why the issue was predictable before the upstream cleanup. The code already signaled duplicated parsing logic in helpers that are likely called constantly. The before-to-after estimate of `5% to 15%` is plausible in numeric-heavy flows because the fix reduces repeated micro-work rather than changing algorithms. For the talk, that is valuable: low-risk cleanup can still remove a meaningful amount of repeated CPU effort.</p></div><div class="mini-card"><h6>Prediction Signal</h6><p><strong>Before signal:</strong> getters and coercion helpers route through repeated string-based numeric conversion. <strong>After direction:</strong> fewer duplicate branches and better reuse of already-typed values. <strong>Predicted trace outcome:</strong> <code>span=json.numeric.read top=parseLong,stringToNumber repeated_callers=getLong,optLong</code>.</p></div><div class="mini-card"><h6>Code Clues With Inline uOps and mWh</h6><pre><code class="language-java">public long getLong(String key) throws JSONException {
+    final Object object = this.get(key);
+    // Value fetch happens before deciding conversion path. | ~35 uOps | ~0.00001 mWh
+    if(object instanceof Number) {
+        return ((Number)object).longValue();
+    }
+    try {
+<span class="line-focus">        return Long.parseLong(object.toString());</span>
+        // Issue line: non-number values pay string conversion plus parse cost. | ~120 uOps | ~0.00004 mWh
+    } catch (Exception e) {
+        throw wrongValueFormatException(key, "long", object, e);
+    }
+}
+
+public static String[] getNames(JSONObject jo) {
+    if (jo.isEmpty()) {
+        return null;
+    }
+    return jo.keySet().toArray(new String[jo.length()]);
+}</code></pre></div></div></li></ul>
+
+    <div class="repo-band"><div><strong>Repository Group 2: apache/commons-io</strong></div><small>1 strict PR-backed example. Repository: <a href="https://github.com/apache/commons-io" target="_blank" rel="noopener">github.com/apache/commons-io</a></small></div>
+    <ul class="collapsible expandable"><li><div class="collapsible-header"><i class="material-icons">hourglass_empty</i><div class="example-copy"><div class="example-title">Commons IO / Tailer: dedicated thread plus polling loop</div><div class="example-subtitle">A pure waiting-pattern example. Work exists mainly to detect whether work exists.</div></div><div class="tag-wrap"><span class="pill pill-wait">Waiting</span><span class="pill pill-bottle">Bottleneck</span><span class="pill pill-good">Good provenance</span><span class="pill pill-estimate">10% to 25%</span></div></div><div class="collapsible-body"><div class="mini-card"><h6>Source Repository and File</h6><p><strong>Repository:</strong> <a href="https://github.com/apache/commons-io" target="_blank" rel="noopener">apache/commons-io</a><br><strong>Files:</strong> <a href="https://github.com/apache/commons-io/blob/master/src/main/java/org/apache/commons/io/input/Tailer.java#L177-L189" target="_blank" rel="noopener">thread setup</a>, <a href="https://github.com/apache/commons-io/blob/master/src/main/java/org/apache/commons/io/input/Tailer.java#L1007-L1069" target="_blank" rel="noopener">run loop</a><br><strong>Estimated before -> after improvement:</strong> 10% to 25%</p></div><div class="mini-card link-list"><h6>Upstream Trail</h6><a href="https://github.com/apache/commons-io/pull/2" target="_blank" rel="noopener">Upstream PR</a><a href="https://github.com/apache/commons-io/pull/2/files" target="_blank" rel="noopener">PR Files</a><a href="https://github.com/apache/commons-io" target="_blank" rel="noopener">Repository</a></div><div class="mini-card"><h6>PR Commit Before / After</h6><p class="diff-note">These before and after lines come from Apache Commons IO PR #2 on GitHub. The PR was discussed but not merged, so treat it as a GitHub design-direction example, not a released fix.</p><div class="diff-grid"><div class="diff-render"><script type="text/plain" class="diff-source">--- before.java
++++ after.java
+@@ -1,14 +1,13 @@
++@Override
+ public void run() {
+-    RandomAccessFile reader = null;
++    final ScheduledFuture&lt;?&gt; future = this.executor.scheduleWithFixedDelay(
++            this.scheduled, 0, this.delayMillis, TimeUnit.MILLISECONDS);
+     try {
+-        long last = 0;
+-        long position = 0;
+-        while (getRun() &amp;&amp; reader == null) {
+-            try {
+-                reader = new RandomAccessFile(file, RAF_MODE);
+-            } catch (final FileNotFoundException e) {
+-                listener.fileNotFound();
+-            }
+-            if (reader == null) {
+-                Thread.sleep(delayMillis);
+-            }
++        this.runTrigger.await();
++    } catch (final InterruptedException e) {
++        Thread.currentThread().interrupt();
++    } finally {
++        future.cancel(true);
++        this.executor.shutdown();
++    }
++}
+</script><div class="diff-target"></div></div></div></div><div class="mini-card"><h6>PR / Discussion Summary</h6><p>The discussion is about moving Tailer away from ad hoc per-instance thread handling toward a more controlled scheduling model. The important point is not API aesthetics. The original design turns waiting for file changes into long-lived runtime machinery. The upstream discussion explicitly questions whether each watcher should own its own thread and polling behavior. That makes the change talk-friendly because it is about a clear design tradeoff: convenience versus continuous background overhead.</p></div><div class="mini-card"><h6>Explainer</h6><p>This example is almost pure waiting cost. The code is not doing heavy business logic. It is paying scheduler and wakeup overhead to discover whether meaningful work exists yet. In an instruction-budget model, the loop body is small, but the total cost comes from persistence: repeated size checks, repeated sleeps, repeated wakeups, and one thread or executor per instance. A likely tracer outcome would be <code>span=tailer.run idle_ratio=high wakeups=frequent cpu=moderate top=read,sleep,loop</code>. Thread dumps would show many mostly idle background threads, and a fleet view would make the cost far more obvious than a microbenchmark. The before-to-after estimate of `10% to 25%` is therefore plausible when many tailers are active and mostly idle. The code predicted this issue before the PR because the design itself normalizes waiting machinery per watcher.</p></div><div class="mini-card"><h6>Prediction Signal</h6><p><strong>Before signal:</strong> one dedicated thread and an always-on run loop around mostly idle file watching. <strong>After direction:</strong> more controlled scheduling and less per-instance threading overhead. <strong>Predicted trace outcome:</strong> <code>span=tailer.run idle_ratio=high wakeups=frequent cpu=moderate top=read,sleep,loop</code>.</p></div><div class="mini-card"><h6>Code Clues With Inline uOps and mWh</h6><pre><code class="language-java">private static Thread newDaemonThread(final Runnable runnable) {
+    final Thread thread = new Thread(runnable, "commons-io-tailer");
+    thread.setDaemon(true);
+    return thread;
+}
+
+private static Thread newDaemonThread(final Runnable runnable) {
+    final Thread thread = new Thread(runnable, "commons-io-tailer");
+    thread.setDaemon(true);
+    return thread;
+}
+
+private ExecutorService executorService = Executors.newSingleThreadExecutor(Builder::newDaemonThread);
+// Issue line: per-tailer thread infrastructure starts here. | ~140 uOps | ~0.00005 mWh
+
+while (getRun()) {
+    final boolean newer = tailable.isNewer(last); // IO-279, must be done first
+<span class="line-focus">    final long length = tailable.size();</span>
+    // Poll line in each loop: repeated file-size checks drive idle wakeups. | ~35 uOps / iter | ~0.00001 mWh / iter | 100k iters ~= 3.5M uOps
+    if (length > position) {
+        position = readLines(reader);
+        // Useful work only happens after the poll detects growth.
+        last = tailable.lastModifiedFileTime();
+    }
+    ThreadUtils.sleep(delayDuration);
+    // Waiting line: the thread sleeps, wakes, and polls again even when nothing changed.
+}</code></pre></div></div></li></ul>
+
+    <div class="repo-band"><div><strong>Repository Group 3: FasterXML/jackson-core</strong></div><small>2 strict PR-backed examples. Repository: <a href="https://github.com/FasterXML/jackson-core" target="_blank" rel="noopener">github.com/FasterXML/jackson-core</a></small></div>
+    <ul class="collapsible expandable"><li><div class="collapsible-header"><i class="material-icons">waves</i><div class="example-copy"><div class="example-title">jackson-core / ReaderBasedJsonParser: streaming readString(Writer)</div><div class="example-subtitle">Stream large JSON strings to a Writer instead of always buffering them through TextBuffer first.</div></div><div class="tag-wrap"><span class="pill pill-cpu">CPU</span><span class="pill pill-bottle">Bottleneck</span><span class="pill pill-strong">Strong provenance</span><span class="pill pill-estimate">10% to 30%</span></div></div><div class="collapsible-body"><div class="mini-card"><h6>Source Repository and File</h6><p><strong>Repository:</strong> <a href="https://github.com/FasterXML/jackson-core" target="_blank" rel="noopener">FasterXML/jackson-core</a><br><strong>File:</strong> <a href="https://github.com/FasterXML/jackson-core/blob/3.x/src/main/java/tools/jackson/core/json/ReaderBasedJsonParser.java" target="_blank" rel="noopener">src/main/java/tools/jackson/core/json/ReaderBasedJsonParser.java</a><br><strong>Estimated before -> after improvement:</strong> 10% to 30% on large string reads and lower temporary buffering pressure</p></div><div class="mini-card link-list"><h6>Upstream Trail</h6><a href="https://github.com/FasterXML/jackson-core/pull/1543" target="_blank" rel="noopener">Upstream PR</a><a href="https://github.com/FasterXML/jackson-core/pull/1543/files" target="_blank" rel="noopener">PR Files</a><a href="https://github.com/FasterXML/jackson-core" target="_blank" rel="noopener">Repository</a></div><div class="mini-card"><h6>PR Commit Before / After</h6><p class="diff-note">Actual before and after lines from the upstream PR. The core change is to stream string content directly and reuse a buffer instead of rebuilding temporary text state on every large string read.</p><div class="diff-grid"><div class="diff-render"><script type="text/plain" class="diff-source">--- before.java
++++ after.java
+@@ -1,21 +1,20 @@
+ public long readString(Writer writer) throws JacksonException
+ {
+     final JsonToken t = _currToken;
+-
+-    try {
+-        if (t == JsonToken.VALUE_STRING) {
++    if (t == JsonToken.VALUE_STRING) {
++        try {
+             if (_tokenIncomplete) {
+                 return _streamString(writer);
+             }
+             long len = _textBuffer.contentsToWriter(writer);
+             _textBuffer.resetWithEmpty();
+             return len;
++        } catch (IOException e) {
++            throw _wrapIOFailure(e);
+         }
+-        if (t == null) {
+-            return 0;
+-        }
+-    } catch (IOException e) {
+-        throw _wrapIOFailure(e);
+     }
+     return getString(writer);
+ }
++
++// Intermediate buffer for bulk writes to improve performance (reused across calls)
++char[] outBuf = _bufferForStringStreaming();
+</script><div class="diff-target"></div></div></div></div><div class="mini-card"><h6>PR / Discussion Summary</h6><p>The PR introduces <code>readString(Writer)</code> to let parsers stream decoded string content directly to a caller-provided writer. The key point for your talk is that the change reduces unnecessary buffering and repeated temporary text handling in a parser path that can be hit for every large string token.</p></div><div class="mini-card"><h6>Explainer</h6><p>This is a clean parser-efficiency example. Before the change, large string handling still leaned on buffer-heavy text flow, even when the caller only wanted to stream output onward. That means extra copying, extra buffer state, and more allocation pressure in a hot parsing path. A likely trace would show <code>span=json.readString token=VALUE_STRING alloc=high top=contentsToWriter,TextBuffer</code>. The PR direction is simple and explainable: bypass more intermediate text storage and reuse a streaming buffer. That fits your talk well because it is not a giant architectural rewrite. It is a mature-library improvement that trims repeated work and reduces data movement where it matters.</p></div><div class="mini-card"><h6>Prediction Signal</h6><p><strong>Before signal:</strong> buffered string extraction and text-buffer churn in a path that can be called for large values repeatedly. <strong>After direction:</strong> direct streaming plus reusable output buffer. <strong>Predicted trace outcome:</strong> <code>span=json.readString alloc=lower top=streamString,writer.write</code>.</p></div><div class="mini-card"><h6>Code Clues With Inline uOps and mWh</h6><p><strong>Project term:</strong> <code>TextBuffer</code> is Jackson Core's reusable text assembly buffer for parser and generator paths.</p><pre><code class="language-java">@Override
+public long readString(Writer writer) throws JacksonException
+{
+    final JsonToken t = _currToken;
+    if (t == JsonToken.VALUE_STRING) {
+        try {
+            if (_tokenIncomplete) {
+<span class="line-focus">                return _streamString(writer);</span>
+                // Focus line: stream the token instead of materializing more text state first. | ~90 uOps | ~0.00003 mWh
+            }
+            long len = _textBuffer.contentsToWriter(writer);
+            _textBuffer.resetWithEmpty();
+            return len;
+        } catch (IOException e) {
+            throw _wrapIOFailure(e);
+        }
+    }
+    return getString(writer);
+}
+
+// Intermediate buffer for bulk writes to improve performance (reused across calls)
+<span class="line-focus">char[] outBuf = _bufferForStringStreaming();</span>
+// Focus line: reusable streaming buffer avoids repeated temporary array creation. | ~35 uOps / iter | ~0.00001 mWh / iter | 100k iters ~= 3.5M uOps</code></pre></div></div></li><li><div class="collapsible-header"><i class="material-icons">tune</i><div class="example-copy"><div class="example-title">jackson-core / TextBuffer: reset methods return the decoded String</div><div class="example-subtitle">A buffer-management example: decode once, cache once, and return the same String instead of forcing extra follow-up retrieval work.</div></div><div class="tag-wrap"><span class="pill pill-cpu">CPU</span><span class="pill pill-good">Good provenance</span><span class="pill pill-estimate">8% to 25%</span></div></div><div class="collapsible-body"><div class="mini-card"><h6>Source Repository and File</h6><p><strong>Repository:</strong> <a href="https://github.com/FasterXML/jackson-core" target="_blank" rel="noopener">FasterXML/jackson-core</a><br><strong>File:</strong> <a href="https://github.com/FasterXML/jackson-core/blob/3.x/src/main/java/tools/jackson/core/util/TextBuffer.java" target="_blank" rel="noopener">src/main/java/tools/jackson/core/util/TextBuffer.java</a><br><strong>Estimated before -> after improvement:</strong> 8% to 25% on string-heavy decode paths with less duplicate conversion pressure</p></div><div class="mini-card link-list"><h6>Upstream Trail</h6><a href="https://github.com/FasterXML/jackson-core/pull/1486" target="_blank" rel="noopener">Upstream PR</a><a href="https://github.com/FasterXML/jackson-core/pull/1486/files" target="_blank" rel="noopener">PR Files</a><a href="https://github.com/FasterXML/jackson-core" target="_blank" rel="noopener">Repository</a></div><div class="mini-card"><h6>PR Commit Before / After</h6><p class="diff-note">Actual before and after lines from the upstream PR. The reset methods now return the decoded String they already created, instead of only storing it internally.</p><div class="diff-grid"><div class="diff-render"><script type="text/plain" class="diff-source">--- before.java
++++ after.java
+@@ -1,15 +1,17 @@
+-public void resetWithASCII(byte[] buffer, int offset, int len) throws JacksonException
++public String resetWithASCII(byte[] buffer, int offset, int len) throws JacksonException
+ {
+     _inputBuffer = null;
+     _inputStart = -1;
+     _inputLen = 0;
+ 
+     validateStringLength(len);
+-    _resultString = new String(buffer, offset, len, java.nio.charset.StandardCharsets.ISO_8859_1);
++    String str = new String(buffer, offset, len, java.nio.charset.StandardCharsets.ISO_8859_1);
++    _resultString = str;
+     _resultArray = null;
+ 
+     if (_hasSegments) {
+         clearSegments();
+     }
+     _currentSize = 0;
++    return str;
+ }
+</script><div class="diff-target"></div></div></div></div><div class="mini-card"><h6>PR / Discussion Summary</h6><p>The PR adds reset helpers that decode byte arrays straight into a String and return that same String immediately. For the talk, the value is that the change removes awkward follow-up work around a buffer helper that already had the answer in hand.</p></div><div class="mini-card"><h6>Explainer</h6><p>This is a small but very talk-friendly mature-code example. The helper already creates the String, stores it internally, and resets the buffer state. Returning that same decoded value makes the API cheaper to use in upstream call paths because callers do not need another retrieval step or another conversion-oriented branch to obtain the result. The energy story is not dramatic per call, but the pattern is exactly the kind of repeated micro-cost that shows up in parser traces under load.</p></div><div class="mini-card"><h6>Prediction Signal</h6><p><strong>Before signal:</strong> helper decodes bytes into a String but only stores it internally. <strong>After direction:</strong> expose the value already produced by the helper. <strong>Predicted trace outcome:</strong> <code>span=textbuffer.reset decode=steady alloc=moderate top=newString,reset</code>.</p></div><div class="mini-card"><h6>Code Clues With Inline uOps and mWh</h6><p><strong>Project term:</strong> <code>TextBuffer</code> is the parser's reusable character and string staging area.</p><pre><code class="language-java">public String resetWithUTF8(byte[] buffer, int offset, int len) throws JacksonException
+{
+    _inputBuffer = null;
+    _inputStart = -1;
+    _inputLen = 0;
+
+    validateStringLength(len);
+<span class="line-focus">    String str = new String(buffer, offset, len, java.nio.charset.StandardCharsets.UTF_8);</span>
+    // Focus line: decode happens here, so reusing the created value avoids extra follow-up work. | ~140 uOps | ~0.00005 mWh
+<span class="line-focus">    _resultString = str;</span>
+    // Focus line: cache the same decoded String for later access. | ~8 uOps | ~0.00000 mWh
+    _resultArray = null;
+
+    if (_hasSegments) {
+        clearSegments();
+    }
+    _currentSize = 0;
+<span class="line-focus">    return str;</span>
+    // Focus line: return the already-decoded value instead of forcing another retrieval path. | ~4 uOps | ~0.00000 mWh
+}</code></pre></div></div></li></ul>
+
+    <div class="repo-band"><div><strong>Repository Group 4: apache/logging-log4j2</strong></div><small>1 strict PR-backed example. Repository: <a href="https://github.com/apache/logging-log4j2" target="_blank" rel="noopener">github.com/apache/logging-log4j2</a></small></div>
+    <ul class="collapsible expandable"><li><div class="collapsible-header"><i class="material-icons">content_copy</i><div class="example-copy"><div class="example-title">log4j2 / DefaultThreadContextMap: optimized getCopy()</div><div class="example-subtitle">A logging-path CPU example: copying thread context becomes expensive when every log event or context handoff pays for avoidable map-copy overhead.</div></div><div class="tag-wrap"><span class="pill pill-cpu">CPU</span><span class="pill pill-bottle">Bottleneck</span><span class="pill pill-strong">Strong provenance</span><span class="pill pill-estimate">10% to 35%</span></div></div><div class="collapsible-body"><div class="mini-card"><h6>Source Repository and File</h6><p><strong>Repository:</strong> <a href="https://github.com/apache/logging-log4j2" target="_blank" rel="noopener">apache/logging-log4j2</a><br><strong>File:</strong> <a href="https://github.com/apache/logging-log4j2/blob/2.x/log4j-api/src/main/java/org/apache/logging/log4j/spi/DefaultThreadContextMap.java" target="_blank" rel="noopener">log4j-api/src/main/java/org/apache/logging/log4j/spi/DefaultThreadContextMap.java</a><br><strong>Estimated before -> after improvement:</strong> 10% to 35% on heavy thread-context copy paths</p></div><div class="mini-card link-list"><h6>Upstream Trail</h6><a href="https://github.com/apache/logging-log4j2/pull/3939" target="_blank" rel="noopener">Upstream PR</a><a href="https://github.com/apache/logging-log4j2/pull/3939/files" target="_blank" rel="noopener">PR Files</a><a href="https://github.com/apache/logging-log4j2" target="_blank" rel="noopener">Repository</a></div><div class="mini-card"><h6>PR Commit Before / After</h6><p class="diff-note">Actual before and after lines from the upstream PR. The optimized version avoids the generic HashMap(Map) copy path and uses a pre-sized map plus manual iteration.</p><div class="diff-grid"><div class="diff-render"><script type="text/plain" class="diff-source">--- before.java
++++ after.java
+@@ -4,5 +4,14 @@
+     if (state == null) {
+         return new HashMap&lt;&gt;(0);
+     }
+-    return new HashMap&lt;&gt;(getMap(state));
++
++    final Map&lt;String, String&gt; map = getMap(state);
++    if (map.isEmpty()) {
++        return new HashMap&lt;&gt;();
++    }
++    final HashMap&lt;String, String&gt; copy = new HashMap&lt;&gt;((int) (map.size() * 1.35));
++    for (final Map.Entry&lt;String, String&gt; entry : map.entrySet()) {
++        copy.put(entry.getKey(), entry.getValue());
++    }
++    return copy;
+ }
+</script><div class="diff-target"></div></div></div></div><div class="mini-card"><h6>PR / Discussion Summary</h6><p>The PR is explicit about performance: optimize <code>DefaultThreadContextMap.getCopy()</code> by avoiding megamorphic calls in the generic <code>HashMap(Map)</code> constructor. That is unusually good provenance for your talk because the upstream changelog text itself frames the change as a performance improvement.</p></div><div class="mini-card"><h6>Explainer</h6><p>This is a strong logging example because the code is easy to explain and the fix is concrete. Thread context maps get copied in logging and context-propagation paths. A generic copy constructor looks harmless, but if it blocks JIT optimization or causes extra internal work, that cost repeats everywhere the context is copied. A likely trace would show <code>span=logging.context.copy top=getCopy,HashMap.put cpu=high</code>. The PR direction is simple: handle empty maps cheaply, pre-size the target map, and copy entries directly in a predictable loop.</p></div><div class="mini-card"><h6>Prediction Signal</h6><p><strong>Before signal:</strong> generic map-copy constructor in a repeated logging context path. <strong>After direction:</strong> pre-sized copy with direct iteration. <strong>Predicted trace outcome:</strong> <code>span=logging.context.copy top=getCopy,HashMap.put alloc=lower</code>.</p></div><div class="mini-card"><h6>Code Clues With Inline uOps and mWh</h6><p><strong>Project term:</strong> <code>ThreadContextMap</code> is Log4j's per-thread key/value context used by layouts, appenders, and diagnostic correlation.</p><pre><code class="language-java">@Override
+public Map&lt;String, String&gt; getCopy() {
+    final Object[] state = localState.get();
+    if (state == null) {
+        return new HashMap&lt;&gt;(0);
+    }
+
+    final Map&lt;String, String&gt; map = getMap(state);
+    if (map.isEmpty()) {
+        return new HashMap&lt;&gt;();
+    }
+
+<span class="line-focus">    final HashMap&lt;String, String&gt; copy = new HashMap&lt;&gt;((int) (map.size() * 1.35));</span>
+    // Focus line: pre-size the copy to reduce resize and rehash overhead. | ~25 uOps | ~0.00001 mWh
+
+<span class="line-focus">    for (final Map.Entry&lt;String, String&gt; entry : map.entrySet()) {</span>
+        // Focus line: explicit iteration creates a simpler, more optimizable copy path. | ~30 uOps / iter | ~0.00001 mWh / iter | 100k iters ~= 3.0M uOps
+<span class="line-focus">        copy.put(entry.getKey(), entry.getValue());</span>
+        // Focus line: each put is still work, but now the path is more direct and predictable. | ~35 uOps / iter | ~0.00001 mWh / iter | 100k iters ~= 3.5M uOps
+    }
+
+    return copy;
+}</code></pre></div></div></li></ul>
+<footer><p><strong>Notes:</strong> File links are GitHub <code>blob</code> links so they work on any machine. PR links point to real upstream discussions and <code>/files</code> views. The kept examples all have PR-backed before/after diff sections. The inline uOps numbers are illustrative talk aids, not benchmark measurements.</p></footer>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-clike.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/diff2html/bundles/js/diff2html-ui.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      M.Collapsible.init(document.querySelectorAll('.collapsible'), { accordion: false });
+    });
+  </script>
+<script>document.addEventListener("DOMContentLoaded", function () { document.querySelectorAll(".diff-render").forEach(function (el) { var source = el.querySelector(".diff-source"); var target = el.querySelector(".diff-target"); if (!source || !target) return; var diff = source.textContent; var ui = new Diff2HtmlUI(target, diff, { drawFileList: false, matching: "lines", outputFormat: "side-by-side", renderNothingWhenEmpty: false, synchronisedScroll: true }); ui.draw(); }); });</script></body>
+</html>

@@ -1,0 +1,11 @@
+org\apache\logging\log4j\docker\model\Mount.class
+org\apache\logging\log4j\docker\model\package-info.class
+org\apache\logging\log4j\docker\model\PortDefinition.class
+org\apache\logging\log4j\docker\package-info.class
+org\apache\logging\log4j\docker\model\Container.class
+org\apache\logging\log4j\docker\model\Network.class
+org\apache\logging\log4j\docker\model\IPAMConfig.class
+org\apache\logging\log4j\docker\model\NetworkSettings.class
+org\apache\logging\log4j\docker\DockerLookup$1.class
+org\apache\logging\log4j\docker\DockerLookup.class
+org\apache\logging\log4j\docker\model\HostConfig.class

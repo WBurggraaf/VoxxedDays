@@ -1,0 +1,9 @@
+org\apache\logging\log4j\web\Log4jServletContainerInitializerTest.class
+org\apache\logging\log4j\web\Log4jShutdownOnContextDestroyedListenerTest.class
+org\apache\logging\log4j\web\Log4jWebInitializerImplTest.class
+org\apache\logging\log4j\web\Log4jServletFilterTest.class
+org\apache\logging\log4j\web\TestAsyncServlet.class
+org\apache\logging\log4j\web\WebLookupTest.class
+org\apache\logging\log4j\web\Log4jServletContextListenerTest.class
+org\apache\logging\log4j\web\PropertyTest.class
+org\apache\logging\log4j\web\ServletAppenderTest.class

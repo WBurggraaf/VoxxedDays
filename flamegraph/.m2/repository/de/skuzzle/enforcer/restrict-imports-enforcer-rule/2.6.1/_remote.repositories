@@ -1,0 +1,4 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Fri Mar 27 12:41:51 CET 2026
+restrict-imports-enforcer-rule-2.6.1.pom>central=
+restrict-imports-enforcer-rule-2.6.1.jar>central=

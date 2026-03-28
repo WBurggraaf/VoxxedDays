@@ -1,0 +1,167 @@
+From 2374766018f10318605fa4b6991c398923093c1f Mon Sep 17 00:00:00 2001
+From: rudrajyoti biswas <rudrajyoti.biswas@outlook.com>
+Date: Thu, 19 Oct 2023 14:07:53 +0530
+Subject: [PATCH 3/3] #790 - Update XML with changes for string to number
+ conversion. For now the code remains duplicated in JSON and XML parsers. Unit
+ test cases updated to comply with number expectations.
+
+---
+ src/main/java/org/json/XML.java               | 60 ++++++++++++++++---
+ src/test/java/org/json/junit/JSONMLTest.java  |  2 +-
+ .../org/json/junit/XMLConfigurationTest.java  |  2 +-
+ src/test/java/org/json/junit/XMLTest.java     |  2 +-
+ 4 files changed, 54 insertions(+), 12 deletions(-)
+
+diff --git a/src/main/java/org/json/XML.java b/src/main/java/org/json/XML.java
+index 925f056b1..533192313 100644
+--- a/src/main/java/org/json/XML.java
++++ b/src/main/java/org/json/XML.java
+@@ -486,8 +486,7 @@ public static Object stringToValue(String string) {
+          * produced, then the value will just be a string.
+          */
+ 
+-        char initial = string.charAt(0);
+-        if ((initial >= '0' && initial <= '9') || initial == '-') {
++        if (potentialNumber(string)) {
+             try {
+                 return stringToNumber(string);
+             } catch (Exception ignore) {
+@@ -496,10 +495,38 @@ public static Object stringToValue(String string) {
+         return string;
+     }
+ 
++    private static boolean potentialNumber(String value){
++        if (value == null || value.isEmpty()){
++            return false;
++        }
++        return potentialPositiveNumberStartingAtIndex(value, (value.charAt(0)=='-'?1:0));
++    }
++
++    private static boolean potentialPositiveNumberStartingAtIndex(String value,int index){
++        if (index >= value.length()){
++            return false;
++        }
++        return digitAtIndex(value, (value.charAt(index)=='.'?index+1:index));
++    }
++
++    private static boolean digitAtIndex(String value, int index){
++        if (index >= value.length()){
++            return false;
++        }
++        return value.charAt(index) >= '0' && value.charAt(index) <= '9';
++    }
++
+     /**
+      * direct copy of {@link JSONObject#stringToNumber(String)} to maintain Android support.
+      */
+-    private static Number stringToNumber(final String val) throws NumberFormatException {
++    private static Number stringToNumber(final String input) throws NumberFormatException {
++        String val = input;
++        if (val.startsWith(".")){
++            val = "0"+val;
++        }
++        if (val.startsWith("-.")){
++            val = "-0."+val.substring(2);
++        }
+         char initial = val.charAt(0);
+         if ((initial >= '0' && initial <= '9') || initial == '-') {
+             // decimal representation
+@@ -518,25 +545,25 @@ private static Number stringToNumber(final String val) throws NumberFormatExcept
+                     try {
+                         Double d = Double.valueOf(val);
+                         if(d.isNaN() || d.isInfinite()) {
+-                            throw new NumberFormatException("val ["+val+"] is not a valid number.");
++                            throw new NumberFormatException("val ["+input+"] is not a valid number.");
+                         }
+                         return d;
+                     } catch (NumberFormatException ignore) {
+-                        throw new NumberFormatException("val ["+val+"] is not a valid number.");
++                        throw new NumberFormatException("val ["+input+"] is not a valid number.");
+                     }
+                 }
+             }
+-            // block items like 00 01 etc. Java number parsers treat these as Octal.
++            val = removeLeadingZerosOfNumber(input);
+             if(initial == '0' && val.length() > 1) {
+                 char at1 = val.charAt(1);
+                 if(at1 >= '0' && at1 <= '9') {
+-                    throw new NumberFormatException("val ["+val+"] is not a valid number.");
++                    throw new NumberFormatException("val ["+input+"] is not a valid number.");
+                 }
+             } else if (initial == '-' && val.length() > 2) {
+                 char at1 = val.charAt(1);
+                 char at2 = val.charAt(2);
+                 if(at1 == '0' && at2 >= '0' && at2 <= '9') {
+-                    throw new NumberFormatException("val ["+val+"] is not a valid number.");
++                    throw new NumberFormatException("val ["+input+"] is not a valid number.");
+                 }
+             }
+             // integer representation.
+@@ -556,7 +583,7 @@ private static Number stringToNumber(final String val) throws NumberFormatExcept
+             }
+             return bi;
+         }
+-        throw new NumberFormatException("val ["+val+"] is not a valid number.");
++        throw new NumberFormatException("val ["+input+"] is not a valid number.");
+     }
+ 
+     /**
+@@ -973,4 +1000,19 @@ private static final String indent(int indent) {
+         }
+         return sb.toString();
+     }
++
++    private static String removeLeadingZerosOfNumber(String value){
++        if (value.equals("-")){return value;}
++        boolean negativeFirstChar = (value.charAt(0) == '-');
++        int counter = negativeFirstChar ? 1:0;
++        while (counter < value.length()){
++            if (value.charAt(counter) != '0'){
++                if (negativeFirstChar) {return "-".concat(value.substring(counter));}
++                return value.substring(counter);
++            }
++            ++counter;
++        }
++        if (negativeFirstChar) {return "-0";}
++        return "0";
++    }
+ }
+diff --git a/src/test/java/org/json/junit/JSONMLTest.java b/src/test/java/org/json/junit/JSONMLTest.java
+index 35c0af2c4..ae71aed6a 100644
+--- a/src/test/java/org/json/junit/JSONMLTest.java
++++ b/src/test/java/org/json/junit/JSONMLTest.java
+@@ -709,7 +709,7 @@ public void commentsInXML() {
+     @Test
+     public void testToJSONArray_jsonOutput() {
+         final String originalXml = "<root><id>01</id><id>1</id><id>00</id><id>0</id><item id=\"01\"/><title>True</title></root>";
+-        final String expectedJsonString = "[\"root\",[\"id\",\"01\"],[\"id\",1],[\"id\",\"00\"],[\"id\",0],[\"item\",{\"id\":\"01\"}],[\"title\",true]]";
++        final String expectedJsonString = "[\"root\",[\"id\",1],[\"id\",1],[\"id\",0],[\"id\",0],[\"item\",{\"id\":1}],[\"title\",true]]";
+         final JSONArray actualJsonOutput = JSONML.toJSONArray(originalXml, false);
+         assertEquals(expectedJsonString, actualJsonOutput.toString());
+     }
+diff --git a/src/test/java/org/json/junit/XMLConfigurationTest.java b/src/test/java/org/json/junit/XMLConfigurationTest.java
+index 21a2b595e..2eaaf99e8 100755
+--- a/src/test/java/org/json/junit/XMLConfigurationTest.java
++++ b/src/test/java/org/json/junit/XMLConfigurationTest.java
+@@ -733,7 +733,7 @@ public void contentOperations() {
+     @Test
+     public void testToJSONArray_jsonOutput() {
+         final String originalXml = "<root><id>01</id><id>1</id><id>00</id><id>0</id><item id=\"01\"/><title>True</title></root>";
+-        final JSONObject expected = new JSONObject("{\"root\":{\"item\":{\"id\":\"01\"},\"id\":[\"01\",1,\"00\",0],\"title\":true}}");
++        final JSONObject expected = new JSONObject("{\"root\":{\"item\":{\"id\":1},\"id\":[1,1,0,0],\"title\":true}}");
+         final JSONObject actualJsonOutput = XML.toJSONObject(originalXml, 
+                 new XMLParserConfiguration().withKeepStrings(false));
+         Util.compareActualVsExpectedJsonObjects(actualJsonOutput,expected);
+diff --git a/src/test/java/org/json/junit/XMLTest.java b/src/test/java/org/json/junit/XMLTest.java
+index 22d6131cb..9702d3dcc 100644
+--- a/src/test/java/org/json/junit/XMLTest.java
++++ b/src/test/java/org/json/junit/XMLTest.java
+@@ -791,7 +791,7 @@ private void compareFileToJSONObject(String xmlStr, String expectedStr) {
+     @Test
+     public void testToJSONArray_jsonOutput() {
+         final String originalXml = "<root><id>01</id><id>1</id><id>00</id><id>0</id><item id=\"01\"/><title>True</title></root>";
+-        final JSONObject expectedJson = new JSONObject("{\"root\":{\"item\":{\"id\":\"01\"},\"id\":[\"01\",1,\"00\",0],\"title\":true}}");
++        final JSONObject expectedJson = new JSONObject("{\"root\":{\"item\":{\"id\":1},\"id\":[1,1,0,0],\"title\":true}}");
+         final JSONObject actualJsonOutput = XML.toJSONObject(originalXml, false);
+ 
+         Util.compareActualVsExpectedJsonObjects(actualJsonOutput,expectedJson);

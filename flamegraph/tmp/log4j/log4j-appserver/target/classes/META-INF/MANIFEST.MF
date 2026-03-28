@@ -1,0 +1,35 @@
+Manifest-Version: 1.0
+Bundle-Description: Provide Log4j as the logging implementation for ap
+ plication servers
+Bundle-License: "Apache-2.0";link="https://www.apache.org/licenses/LIC
+ ENSE-2.0.txt"
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache Log4j App Server Support
+Bundle-SymbolicName: org.apache.logging.log4j.appserver
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 2.26.0.SNAPSHOT
+Export-Package: org.apache.logging.log4j.appserver.jetty;version="2.25
+ .3";uses:="org.eclipse.jetty.util.log",org.apache.logging.log4j.appse
+ rver.tomcat;version="2.25.3";uses:="org.apache.juli.logging"
+Implementation-Title: Apache Log4j App Server Support
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Version: 2.26.0-SNAPSHOT
+Import-Package: org.apache.juli.logging;version="[8.0,12)";resolution:
+ =optional,org.eclipse.jetty.util.log;version="[7.6,10)";resolution:=o
+ ptional,java.lang,java.lang.annotation,java.net,org.apache.logging.lo
+ g4j;version="[2.20,3)",org.apache.logging.log4j.spi;version="[2.25,3)
+ "
+Multi-Release: false
+Private-Package: org.apache.logging.log4j.appserver.internal.annotatio
+ n
+Provide-Capability: osgi.service;objectClass:List<String>="org.apache.
+ juli.logging.Log";effective:=active,osgi.serviceloader;osgi.servicelo
+ ader="org.apache.juli.logging.Log";register:="org.apache.logging.log4
+ j.appserver.tomcat.TomcatLogger"
+Require-Capability: osgi.extender;filter:="(&(osgi.extender=osgi.servi
+ celoader.registrar)(version>=1.0.0)(!(version>=2.0.0)))";resolution:=
+ optional,osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Specification-Title: Apache Log4j App Server Support
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 2.26
+

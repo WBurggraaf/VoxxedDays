@@ -1,0 +1,31 @@
+Manifest-Version: 1.0
+Bundle-Description: The Apache Log4j support for Jakarta EE 9+ web ser
+ vlet containers
+Bundle-License: "Apache-2.0";link="https://www.apache.org/licenses/LIC
+ ENSE-2.0.txt"
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache Log4j Jakarta Web
+Bundle-SymbolicName: org.apache.logging.log4j.jakarta.web
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 2.26.0.SNAPSHOT
+Export-Package: org.apache.logging.log4j.web;version="2.20.1";uses:="j
+ akarta.servlet,jakarta.servlet.http"
+Fragment-Host: org.apache.logging.log4j.core
+Implementation-Title: Apache Log4j Jakarta Web
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Version: 2.26.0-SNAPSHOT
+Import-Package: jakarta.servlet;version="[5.0,7)",jakarta.servlet.http
+ ;version="[5.0,7)",java.io,java.lang,java.lang.invoke,java.net,java.t
+ ext,java.util,java.util.concurrent,java.util.concurrent.locks,java.ut
+ il.function,java.util.stream,org.apache.logging.log4j.spi;version="[2
+ .25,3)",org.apache.logging.log4j.status;version="[2.25,3)",org.apache
+ .logging.log4j.util;version="[2.25,3)",org.apache.logging.log4j.web;v
+ ersion="[2.20,3)"
+Multi-Release: false
+Private-Package: org.apache.logging.log4j.web.appender;version="2.20.1
+ "
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Specification-Title: Apache Log4j Jakarta Web
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 2.26
+

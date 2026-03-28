@@ -1,0 +1,1 @@
+[{"name":"org.apache.logging.log4j.mongodb4.MongoDb4Provider","methods":[{"name":"newBuilder","parameterTypes":[]}],"fields":[]},{"name":"org.apache.logging.log4j.mongodb4.MongoDb4Provider$Builder","methods":[],"fields":[{"name":"capped"},{"name":"collectionName"},{"name":"collectionSize"},{"name":"connectionStringSource"},{"name":"databaseName"}]}]

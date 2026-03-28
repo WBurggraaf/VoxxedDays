@@ -1,0 +1,1 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='800' height='120'><text x='20' y='40' font-family='Verdana' font-size='20'>No JFR execution samples captured</text><text x='20' y='68' font-family='Verdana' font-size='12'>patch=reversed | subject=Subject: [PATCH 03/15] #1288: Optimize readString(Writer) with buffered writes</text></svg>

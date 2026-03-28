@@ -1,0 +1,7 @@
+org\apache\logging\log4j\appserver\jetty\Log4j2Logger.class
+org\apache\logging\log4j\appserver\tomcat\TomcatLogger.class
+org\apache\logging\log4j\appserver\tomcat\package-info.class
+org\apache\logging\log4j\appserver\internal\annotation\SuppressFBWarnings.class
+org\apache\logging\log4j\appserver\jetty\Log4j2Logger$PrivateManager.class
+org\apache\logging\log4j\appserver\tomcat\TomcatLogger$PrivateManager.class
+org\apache\logging\log4j\appserver\jetty\package-info.class

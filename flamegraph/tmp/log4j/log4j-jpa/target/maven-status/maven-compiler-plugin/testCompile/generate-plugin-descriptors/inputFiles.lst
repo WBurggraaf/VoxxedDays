@@ -1,0 +1,17 @@
+C:\VoxxedDays\GitRepos\logging-log4j2-2.x\log4j-jpa\src\test\java\org\apache\logging\log4j\core\appender\db\jpa\AbstractJpaAppenderTest.java
+C:\VoxxedDays\GitRepos\logging-log4j2-2.x\log4j-jpa\src\test\java\org\apache\logging\log4j\core\appender\db\jpa\converter\ContextDataAttributeConverterTest.java
+C:\VoxxedDays\GitRepos\logging-log4j2-2.x\log4j-jpa\src\test\java\org\apache\logging\log4j\core\appender\db\jpa\converter\ContextDataJsonAttributeConverterTest.java
+C:\VoxxedDays\GitRepos\logging-log4j2-2.x\log4j-jpa\src\test\java\org\apache\logging\log4j\core\appender\db\jpa\converter\ContextMapAttributeConverterTest.java
+C:\VoxxedDays\GitRepos\logging-log4j2-2.x\log4j-jpa\src\test\java\org\apache\logging\log4j\core\appender\db\jpa\converter\ContextMapJsonAttributeConverterTest.java
+C:\VoxxedDays\GitRepos\logging-log4j2-2.x\log4j-jpa\src\test\java\org\apache\logging\log4j\core\appender\db\jpa\converter\ContextStackAttributeConverterTest.java
+C:\VoxxedDays\GitRepos\logging-log4j2-2.x\log4j-jpa\src\test\java\org\apache\logging\log4j\core\appender\db\jpa\converter\ContextStackJsonAttributeConverterTest.java
+C:\VoxxedDays\GitRepos\logging-log4j2-2.x\log4j-jpa\src\test\java\org\apache\logging\log4j\core\appender\db\jpa\converter\InstantAttributeConverterTest.java
+C:\VoxxedDays\GitRepos\logging-log4j2-2.x\log4j-jpa\src\test\java\org\apache\logging\log4j\core\appender\db\jpa\converter\MarkerAttributeConverterTest.java
+C:\VoxxedDays\GitRepos\logging-log4j2-2.x\log4j-jpa\src\test\java\org\apache\logging\log4j\core\appender\db\jpa\converter\MessageAttributeConverterTest.java
+C:\VoxxedDays\GitRepos\logging-log4j2-2.x\log4j-jpa\src\test\java\org\apache\logging\log4j\core\appender\db\jpa\converter\StackTraceElementAttributeConverterTest.java
+C:\VoxxedDays\GitRepos\logging-log4j2-2.x\log4j-jpa\src\test\java\org\apache\logging\log4j\core\appender\db\jpa\converter\ThrowableAttributeConverterTest.java
+C:\VoxxedDays\GitRepos\logging-log4j2-2.x\log4j-jpa\src\test\java\org\apache\logging\log4j\core\appender\db\jpa\JpaH2AppenderTest.java
+C:\VoxxedDays\GitRepos\logging-log4j2-2.x\log4j-jpa\src\test\java\org\apache\logging\log4j\core\appender\db\jpa\JpaHsqldbAppenderTest.java
+C:\VoxxedDays\GitRepos\logging-log4j2-2.x\log4j-jpa\src\test\java\org\apache\logging\log4j\core\appender\db\jpa\LogEventEntityTest.java
+C:\VoxxedDays\GitRepos\logging-log4j2-2.x\log4j-jpa\src\test\java\org\apache\logging\log4j\core\appender\db\jpa\TestBaseEntity.java
+C:\VoxxedDays\GitRepos\logging-log4j2-2.x\log4j-jpa\src\test\java\org\apache\logging\log4j\core\appender\db\jpa\TestBasicEntity.java

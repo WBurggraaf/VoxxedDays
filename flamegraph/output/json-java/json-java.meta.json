@@ -1,0 +1,296 @@
+{
+  "repo_id": "json-java",
+  "display_name": "stleary/JSON-java",
+  "repo_path": "C:\\VoxxedDays\\GitRepos\\JSON-java-master",
+  "generated_at": "2026-03-28T06:45:22.694300+00:00",
+  "status": "ok",
+  "samples": 442,
+  "commands": [
+    {
+      "id": "jsonobject-serialize",
+      "tests": [
+        "org.json.junit.JSONObjectTest",
+        "org.json.junit.EnumTest",
+        "org.json.junit.JSONObjectRecordTest"
+      ],
+      "iterations": 6,
+      "samples": 41,
+      "svg": "C:\\VoxxedDays\\flamegraph\\output\\json-java\\01-jsonobject-serialize.svg",
+      "folded": "C:\\VoxxedDays\\flamegraph\\output\\json-java\\01-jsonobject-serialize.folded.txt",
+      "proofs": [
+        {
+          "id": "jsonobject-tostring",
+          "title": "JSONObject toString/write path",
+          "focus_terms": [
+            "org.json.JSONObject.toString",
+            "org.json.JSONObject.write",
+            "org.json.StringBuilderWriter.write",
+            "org.json.StringBuilderWriter.append"
+          ],
+          "samples": 1,
+          "svg": "C:\\VoxxedDays\\flamegraph\\output\\json-java\\01-jsonobject-serialize-jsonobject-tostring.svg",
+          "folded": "C:\\VoxxedDays\\flamegraph\\output\\json-java\\01-jsonobject-serialize-jsonobject-tostring.folded.txt"
+        }
+      ],
+      "runs": [
+        {
+          "iteration": 1,
+          "command": [
+            "mvn.cmd",
+            "-B",
+            "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+            "-Dtest=org.json.junit.JSONObjectTest,org.json.junit.EnumTest,org.json.junit.JSONObjectRecordTest",
+            "-Dsurefire.failIfNoSpecifiedTests=false",
+            "-DfailIfNoTests=false",
+            "-DforkCount=1",
+            "-DreuseForks=false",
+            "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output\\json-java\\01-jsonobject-serialize-run01.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+            "test"
+          ],
+          "recording_path": "C:\\VoxxedDays\\flamegraph\\output\\json-java\\01-jsonobject-serialize-run01.jfr",
+          "log_path": "C:\\VoxxedDays\\flamegraph\\output\\json-java\\01-jsonobject-serialize-run01.log",
+          "return_code": 0,
+          "duration_seconds": 38.316543
+        },
+        {
+          "iteration": 2,
+          "command": [
+            "mvn.cmd",
+            "-B",
+            "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+            "-Dtest=org.json.junit.JSONObjectTest,org.json.junit.EnumTest,org.json.junit.JSONObjectRecordTest",
+            "-Dsurefire.failIfNoSpecifiedTests=false",
+            "-DfailIfNoTests=false",
+            "-DforkCount=1",
+            "-DreuseForks=false",
+            "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output\\json-java\\01-jsonobject-serialize-run02.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+            "test"
+          ],
+          "recording_path": "C:\\VoxxedDays\\flamegraph\\output\\json-java\\01-jsonobject-serialize-run02.jfr",
+          "log_path": "C:\\VoxxedDays\\flamegraph\\output\\json-java\\01-jsonobject-serialize-run02.log",
+          "return_code": 0,
+          "duration_seconds": 17.493778
+        },
+        {
+          "iteration": 3,
+          "command": [
+            "mvn.cmd",
+            "-B",
+            "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+            "-Dtest=org.json.junit.JSONObjectTest,org.json.junit.EnumTest,org.json.junit.JSONObjectRecordTest",
+            "-Dsurefire.failIfNoSpecifiedTests=false",
+            "-DfailIfNoTests=false",
+            "-DforkCount=1",
+            "-DreuseForks=false",
+            "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output\\json-java\\01-jsonobject-serialize-run03.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+            "test"
+          ],
+          "recording_path": "C:\\VoxxedDays\\flamegraph\\output\\json-java\\01-jsonobject-serialize-run03.jfr",
+          "log_path": "C:\\VoxxedDays\\flamegraph\\output\\json-java\\01-jsonobject-serialize-run03.log",
+          "return_code": 0,
+          "duration_seconds": 17.747732
+        },
+        {
+          "iteration": 4,
+          "command": [
+            "mvn.cmd",
+            "-B",
+            "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+            "-Dtest=org.json.junit.JSONObjectTest,org.json.junit.EnumTest,org.json.junit.JSONObjectRecordTest",
+            "-Dsurefire.failIfNoSpecifiedTests=false",
+            "-DfailIfNoTests=false",
+            "-DforkCount=1",
+            "-DreuseForks=false",
+            "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output\\json-java\\01-jsonobject-serialize-run04.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+            "test"
+          ],
+          "recording_path": "C:\\VoxxedDays\\flamegraph\\output\\json-java\\01-jsonobject-serialize-run04.jfr",
+          "log_path": "C:\\VoxxedDays\\flamegraph\\output\\json-java\\01-jsonobject-serialize-run04.log",
+          "return_code": 0,
+          "duration_seconds": 17.87779
+        },
+        {
+          "iteration": 5,
+          "command": [
+            "mvn.cmd",
+            "-B",
+            "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+            "-Dtest=org.json.junit.JSONObjectTest,org.json.junit.EnumTest,org.json.junit.JSONObjectRecordTest",
+            "-Dsurefire.failIfNoSpecifiedTests=false",
+            "-DfailIfNoTests=false",
+            "-DforkCount=1",
+            "-DreuseForks=false",
+            "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output\\json-java\\01-jsonobject-serialize-run05.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+            "test"
+          ],
+          "recording_path": "C:\\VoxxedDays\\flamegraph\\output\\json-java\\01-jsonobject-serialize-run05.jfr",
+          "log_path": "C:\\VoxxedDays\\flamegraph\\output\\json-java\\01-jsonobject-serialize-run05.log",
+          "return_code": 0,
+          "duration_seconds": 17.74362
+        },
+        {
+          "iteration": 6,
+          "command": [
+            "mvn.cmd",
+            "-B",
+            "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+            "-Dtest=org.json.junit.JSONObjectTest,org.json.junit.EnumTest,org.json.junit.JSONObjectRecordTest",
+            "-Dsurefire.failIfNoSpecifiedTests=false",
+            "-DfailIfNoTests=false",
+            "-DforkCount=1",
+            "-DreuseForks=false",
+            "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output\\json-java\\01-jsonobject-serialize-run06.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+            "test"
+          ],
+          "recording_path": "C:\\VoxxedDays\\flamegraph\\output\\json-java\\01-jsonobject-serialize-run06.jfr",
+          "log_path": "C:\\VoxxedDays\\flamegraph\\output\\json-java\\01-jsonobject-serialize-run06.log",
+          "return_code": 0,
+          "duration_seconds": 17.96396
+        }
+      ]
+    },
+    {
+      "id": "xml-parse-coercion",
+      "tests": [
+        "org.json.junit.XMLTest",
+        "org.json.junit.JSONMLTest",
+        "org.json.junit.XMLConfigurationTest"
+      ],
+      "iterations": 6,
+      "samples": 401,
+      "svg": "C:\\VoxxedDays\\flamegraph\\output\\json-java\\02-xml-parse-coercion.svg",
+      "folded": "C:\\VoxxedDays\\flamegraph\\output\\json-java\\02-xml-parse-coercion.folded.txt",
+      "proofs": [
+        {
+          "id": "xml-string-to-value",
+          "title": "XML parse coercion path",
+          "focus_terms": [
+            "org.json.XML.parse",
+            "org.json.XML.stringToValue",
+            "org.json.XML.stringToNumber",
+            "org.json.JSONObject.accumulate"
+          ],
+          "samples": 5,
+          "svg": "C:\\VoxxedDays\\flamegraph\\output\\json-java\\02-xml-parse-coercion-xml-string-to-value.svg",
+          "folded": "C:\\VoxxedDays\\flamegraph\\output\\json-java\\02-xml-parse-coercion-xml-string-to-value.folded.txt"
+        }
+      ],
+      "runs": [
+        {
+          "iteration": 1,
+          "command": [
+            "mvn.cmd",
+            "-B",
+            "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+            "-Dtest=org.json.junit.XMLTest,org.json.junit.JSONMLTest,org.json.junit.XMLConfigurationTest",
+            "-Dsurefire.failIfNoSpecifiedTests=false",
+            "-DfailIfNoTests=false",
+            "-DforkCount=1",
+            "-DreuseForks=false",
+            "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output\\json-java\\02-xml-parse-coercion-run01.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+            "test"
+          ],
+          "recording_path": "C:\\VoxxedDays\\flamegraph\\output\\json-java\\02-xml-parse-coercion-run01.jfr",
+          "log_path": "C:\\VoxxedDays\\flamegraph\\output\\json-java\\02-xml-parse-coercion-run01.log",
+          "return_code": 0,
+          "duration_seconds": 33.158123
+        },
+        {
+          "iteration": 2,
+          "command": [
+            "mvn.cmd",
+            "-B",
+            "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+            "-Dtest=org.json.junit.XMLTest,org.json.junit.JSONMLTest,org.json.junit.XMLConfigurationTest",
+            "-Dsurefire.failIfNoSpecifiedTests=false",
+            "-DfailIfNoTests=false",
+            "-DforkCount=1",
+            "-DreuseForks=false",
+            "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output\\json-java\\02-xml-parse-coercion-run02.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+            "test"
+          ],
+          "recording_path": "C:\\VoxxedDays\\flamegraph\\output\\json-java\\02-xml-parse-coercion-run02.jfr",
+          "log_path": "C:\\VoxxedDays\\flamegraph\\output\\json-java\\02-xml-parse-coercion-run02.log",
+          "return_code": 0,
+          "duration_seconds": 33.064735
+        },
+        {
+          "iteration": 3,
+          "command": [
+            "mvn.cmd",
+            "-B",
+            "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+            "-Dtest=org.json.junit.XMLTest,org.json.junit.JSONMLTest,org.json.junit.XMLConfigurationTest",
+            "-Dsurefire.failIfNoSpecifiedTests=false",
+            "-DfailIfNoTests=false",
+            "-DforkCount=1",
+            "-DreuseForks=false",
+            "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output\\json-java\\02-xml-parse-coercion-run03.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+            "test"
+          ],
+          "recording_path": "C:\\VoxxedDays\\flamegraph\\output\\json-java\\02-xml-parse-coercion-run03.jfr",
+          "log_path": "C:\\VoxxedDays\\flamegraph\\output\\json-java\\02-xml-parse-coercion-run03.log",
+          "return_code": 0,
+          "duration_seconds": 32.984331
+        },
+        {
+          "iteration": 4,
+          "command": [
+            "mvn.cmd",
+            "-B",
+            "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+            "-Dtest=org.json.junit.XMLTest,org.json.junit.JSONMLTest,org.json.junit.XMLConfigurationTest",
+            "-Dsurefire.failIfNoSpecifiedTests=false",
+            "-DfailIfNoTests=false",
+            "-DforkCount=1",
+            "-DreuseForks=false",
+            "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output\\json-java\\02-xml-parse-coercion-run04.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+            "test"
+          ],
+          "recording_path": "C:\\VoxxedDays\\flamegraph\\output\\json-java\\02-xml-parse-coercion-run04.jfr",
+          "log_path": "C:\\VoxxedDays\\flamegraph\\output\\json-java\\02-xml-parse-coercion-run04.log",
+          "return_code": 0,
+          "duration_seconds": 32.772872
+        },
+        {
+          "iteration": 5,
+          "command": [
+            "mvn.cmd",
+            "-B",
+            "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+            "-Dtest=org.json.junit.XMLTest,org.json.junit.JSONMLTest,org.json.junit.XMLConfigurationTest",
+            "-Dsurefire.failIfNoSpecifiedTests=false",
+            "-DfailIfNoTests=false",
+            "-DforkCount=1",
+            "-DreuseForks=false",
+            "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output\\json-java\\02-xml-parse-coercion-run05.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+            "test"
+          ],
+          "recording_path": "C:\\VoxxedDays\\flamegraph\\output\\json-java\\02-xml-parse-coercion-run05.jfr",
+          "log_path": "C:\\VoxxedDays\\flamegraph\\output\\json-java\\02-xml-parse-coercion-run05.log",
+          "return_code": 0,
+          "duration_seconds": 32.882542
+        },
+        {
+          "iteration": 6,
+          "command": [
+            "mvn.cmd",
+            "-B",
+            "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+            "-Dtest=org.json.junit.XMLTest,org.json.junit.JSONMLTest,org.json.junit.XMLConfigurationTest",
+            "-Dsurefire.failIfNoSpecifiedTests=false",
+            "-DfailIfNoTests=false",
+            "-DforkCount=1",
+            "-DreuseForks=false",
+            "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output\\json-java\\02-xml-parse-coercion-run06.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+            "test"
+          ],
+          "recording_path": "C:\\VoxxedDays\\flamegraph\\output\\json-java\\02-xml-parse-coercion-run06.jfr",
+          "log_path": "C:\\VoxxedDays\\flamegraph\\output\\json-java\\02-xml-parse-coercion-run06.log",
+          "return_code": 0,
+          "duration_seconds": 31.876291
+        }
+      ]
+    }
+  ]
+}

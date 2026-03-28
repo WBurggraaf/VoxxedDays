@@ -1,0 +1,1187 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='1600' height='2268'>
+<style>
+text { font-family: Verdana, sans-serif; font-size: 12px; fill: #1f2937; }
+.title { font-size: 18px; font-weight: bold; }
+.meta { font-size: 11px; fill: #4b5563; }
+</style>
+<text class='title' x='12' y='22'>apache/logging-log4j2</text>
+<text class='meta' x='12' y='40'>Total samples: 25</text>
+<g><title>org.apache.maven.surefire.booter.ForkedBooter.main (23 samples)</title><rect x='0.00' y='2232.00' width='1472.00' height='17' fill='hsl(131,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='2245.00'>org.apache.maven.surefire.booter.ForkedBooter.main</text>
+<g><title>org.apache.maven.surefire.booter.ForkedBooter.run (23 samples)</title><rect x='0.00' y='2214.00' width='1472.00' height='17' fill='hsl(31,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='2227.00'>org.apache.maven.surefire.booter.ForkedBooter.run</text>
+<g><title>org.apache.maven.surefire.booter.ForkedBooter.execute (16 samples)</title><rect x='0.00' y='2196.00' width='1024.00' height='17' fill='hsl(185,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='2209.00'>org.apache.maven.surefire.booter.ForkedBooter.execute</text>
+<g><title>org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess (16 samples)</title><rect x='0.00' y='2178.00' width='1024.00' height='17' fill='hsl(265,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='2191.00'>org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess</text>
+<g><title>org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke (15 samples)</title><rect x='0.00' y='2160.00' width='960.00' height='17' fill='hsl(194,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='2173.00'>org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke</text>
+<g><title>org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests (14 samples)</title><rect x='0.00' y='2142.00' width='896.00' height='17' fill='hsl(238,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='2155.00'>org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests</text>
+<g><title>org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute (14 samples)</title><rect x='0.00' y='2124.00' width='896.00' height='17' fill='hsl(144,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='2137.00'>org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute</text>
+<g><title>org.apache.maven.surefire.junitplatform.LazyLauncher.execute (14 samples)</title><rect x='0.00' y='2106.00' width='896.00' height='17' fill='hsl(54,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='2119.00'>org.apache.maven.surefire.junitplatform.LazyLauncher.execute</text>
+<g><title>org.junit.platform.launcher.core.DelegatingLauncher.execute (14 samples)</title><rect x='0.00' y='2088.00' width='896.00' height='17' fill='hsl(121,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='2101.00'>org.junit.platform.launcher.core.DelegatingLauncher.execute</text>
+<g><title>org.junit.platform.launcher.core.InterceptingLauncher.execute (14 samples)</title><rect x='0.00' y='2070.00' width='896.00' height='17' fill='hsl(88,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='2083.00'>org.junit.platform.launcher.core.InterceptingLauncher.execute</text>
+<g><title>org.junit.platform.launcher.core.ClasspathAlignmentCheckingLauncherInterceptor.intercept (14 samples)</title><rect x='0.00' y='2052.00' width='896.00' height='17' fill='hsl(336,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='2065.00'>org.junit.platform.launcher.core.ClasspathAlignmentCheckingLauncherInterceptor.intercept</text>
+<g><title>org.junit.platform.launcher.core.InterceptingLauncher$$Lambda$199+0x0000016b210a16f8.236304360.proceed (14 samples)</title><rect x='0.00' y='2034.00' width='896.00' height='17' fill='hsl(113,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='2047.00'>org.junit.platform.launcher.core.InterceptingLauncher$$Lambda$199+0x0000016b210a16f8.236304360.proceed</text>
+<g><title>org.junit.platform.launcher.core.InterceptingLauncher.lambda$execute$1 (14 samples)</title><rect x='0.00' y='2016.00' width='896.00' height='17' fill='hsl(232,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='2029.00'>org.junit.platform.launcher.core.InterceptingLauncher.lambda$execute$1</text>
+<g><title>org.junit.platform.launcher.core.DelegatingLauncher.execute (14 samples)</title><rect x='0.00' y='1998.00' width='896.00' height='17' fill='hsl(121,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='2011.00'>org.junit.platform.launcher.core.DelegatingLauncher.execute</text>
+<g><title>org.junit.platform.launcher.core.DefaultLauncher.execute (14 samples)</title><rect x='0.00' y='1980.00' width='896.00' height='17' fill='hsl(147,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='1993.00'>org.junit.platform.launcher.core.DefaultLauncher.execute</text>
+<g><title>org.junit.platform.launcher.core.DefaultLauncher.discover (7 samples)</title><rect x='0.00' y='1962.00' width='448.00' height='17' fill='hsl(224,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='1975.00'>org.junit.platform.launcher.core.DefaultLauncher.discover</text>
+<g><title>org.junit.platform.launcher.core.EngineDiscoveryOrchestrator.discover (7 samples)</title><rect x='0.00' y='1944.00' width='448.00' height='17' fill='hsl(154,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='1957.00'>org.junit.platform.launcher.core.EngineDiscoveryOrchestrator.d...</text>
+<g><title>org.junit.platform.launcher.core.EngineDiscoveryOrchestrator.discover (6 samples)</title><rect x='0.00' y='1926.00' width='384.00' height='17' fill='hsl(154,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='1939.00'>org.junit.platform.launcher.core.EngineDiscoveryOrche...</text>
+<g><title>org.junit.platform.launcher.core.EngineDiscoveryOrchestrator.discoverSafely (6 samples)</title><rect x='0.00' y='1908.00' width='384.00' height='17' fill='hsl(355,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='1921.00'>org.junit.platform.launcher.core.EngineDiscoveryOrche...</text>
+<g><title>org.junit.platform.launcher.core.EngineDiscoveryOrchestrator.discoverEngineRoot (6 samples)</title><rect x='0.00' y='1890.00' width='384.00' height='17' fill='hsl(231,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='1903.00'>org.junit.platform.launcher.core.EngineDiscoveryOrche...</text>
+<g><title>org.junit.jupiter.engine.JupiterTestEngine.discover (6 samples)</title><rect x='0.00' y='1872.00' width='384.00' height='17' fill='hsl(224,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='1885.00'>org.junit.jupiter.engine.JupiterTestEngine.discover</text>
+<g><title>org.junit.jupiter.engine.discovery.DiscoverySelectorResolver.resolveSelectors (5 samples)</title><rect x='0.00' y='1854.00' width='320.00' height='17' fill='hsl(65,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='1867.00'>org.junit.jupiter.engine.discovery.Discover...</text>
+<g><title>org.junit.platform.engine.support.discovery.EngineDiscoveryRequestResolver.resolve (5 samples)</title><rect x='0.00' y='1836.00' width='320.00' height='17' fill='hsl(214,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='1849.00'>org.junit.platform.engine.support.discovery...</text>
+<g><title>org.junit.platform.engine.support.discovery.EngineDiscoveryRequestResolution.run (3 samples)</title><rect x='0.00' y='1818.00' width='192.00' height='17' fill='hsl(183,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='1831.00'>org.junit.platform.engine...</text>
+<g><title>org.junit.platform.engine.support.discovery.EngineDiscoveryRequestResolution.resolveCompletely (2 samples)</title><rect x='0.00' y='1800.00' width='128.00' height='17' fill='hsl(32,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='1813.00'>org.junit.platfo...</text>
+<g><title>org.junit.platform.engine.support.discovery.EngineDiscoveryRequestResolution.resolve (2 samples)</title><rect x='0.00' y='1782.00' width='128.00' height='17' fill='hsl(164,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='1795.00'>org.junit.platfo...</text>
+<g><title>org.junit.platform.engine.support.discovery.EngineDiscoveryRequestResolution.resolve (2 samples)</title><rect x='0.00' y='1764.00' width='128.00' height='17' fill='hsl(164,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='1777.00'>org.junit.platfo...</text>
+<g><title>java.util.stream.ReferencePipeline.findFirst (2 samples)</title><rect x='0.00' y='1746.00' width='128.00' height='17' fill='hsl(59,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='1759.00'>java.util.stream...</text>
+<g><title>java.util.stream.AbstractPipeline.evaluate (2 samples)</title><rect x='0.00' y='1728.00' width='128.00' height='17' fill='hsl(104,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='1741.00'>java.util.stream...</text>
+<g><title>java.util.stream.FindOps$FindOp.evaluateSequential (2 samples)</title><rect x='0.00' y='1710.00' width='128.00' height='17' fill='hsl(99,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='1723.00'>java.util.stream...</text>
+<g><title>java.util.stream.AbstractPipeline.wrapAndCopyInto (2 samples)</title><rect x='0.00' y='1692.00' width='128.00' height='17' fill='hsl(151,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='1705.00'>java.util.stream...</text>
+<g><title>java.util.stream.AbstractPipeline.copyInto (2 samples)</title><rect x='0.00' y='1674.00' width='128.00' height='17' fill='hsl(55,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='1687.00'>java.util.stream...</text>
+<g><title>java.util.stream.AbstractPipeline.copyIntoWithCancel (2 samples)</title><rect x='0.00' y='1656.00' width='128.00' height='17' fill='hsl(172,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='1669.00'>java.util.stream...</text>
+<g><title>java.util.stream.ReferencePipeline.forEachWithCancel (2 samples)</title><rect x='0.00' y='1638.00' width='128.00' height='17' fill='hsl(146,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='1651.00'>java.util.stream...</text>
+<g><title>java.util.ArrayList$ArrayListSpliterator.tryAdvance (2 samples)</title><rect x='0.00' y='1620.00' width='128.00' height='17' fill='hsl(308,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='1633.00'>java.util.ArrayL...</text>
+<g><title>java.util.stream.ReferencePipeline$3$1.accept (2 samples)</title><rect x='0.00' y='1602.00' width='128.00' height='17' fill='hsl(222,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='1615.00'>java.util.stream...</text>
+<g><title>org.junit.platform.engine.support.discovery.EngineDiscoveryRequestResolution$$Lambda$278+0x0000016b211073d0.272678513.apply (2 samples)</title><rect x='0.00' y='1584.00' width='128.00' height='17' fill='hsl(25,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='1597.00'>org.junit.platfo...</text>
+<g><title>org.junit.platform.engine.support.discovery.EngineDiscoveryRequestResolution.lambda$resolve$2 (2 samples)</title><rect x='0.00' y='1566.00' width='128.00' height='17' fill='hsl(2,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='1579.00'>org.junit.platfo...</text>
+<g><title>org.junit.jupiter.engine.discovery.ClassSelectorResolver.resolve (2 samples)</title><rect x='0.00' y='1548.00' width='128.00' height='17' fill='hsl(194,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='1561.00'>org.junit.jupite...</text>
+<g><title>org.junit.jupiter.engine.discovery.ClassSelectorResolver.resolveStandaloneTestClass (1 samples)</title><rect x='0.00' y='1530.00' width='64.00' height='17' fill='hsl(2,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='1543.00'>org.jun...</text>
+<g><title>org.junit.jupiter.engine.discovery.ClassSelectorResolver.isAcceptedStandaloneTestClass (1 samples)</title><rect x='0.00' y='1512.00' width='64.00' height='17' fill='hsl(88,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='1525.00'>org.jun...</text>
+<g><title>org.junit.jupiter.engine.discovery.predicates.TestClassPredicates.looksLikeIntendedTestClass (1 samples)</title><rect x='0.00' y='1494.00' width='64.00' height='17' fill='hsl(241,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='1507.00'>org.jun...</text>
+<g><title>org.junit.jupiter.engine.discovery.predicates.TestClassPredicates.looksLikeIntendedTestClass (1 samples)</title><rect x='0.00' y='1476.00' width='64.00' height='17' fill='hsl(241,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='1489.00'>org.jun...</text>
+<g><title>org.junit.platform.commons.util.KotlinReflectionUtils.&lt;clinit&gt; (1 samples)</title><rect x='0.00' y='1458.00' width='64.00' height='17' fill='hsl(242,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='1471.00'>org.jun...</text>
+<g><title>org.junit.platform.commons.util.KotlinReflectionUtils.tryToLoadKotlinMetadataClass (1 samples)</title><rect x='0.00' y='1440.00' width='64.00' height='17' fill='hsl(183,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='1453.00'>org.jun...</text>
+<g><title>java.lang.invoke.MethodHandleNatives.linkCallSite (1 samples)</title><rect x='0.00' y='1422.00' width='64.00' height='17' fill='hsl(95,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='1435.00'>java.la...</text>
+<g><title>java.lang.invoke.MethodHandleNatives.linkCallSiteImpl (1 samples)</title><rect x='0.00' y='1404.00' width='64.00' height='17' fill='hsl(332,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='1417.00'>java.la...</text>
+<g><title>java.lang.invoke.CallSite.makeSite (1 samples)</title><rect x='0.00' y='1386.00' width='64.00' height='17' fill='hsl(42,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='1399.00'>java.la...</text>
+<g><title>java.lang.invoke.BootstrapMethodInvoker.invoke (1 samples)</title><rect x='0.00' y='1368.00' width='64.00' height='17' fill='hsl(230,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='1381.00'>java.la...</text>
+<g><title>java.lang.invoke.Invokers$Holder.invokeExact_MT (1 samples)</title><rect x='0.00' y='1350.00' width='64.00' height='17' fill='hsl(92,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='1363.00'>java.la...</text>
+<g><title>java.lang.invoke.LambdaForm$DMH+0x0000016b21094000.265321659.invokeStatic (1 samples)</title><rect x='0.00' y='1332.00' width='64.00' height='17' fill='hsl(284,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='1345.00'>java.la...</text>
+<g><title>java.lang.invoke.LambdaMetafactory.metafactory (1 samples)</title><rect x='0.00' y='1314.00' width='64.00' height='17' fill='hsl(68,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='1327.00'>java.la...</text>
+<g><title>java.lang.invoke.InnerClassLambdaMetafactory.buildCallSite (1 samples)</title><rect x='0.00' y='1296.00' width='64.00' height='17' fill='hsl(210,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='1309.00'>java.la...</text>
+<g><title>java.lang.invoke.InnerClassLambdaMetafactory.spinInnerClass (1 samples)</title><rect x='0.00' y='1278.00' width='64.00' height='17' fill='hsl(209,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='1291.00'>java.la...</text>
+<g><title>java.lang.invoke.InnerClassLambdaMetafactory.generateInnerClass (1 samples)</title><rect x='0.00' y='1260.00' width='64.00' height='17' fill='hsl(171,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='1273.00'>java.la...</text>
+<g><title>jdk.internal.org.objectweb.asm.ClassWriter.visitMethod (1 samples)</title><rect x='0.00' y='1242.00' width='64.00' height='17' fill='hsl(86,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='1255.00'>jdk.int...</text>
+<g><title>jdk.internal.org.objectweb.asm.MethodWriter.&lt;init&gt; (1 samples)</title><rect x='0.00' y='1224.00' width='64.00' height='17' fill='hsl(339,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='1237.00'>jdk.int...</text>
+<g><title>jdk.internal.org.objectweb.asm.SymbolTable.addConstantUtf8 (1 samples)</title><rect x='0.00' y='1206.00' width='64.00' height='17' fill='hsl(174,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='1219.00'>jdk.int...</text>
+<g><title>jdk.internal.org.objectweb.asm.ByteVector.putUTF8 (1 samples)</title><rect x='0.00' y='1188.00' width='64.00' height='17' fill='hsl(237,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='1201.00'>jdk.int...</text>
+<g><title>org.junit.jupiter.engine.discovery.predicates.TestClassPredicates$$Lambda$228+0x0000016b210b2188.1664576493.test (1 samples)</title><rect x='64.00' y='1530.00' width='64.00' height='17' fill='hsl(153,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='67.00' y='1543.00'>org.jun...</text>
+<g><title>org.junit.jupiter.engine.discovery.predicates.TestClassPredicates.lambda$new$0 (1 samples)</title><rect x='64.00' y='1512.00' width='64.00' height='17' fill='hsl(0,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='67.00' y='1525.00'>org.jun...</text>
+<g><title>org.junit.jupiter.engine.discovery.predicates.TestClassPredicates.isAnnotatedButNotComposed (1 samples)</title><rect x='64.00' y='1494.00' width='64.00' height='17' fill='hsl(17,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='67.00' y='1507.00'>org.jun...</text>
+<g><title>org.junit.platform.commons.support.AnnotationSupport.isAnnotated (1 samples)</title><rect x='64.00' y='1476.00' width='64.00' height='17' fill='hsl(84,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='67.00' y='1489.00'>org.jun...</text>
+<g><title>org.junit.platform.commons.util.AnnotationUtils.isAnnotated (1 samples)</title><rect x='64.00' y='1458.00' width='64.00' height='17' fill='hsl(108,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='67.00' y='1471.00'>org.jun...</text>
+<g><title>org.junit.platform.commons.util.AnnotationUtils.findAnnotation (1 samples)</title><rect x='64.00' y='1440.00' width='64.00' height='17' fill='hsl(54,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='67.00' y='1453.00'>org.jun...</text>
+<g><title>java.lang.Class.isAnnotationPresent (1 samples)</title><rect x='64.00' y='1422.00' width='64.00' height='17' fill='hsl(220,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='67.00' y='1435.00'>java.la...</text>
+<g><title>java.lang.reflect.AnnotatedElement.isAnnotationPresent (1 samples)</title><rect x='64.00' y='1404.00' width='64.00' height='17' fill='hsl(28,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='67.00' y='1417.00'>java.la...</text>
+<g><title>java.lang.Class.getAnnotation (1 samples)</title><rect x='64.00' y='1386.00' width='64.00' height='17' fill='hsl(25,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='67.00' y='1399.00'>java.la...</text>
+<g><title>java.lang.Class.annotationData (1 samples)</title><rect x='64.00' y='1368.00' width='64.00' height='17' fill='hsl(309,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='67.00' y='1381.00'>java.la...</text>
+<g><title>java.lang.Class.createAnnotationData (1 samples)</title><rect x='64.00' y='1350.00' width='64.00' height='17' fill='hsl(71,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='67.00' y='1363.00'>java.la...</text>
+<g><title>sun.reflect.annotation.AnnotationParser.parseAnnotations (1 samples)</title><rect x='64.00' y='1332.00' width='64.00' height='17' fill='hsl(145,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='67.00' y='1345.00'>sun.ref...</text>
+<g><title>sun.reflect.annotation.AnnotationParser.parseAnnotations2 (1 samples)</title><rect x='64.00' y='1314.00' width='64.00' height='17' fill='hsl(115,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='67.00' y='1327.00'>sun.ref...</text>
+<g><title>sun.reflect.annotation.AnnotationParser.parseAnnotation2 (1 samples)</title><rect x='64.00' y='1296.00' width='64.00' height='17' fill='hsl(105,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='67.00' y='1309.00'>sun.ref...</text>
+<g><title>sun.reflect.annotation.AnnotationParser.parseSig (1 samples)</title><rect x='64.00' y='1278.00' width='64.00' height='17' fill='hsl(215,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='67.00' y='1291.00'>sun.ref...</text>
+<g><title>sun.reflect.generics.parser.SignatureParser.parseTypeSig (1 samples)</title><rect x='64.00' y='1260.00' width='64.00' height='17' fill='hsl(235,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='67.00' y='1273.00'>sun.ref...</text>
+<g><title>sun.reflect.generics.parser.SignatureParser.parseTypeSignature (1 samples)</title><rect x='64.00' y='1242.00' width='64.00' height='17' fill='hsl(331,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='67.00' y='1255.00'>sun.ref...</text>
+<g><title>sun.reflect.generics.parser.SignatureParser.parseFieldTypeSignature (1 samples)</title><rect x='64.00' y='1224.00' width='64.00' height='17' fill='hsl(342,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='67.00' y='1237.00'>sun.ref...</text>
+<g><title>sun.reflect.generics.parser.SignatureParser.parseFieldTypeSignature (1 samples)</title><rect x='64.00' y='1206.00' width='64.00' height='17' fill='hsl(342,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='67.00' y='1219.00'>sun.ref...</text>
+<g><title>sun.reflect.generics.parser.SignatureParser.parseClassTypeSignature (1 samples)</title><rect x='64.00' y='1188.00' width='64.00' height='17' fill='hsl(238,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='67.00' y='1201.00'>sun.ref...</text>
+<g><title>sun.reflect.generics.parser.SignatureParser.parsePackageNameAndSimpleClassTypeSignature (1 samples)</title><rect x='64.00' y='1170.00' width='64.00' height='17' fill='hsl(239,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='67.00' y='1183.00'>sun.ref...</text>
+<g><title>sun.reflect.generics.parser.SignatureParser.skipIdentifier (1 samples)</title><rect x='64.00' y='1152.00' width='64.00' height='17' fill='hsl(266,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='67.00' y='1165.00'>sun.ref...</text>
+<g><title>sun.reflect.generics.parser.SignatureParser.advance (1 samples)</title><rect x='64.00' y='1134.00' width='64.00' height='17' fill='hsl(71,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='67.00' y='1147.00'>sun.ref...</text>
+<g><title>java.util.ArrayList.forEach (1 samples)</title><rect x='128.00' y='1800.00' width='64.00' height='17' fill='hsl(300,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='131.00' y='1813.00'>java.ut...</text>
+<g><title>org.junit.platform.engine.support.discovery.EngineDiscoveryRequestResolution$$Lambda$386+0x0000016b21122638.1298146757.accept (1 samples)</title><rect x='128.00' y='1782.00' width='64.00' height='17' fill='hsl(148,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='131.00' y='1795.00'>org.jun...</text>
+<g><title>org.junit.platform.engine.TestDescriptor.accept (1 samples)</title><rect x='128.00' y='1764.00' width='64.00' height='17' fill='hsl(348,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='131.00' y='1777.00'>org.jun...</text>
+<g><title>org.junit.platform.engine.CompositeTestDescriptorVisitor.visit (1 samples)</title><rect x='128.00' y='1746.00' width='64.00' height='17' fill='hsl(199,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='131.00' y='1759.00'>org.jun...</text>
+<g><title>org.junit.jupiter.engine.discovery.ClassOrderingVisitor.visit (1 samples)</title><rect x='128.00' y='1728.00' width='64.00' height='17' fill='hsl(182,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='131.00' y='1741.00'>org.jun...</text>
+<g><title>org.junit.jupiter.engine.discovery.AbstractOrderingVisitor.doWithMatchingDescriptor (1 samples)</title><rect x='128.00' y='1710.00' width='64.00' height='17' fill='hsl(156,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='131.00' y='1723.00'>org.jun...</text>
+<g><title>org.junit.jupiter.engine.discovery.ClassOrderingVisitor$$Lambda$387+0x0000016b21122868.2133344792.accept (1 samples)</title><rect x='128.00' y='1692.00' width='64.00' height='17' fill='hsl(247,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='131.00' y='1705.00'>org.jun...</text>
+<g><title>org.junit.jupiter.engine.discovery.ClassOrderingVisitor.orderTopLevelClasses (1 samples)</title><rect x='128.00' y='1674.00' width='64.00' height='17' fill='hsl(61,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='131.00' y='1687.00'>org.jun...</text>
+<g><title>org.junit.jupiter.engine.discovery.AbstractOrderingVisitor.orderChildrenTestDescriptors (1 samples)</title><rect x='128.00' y='1656.00' width='64.00' height='17' fill='hsl(177,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='131.00' y='1669.00'>org.jun...</text>
+<g><title>java.util.Optional.ifPresent (1 samples)</title><rect x='128.00' y='1638.00' width='64.00' height='17' fill='hsl(228,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='131.00' y='1651.00'>java.ut...</text>
+<g><title>org.junit.jupiter.engine.discovery.AbstractOrderingVisitor$$Lambda$393+0x0000016b21123c28.1318227903.accept (1 samples)</title><rect x='128.00' y='1620.00' width='64.00' height='17' fill='hsl(236,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='131.00' y='1633.00'>org.jun...</text>
+<g><title>java.util.stream.ReferencePipeline.forEach (1 samples)</title><rect x='128.00' y='1602.00' width='64.00' height='17' fill='hsl(29,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='131.00' y='1615.00'>java.ut...</text>
+<g><title>java.util.stream.AbstractPipeline.evaluate (1 samples)</title><rect x='128.00' y='1584.00' width='64.00' height='17' fill='hsl(104,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='131.00' y='1597.00'>java.ut...</text>
+<g><title>java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential (1 samples)</title><rect x='128.00' y='1566.00' width='64.00' height='17' fill='hsl(338,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='131.00' y='1579.00'>java.ut...</text>
+<g><title>java.util.stream.ForEachOps$ForEachOp.evaluateSequential (1 samples)</title><rect x='128.00' y='1548.00' width='64.00' height='17' fill='hsl(147,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='131.00' y='1561.00'>java.ut...</text>
+<g><title>java.util.stream.AbstractPipeline.wrapAndCopyInto (1 samples)</title><rect x='128.00' y='1530.00' width='64.00' height='17' fill='hsl(151,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='131.00' y='1543.00'>java.ut...</text>
+<g><title>java.util.stream.AbstractPipeline.copyInto (1 samples)</title><rect x='128.00' y='1512.00' width='64.00' height='17' fill='hsl(55,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='131.00' y='1525.00'>java.ut...</text>
+<g><title>java.util.Spliterators$IteratorSpliterator.forEachRemaining (1 samples)</title><rect x='128.00' y='1494.00' width='64.00' height='17' fill='hsl(252,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='131.00' y='1507.00'>java.ut...</text>
+<g><title>java.util.Iterator.forEachRemaining (1 samples)</title><rect x='128.00' y='1476.00' width='64.00' height='17' fill='hsl(317,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='131.00' y='1489.00'>java.ut...</text>
+<g><title>java.util.stream.ReferencePipeline$2$1.accept (1 samples)</title><rect x='128.00' y='1458.00' width='64.00' height='17' fill='hsl(186,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='131.00' y='1471.00'>java.ut...</text>
+<g><title>java.util.stream.ReferencePipeline$3$1.accept (1 samples)</title><rect x='128.00' y='1440.00' width='64.00' height='17' fill='hsl(222,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='131.00' y='1453.00'>java.ut...</text>
+<g><title>java.util.stream.ForEachOps$ForEachOp$OfRef.accept (1 samples)</title><rect x='128.00' y='1422.00' width='64.00' height='17' fill='hsl(65,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='131.00' y='1435.00'>java.ut...</text>
+<g><title>org.junit.jupiter.engine.discovery.ClassOrderingVisitor$$Lambda$389+0x0000016b21122cd0.1319483139.accept (1 samples)</title><rect x='128.00' y='1404.00' width='64.00' height='17' fill='hsl(14,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='131.00' y='1417.00'>org.jun...</text>
+<g><title>org.junit.platform.engine.support.discovery.DiscoveryIssueReporter$$Lambda$235+0x0000016b210b3c18.1754444726.check (1 samples)</title><rect x='128.00' y='1386.00' width='64.00' height='17' fill='hsl(97,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='131.00' y='1399.00'>org.jun...</text>
+<g><title>org.junit.platform.engine.support.discovery.DiscoveryIssueReporter.lambda$createReportingCondition$2 (1 samples)</title><rect x='128.00' y='1368.00' width='64.00' height='17' fill='hsl(226,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='131.00' y='1381.00'>org.jun...</text>
+<g><title>org.junit.jupiter.engine.discovery.ClassOrderingVisitor$$Lambda$267+0x0000016b21104628.1681920301.test (1 samples)</title><rect x='128.00' y='1350.00' width='64.00' height='17' fill='hsl(245,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='131.00' y='1363.00'>org.jun...</text>
+<g><title>org.junit.jupiter.engine.discovery.ClassOrderingVisitor.lambda$new$0 (1 samples)</title><rect x='128.00' y='1332.00' width='64.00' height='17' fill='hsl(55,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='131.00' y='1345.00'>org.jun...</text>
+<g><title>java.lang.ClassLoader.loadClass (1 samples)</title><rect x='128.00' y='1314.00' width='64.00' height='17' fill='hsl(264,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='131.00' y='1327.00'>java.la...</text>
+<g><title>jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass (1 samples)</title><rect x='128.00' y='1296.00' width='64.00' height='17' fill='hsl(276,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='131.00' y='1309.00'>jdk.int...</text>
+<g><title>jdk.internal.loader.BuiltinClassLoader.loadClass (1 samples)</title><rect x='128.00' y='1278.00' width='64.00' height='17' fill='hsl(66,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='131.00' y='1291.00'>jdk.int...</text>
+<g><title>jdk.internal.loader.BuiltinClassLoader.loadClassOrNull (1 samples)</title><rect x='128.00' y='1260.00' width='64.00' height='17' fill='hsl(295,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='131.00' y='1273.00'>jdk.int...</text>
+<g><title>jdk.internal.loader.BuiltinClassLoader.findClassOnClassPathOrNull (1 samples)</title><rect x='128.00' y='1242.00' width='64.00' height='17' fill='hsl(72,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='131.00' y='1255.00'>jdk.int...</text>
+<g><title>jdk.internal.loader.URLClassPath.getResource (1 samples)</title><rect x='128.00' y='1224.00' width='64.00' height='17' fill='hsl(296,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='131.00' y='1237.00'>jdk.int...</text>
+<g><title>jdk.internal.loader.URLClassPath$FileLoader.getResource (1 samples)</title><rect x='128.00' y='1206.00' width='64.00' height='17' fill='hsl(211,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='131.00' y='1219.00'>jdk.int...</text>
+<g><title>java.net.URL.&lt;init&gt; (1 samples)</title><rect x='128.00' y='1188.00' width='64.00' height='17' fill='hsl(269,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='131.00' y='1201.00'>java.ne...</text>
+<g><title>java.net.URL.&lt;init&gt; (1 samples)</title><rect x='128.00' y='1170.00' width='64.00' height='17' fill='hsl(269,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='131.00' y='1183.00'>java.ne...</text>
+<g><title>java.lang.String.startsWith (1 samples)</title><rect x='128.00' y='1152.00' width='64.00' height='17' fill='hsl(25,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='131.00' y='1165.00'>java.la...</text>
+<g><title>java.lang.String.startsWith (1 samples)</title><rect x='128.00' y='1134.00' width='64.00' height='17' fill='hsl(25,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='131.00' y='1147.00'>java.la...</text>
+<g><title>org.junit.platform.engine.support.discovery.EngineDiscoveryRequestResolver.instantiate (2 samples)</title><rect x='192.00' y='1818.00' width='128.00' height='17' fill='hsl(89,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='195.00' y='1831.00'>org.junit.platfo...</text>
+<g><title>java.util.stream.ReferencePipeline.collect (2 samples)</title><rect x='192.00' y='1800.00' width='128.00' height='17' fill='hsl(78,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='195.00' y='1813.00'>java.util.stream...</text>
+<g><title>java.util.stream.AbstractPipeline.evaluate (2 samples)</title><rect x='192.00' y='1782.00' width='128.00' height='17' fill='hsl(104,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='195.00' y='1795.00'>java.util.stream...</text>
+<g><title>java.util.stream.ReduceOps$ReduceOp.evaluateSequential (2 samples)</title><rect x='192.00' y='1764.00' width='128.00' height='17' fill='hsl(271,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='195.00' y='1777.00'>java.util.stream...</text>
+<g><title>java.util.stream.AbstractPipeline.wrapAndCopyInto (2 samples)</title><rect x='192.00' y='1746.00' width='128.00' height='17' fill='hsl(151,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='195.00' y='1759.00'>java.util.stream...</text>
+<g><title>java.util.stream.AbstractPipeline.copyInto (2 samples)</title><rect x='192.00' y='1728.00' width='128.00' height='17' fill='hsl(55,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='195.00' y='1741.00'>java.util.stream...</text>
+<g><title>java.util.ArrayList$ArrayListSpliterator.forEachRemaining (2 samples)</title><rect x='192.00' y='1710.00' width='128.00' height='17' fill='hsl(219,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='195.00' y='1723.00'>java.util.ArrayL...</text>
+<g><title>java.util.stream.ReferencePipeline$3$1.accept (2 samples)</title><rect x='192.00' y='1692.00' width='128.00' height='17' fill='hsl(222,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='195.00' y='1705.00'>java.util.stream...</text>
+<g><title>org.junit.platform.engine.support.discovery.EngineDiscoveryRequestResolver$$Lambda$224+0x0000016b210b1810.477533894.apply (2 samples)</title><rect x='192.00' y='1674.00' width='128.00' height='17' fill='hsl(48,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='195.00' y='1687.00'>org.junit.platfo...</text>
+<g><title>org.junit.platform.engine.support.discovery.EngineDiscoveryRequestResolver.lambda$instantiate$0 (2 samples)</title><rect x='192.00' y='1656.00' width='128.00' height='17' fill='hsl(119,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='195.00' y='1669.00'>org.junit.platfo...</text>
+<g><title>org.junit.jupiter.engine.discovery.DiscoverySelectorResolver$$Lambda$217+0x0000016b210adae8.171493374.apply (1 samples)</title><rect x='192.00' y='1638.00' width='64.00' height='17' fill='hsl(168,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='195.00' y='1651.00'>org.jun...</text>
+<g><title>org.junit.jupiter.engine.discovery.DiscoverySelectorResolver.lambda$static$2 (1 samples)</title><rect x='192.00' y='1620.00' width='64.00' height='17' fill='hsl(90,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='195.00' y='1633.00'>org.jun...</text>
+<g><title>org.junit.jupiter.engine.discovery.MethodSelectorResolver.&lt;init&gt; (1 samples)</title><rect x='192.00' y='1602.00' width='64.00' height='17' fill='hsl(237,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='195.00' y='1615.00'>org.jun...</text>
+<g><title>org.junit.jupiter.engine.discovery.MethodSelectorResolver$MethodType.allPossibilities (1 samples)</title><rect x='192.00' y='1584.00' width='64.00' height='17' fill='hsl(261,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='195.00' y='1597.00'>org.jun...</text>
+<g><title>java.lang.invoke.MethodHandleNatives.linkCallSite (1 samples)</title><rect x='192.00' y='1566.00' width='64.00' height='17' fill='hsl(95,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='195.00' y='1579.00'>java.la...</text>
+<g><title>java.lang.invoke.MethodHandleNatives.linkCallSiteImpl (1 samples)</title><rect x='192.00' y='1548.00' width='64.00' height='17' fill='hsl(332,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='195.00' y='1561.00'>java.la...</text>
+<g><title>java.lang.invoke.CallSite.makeSite (1 samples)</title><rect x='192.00' y='1530.00' width='64.00' height='17' fill='hsl(42,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='195.00' y='1543.00'>java.la...</text>
+<g><title>java.lang.invoke.BootstrapMethodInvoker.invoke (1 samples)</title><rect x='192.00' y='1512.00' width='64.00' height='17' fill='hsl(230,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='195.00' y='1525.00'>java.la...</text>
+<g><title>java.lang.invoke.Invokers$Holder.invokeExact_MT (1 samples)</title><rect x='192.00' y='1494.00' width='64.00' height='17' fill='hsl(92,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='195.00' y='1507.00'>java.la...</text>
+<g><title>java.lang.invoke.LambdaForm$DMH+0x0000016b21094000.265321659.invokeStatic (1 samples)</title><rect x='192.00' y='1476.00' width='64.00' height='17' fill='hsl(284,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='195.00' y='1489.00'>java.la...</text>
+<g><title>java.lang.invoke.LambdaMetafactory.metafactory (1 samples)</title><rect x='192.00' y='1458.00' width='64.00' height='17' fill='hsl(68,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='195.00' y='1471.00'>java.la...</text>
+<g><title>java.lang.invoke.InnerClassLambdaMetafactory.buildCallSite (1 samples)</title><rect x='192.00' y='1440.00' width='64.00' height='17' fill='hsl(210,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='195.00' y='1453.00'>java.la...</text>
+<g><title>java.lang.invoke.MethodHandles.constant (1 samples)</title><rect x='192.00' y='1422.00' width='64.00' height='17' fill='hsl(110,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='195.00' y='1435.00'>java.la...</text>
+<g><title>java.lang.invoke.MethodHandle.bindTo (1 samples)</title><rect x='192.00' y='1404.00' width='64.00' height='17' fill='hsl(313,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='195.00' y='1417.00'>java.la...</text>
+<g><title>org.junit.platform.engine.support.discovery.EngineDiscoveryRequestResolver$Builder$$Lambda$215+0x0000016b210ad670.1894369629.apply (1 samples)</title><rect x='256.00' y='1638.00' width='64.00' height='17' fill='hsl(36,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='259.00' y='1651.00'>org.jun...</text>
+<g><title>org.junit.platform.engine.support.discovery.EngineDiscoveryRequestResolver$Builder.lambda$addClassContainerSelectorResolverWithContext$1 (1 samples)</title><rect x='256.00' y='1620.00' width='64.00' height='17' fill='hsl(252,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='259.00' y='1633.00'>org.jun...</text>
+<g><title>org.junit.jupiter.engine.discovery.DiscoverySelectorResolver$$Lambda$214+0x0000016b210ad438.1565740893.apply (1 samples)</title><rect x='256.00' y='1602.00' width='64.00' height='17' fill='hsl(0,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='259.00' y='1615.00'>org.jun...</text>
+<g><title>org.junit.jupiter.engine.discovery.DiscoverySelectorResolver.lambda$static$0 (1 samples)</title><rect x='256.00' y='1584.00' width='64.00' height='17' fill='hsl(298,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='259.00' y='1597.00'>org.jun...</text>
+<g><title>org.junit.jupiter.engine.discovery.predicates.TestClassPredicates.&lt;init&gt; (1 samples)</title><rect x='256.00' y='1566.00' width='64.00' height='17' fill='hsl(40,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='259.00' y='1579.00'>org.jun...</text>
+<g><title>org.junit.jupiter.engine.discovery.predicates.IsTestMethod.&lt;init&gt; (1 samples)</title><rect x='256.00' y='1548.00' width='64.00' height='17' fill='hsl(96,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='259.00' y='1561.00'>org.jun...</text>
+<g><title>org.junit.jupiter.engine.discovery.predicates.IsTestableMethod.&lt;init&gt; (1 samples)</title><rect x='256.00' y='1530.00' width='64.00' height='17' fill='hsl(337,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='259.00' y='1543.00'>org.jun...</text>
+<g><title>org.junit.platform.engine.support.discovery.DiscoveryIssueReporter$Condition.and (1 samples)</title><rect x='256.00' y='1512.00' width='64.00' height='17' fill='hsl(262,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='259.00' y='1525.00'>org.jun...</text>
+<g><title>java.lang.invoke.MethodHandleNatives.linkCallSite (1 samples)</title><rect x='256.00' y='1494.00' width='64.00' height='17' fill='hsl(95,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='259.00' y='1507.00'>java.la...</text>
+<g><title>java.lang.invoke.MethodHandleNatives.linkCallSiteImpl (1 samples)</title><rect x='256.00' y='1476.00' width='64.00' height='17' fill='hsl(332,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='259.00' y='1489.00'>java.la...</text>
+<g><title>java.lang.invoke.CallSite.makeSite (1 samples)</title><rect x='256.00' y='1458.00' width='64.00' height='17' fill='hsl(42,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='259.00' y='1471.00'>java.la...</text>
+<g><title>java.lang.invoke.BootstrapMethodInvoker.invoke (1 samples)</title><rect x='256.00' y='1440.00' width='64.00' height='17' fill='hsl(230,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='259.00' y='1453.00'>java.la...</text>
+<g><title>java.lang.invoke.Invokers$Holder.invokeExact_MT (1 samples)</title><rect x='256.00' y='1422.00' width='64.00' height='17' fill='hsl(92,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='259.00' y='1435.00'>java.la...</text>
+<g><title>java.lang.invoke.LambdaForm$DMH+0x0000016b21094000.265321659.invokeStatic (1 samples)</title><rect x='256.00' y='1404.00' width='64.00' height='17' fill='hsl(284,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='259.00' y='1417.00'>java.la...</text>
+<g><title>java.lang.invoke.LambdaMetafactory.metafactory (1 samples)</title><rect x='256.00' y='1386.00' width='64.00' height='17' fill='hsl(68,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='259.00' y='1399.00'>java.la...</text>
+<g><title>java.lang.invoke.InnerClassLambdaMetafactory.&lt;init&gt; (1 samples)</title><rect x='256.00' y='1368.00' width='64.00' height='17' fill='hsl(61,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='259.00' y='1381.00'>java.la...</text>
+<g><title>java.lang.invoke.MethodType.toMethodDescriptorString (1 samples)</title><rect x='256.00' y='1350.00' width='64.00' height='17' fill='hsl(306,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='259.00' y='1363.00'>java.la...</text>
+<g><title>sun.invoke.util.BytecodeDescriptor.unparseMethod (1 samples)</title><rect x='256.00' y='1332.00' width='64.00' height='17' fill='hsl(114,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='259.00' y='1345.00'>sun.inv...</text>
+<g><title>sun.invoke.util.BytecodeDescriptor.unparseSig (1 samples)</title><rect x='256.00' y='1314.00' width='64.00' height='17' fill='hsl(282,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='259.00' y='1327.00'>sun.inv...</text>
+<g><title>sun.invoke.util.Wrapper.forBasicType (1 samples)</title><rect x='256.00' y='1296.00' width='64.00' height='17' fill='hsl(143,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='259.00' y='1309.00'>sun.inv...</text>
+<g><title>sun.invoke.util.Wrapper.forPrimitiveType (1 samples)</title><rect x='256.00' y='1278.00' width='64.00' height='17' fill='hsl(240,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='259.00' y='1291.00'>sun.inv...</text>
+<g><title>java.lang.StringBuilder.&lt;init&gt; (1 samples)</title><rect x='256.00' y='1260.00' width='64.00' height='17' fill='hsl(296,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='259.00' y='1273.00'>java.la...</text>
+<g><title>org.junit.jupiter.engine.discovery.DiscoverySelectorResolver.&lt;clinit&gt; (1 samples)</title><rect x='320.00' y='1854.00' width='64.00' height='17' fill='hsl(40,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='323.00' y='1867.00'>org.jun...</text>
+<g><title>org.junit.platform.engine.support.discovery.EngineDiscoveryRequestResolver$Builder.addClassContainerSelectorResolverWithContext (1 samples)</title><rect x='320.00' y='1836.00' width='64.00' height='17' fill='hsl(236,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='323.00' y='1849.00'>org.jun...</text>
+<g><title>java.lang.invoke.MethodHandleNatives.linkCallSite (1 samples)</title><rect x='320.00' y='1818.00' width='64.00' height='17' fill='hsl(95,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='323.00' y='1831.00'>java.la...</text>
+<g><title>java.lang.invoke.MethodHandleNatives.linkCallSiteImpl (1 samples)</title><rect x='320.00' y='1800.00' width='64.00' height='17' fill='hsl(332,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='323.00' y='1813.00'>java.la...</text>
+<g><title>java.lang.invoke.CallSite.makeSite (1 samples)</title><rect x='320.00' y='1782.00' width='64.00' height='17' fill='hsl(42,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='323.00' y='1795.00'>java.la...</text>
+<g><title>java.lang.invoke.BootstrapMethodInvoker.invoke (1 samples)</title><rect x='320.00' y='1764.00' width='64.00' height='17' fill='hsl(230,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='323.00' y='1777.00'>java.la...</text>
+<g><title>java.lang.invoke.Invokers$Holder.invokeExact_MT (1 samples)</title><rect x='320.00' y='1746.00' width='64.00' height='17' fill='hsl(92,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='323.00' y='1759.00'>java.la...</text>
+<g><title>java.lang.invoke.LambdaForm$DMH+0x0000016b21094000.265321659.invokeStatic (1 samples)</title><rect x='320.00' y='1728.00' width='64.00' height='17' fill='hsl(284,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='323.00' y='1741.00'>java.la...</text>
+<g><title>java.lang.invoke.LambdaMetafactory.metafactory (1 samples)</title><rect x='320.00' y='1710.00' width='64.00' height='17' fill='hsl(68,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='323.00' y='1723.00'>java.la...</text>
+<g><title>java.lang.invoke.InnerClassLambdaMetafactory.buildCallSite (1 samples)</title><rect x='320.00' y='1692.00' width='64.00' height='17' fill='hsl(210,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='323.00' y='1705.00'>java.la...</text>
+<g><title>java.lang.invoke.InnerClassLambdaMetafactory.spinInnerClass (1 samples)</title><rect x='320.00' y='1674.00' width='64.00' height='17' fill='hsl(209,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='323.00' y='1687.00'>java.la...</text>
+<g><title>java.lang.invoke.InnerClassLambdaMetafactory.generateInnerClass (1 samples)</title><rect x='320.00' y='1656.00' width='64.00' height='17' fill='hsl(171,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='323.00' y='1669.00'>java.la...</text>
+<g><title>jdk.internal.org.objectweb.asm.ClassWriter.toByteArray (1 samples)</title><rect x='320.00' y='1638.00' width='64.00' height='17' fill='hsl(32,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='323.00' y='1651.00'>jdk.int...</text>
+<g><title>java.lang.ClassLoader.loadClass (1 samples)</title><rect x='384.00' y='1926.00' width='64.00' height='17' fill='hsl(264,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='387.00' y='1939.00'>java.la...</text>
+<g><title>jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass (1 samples)</title><rect x='384.00' y='1908.00' width='64.00' height='17' fill='hsl(276,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='387.00' y='1921.00'>jdk.int...</text>
+<g><title>jdk.internal.loader.BuiltinClassLoader.loadClass (1 samples)</title><rect x='384.00' y='1890.00' width='64.00' height='17' fill='hsl(66,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='387.00' y='1903.00'>jdk.int...</text>
+<g><title>jdk.internal.loader.BuiltinClassLoader.loadClassOrNull (1 samples)</title><rect x='384.00' y='1872.00' width='64.00' height='17' fill='hsl(295,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='387.00' y='1885.00'>jdk.int...</text>
+<g><title>jdk.internal.loader.BuiltinClassLoader.findClassOnClassPathOrNull (1 samples)</title><rect x='384.00' y='1854.00' width='64.00' height='17' fill='hsl(72,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='387.00' y='1867.00'>jdk.int...</text>
+<g><title>jdk.internal.loader.URLClassPath.getResource (1 samples)</title><rect x='384.00' y='1836.00' width='64.00' height='17' fill='hsl(296,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='387.00' y='1849.00'>jdk.int...</text>
+<g><title>jdk.internal.loader.URLClassPath$FileLoader.getResource (1 samples)</title><rect x='384.00' y='1818.00' width='64.00' height='17' fill='hsl(211,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='387.00' y='1831.00'>jdk.int...</text>
+<g><title>java.net.URL.&lt;init&gt; (1 samples)</title><rect x='384.00' y='1800.00' width='64.00' height='17' fill='hsl(269,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='387.00' y='1813.00'>java.ne...</text>
+<g><title>java.net.URL.&lt;init&gt; (1 samples)</title><rect x='384.00' y='1782.00' width='64.00' height='17' fill='hsl(269,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='387.00' y='1795.00'>java.ne...</text>
+<g><title>java.lang.String.charAt (1 samples)</title><rect x='384.00' y='1764.00' width='64.00' height='17' fill='hsl(113,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='387.00' y='1777.00'>java.la...</text>
+<g><title>java.lang.StringUTF16.charAt (1 samples)</title><rect x='384.00' y='1746.00' width='64.00' height='17' fill='hsl(359,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='387.00' y='1759.00'>java.la...</text>
+<g><title>java.lang.StringUTF16.checkIndex (1 samples)</title><rect x='384.00' y='1728.00' width='64.00' height='17' fill='hsl(200,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='387.00' y='1741.00'>java.la...</text>
+<g><title>org.junit.platform.launcher.core.DefaultLauncher.execute (7 samples)</title><rect x='448.00' y='1962.00' width='448.00' height='17' fill='hsl(147,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1975.00'>org.junit.platform.launcher.core.DefaultLauncher.execute</text>
+<g><title>org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute (7 samples)</title><rect x='448.00' y='1944.00' width='448.00' height='17' fill='hsl(337,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1957.00'>org.junit.platform.launcher.core.EngineExecutionOrchestrator.e...</text>
+<g><title>org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams (7 samples)</title><rect x='448.00' y='1926.00' width='448.00' height='17' fill='hsl(37,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1939.00'>org.junit.platform.launcher.core.EngineExecutionOrchestrator.w...</text>
+<g><title>org.junit.platform.launcher.core.EngineExecutionOrchestrator$$Lambda$455+0x0000016b2112f578.2085745483.accept (7 samples)</title><rect x='448.00' y='1908.00' width='448.00' height='17' fill='hsl(354,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1921.00'>org.junit.platform.launcher.core.EngineExecutionOrchestrator$$...</text>
+<g><title>org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0 (7 samples)</title><rect x='448.00' y='1890.00' width='448.00' height='17' fill='hsl(114,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1903.00'>org.junit.platform.launcher.core.EngineExecutionOrchestrator.l...</text>
+<g><title>org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute (7 samples)</title><rect x='448.00' y='1872.00' width='448.00' height='17' fill='hsl(337,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1885.00'>org.junit.platform.launcher.core.EngineExecutionOrchestrator.e...</text>
+<g><title>org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute (7 samples)</title><rect x='448.00' y='1854.00' width='448.00' height='17' fill='hsl(337,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1867.00'>org.junit.platform.launcher.core.EngineExecutionOrchestrator.e...</text>
+<g><title>org.junit.platform.launcher.core.EngineExecutionOrchestrator.failOrExecuteEngine (7 samples)</title><rect x='448.00' y='1836.00' width='448.00' height='17' fill='hsl(304,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1849.00'>org.junit.platform.launcher.core.EngineExecutionOrchestrator.f...</text>
+<g><title>org.junit.platform.launcher.core.EngineExecutionOrchestrator.executeEngine (7 samples)</title><rect x='448.00' y='1818.00' width='448.00' height='17' fill='hsl(335,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1831.00'>org.junit.platform.launcher.core.EngineExecutionOrchestrator.e...</text>
+<g><title>org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute (7 samples)</title><rect x='448.00' y='1800.00' width='448.00' height='17' fill='hsl(181,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1813.00'>org.junit.platform.engine.support.hierarchical.HierarchicalTes...</text>
+<g><title>org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute (7 samples)</title><rect x='448.00' y='1782.00' width='448.00' height='17' fill='hsl(194,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1795.00'>org.junit.platform.engine.support.hierarchical.HierarchicalTes...</text>
+<g><title>org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit (7 samples)</title><rect x='448.00' y='1764.00' width='448.00' height='17' fill='hsl(235,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1777.00'>org.junit.platform.engine.support.hierarchical.SameThreadHiera...</text>
+<g><title>org.junit.platform.engine.support.hierarchical.NodeTestTask.execute (7 samples)</title><rect x='448.00' y='1746.00' width='448.00' height='17' fill='hsl(207,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1759.00'>org.junit.platform.engine.support.hierarchical.NodeTestTask.ex...</text>
+<g><title>org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively (7 samples)</title><rect x='448.00' y='1728.00' width='448.00' height='17' fill='hsl(242,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1741.00'>org.junit.platform.engine.support.hierarchical.NodeTestTask.ex...</text>
+<g><title>org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute (7 samples)</title><rect x='448.00' y='1710.00' width='448.00' height='17' fill='hsl(8,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1723.00'>org.junit.platform.engine.support.hierarchical.ThrowableCollec...</text>
+<g><title>org.junit.platform.engine.support.hierarchical.NodeTestTask$$Lambda$523+0x0000016b21147a00.1824872646.execute (7 samples)</title><rect x='448.00' y='1692.00' width='448.00' height='17' fill='hsl(38,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1705.00'>org.junit.platform.engine.support.hierarchical.NodeTestTask$$L...</text>
+<g><title>org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9 (7 samples)</title><rect x='448.00' y='1674.00' width='448.00' height='17' fill='hsl(264,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1687.00'>org.junit.platform.engine.support.hierarchical.NodeTestTask.la...</text>
+<g><title>org.junit.platform.engine.support.hierarchical.Node.around (7 samples)</title><rect x='448.00' y='1656.00' width='448.00' height='17' fill='hsl(328,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1669.00'>org.junit.platform.engine.support.hierarchical.Node.around</text>
+<g><title>org.junit.platform.engine.support.hierarchical.NodeTestTask$$Lambda$524+0x0000016b21145000.1611370719.invoke (7 samples)</title><rect x='448.00' y='1638.00' width='448.00' height='17' fill='hsl(134,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1651.00'>org.junit.platform.engine.support.hierarchical.NodeTestTask$$L...</text>
+<g><title>org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8 (7 samples)</title><rect x='448.00' y='1620.00' width='448.00' height='17' fill='hsl(177,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1633.00'>org.junit.platform.engine.support.hierarchical.NodeTestTask.la...</text>
+<g><title>org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute (7 samples)</title><rect x='448.00' y='1602.00' width='448.00' height='17' fill='hsl(8,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1615.00'>org.junit.platform.engine.support.hierarchical.ThrowableCollec...</text>
+<g><title>org.junit.platform.engine.support.hierarchical.NodeTestTask$$Lambda$525+0x0000016b21145220.2089589253.execute (7 samples)</title><rect x='448.00' y='1584.00' width='448.00' height='17' fill='hsl(291,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1597.00'>org.junit.platform.engine.support.hierarchical.NodeTestTask$$L...</text>
+<g><title>org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6 (7 samples)</title><rect x='448.00' y='1566.00' width='448.00' height='17' fill='hsl(3,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1579.00'>org.junit.platform.engine.support.hierarchical.NodeTestTask.la...</text>
+<g><title>org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll (7 samples)</title><rect x='448.00' y='1548.00' width='448.00' height='17' fill='hsl(147,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1561.00'>org.junit.platform.engine.support.hierarchical.SameThreadHiera...</text>
+<g><title>java.util.ArrayList.forEach (7 samples)</title><rect x='448.00' y='1530.00' width='448.00' height='17' fill='hsl(300,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1543.00'>java.util.ArrayList.forEach</text>
+<g><title>org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService$$Lambda$529+0x0000016b21145d10.41031373.accept (7 samples)</title><rect x='448.00' y='1512.00' width='448.00' height='17' fill='hsl(89,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1525.00'>org.junit.platform.engine.support.hierarchical.SameThreadHiera...</text>
+<g><title>org.junit.platform.engine.support.hierarchical.NodeTestTask.execute (7 samples)</title><rect x='448.00' y='1494.00' width='448.00' height='17' fill='hsl(207,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1507.00'>org.junit.platform.engine.support.hierarchical.NodeTestTask.ex...</text>
+<g><title>org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively (6 samples)</title><rect x='448.00' y='1476.00' width='384.00' height='17' fill='hsl(242,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1489.00'>org.junit.platform.engine.support.hierarchical.NodeTe...</text>
+<g><title>org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute (6 samples)</title><rect x='448.00' y='1458.00' width='384.00' height='17' fill='hsl(8,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1471.00'>org.junit.platform.engine.support.hierarchical.Throwa...</text>
+<g><title>org.junit.platform.engine.support.hierarchical.NodeTestTask$$Lambda$523+0x0000016b21147a00.1824872646.execute (6 samples)</title><rect x='448.00' y='1440.00' width='384.00' height='17' fill='hsl(38,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1453.00'>org.junit.platform.engine.support.hierarchical.NodeTe...</text>
+<g><title>org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9 (6 samples)</title><rect x='448.00' y='1422.00' width='384.00' height='17' fill='hsl(264,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1435.00'>org.junit.platform.engine.support.hierarchical.NodeTe...</text>
+<g><title>org.junit.platform.engine.support.hierarchical.Node.around (6 samples)</title><rect x='448.00' y='1404.00' width='384.00' height='17' fill='hsl(328,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1417.00'>org.junit.platform.engine.support.hierarchical.Node.a...</text>
+<g><title>org.junit.platform.engine.support.hierarchical.NodeTestTask$$Lambda$524+0x0000016b21145000.1611370719.invoke (6 samples)</title><rect x='448.00' y='1386.00' width='384.00' height='17' fill='hsl(134,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1399.00'>org.junit.platform.engine.support.hierarchical.NodeTe...</text>
+<g><title>org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8 (6 samples)</title><rect x='448.00' y='1368.00' width='384.00' height='17' fill='hsl(177,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1381.00'>org.junit.platform.engine.support.hierarchical.NodeTe...</text>
+<g><title>org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute (6 samples)</title><rect x='448.00' y='1350.00' width='384.00' height='17' fill='hsl(8,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1363.00'>org.junit.platform.engine.support.hierarchical.Throwa...</text>
+<g><title>org.junit.platform.engine.support.hierarchical.NodeTestTask$$Lambda$525+0x0000016b21145220.2089589253.execute (6 samples)</title><rect x='448.00' y='1332.00' width='384.00' height='17' fill='hsl(291,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1345.00'>org.junit.platform.engine.support.hierarchical.NodeTe...</text>
+<g><title>org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6 (6 samples)</title><rect x='448.00' y='1314.00' width='384.00' height='17' fill='hsl(3,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1327.00'>org.junit.platform.engine.support.hierarchical.NodeTe...</text>
+<g><title>org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll (6 samples)</title><rect x='448.00' y='1296.00' width='384.00' height='17' fill='hsl(147,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1309.00'>org.junit.platform.engine.support.hierarchical.SameTh...</text>
+<g><title>java.util.ArrayList.forEach (6 samples)</title><rect x='448.00' y='1278.00' width='384.00' height='17' fill='hsl(300,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1291.00'>java.util.ArrayList.forEach</text>
+<g><title>org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService$$Lambda$529+0x0000016b21145d10.41031373.accept (6 samples)</title><rect x='448.00' y='1260.00' width='384.00' height='17' fill='hsl(89,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1273.00'>org.junit.platform.engine.support.hierarchical.SameTh...</text>
+<g><title>org.junit.platform.engine.support.hierarchical.NodeTestTask.execute (6 samples)</title><rect x='448.00' y='1242.00' width='384.00' height='17' fill='hsl(207,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1255.00'>org.junit.platform.engine.support.hierarchical.NodeTe...</text>
+<g><title>org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively (6 samples)</title><rect x='448.00' y='1224.00' width='384.00' height='17' fill='hsl(242,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1237.00'>org.junit.platform.engine.support.hierarchical.NodeTe...</text>
+<g><title>org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute (5 samples)</title><rect x='448.00' y='1206.00' width='320.00' height='17' fill='hsl(8,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1219.00'>org.junit.platform.engine.support.hierarchi...</text>
+<g><title>org.junit.platform.engine.support.hierarchical.NodeTestTask$$Lambda$523+0x0000016b21147a00.1824872646.execute (5 samples)</title><rect x='448.00' y='1188.00' width='320.00' height='17' fill='hsl(38,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1201.00'>org.junit.platform.engine.support.hierarchi...</text>
+<g><title>org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9 (5 samples)</title><rect x='448.00' y='1170.00' width='320.00' height='17' fill='hsl(264,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1183.00'>org.junit.platform.engine.support.hierarchi...</text>
+<g><title>org.junit.platform.engine.support.hierarchical.Node.around (5 samples)</title><rect x='448.00' y='1152.00' width='320.00' height='17' fill='hsl(328,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1165.00'>org.junit.platform.engine.support.hierarchi...</text>
+<g><title>org.junit.platform.engine.support.hierarchical.NodeTestTask$$Lambda$524+0x0000016b21145000.1611370719.invoke (5 samples)</title><rect x='448.00' y='1134.00' width='320.00' height='17' fill='hsl(134,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1147.00'>org.junit.platform.engine.support.hierarchi...</text>
+<g><title>org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8 (5 samples)</title><rect x='448.00' y='1116.00' width='320.00' height='17' fill='hsl(177,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1129.00'>org.junit.platform.engine.support.hierarchi...</text>
+<g><title>org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute (5 samples)</title><rect x='448.00' y='1098.00' width='320.00' height='17' fill='hsl(8,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1111.00'>org.junit.platform.engine.support.hierarchi...</text>
+<g><title>org.junit.platform.engine.support.hierarchical.NodeTestTask$$Lambda$525+0x0000016b21145220.2089589253.execute (5 samples)</title><rect x='448.00' y='1080.00' width='320.00' height='17' fill='hsl(291,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1093.00'>org.junit.platform.engine.support.hierarchi...</text>
+<g><title>org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6 (5 samples)</title><rect x='448.00' y='1062.00' width='320.00' height='17' fill='hsl(3,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1075.00'>org.junit.platform.engine.support.hierarchi...</text>
+<g><title>org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute (5 samples)</title><rect x='448.00' y='1044.00' width='320.00' height='17' fill='hsl(218,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1057.00'>org.junit.jupiter.engine.descriptor.TestMet...</text>
+<g><title>org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute (5 samples)</title><rect x='448.00' y='1026.00' width='320.00' height='17' fill='hsl(218,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1039.00'>org.junit.jupiter.engine.descriptor.TestMet...</text>
+<g><title>org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod (5 samples)</title><rect x='448.00' y='1008.00' width='320.00' height='17' fill='hsl(255,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1021.00'>org.junit.jupiter.engine.descriptor.TestMet...</text>
+<g><title>org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute (5 samples)</title><rect x='448.00' y='990.00' width='320.00' height='17' fill='hsl(8,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='1003.00'>org.junit.platform.engine.support.hierarchi...</text>
+<g><title>org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor$$Lambda$650+0x0000016b21159a90.1783966110.execute (5 samples)</title><rect x='448.00' y='972.00' width='320.00' height='17' fill='hsl(182,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='985.00'>org.junit.jupiter.engine.descriptor.TestMet...</text>
+<g><title>org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$4 (5 samples)</title><rect x='448.00' y='954.00' width='320.00' height='17' fill='hsl(26,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='967.00'>org.junit.jupiter.engine.descriptor.TestMet...</text>
+<g><title>org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke (5 samples)</title><rect x='448.00' y='936.00' width='320.00' height='17' fill='hsl(86,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='949.00'>org.junit.jupiter.engine.execution.Intercep...</text>
+<g><title>org.junit.jupiter.engine.execution.ParameterResolutionUtils.resolveParameters (5 samples)</title><rect x='448.00' y='918.00' width='320.00' height='17' fill='hsl(226,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='931.00'>org.junit.jupiter.engine.execution.Paramete...</text>
+<g><title>org.junit.jupiter.engine.execution.ParameterResolutionUtils.resolveParameters (5 samples)</title><rect x='448.00' y='900.00' width='320.00' height='17' fill='hsl(226,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='913.00'>org.junit.jupiter.engine.execution.Paramete...</text>
+<g><title>org.junit.jupiter.engine.execution.ParameterResolutionUtils.resolveParameters (5 samples)</title><rect x='448.00' y='882.00' width='320.00' height='17' fill='hsl(226,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='895.00'>org.junit.jupiter.engine.execution.Paramete...</text>
+<g><title>org.junit.jupiter.engine.execution.ParameterResolutionUtils.resolveParameter (5 samples)</title><rect x='448.00' y='864.00' width='320.00' height='17' fill='hsl(11,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='877.00'>org.junit.jupiter.engine.execution.Paramete...</text>
+<g><title>uk.org.webcompere.systemstubs.jupiter.SystemStubsExtension.resolveParameter (5 samples)</title><rect x='448.00' y='846.00' width='320.00' height='17' fill='hsl(332,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='859.00'>uk.org.webcompere.systemstubs.jupiter.Syste...</text>
+<g><title>uk.org.webcompere.systemstubs.resource.SingularTestResource.setup (5 samples)</title><rect x='448.00' y='828.00' width='320.00' height='17' fill='hsl(308,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='841.00'>uk.org.webcompere.systemstubs.resource.Sing...</text>
+<g><title>uk.org.webcompere.systemstubs.environment.EnvironmentVariables.doSetup (5 samples)</title><rect x='448.00' y='810.00' width='320.00' height='17' fill='hsl(252,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='823.00'>uk.org.webcompere.systemstubs.environment.E...</text>
+<g><title>uk.org.webcompere.systemstubs.environment.EnvironmentVariableMocker.&lt;clinit&gt; (4 samples)</title><rect x='448.00' y='792.00' width='256.00' height='17' fill='hsl(43,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='805.00'>uk.org.webcompere.systemstubs.envi...</text>
+<g><title>org.mockito.Mockito.&lt;clinit&gt; (3 samples)</title><rect x='448.00' y='774.00' width='192.00' height='17' fill='hsl(34,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='787.00'>org.mockito.Mockito.&lt;clin...</text>
+<g><title>org.mockito.internal.MockitoCore.&lt;clinit&gt; (3 samples)</title><rect x='448.00' y='756.00' width='192.00' height='17' fill='hsl(18,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='769.00'>org.mockito.internal.Mock...</text>
+<g><title>org.mockito.internal.configuration.plugins.Plugins.&lt;clinit&gt; (3 samples)</title><rect x='448.00' y='738.00' width='192.00' height='17' fill='hsl(194,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='751.00'>org.mockito.internal.conf...</text>
+<g><title>org.mockito.internal.configuration.plugins.PluginRegistry.&lt;init&gt; (3 samples)</title><rect x='448.00' y='720.00' width='192.00' height='17' fill='hsl(240,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='733.00'>org.mockito.internal.conf...</text>
+<g><title>org.mockito.internal.configuration.plugins.PluginLoader.loadPlugin (3 samples)</title><rect x='448.00' y='702.00' width='192.00' height='17' fill='hsl(119,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='715.00'>org.mockito.internal.conf...</text>
+<g><title>org.mockito.internal.configuration.plugins.PluginLoader.loadPlugin (3 samples)</title><rect x='448.00' y='684.00' width='192.00' height='17' fill='hsl(119,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='697.00'>org.mockito.internal.conf...</text>
+<g><title>org.mockito.internal.configuration.plugins.PluginInitializer.loadImpl (3 samples)</title><rect x='448.00' y='666.00' width='192.00' height='17' fill='hsl(286,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='679.00'>org.mockito.internal.conf...</text>
+<g><title>java.lang.reflect.Constructor.newInstance (3 samples)</title><rect x='448.00' y='648.00' width='192.00' height='17' fill='hsl(161,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='661.00'>java.lang.reflect.Constru...</text>
+<g><title>java.lang.reflect.Constructor.newInstanceWithCaller (3 samples)</title><rect x='448.00' y='630.00' width='192.00' height='17' fill='hsl(295,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='643.00'>java.lang.reflect.Constru...</text>
+<g><title>jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance (3 samples)</title><rect x='448.00' y='612.00' width='192.00' height='17' fill='hsl(8,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='625.00'>jdk.internal.reflect.Dele...</text>
+<g><title>jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance (3 samples)</title><rect x='448.00' y='594.00' width='192.00' height='17' fill='hsl(348,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='607.00'>jdk.internal.reflect.Nati...</text>
+<g><title>jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0 (3 samples)</title><rect x='448.00' y='576.00' width='192.00' height='17' fill='hsl(132,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='589.00'>jdk.internal.reflect.Nati...</text>
+<g><title>org.mockito.internal.creation.bytebuddy.InlineByteBuddyMockMaker.&lt;init&gt; (3 samples)</title><rect x='448.00' y='558.00' width='192.00' height='17' fill='hsl(227,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='571.00'>org.mockito.internal.crea...</text>
+<g><title>org.mockito.internal.creation.bytebuddy.InlineDelegateByteBuddyMockMaker.&lt;clinit&gt; (2 samples)</title><rect x='448.00' y='540.00' width='128.00' height='17' fill='hsl(37,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='553.00'>org.mockito.inte...</text>
+<g><title>net.bytebuddy.agent.ByteBuddyAgent.install (2 samples)</title><rect x='448.00' y='522.00' width='128.00' height='17' fill='hsl(161,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='535.00'>net.bytebuddy.ag...</text>
+<g><title>java.lang.ClassLoader.loadClass (1 samples)</title><rect x='448.00' y='504.00' width='64.00' height='17' fill='hsl(264,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='517.00'>java.la...</text>
+<g><title>jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass (1 samples)</title><rect x='448.00' y='486.00' width='64.00' height='17' fill='hsl(276,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='499.00'>jdk.int...</text>
+<g><title>jdk.internal.loader.BuiltinClassLoader.loadClass (1 samples)</title><rect x='448.00' y='468.00' width='64.00' height='17' fill='hsl(66,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='481.00'>jdk.int...</text>
+<g><title>jdk.internal.loader.BuiltinClassLoader.loadClassOrNull (1 samples)</title><rect x='448.00' y='450.00' width='64.00' height='17' fill='hsl(295,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='463.00'>jdk.int...</text>
+<g><title>jdk.internal.loader.BuiltinClassLoader.findClassOnClassPathOrNull (1 samples)</title><rect x='448.00' y='432.00' width='64.00' height='17' fill='hsl(72,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='445.00'>jdk.int...</text>
+<g><title>jdk.internal.loader.BuiltinClassLoader.defineClass (1 samples)</title><rect x='448.00' y='414.00' width='64.00' height='17' fill='hsl(70,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='427.00'>jdk.int...</text>
+<g><title>jdk.internal.loader.Resource.getByteBuffer (1 samples)</title><rect x='448.00' y='396.00' width='64.00' height='17' fill='hsl(169,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='409.00'>jdk.int...</text>
+<g><title>jdk.internal.loader.Resource.cachedInputStream (1 samples)</title><rect x='448.00' y='378.00' width='64.00' height='17' fill='hsl(321,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='391.00'>jdk.int...</text>
+<g><title>jdk.internal.loader.URLClassPath$JarLoader$2.getInputStream (1 samples)</title><rect x='448.00' y='360.00' width='64.00' height='17' fill='hsl(99,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='451.00' y='373.00'>jdk.int...</text>
+<g><title>net.bytebuddy.agent.ByteBuddyAgent.install (1 samples)</title><rect x='512.00' y='504.00' width='64.00' height='17' fill='hsl(161,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='515.00' y='517.00'>net.byt...</text>
+<g><title>net.bytebuddy.agent.ByteBuddyAgent.install (1 samples)</title><rect x='512.00' y='486.00' width='64.00' height='17' fill='hsl(161,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='515.00' y='499.00'>net.byt...</text>
+<g><title>net.bytebuddy.agent.ByteBuddyAgent$ProcessProvider$ForCurrentVm.resolve (1 samples)</title><rect x='512.00' y='468.00' width='64.00' height='17' fill='hsl(140,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='515.00' y='481.00'>net.byt...</text>
+<g><title>net.bytebuddy.agent.ByteBuddyAgent$ProcessProvider$ForCurrentVm$ForJava9CapableVm.resolve (1 samples)</title><rect x='512.00' y='450.00' width='64.00' height='17' fill='hsl(85,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='515.00' y='463.00'>net.byt...</text>
+<g><title>java.lang.reflect.Method.invoke (1 samples)</title><rect x='512.00' y='432.00' width='64.00' height='17' fill='hsl(343,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='515.00' y='445.00'>java.la...</text>
+<g><title>jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (1 samples)</title><rect x='512.00' y='414.00' width='64.00' height='17' fill='hsl(337,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='515.00' y='427.00'>jdk.int...</text>
+<g><title>jdk.internal.reflect.NativeMethodAccessorImpl.invoke (1 samples)</title><rect x='512.00' y='396.00' width='64.00' height='17' fill='hsl(317,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='515.00' y='409.00'>jdk.int...</text>
+<g><title>jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (1 samples)</title><rect x='512.00' y='378.00' width='64.00' height='17' fill='hsl(341,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='515.00' y='391.00'>jdk.int...</text>
+<g><title>java.lang.ProcessHandle.current (1 samples)</title><rect x='512.00' y='360.00' width='64.00' height='17' fill='hsl(67,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='515.00' y='373.00'>java.la...</text>
+<g><title>java.lang.ProcessHandleImpl.&lt;clinit&gt; (1 samples)</title><rect x='512.00' y='342.00' width='64.00' height='17' fill='hsl(174,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='515.00' y='355.00'>java.la...</text>
+<g><title>java.security.AccessController.doPrivileged (1 samples)</title><rect x='512.00' y='324.00' width='64.00' height='17' fill='hsl(183,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='515.00' y='337.00'>java.se...</text>
+<g><title>java.security.AccessController.executePrivileged (1 samples)</title><rect x='512.00' y='306.00' width='64.00' height='17' fill='hsl(88,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='515.00' y='319.00'>java.se...</text>
+<g><title>java.lang.ProcessHandleImpl$$Lambda$716+0x0000016b210dbc80.1408279755.run (1 samples)</title><rect x='512.00' y='288.00' width='64.00' height='17' fill='hsl(90,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='515.00' y='301.00'>java.la...</text>
+<g><title>java.lang.ProcessHandleImpl.lambda$static$1 (1 samples)</title><rect x='512.00' y='270.00' width='64.00' height='17' fill='hsl(79,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='515.00' y='283.00'>java.la...</text>
+<g><title>java.lang.invoke.MethodHandleNatives.linkCallSite (1 samples)</title><rect x='512.00' y='252.00' width='64.00' height='17' fill='hsl(95,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='515.00' y='265.00'>java.la...</text>
+<g><title>java.lang.invoke.MethodHandleNatives.linkCallSiteImpl (1 samples)</title><rect x='512.00' y='234.00' width='64.00' height='17' fill='hsl(332,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='515.00' y='247.00'>java.la...</text>
+<g><title>java.lang.invoke.Invokers.linkToTargetMethod (1 samples)</title><rect x='512.00' y='216.00' width='64.00' height='17' fill='hsl(316,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='515.00' y='229.00'>java.la...</text>
+<g><title>java.lang.invoke.Invokers.callSiteForm (1 samples)</title><rect x='512.00' y='198.00' width='64.00' height='17' fill='hsl(333,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='515.00' y='211.00'>java.la...</text>
+<g><title>java.lang.invoke.LambdaForm.compileToBytecode (1 samples)</title><rect x='512.00' y='180.00' width='64.00' height='17' fill='hsl(213,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='515.00' y='193.00'>java.la...</text>
+<g><title>java.lang.invoke.InvokerBytecodeGenerator.generateCustomizedCode (1 samples)</title><rect x='512.00' y='162.00' width='64.00' height='17' fill='hsl(325,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='515.00' y='175.00'>java.la...</text>
+<g><title>java.lang.invoke.InvokerBytecodeGenerator.generateCustomizedCodeBytes (1 samples)</title><rect x='512.00' y='144.00' width='64.00' height='17' fill='hsl(256,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='515.00' y='157.00'>java.la...</text>
+<g><title>java.lang.invoke.InvokerBytecodeGenerator.addMethod (1 samples)</title><rect x='512.00' y='126.00' width='64.00' height='17' fill='hsl(160,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='515.00' y='139.00'>java.la...</text>
+<g><title>java.lang.invoke.InvokerBytecodeGenerator.methodPrologue (1 samples)</title><rect x='512.00' y='108.00' width='64.00' height='17' fill='hsl(111,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='515.00' y='121.00'>java.la...</text>
+<g><title>jdk.internal.org.objectweb.asm.ClassWriter.visitMethod (1 samples)</title><rect x='512.00' y='90.00' width='64.00' height='17' fill='hsl(86,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='515.00' y='103.00'>jdk.int...</text>
+<g><title>jdk.internal.org.objectweb.asm.MethodWriter.&lt;init&gt; (1 samples)</title><rect x='512.00' y='72.00' width='64.00' height='17' fill='hsl(339,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='515.00' y='85.00'>jdk.int...</text>
+<g><title>jdk.internal.org.objectweb.asm.MethodWriter.visitLabel (1 samples)</title><rect x='512.00' y='54.00' width='64.00' height='17' fill='hsl(272,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='515.00' y='67.00'>jdk.int...</text>
+<g><title>org.mockito.internal.creation.bytebuddy.InlineDelegateByteBuddyMockMaker.&lt;init&gt; (1 samples)</title><rect x='576.00' y='540.00' width='64.00' height='17' fill='hsl(328,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='579.00' y='553.00'>org.moc...</text>
+<g><title>org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator.&lt;init&gt; (1 samples)</title><rect x='576.00' y='522.00' width='64.00' height='17' fill='hsl(204,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='579.00' y='535.00'>org.moc...</text>
+<g><title>org.mockito.internal.creation.bytebuddy.SubclassBytecodeGenerator.&lt;init&gt; (1 samples)</title><rect x='576.00' y='504.00' width='64.00' height='17' fill='hsl(93,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='579.00' y='517.00'>org.moc...</text>
+<g><title>org.mockito.internal.creation.bytebuddy.SubclassInjectionLoader.&lt;init&gt; (1 samples)</title><rect x='576.00' y='486.00' width='64.00' height='17' fill='hsl(99,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='579.00' y='499.00'>org.moc...</text>
+<g><title>net.bytebuddy.dynamic.loading.ClassInjector$UsingReflection.&lt;clinit&gt; (1 samples)</title><rect x='576.00' y='468.00' width='64.00' height='17' fill='hsl(10,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='579.00' y='481.00'>net.byt...</text>
+<g><title>net.bytebuddy.dynamic.loading.ClassInjector$UsingReflection.doPrivileged (1 samples)</title><rect x='576.00' y='450.00' width='64.00' height='17' fill='hsl(0,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='579.00' y='463.00'>net.byt...</text>
+<g><title>net.bytebuddy.dynamic.loading.ClassInjector$UsingReflection$Dispatcher$CreationAction.run (1 samples)</title><rect x='576.00' y='432.00' width='64.00' height='17' fill='hsl(166,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='579.00' y='445.00'>net.byt...</text>
+<g><title>net.bytebuddy.dynamic.loading.ClassInjector$UsingReflection$Dispatcher$CreationAction.run (1 samples)</title><rect x='576.00' y='414.00' width='64.00' height='17' fill='hsl(166,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='579.00' y='427.00'>net.byt...</text>
+<g><title>net.bytebuddy.dynamic.loading.ClassInjector$UsingUnsafe.&lt;clinit&gt; (1 samples)</title><rect x='576.00' y='396.00' width='64.00' height='17' fill='hsl(303,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='579.00' y='409.00'>net.byt...</text>
+<g><title>net.bytebuddy.dynamic.loading.ClassInjector$UsingUnsafe.doPrivileged (1 samples)</title><rect x='576.00' y='378.00' width='64.00' height='17' fill='hsl(169,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='579.00' y='391.00'>net.byt...</text>
+<g><title>net.bytebuddy.utility.privilege.GetMethodAction.run (1 samples)</title><rect x='576.00' y='360.00' width='64.00' height='17' fill='hsl(159,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='579.00' y='373.00'>net.byt...</text>
+<g><title>net.bytebuddy.utility.privilege.GetMethodAction.run (1 samples)</title><rect x='576.00' y='342.00' width='64.00' height='17' fill='hsl(159,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='579.00' y='355.00'>net.byt...</text>
+<g><title>java.lang.Class.forName (1 samples)</title><rect x='576.00' y='324.00' width='64.00' height='17' fill='hsl(167,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='579.00' y='337.00'>java.la...</text>
+<g><title>java.lang.Class.forName0 (1 samples)</title><rect x='576.00' y='306.00' width='64.00' height='17' fill='hsl(239,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='579.00' y='319.00'>java.la...</text>
+<g><title>java.lang.SecurityManager.&lt;clinit&gt; (1 samples)</title><rect x='576.00' y='288.00' width='64.00' height='17' fill='hsl(282,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='579.00' y='301.00'>java.la...</text>
+<g><title>java.lang.SecurityManager.addNonExportedPackages (1 samples)</title><rect x='576.00' y='270.00' width='64.00' height='17' fill='hsl(209,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='579.00' y='283.00'>java.la...</text>
+<g><title>java.util.stream.ReferencePipeline.forEach (1 samples)</title><rect x='576.00' y='252.00' width='64.00' height='17' fill='hsl(29,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='579.00' y='265.00'>java.ut...</text>
+<g><title>java.util.stream.AbstractPipeline.evaluate (1 samples)</title><rect x='576.00' y='234.00' width='64.00' height='17' fill='hsl(104,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='579.00' y='247.00'>java.ut...</text>
+<g><title>java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential (1 samples)</title><rect x='576.00' y='216.00' width='64.00' height='17' fill='hsl(338,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='579.00' y='229.00'>java.ut...</text>
+<g><title>java.util.stream.ForEachOps$ForEachOp.evaluateSequential (1 samples)</title><rect x='576.00' y='198.00' width='64.00' height='17' fill='hsl(147,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='579.00' y='211.00'>java.ut...</text>
+<g><title>java.util.stream.AbstractPipeline.wrapAndCopyInto (1 samples)</title><rect x='576.00' y='180.00' width='64.00' height='17' fill='hsl(151,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='579.00' y='193.00'>java.ut...</text>
+<g><title>java.util.stream.AbstractPipeline.copyInto (1 samples)</title><rect x='576.00' y='162.00' width='64.00' height='17' fill='hsl(55,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='579.00' y='175.00'>java.ut...</text>
+<g><title>java.util.Spliterators$IteratorSpliterator.forEachRemaining (1 samples)</title><rect x='576.00' y='144.00' width='64.00' height='17' fill='hsl(252,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='579.00' y='157.00'>java.ut...</text>
+<g><title>java.util.Iterator.forEachRemaining (1 samples)</title><rect x='576.00' y='126.00' width='64.00' height='17' fill='hsl(317,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='579.00' y='139.00'>java.ut...</text>
+<g><title>java.util.stream.ReferencePipeline$3$1.accept (1 samples)</title><rect x='576.00' y='108.00' width='64.00' height='17' fill='hsl(222,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='579.00' y='121.00'>java.ut...</text>
+<g><title>java.util.stream.ReferencePipeline$2$1.accept (1 samples)</title><rect x='576.00' y='90.00' width='64.00' height='17' fill='hsl(186,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='579.00' y='103.00'>java.ut...</text>
+<g><title>java.util.stream.ReferencePipeline$3$1.accept (1 samples)</title><rect x='576.00' y='72.00' width='64.00' height='17' fill='hsl(222,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='579.00' y='85.00'>java.ut...</text>
+<g><title>java.lang.SecurityManager$$Lambda$731+0x0000016b210fbce8.1904273153.apply (1 samples)</title><rect x='576.00' y='54.00' width='64.00' height='17' fill='hsl(137,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='579.00' y='67.00'>java.la...</text>
+<g><title>java.lang.SecurityManager.nonExportedPkgs (1 samples)</title><rect x='576.00' y='36.00' width='64.00' height='17' fill='hsl(287,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='579.00' y='49.00'>java.la...</text>
+<g><title>org.mockito.Mockito.mockStatic (1 samples)</title><rect x='640.00' y='774.00' width='64.00' height='17' fill='hsl(233,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='643.00' y='787.00'>org.moc...</text>
+<g><title>org.mockito.Mockito.mockStatic (1 samples)</title><rect x='640.00' y='756.00' width='64.00' height='17' fill='hsl(233,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='643.00' y='769.00'>org.moc...</text>
+<g><title>org.mockito.internal.MockitoCore.mockStatic (1 samples)</title><rect x='640.00' y='738.00' width='64.00' height='17' fill='hsl(218,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='643.00' y='751.00'>org.moc...</text>
+<g><title>org.mockito.internal.util.MockUtil.createStaticMock (1 samples)</title><rect x='640.00' y='720.00' width='64.00' height='17' fill='hsl(49,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='643.00' y='733.00'>org.moc...</text>
+<g><title>org.mockito.internal.creation.bytebuddy.InlineByteBuddyMockMaker.createStaticMock (1 samples)</title><rect x='640.00' y='702.00' width='64.00' height='17' fill='hsl(216,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='643.00' y='715.00'>org.moc...</text>
+<g><title>org.mockito.internal.creation.bytebuddy.InlineDelegateByteBuddyMockMaker.createStaticMock (1 samples)</title><rect x='640.00' y='684.00' width='64.00' height='17' fill='hsl(317,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='643.00' y='697.00'>org.moc...</text>
+<g><title>org.mockito.internal.creation.bytebuddy.TypeCachingBytecodeGenerator.mockClassStatic (1 samples)</title><rect x='640.00' y='666.00' width='64.00' height='17' fill='hsl(295,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='643.00' y='679.00'>org.moc...</text>
+<g><title>org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator.mockClassStatic (1 samples)</title><rect x='640.00' y='648.00' width='64.00' height='17' fill='hsl(302,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='643.00' y='661.00'>org.moc...</text>
+<g><title>org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator.triggerRetransformation (1 samples)</title><rect x='640.00' y='630.00' width='64.00' height='17' fill='hsl(303,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='643.00' y='643.00'>org.moc...</text>
+<g><title>sun.instrument.InstrumentationImpl.retransformClasses (1 samples)</title><rect x='640.00' y='612.00' width='64.00' height='17' fill='hsl(261,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='643.00' y='625.00'>sun.ins...</text>
+<g><title>sun.instrument.InstrumentationImpl.retransformClasses0 (1 samples)</title><rect x='640.00' y='594.00' width='64.00' height='17' fill='hsl(333,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='643.00' y='607.00'>sun.ins...</text>
+<g><title>sun.instrument.InstrumentationImpl.transform (1 samples)</title><rect x='640.00' y='576.00' width='64.00' height='17' fill='hsl(116,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='643.00' y='589.00'>sun.ins...</text>
+<g><title>sun.instrument.TransformerManager.transform (1 samples)</title><rect x='640.00' y='558.00' width='64.00' height='17' fill='hsl(111,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='643.00' y='571.00'>sun.ins...</text>
+<g><title>java.lang.instrument.ClassFileTransformer.transform (1 samples)</title><rect x='640.00' y='540.00' width='64.00' height='17' fill='hsl(86,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='643.00' y='553.00'>java.la...</text>
+<g><title>org.mockito.internal.creation.bytebuddy.InlineBytecodeGenerator.transform (1 samples)</title><rect x='640.00' y='522.00' width='64.00' height='17' fill='hsl(84,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='643.00' y='535.00'>org.moc...</text>
+<g><title>net.bytebuddy.dynamic.DynamicType$Builder$AbstractBase.make (1 samples)</title><rect x='640.00' y='504.00' width='64.00' height='17' fill='hsl(36,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='643.00' y='517.00'>net.byt...</text>
+<g><title>net.bytebuddy.dynamic.DynamicType$Builder$AbstractBase$UsingTypeWriter.make (1 samples)</title><rect x='640.00' y='486.00' width='64.00' height='17' fill='hsl(288,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='643.00' y='499.00'>net.byt...</text>
+<g><title>net.bytebuddy.dynamic.scaffold.inline.AbstractInliningDynamicTypeBuilder.toTypeWriter (1 samples)</title><rect x='640.00' y='468.00' width='64.00' height='17' fill='hsl(342,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='643.00' y='481.00'>net.byt...</text>
+<g><title>net.bytebuddy.dynamic.scaffold.inline.RedefinitionDynamicTypeBuilder.toTypeWriter (1 samples)</title><rect x='640.00' y='450.00' width='64.00' height='17' fill='hsl(237,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='643.00' y='463.00'>net.byt...</text>
+<g><title>net.bytebuddy.dynamic.scaffold.MethodRegistry$Default.prepare (1 samples)</title><rect x='640.00' y='432.00' width='64.00' height='17' fill='hsl(281,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='643.00' y='445.00'>net.byt...</text>
+<g><title>java.util.HashSet.&lt;init&gt; (1 samples)</title><rect x='640.00' y='414.00' width='64.00' height='17' fill='hsl(282,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='643.00' y='427.00'>java.ut...</text>
+<g><title>java.util.AbstractCollection.addAll (1 samples)</title><rect x='640.00' y='396.00' width='64.00' height='17' fill='hsl(225,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='643.00' y='409.00'>java.ut...</text>
+<g><title>java.util.HashSet.add (1 samples)</title><rect x='640.00' y='378.00' width='64.00' height='17' fill='hsl(329,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='643.00' y='391.00'>java.ut...</text>
+<g><title>java.util.HashMap.put (1 samples)</title><rect x='640.00' y='360.00' width='64.00' height='17' fill='hsl(348,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='643.00' y='373.00'>java.ut...</text>
+<g><title>java.util.HashMap.hash (1 samples)</title><rect x='640.00' y='342.00' width='64.00' height='17' fill='hsl(263,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='643.00' y='355.00'>java.ut...</text>
+<g><title>net.bytebuddy.description.method.MethodDescription$AbstractBase.hashCode (1 samples)</title><rect x='640.00' y='324.00' width='64.00' height='17' fill='hsl(315,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='643.00' y='337.00'>net.byt...</text>
+<g><title>net.bytebuddy.description.method.ParameterList$AbstractBase.asTypeList (1 samples)</title><rect x='640.00' y='306.00' width='64.00' height='17' fill='hsl(333,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='643.00' y='319.00'>net.byt...</text>
+<g><title>java.util.AbstractList$Itr.next (1 samples)</title><rect x='640.00' y='288.00' width='64.00' height='17' fill='hsl(263,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='643.00' y='301.00'>java.ut...</text>
+<g><title>net.bytebuddy.description.method.ParameterList$ForTokens.get (1 samples)</title><rect x='640.00' y='270.00' width='64.00' height='17' fill='hsl(225,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='643.00' y='283.00'>net.byt...</text>
+<g><title>net.bytebuddy.description.method.ParameterList$ForTokens.get (1 samples)</title><rect x='640.00' y='252.00' width='64.00' height='17' fill='hsl(225,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='643.00' y='265.00'>net.byt...</text>
+<g><title>java.util.AbstractList$Itr.next (1 samples)</title><rect x='640.00' y='234.00' width='64.00' height='17' fill='hsl(263,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='643.00' y='247.00'>java.ut...</text>
+<g><title>net.bytebuddy.description.ByteCodeElement$Token$TokenList.get (1 samples)</title><rect x='640.00' y='216.00' width='64.00' height='17' fill='hsl(285,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='643.00' y='229.00'>net.byt...</text>
+<g><title>net.bytebuddy.description.ByteCodeElement$Token$TokenList.get (1 samples)</title><rect x='640.00' y='198.00' width='64.00' height='17' fill='hsl(285,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='643.00' y='211.00'>net.byt...</text>
+<g><title>java.util.AbstractList$SubList.get (1 samples)</title><rect x='640.00' y='180.00' width='64.00' height='17' fill='hsl(111,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='643.00' y='193.00'>java.ut...</text>
+<g><title>java.util.AbstractList$SubList.checkForComodification (1 samples)</title><rect x='640.00' y='162.00' width='64.00' height='17' fill='hsl(59,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='643.00' y='175.00'>java.ut...</text>
+<g><title>uk.org.webcompere.systemstubs.environment.EnvironmentVariableMocker.connect (1 samples)</title><rect x='704.00' y='792.00' width='64.00' height='17' fill='hsl(63,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='707.00' y='805.00'>uk.org....</text>
+<g><title>java.lang.System.getenv (1 samples)</title><rect x='704.00' y='774.00' width='64.00' height='17' fill='hsl(19,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='707.00' y='787.00'>java.la...</text>
+<g><title>java.lang.ProcessEnvironment.getenv (1 samples)</title><rect x='704.00' y='756.00' width='64.00' height='17' fill='hsl(90,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='707.00' y='769.00'>java.la...</text>
+<g><title>org.mockito.internal.creation.bytebuddy.MockMethodAdvice.handleStatic (1 samples)</title><rect x='704.00' y='738.00' width='64.00' height='17' fill='hsl(0,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='707.00' y='751.00'>org.moc...</text>
+<g><title>org.mockito.internal.creation.bytebuddy.MockMethodInterceptor.doIntercept (1 samples)</title><rect x='704.00' y='720.00' width='64.00' height='17' fill='hsl(97,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='707.00' y='733.00'>org.moc...</text>
+<g><title>org.mockito.internal.handler.InvocationNotifierHandler.handle (1 samples)</title><rect x='704.00' y='702.00' width='64.00' height='17' fill='hsl(0,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='707.00' y='715.00'>org.moc...</text>
+<g><title>org.mockito.internal.handler.NullResultGuardian.handle (1 samples)</title><rect x='704.00' y='684.00' width='64.00' height='17' fill='hsl(297,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='707.00' y='697.00'>org.moc...</text>
+<g><title>org.mockito.internal.handler.MockHandlerImpl.handle (1 samples)</title><rect x='704.00' y='666.00' width='64.00' height='17' fill='hsl(217,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='707.00' y='679.00'>org.moc...</text>
+<g><title>uk.org.webcompere.systemstubs.environment.EnvironmentVariableMocker$$Lambda$715+0x0000016b21179de8.484199463.answer (1 samples)</title><rect x='704.00' y='648.00' width='64.00' height='17' fill='hsl(269,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='707.00' y='661.00'>uk.org....</text>
+<g><title>uk.org.webcompere.systemstubs.environment.EnvironmentVariableMocker.lambda$static$0 (1 samples)</title><rect x='704.00' y='630.00' width='64.00' height='17' fill='hsl(265,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='707.00' y='643.00'>uk.org....</text>
+<g><title>org.mockito.internal.invocation.InterceptedInvocation.callRealMethod (1 samples)</title><rect x='704.00' y='612.00' width='64.00' height='17' fill='hsl(102,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='707.00' y='625.00'>org.moc...</text>
+<g><title>org.mockito.internal.creation.bytebuddy.MockMethodAdvice$StaticMethodCall.invoke (1 samples)</title><rect x='704.00' y='594.00' width='64.00' height='17' fill='hsl(18,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='707.00' y='607.00'>org.moc...</text>
+<g><title>org.mockito.internal.creation.bytebuddy.MockMethodAdvice.access$500 (1 samples)</title><rect x='704.00' y='576.00' width='64.00' height='17' fill='hsl(5,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='707.00' y='589.00'>org.moc...</text>
+<g><title>org.mockito.internal.creation.bytebuddy.MockMethodAdvice.tryInvoke (1 samples)</title><rect x='704.00' y='558.00' width='64.00' height='17' fill='hsl(355,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='707.00' y='571.00'>org.moc...</text>
+<g><title>org.mockito.internal.util.reflection.ModuleMemberAccessor.invoke (1 samples)</title><rect x='704.00' y='540.00' width='64.00' height='17' fill='hsl(179,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='707.00' y='553.00'>org.moc...</text>
+<g><title>org.mockito.internal.util.reflection.InstrumentationMemberAccessor.invoke (1 samples)</title><rect x='704.00' y='522.00' width='64.00' height='17' fill='hsl(44,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='707.00' y='535.00'>org.moc...</text>
+<g><title>org.mockito.internal.util.reflection.InstrumentationMemberAccessor$Dispatcher$ByteBuddy$ad5s3lqf.invokeWithArguments (1 samples)</title><rect x='704.00' y='504.00' width='64.00' height='17' fill='hsl(179,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='707.00' y='517.00'>org.moc...</text>
+<g><title>java.lang.invoke.MethodHandle.invokeWithArguments (1 samples)</title><rect x='704.00' y='486.00' width='64.00' height='17' fill='hsl(140,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='707.00' y='499.00'>java.la...</text>
+<g><title>java.lang.invoke.Invokers.spreadInvoker (1 samples)</title><rect x='704.00' y='468.00' width='64.00' height='17' fill='hsl(113,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='707.00' y='481.00'>java.la...</text>
+<g><title>java.lang.invoke.Invokers.genericInvoker (1 samples)</title><rect x='704.00' y='450.00' width='64.00' height='17' fill='hsl(93,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='707.00' y='463.00'>java.la...</text>
+<g><title>java.lang.invoke.Invokers.makeExactOrGeneralInvoker (1 samples)</title><rect x='704.00' y='432.00' width='64.00' height='17' fill='hsl(126,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='707.00' y='445.00'>java.la...</text>
+<g><title>org.junit.platform.launcher.core.OutcomeDelayingEngineExecutionListener.executionStarted (1 samples)</title><rect x='768.00' y='1206.00' width='64.00' height='17' fill='hsl(51,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='771.00' y='1219.00'>org.jun...</text>
+<g><title>org.junit.platform.launcher.core.DelegatingEngineExecutionListener.executionStarted (1 samples)</title><rect x='768.00' y='1188.00' width='64.00' height='17' fill='hsl(69,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='771.00' y='1201.00'>org.jun...</text>
+<g><title>org.junit.platform.launcher.core.DelegatingEngineExecutionListener.executionStarted (1 samples)</title><rect x='768.00' y='1170.00' width='64.00' height='17' fill='hsl(69,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='771.00' y='1183.00'>org.jun...</text>
+<g><title>org.junit.platform.launcher.core.CompositeEngineExecutionListener.executionStarted (1 samples)</title><rect x='768.00' y='1152.00' width='64.00' height='17' fill='hsl(101,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='771.00' y='1165.00'>org.jun...</text>
+<g><title>org.junit.platform.launcher.core.CompositeEngineExecutionListener.notifyEach (1 samples)</title><rect x='768.00' y='1134.00' width='64.00' height='17' fill='hsl(64,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='771.00' y='1147.00'>org.jun...</text>
+<g><title>org.junit.platform.launcher.core.IterationOrder$1.forEach (1 samples)</title><rect x='768.00' y='1116.00' width='64.00' height='17' fill='hsl(337,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='771.00' y='1129.00'>org.jun...</text>
+<g><title>java.util.ArrayList.forEach (1 samples)</title><rect x='768.00' y='1098.00' width='64.00' height='17' fill='hsl(300,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='771.00' y='1111.00'>java.ut...</text>
+<g><title>org.junit.platform.launcher.core.CompositeEngineExecutionListener$$Lambda$514+0x0000016b21146668.838812606.accept (1 samples)</title><rect x='768.00' y='1080.00' width='64.00' height='17' fill='hsl(97,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='771.00' y='1093.00'>org.jun...</text>
+<g><title>org.junit.platform.launcher.core.CompositeEngineExecutionListener.lambda$notifyEach$13 (1 samples)</title><rect x='768.00' y='1062.00' width='64.00' height='17' fill='hsl(82,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='771.00' y='1075.00'>org.jun...</text>
+<g><title>org.junit.platform.launcher.core.CompositeEngineExecutionListener$$Lambda$512+0x0000016b21146218.1375394559.accept (1 samples)</title><rect x='768.00' y='1044.00' width='64.00' height='17' fill='hsl(148,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='771.00' y='1057.00'>org.jun...</text>
+<g><title>org.junit.platform.launcher.core.CompositeEngineExecutionListener.lambda$executionStarted$4 (1 samples)</title><rect x='768.00' y='1026.00' width='64.00' height='17' fill='hsl(147,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='771.00' y='1039.00'>org.jun...</text>
+<g><title>org.junit.platform.launcher.core.ExecutionListenerAdapter.executionStarted (1 samples)</title><rect x='768.00' y='1008.00' width='64.00' height='17' fill='hsl(343,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='771.00' y='1021.00'>org.jun...</text>
+<g><title>org.junit.platform.launcher.core.CompositeTestExecutionListener.executionStarted (1 samples)</title><rect x='768.00' y='990.00' width='64.00' height='17' fill='hsl(140,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='771.00' y='1003.00'>org.jun...</text>
+<g><title>org.junit.platform.launcher.core.CompositeTestExecutionListener.notifyEach (1 samples)</title><rect x='768.00' y='972.00' width='64.00' height='17' fill='hsl(9,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='771.00' y='985.00'>org.jun...</text>
+<g><title>org.junit.platform.launcher.core.IterationOrder$1.forEach (1 samples)</title><rect x='768.00' y='954.00' width='64.00' height='17' fill='hsl(337,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='771.00' y='967.00'>org.jun...</text>
+<g><title>java.util.ArrayList.forEach (1 samples)</title><rect x='768.00' y='936.00' width='64.00' height='17' fill='hsl(300,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='771.00' y='949.00'>java.ut...</text>
+<g><title>org.junit.platform.launcher.core.CompositeTestExecutionListener$$Lambda$462+0x0000016b211358c0.1826334428.accept (1 samples)</title><rect x='768.00' y='918.00' width='64.00' height='17' fill='hsl(217,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='771.00' y='931.00'>org.jun...</text>
+<g><title>org.junit.platform.launcher.core.CompositeTestExecutionListener.lambda$notifyEach$21 (1 samples)</title><rect x='768.00' y='900.00' width='64.00' height='17' fill='hsl(180,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='771.00' y='913.00'>org.jun...</text>
+<g><title>org.junit.platform.launcher.core.CompositeTestExecutionListener$$Lambda$519+0x0000016b21147120.20111564.accept (1 samples)</title><rect x='768.00' y='882.00' width='64.00' height='17' fill='hsl(29,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='771.00' y='895.00'>org.jun...</text>
+<g><title>org.junit.platform.launcher.core.CompositeTestExecutionListener.lambda$executionStarted$6 (1 samples)</title><rect x='768.00' y='864.00' width='64.00' height='17' fill='hsl(338,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='771.00' y='877.00'>org.jun...</text>
+<g><title>org.apache.maven.surefire.junitplatform.RunListenerAdapter.executionStarted (1 samples)</title><rect x='768.00' y='846.00' width='64.00' height='17' fill='hsl(176,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='771.00' y='859.00'>org.apa...</text>
+<g><title>org.apache.maven.surefire.api.booter.ForkingRunListener.testStarting (1 samples)</title><rect x='768.00' y='828.00' width='64.00' height='17' fill='hsl(170,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='771.00' y='841.00'>org.apa...</text>
+<g><title>org.apache.maven.surefire.booter.spi.EventChannelEncoder.testStarting (1 samples)</title><rect x='768.00' y='810.00' width='64.00' height='17' fill='hsl(325,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='771.00' y='823.00'>org.apa...</text>
+<g><title>org.apache.maven.surefire.booter.spi.EventChannelEncoder.encode (1 samples)</title><rect x='768.00' y='792.00' width='64.00' height='17' fill='hsl(214,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='771.00' y='805.00'>org.apa...</text>
+<g><title>org.apache.maven.surefire.booter.spi.EventChannelEncoder.encode (1 samples)</title><rect x='768.00' y='774.00' width='64.00' height='17' fill='hsl(214,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='771.00' y='787.00'>org.apa...</text>
+<g><title>org.apache.maven.surefire.api.stream.AbstractStreamEncoder.encodeString (1 samples)</title><rect x='768.00' y='756.00' width='64.00' height='17' fill='hsl(35,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='771.00' y='769.00'>org.apa...</text>
+<g><title>java.nio.HeapByteBuffer.putInt (1 samples)</title><rect x='768.00' y='738.00' width='64.00' height='17' fill='hsl(241,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='771.00' y='751.00'>java.ni...</text>
+<g><title>java.nio.Buffer.checkIndex (1 samples)</title><rect x='768.00' y='720.00' width='64.00' height='17' fill='hsl(8,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='771.00' y='733.00'>java.ni...</text>
+<g><title>org.junit.platform.engine.support.hierarchical.NodeTestTask.prepare (1 samples)</title><rect x='832.00' y='1476.00' width='64.00' height='17' fill='hsl(266,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='835.00' y='1489.00'>org.jun...</text>
+<g><title>org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute (1 samples)</title><rect x='832.00' y='1458.00' width='64.00' height='17' fill='hsl(8,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='835.00' y='1471.00'>org.jun...</text>
+<g><title>org.junit.platform.engine.support.hierarchical.NodeTestTask$$Lambda$500+0x0000016b2113f620.252738640.execute (1 samples)</title><rect x='832.00' y='1440.00' width='64.00' height='17' fill='hsl(176,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='835.00' y='1453.00'>org.jun...</text>
+<g><title>org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$prepare$2 (1 samples)</title><rect x='832.00' y='1422.00' width='64.00' height='17' fill='hsl(158,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='835.00' y='1435.00'>org.jun...</text>
+<g><title>org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.prepare (1 samples)</title><rect x='832.00' y='1404.00' width='64.00' height='17' fill='hsl(273,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='835.00' y='1417.00'>org.jun...</text>
+<g><title>org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.prepare (1 samples)</title><rect x='832.00' y='1386.00' width='64.00' height='17' fill='hsl(273,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='835.00' y='1399.00'>org.jun...</text>
+<g><title>org.junit.jupiter.engine.descriptor.ExtensionUtils.registerExtensionsFromStaticFields (1 samples)</title><rect x='832.00' y='1368.00' width='64.00' height='17' fill='hsl(205,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='835.00' y='1381.00'>org.jun...</text>
+<g><title>org.junit.jupiter.engine.descriptor.ExtensionUtils.streamExtensionRegisteringFields (1 samples)</title><rect x='832.00' y='1350.00' width='64.00' height='17' fill='hsl(159,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='835.00' y='1363.00'>org.jun...</text>
+<g><title>org.junit.platform.commons.util.ReflectionUtils.streamFields (1 samples)</title><rect x='832.00' y='1332.00' width='64.00' height='17' fill='hsl(239,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='835.00' y='1345.00'>org.jun...</text>
+<g><title>org.junit.platform.commons.util.ReflectionUtils.findAllFieldsInHierarchy (1 samples)</title><rect x='832.00' y='1314.00' width='64.00' height='17' fill='hsl(146,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='835.00' y='1327.00'>org.jun...</text>
+<g><title>org.apache.maven.surefire.junitplatform.RunListenerAdapter.&lt;init&gt; (1 samples)</title><rect x='896.00' y='2142.00' width='64.00' height='17' fill='hsl(212,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='899.00' y='2155.00'>org.apa...</text>
+<g><title>java.lang.ClassLoader.loadClass (1 samples)</title><rect x='896.00' y='2124.00' width='64.00' height='17' fill='hsl(264,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='899.00' y='2137.00'>java.la...</text>
+<g><title>jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass (1 samples)</title><rect x='896.00' y='2106.00' width='64.00' height='17' fill='hsl(276,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='899.00' y='2119.00'>jdk.int...</text>
+<g><title>jdk.internal.loader.BuiltinClassLoader.loadClass (1 samples)</title><rect x='896.00' y='2088.00' width='64.00' height='17' fill='hsl(66,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='899.00' y='2101.00'>jdk.int...</text>
+<g><title>jdk.internal.loader.BuiltinClassLoader.loadClassOrNull (1 samples)</title><rect x='896.00' y='2070.00' width='64.00' height='17' fill='hsl(295,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='899.00' y='2083.00'>jdk.int...</text>
+<g><title>jdk.internal.loader.BuiltinClassLoader.findClassOnClassPathOrNull (1 samples)</title><rect x='896.00' y='2052.00' width='64.00' height='17' fill='hsl(72,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='899.00' y='2065.00'>jdk.int...</text>
+<g><title>jdk.internal.loader.URLClassPath.getResource (1 samples)</title><rect x='896.00' y='2034.00' width='64.00' height='17' fill='hsl(296,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='899.00' y='2047.00'>jdk.int...</text>
+<g><title>jdk.internal.loader.URLClassPath$FileLoader.getResource (1 samples)</title><rect x='896.00' y='2016.00' width='64.00' height='17' fill='hsl(211,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='899.00' y='2029.00'>jdk.int...</text>
+<g><title>sun.net.www.ParseUtil.encodePath (1 samples)</title><rect x='896.00' y='1998.00' width='64.00' height='17' fill='hsl(266,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='899.00' y='2011.00'>sun.net...</text>
+<g><title>sun.net.www.ParseUtil.firstEncodeIndex (1 samples)</title><rect x='896.00' y='1980.00' width='64.00' height='17' fill='hsl(73,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='899.00' y='1993.00'>sun.net...</text>
+<g><title>org.apache.maven.surefire.booter.ForkedBooter.createProviderInCurrentClassloader (1 samples)</title><rect x='960.00' y='2160.00' width='64.00' height='17' fill='hsl(50,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='963.00' y='2173.00'>org.apa...</text>
+<g><title>org.apache.maven.surefire.api.util.ReflectionUtils.instantiateOneArg (1 samples)</title><rect x='960.00' y='2142.00' width='64.00' height='17' fill='hsl(250,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='963.00' y='2155.00'>org.apa...</text>
+<g><title>java.lang.reflect.Constructor.newInstance (1 samples)</title><rect x='960.00' y='2124.00' width='64.00' height='17' fill='hsl(161,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='963.00' y='2137.00'>java.la...</text>
+<g><title>java.lang.reflect.Constructor.newInstanceWithCaller (1 samples)</title><rect x='960.00' y='2106.00' width='64.00' height='17' fill='hsl(295,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='963.00' y='2119.00'>java.la...</text>
+<g><title>jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance (1 samples)</title><rect x='960.00' y='2088.00' width='64.00' height='17' fill='hsl(8,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='963.00' y='2101.00'>jdk.int...</text>
+<g><title>jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance (1 samples)</title><rect x='960.00' y='2070.00' width='64.00' height='17' fill='hsl(348,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='963.00' y='2083.00'>jdk.int...</text>
+<g><title>jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0 (1 samples)</title><rect x='960.00' y='2052.00' width='64.00' height='17' fill='hsl(132,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='963.00' y='2065.00'>jdk.int...</text>
+<g><title>org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.&lt;init&gt; (1 samples)</title><rect x='960.00' y='2034.00' width='64.00' height='17' fill='hsl(194,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='963.00' y='2047.00'>org.apa...</text>
+<g><title>org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.&lt;init&gt; (1 samples)</title><rect x='960.00' y='2016.00' width='64.00' height='17' fill='hsl(194,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='963.00' y='2029.00'>org.apa...</text>
+<g><title>org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.newFilters (1 samples)</title><rect x='960.00' y='1998.00' width='64.00' height='17' fill='hsl(282,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='963.00' y='2011.00'>org.apa...</text>
+<g><title>java.util.Optional.map (1 samples)</title><rect x='960.00' y='1980.00' width='64.00' height='17' fill='hsl(342,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='963.00' y='1993.00'>java.ut...</text>
+<g><title>org.apache.maven.surefire.junitplatform.JUnitPlatformProvider$$Lambda$108+0x0000016b2108e2f0.590646109.apply (1 samples)</title><rect x='960.00' y='1962.00' width='64.00' height='17' fill='hsl(35,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='963.00' y='1975.00'>org.apa...</text>
+<g><title>org.junit.platform.launcher.TagFilter.excludeTags (1 samples)</title><rect x='960.00' y='1944.00' width='64.00' height='17' fill='hsl(150,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='963.00' y='1957.00'>org.jun...</text>
+<g><title>org.junit.platform.launcher.TagFilter.excludeMatching (1 samples)</title><rect x='960.00' y='1926.00' width='64.00' height='17' fill='hsl(162,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='963.00' y='1939.00'>org.jun...</text>
+<g><title>org.junit.platform.launcher.TagFilter.parseAll (1 samples)</title><rect x='960.00' y='1908.00' width='64.00' height='17' fill='hsl(101,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='963.00' y='1921.00'>org.jun...</text>
+<g><title>java.util.stream.ReferencePipeline.collect (1 samples)</title><rect x='960.00' y='1890.00' width='64.00' height='17' fill='hsl(78,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='963.00' y='1903.00'>java.ut...</text>
+<g><title>java.util.stream.AbstractPipeline.evaluate (1 samples)</title><rect x='960.00' y='1872.00' width='64.00' height='17' fill='hsl(104,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='963.00' y='1885.00'>java.ut...</text>
+<g><title>java.util.stream.ReduceOps$ReduceOp.evaluateSequential (1 samples)</title><rect x='960.00' y='1854.00' width='64.00' height='17' fill='hsl(271,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='963.00' y='1867.00'>java.ut...</text>
+<g><title>java.util.stream.AbstractPipeline.wrapAndCopyInto (1 samples)</title><rect x='960.00' y='1836.00' width='64.00' height='17' fill='hsl(151,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='963.00' y='1849.00'>java.ut...</text>
+<g><title>java.util.stream.AbstractPipeline.copyInto (1 samples)</title><rect x='960.00' y='1818.00' width='64.00' height='17' fill='hsl(55,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='963.00' y='1831.00'>java.ut...</text>
+<g><title>java.util.ArrayList$ArrayListSpliterator.forEachRemaining (1 samples)</title><rect x='960.00' y='1800.00' width='64.00' height='17' fill='hsl(219,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='963.00' y='1813.00'>java.ut...</text>
+<g><title>java.util.stream.ReferencePipeline$3$1.accept (1 samples)</title><rect x='960.00' y='1782.00' width='64.00' height='17' fill='hsl(222,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='963.00' y='1795.00'>java.ut...</text>
+<g><title>org.junit.platform.launcher.TagFilter$$Lambda$111+0x0000016b2108ed60.182531396.apply (1 samples)</title><rect x='960.00' y='1764.00' width='64.00' height='17' fill='hsl(270,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='963.00' y='1777.00'>org.jun...</text>
+<g><title>org.junit.platform.launcher.TagFilter.parse (1 samples)</title><rect x='960.00' y='1746.00' width='64.00' height='17' fill='hsl(13,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='963.00' y='1759.00'>org.jun...</text>
+<g><title>org.junit.platform.launcher.tagexpression.TagExpression.parseFrom (1 samples)</title><rect x='960.00' y='1728.00' width='64.00' height='17' fill='hsl(354,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='963.00' y='1741.00'>org.jun...</text>
+<g><title>org.junit.platform.launcher.tagexpression.Parser.parse (1 samples)</title><rect x='960.00' y='1710.00' width='64.00' height='17' fill='hsl(140,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='963.00' y='1723.00'>org.jun...</text>
+<g><title>org.junit.platform.launcher.tagexpression.Parser.constructExpressionFrom (1 samples)</title><rect x='960.00' y='1692.00' width='64.00' height='17' fill='hsl(354,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='963.00' y='1705.00'>org.jun...</text>
+<g><title>org.junit.platform.launcher.tagexpression.ShuntingYard.execute (1 samples)</title><rect x='960.00' y='1674.00' width='64.00' height='17' fill='hsl(165,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='963.00' y='1687.00'>org.jun...</text>
+<g><title>org.junit.platform.launcher.tagexpression.ShuntingYard.processTokens (1 samples)</title><rect x='960.00' y='1656.00' width='64.00' height='17' fill='hsl(313,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='963.00' y='1669.00'>org.jun...</text>
+<g><title>org.junit.platform.launcher.tagexpression.ParseStatus.process (1 samples)</title><rect x='960.00' y='1638.00' width='64.00' height='17' fill='hsl(54,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='963.00' y='1651.00'>org.jun...</text>
+<g><title>org.junit.platform.launcher.tagexpression.ShuntingYard$$Lambda$127+0x0000016b21089470.989447607.get (1 samples)</title><rect x='960.00' y='1620.00' width='64.00' height='17' fill='hsl(68,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='963.00' y='1633.00'>org.jun...</text>
+<g><title>org.junit.platform.launcher.tagexpression.ShuntingYard.lambda$processTokens$0 (1 samples)</title><rect x='960.00' y='1602.00' width='64.00' height='17' fill='hsl(340,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='963.00' y='1615.00'>org.jun...</text>
+<g><title>org.junit.platform.launcher.tagexpression.ShuntingYard.process (1 samples)</title><rect x='960.00' y='1584.00' width='64.00' height='17' fill='hsl(146,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='963.00' y='1597.00'>org.jun...</text>
+<g><title>org.junit.platform.launcher.tagexpression.ShuntingYard.convertLeafTokenToExpression (1 samples)</title><rect x='960.00' y='1566.00' width='64.00' height='17' fill='hsl(86,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='963.00' y='1579.00'>org.jun...</text>
+<g><title>org.junit.platform.launcher.tagexpression.TagExpressions.tag (1 samples)</title><rect x='960.00' y='1548.00' width='64.00' height='17' fill='hsl(3,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='963.00' y='1561.00'>org.jun...</text>
+<g><title>java.lang.ClassLoader.loadClass (1 samples)</title><rect x='960.00' y='1530.00' width='64.00' height='17' fill='hsl(264,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='963.00' y='1543.00'>java.la...</text>
+<g><title>jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass (1 samples)</title><rect x='960.00' y='1512.00' width='64.00' height='17' fill='hsl(276,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='963.00' y='1525.00'>jdk.int...</text>
+<g><title>jdk.internal.loader.BuiltinClassLoader.loadClass (1 samples)</title><rect x='960.00' y='1494.00' width='64.00' height='17' fill='hsl(66,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='963.00' y='1507.00'>jdk.int...</text>
+<g><title>jdk.internal.loader.BuiltinClassLoader.loadClassOrNull (1 samples)</title><rect x='960.00' y='1476.00' width='64.00' height='17' fill='hsl(295,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='963.00' y='1489.00'>jdk.int...</text>
+<g><title>jdk.internal.loader.BuiltinClassLoader.findClassOnClassPathOrNull (1 samples)</title><rect x='960.00' y='1458.00' width='64.00' height='17' fill='hsl(72,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='963.00' y='1471.00'>jdk.int...</text>
+<g><title>jdk.internal.loader.URLClassPath.getResource (1 samples)</title><rect x='960.00' y='1440.00' width='64.00' height='17' fill='hsl(296,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='963.00' y='1453.00'>jdk.int...</text>
+<g><title>jdk.internal.loader.URLClassPath$JarLoader.getResource (1 samples)</title><rect x='960.00' y='1422.00' width='64.00' height='17' fill='hsl(141,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='963.00' y='1435.00'>jdk.int...</text>
+<g><title>java.util.jar.JarFile.getJarEntry (1 samples)</title><rect x='960.00' y='1404.00' width='64.00' height='17' fill='hsl(268,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='963.00' y='1417.00'>java.ut...</text>
+<g><title>java.util.jar.JarFile.getEntry (1 samples)</title><rect x='960.00' y='1386.00' width='64.00' height='17' fill='hsl(303,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='963.00' y='1399.00'>java.ut...</text>
+<g><title>java.util.zip.ZipFile.getEntry (1 samples)</title><rect x='960.00' y='1368.00' width='64.00' height='17' fill='hsl(163,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='963.00' y='1381.00'>java.ut...</text>
+<g><title>java.util.zip.ZipFile.ensureOpen (1 samples)</title><rect x='960.00' y='1350.00' width='64.00' height='17' fill='hsl(130,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='963.00' y='1363.00'>java.ut...</text>
+<g><title>org.apache.maven.surefire.booter.ForkedBooter.setupBooter (7 samples)</title><rect x='1024.00' y='2196.00' width='448.00' height='17' fill='hsl(9,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1027.00' y='2209.00'>org.apache.maven.surefire.booter.ForkedBooter.setupBooter</text>
+<g><title>org.apache.maven.surefire.booter.ForkedBooter.listenToShutdownCommands (2 samples)</title><rect x='1024.00' y='2178.00' width='128.00' height='17' fill='hsl(93,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1027.00' y='2191.00'>org.apache.maven...</text>
+<g><title>org.apache.maven.surefire.booter.PpidChecker.&lt;clinit&gt; (2 samples)</title><rect x='1024.00' y='2160.00' width='128.00' height='17' fill='hsl(249,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1027.00' y='2173.00'>org.apache.maven...</text>
+<g><title>org.apache.maven.surefire.booter.PpidChecker.createWindowsCreationDateFormat (1 samples)</title><rect x='1024.00' y='2142.00' width='64.00' height='17' fill='hsl(174,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1027.00' y='2155.00'>org.apa...</text>
+<g><title>java.text.SimpleDateFormat.&lt;init&gt; (1 samples)</title><rect x='1024.00' y='2124.00' width='64.00' height='17' fill='hsl(250,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1027.00' y='2137.00'>java.te...</text>
+<g><title>java.text.SimpleDateFormat.&lt;init&gt; (1 samples)</title><rect x='1024.00' y='2106.00' width='64.00' height='17' fill='hsl(250,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1027.00' y='2119.00'>java.te...</text>
+<g><title>java.text.SimpleDateFormat.initializeCalendar (1 samples)</title><rect x='1024.00' y='2088.00' width='64.00' height='17' fill='hsl(113,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1027.00' y='2101.00'>java.te...</text>
+<g><title>java.util.Calendar.getInstance (1 samples)</title><rect x='1024.00' y='2070.00' width='64.00' height='17' fill='hsl(65,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1027.00' y='2083.00'>java.ut...</text>
+<g><title>java.util.Calendar.createCalendar (1 samples)</title><rect x='1024.00' y='2052.00' width='64.00' height='17' fill='hsl(238,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1027.00' y='2065.00'>java.ut...</text>
+<g><title>sun.util.locale.provider.LocaleProviderAdapter.getAdapter (1 samples)</title><rect x='1024.00' y='2034.00' width='64.00' height='17' fill='hsl(324,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1027.00' y='2047.00'>sun.uti...</text>
+<g><title>sun.util.locale.provider.LocaleProviderAdapter.findAdapter (1 samples)</title><rect x='1024.00' y='2016.00' width='64.00' height='17' fill='hsl(217,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1027.00' y='2029.00'>sun.uti...</text>
+<g><title>sun.util.locale.provider.JRELocaleProviderAdapter.getLocaleServiceProvider (1 samples)</title><rect x='1024.00' y='1998.00' width='64.00' height='17' fill='hsl(18,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1027.00' y='2011.00'>sun.uti...</text>
+<g><title>sun.util.locale.provider.JRELocaleProviderAdapter.getCalendarProvider (1 samples)</title><rect x='1024.00' y='1980.00' width='64.00' height='17' fill='hsl(86,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1027.00' y='1993.00'>sun.uti...</text>
+<g><title>java.security.AccessController.doPrivileged (1 samples)</title><rect x='1024.00' y='1962.00' width='64.00' height='17' fill='hsl(183,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1027.00' y='1975.00'>java.se...</text>
+<g><title>java.security.AccessController.executePrivileged (1 samples)</title><rect x='1024.00' y='1944.00' width='64.00' height='17' fill='hsl(88,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1027.00' y='1957.00'>java.se...</text>
+<g><title>sun.util.locale.provider.JRELocaleProviderAdapter$$Lambda$59+0x800000060.275266973.run (1 samples)</title><rect x='1024.00' y='1926.00' width='64.00' height='17' fill='hsl(138,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1027.00' y='1939.00'>sun.uti...</text>
+<g><title>sun.util.locale.provider.JRELocaleProviderAdapter.lambda$getCalendarProvider$11 (1 samples)</title><rect x='1024.00' y='1908.00' width='64.00' height='17' fill='hsl(175,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1027.00' y='1921.00'>sun.uti...</text>
+<g><title>sun.util.locale.provider.JRELocaleProviderAdapter.getLanguageTagSet (1 samples)</title><rect x='1024.00' y='1890.00' width='64.00' height='17' fill='hsl(338,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1027.00' y='1903.00'>sun.uti...</text>
+<g><title>sun.util.cldr.CLDRLocaleProviderAdapter.createLanguageTagSet (1 samples)</title><rect x='1024.00' y='1872.00' width='64.00' height='17' fill='hsl(88,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1027.00' y='1885.00'>sun.uti...</text>
+<g><title>java.util.StringTokenizer.countTokens (1 samples)</title><rect x='1024.00' y='1854.00' width='64.00' height='17' fill='hsl(77,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1027.00' y='1867.00'>java.ut...</text>
+<g><title>java.util.StringTokenizer.skipDelimiters (1 samples)</title><rect x='1024.00' y='1836.00' width='64.00' height='17' fill='hsl(139,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1027.00' y='1849.00'>java.ut...</text>
+<g><title>org.apache.maven.surefire.shared.lang3.SystemUtils.&lt;clinit&gt; (1 samples)</title><rect x='1088.00' y='2142.00' width='64.00' height='17' fill='hsl(132,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1091.00' y='2155.00'>org.apa...</text>
+<g><title>org.apache.maven.surefire.shared.lang3.JavaVersion.&lt;clinit&gt; (1 samples)</title><rect x='1088.00' y='2124.00' width='64.00' height='17' fill='hsl(61,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1091.00' y='2137.00'>org.apa...</text>
+<g><title>java.lang.Float.toString (1 samples)</title><rect x='1088.00' y='2106.00' width='64.00' height='17' fill='hsl(262,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1091.00' y='2119.00'>java.la...</text>
+<g><title>jdk.internal.math.FloatingDecimal.toJavaFormatString (1 samples)</title><rect x='1088.00' y='2088.00' width='64.00' height='17' fill='hsl(287,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1091.00' y='2101.00'>jdk.int...</text>
+<g><title>org.apache.maven.surefire.booter.ForkedBooter.lookupDecoderFactory (2 samples)</title><rect x='1152.00' y='2178.00' width='128.00' height='17' fill='hsl(197,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1155.00' y='2191.00'>org.apache.maven...</text>
+<g><title>java.util.ServiceLoader$3.hasNext (1 samples)</title><rect x='1152.00' y='2160.00' width='64.00' height='17' fill='hsl(327,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1155.00' y='2173.00'>java.ut...</text>
+<g><title>java.util.ServiceLoader$2.hasNext (1 samples)</title><rect x='1152.00' y='2142.00' width='64.00' height='17' fill='hsl(302,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1155.00' y='2155.00'>java.ut...</text>
+<g><title>java.util.ServiceLoader$LazyClassPathLookupIterator.hasNext (1 samples)</title><rect x='1152.00' y='2124.00' width='64.00' height='17' fill='hsl(76,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1155.00' y='2137.00'>java.ut...</text>
+<g><title>java.util.ServiceLoader$LazyClassPathLookupIterator.hasNextService (1 samples)</title><rect x='1152.00' y='2106.00' width='64.00' height='17' fill='hsl(180,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1155.00' y='2119.00'>java.ut...</text>
+<g><title>java.util.ServiceLoader$LazyClassPathLookupIterator.nextProviderClass (1 samples)</title><rect x='1152.00' y='2088.00' width='64.00' height='17' fill='hsl(214,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1155.00' y='2101.00'>java.ut...</text>
+<g><title>java.util.ServiceLoader$LazyClassPathLookupIterator.parse (1 samples)</title><rect x='1152.00' y='2070.00' width='64.00' height='17' fill='hsl(233,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1155.00' y='2083.00'>java.ut...</text>
+<g><title>java.util.ServiceLoader$LazyClassPathLookupIterator.parseLine (1 samples)</title><rect x='1152.00' y='2052.00' width='64.00' height='17' fill='hsl(197,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1155.00' y='2065.00'>java.ut...</text>
+<g><title>java.lang.Character.isJavaIdentifierPart (1 samples)</title><rect x='1152.00' y='2034.00' width='64.00' height='17' fill='hsl(43,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1155.00' y='2047.00'>java.la...</text>
+<g><title>java.util.ServiceLoader$3.next (1 samples)</title><rect x='1216.00' y='2160.00' width='64.00' height='17' fill='hsl(87,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1219.00' y='2173.00'>java.ut...</text>
+<g><title>java.util.ServiceLoader$2.next (1 samples)</title><rect x='1216.00' y='2142.00' width='64.00' height='17' fill='hsl(62,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1219.00' y='2155.00'>java.ut...</text>
+<g><title>java.util.ServiceLoader$2.next (1 samples)</title><rect x='1216.00' y='2124.00' width='64.00' height='17' fill='hsl(62,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1219.00' y='2137.00'>java.ut...</text>
+<g><title>java.util.ServiceLoader$LazyClassPathLookupIterator.next (1 samples)</title><rect x='1216.00' y='2106.00' width='64.00' height='17' fill='hsl(12,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1219.00' y='2119.00'>java.ut...</text>
+<g><title>java.util.ServiceLoader$LazyClassPathLookupIterator.next (1 samples)</title><rect x='1216.00' y='2088.00' width='64.00' height='17' fill='hsl(12,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1219.00' y='2101.00'>java.ut...</text>
+<g><title>org.apache.maven.surefire.api.booter.DumpErrorSingleton.init (1 samples)</title><rect x='1280.00' y='2178.00' width='64.00' height='17' fill='hsl(161,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1283.00' y='2191.00'>org.apa...</text>
+<g><title>org.apache.maven.surefire.api.booter.DumpErrorSingleton.createDumpFile (1 samples)</title><rect x='1280.00' y='2160.00' width='64.00' height='17' fill='hsl(174,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1283.00' y='2173.00'>org.apa...</text>
+<g><title>java.lang.ClassLoader.loadClass (1 samples)</title><rect x='1280.00' y='2142.00' width='64.00' height='17' fill='hsl(264,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1283.00' y='2155.00'>java.la...</text>
+<g><title>jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass (1 samples)</title><rect x='1280.00' y='2124.00' width='64.00' height='17' fill='hsl(276,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1283.00' y='2137.00'>jdk.int...</text>
+<g><title>jdk.internal.loader.BuiltinClassLoader.loadClass (1 samples)</title><rect x='1280.00' y='2106.00' width='64.00' height='17' fill='hsl(66,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1283.00' y='2119.00'>jdk.int...</text>
+<g><title>jdk.internal.loader.BuiltinClassLoader.loadClassOrNull (1 samples)</title><rect x='1280.00' y='2088.00' width='64.00' height='17' fill='hsl(295,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1283.00' y='2101.00'>jdk.int...</text>
+<g><title>jdk.internal.loader.BuiltinClassLoader.findClassOnClassPathOrNull (1 samples)</title><rect x='1280.00' y='2070.00' width='64.00' height='17' fill='hsl(72,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1283.00' y='2083.00'>jdk.int...</text>
+<g><title>jdk.internal.loader.BuiltinClassLoader.defineClass (1 samples)</title><rect x='1280.00' y='2052.00' width='64.00' height='17' fill='hsl(70,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1283.00' y='2065.00'>jdk.int...</text>
+<g><title>java.security.SecureClassLoader.defineClass (1 samples)</title><rect x='1280.00' y='2034.00' width='64.00' height='17' fill='hsl(245,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1283.00' y='2047.00'>java.se...</text>
+<g><title>java.lang.ClassLoader.defineClass (1 samples)</title><rect x='1280.00' y='2016.00' width='64.00' height='17' fill='hsl(57,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1283.00' y='2029.00'>java.la...</text>
+<g><title>org.apache.maven.surefire.booter.BooterDeserializer.&lt;init&gt; (1 samples)</title><rect x='1344.00' y='2178.00' width='64.00' height='17' fill='hsl(266,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1347.00' y='2191.00'>org.apa...</text>
+<g><title>org.apache.maven.surefire.booter.SystemPropertyManager.loadProperties (1 samples)</title><rect x='1344.00' y='2160.00' width='64.00' height='17' fill='hsl(209,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1347.00' y='2173.00'>org.apa...</text>
+<g><title>java.lang.ClassLoader.loadClass (1 samples)</title><rect x='1344.00' y='2142.00' width='64.00' height='17' fill='hsl(264,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1347.00' y='2155.00'>java.la...</text>
+<g><title>jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass (1 samples)</title><rect x='1344.00' y='2124.00' width='64.00' height='17' fill='hsl(276,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1347.00' y='2137.00'>jdk.int...</text>
+<g><title>jdk.internal.loader.BuiltinClassLoader.loadClass (1 samples)</title><rect x='1344.00' y='2106.00' width='64.00' height='17' fill='hsl(66,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1347.00' y='2119.00'>jdk.int...</text>
+<g><title>jdk.internal.loader.BuiltinClassLoader.loadClassOrNull (1 samples)</title><rect x='1344.00' y='2088.00' width='64.00' height='17' fill='hsl(295,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1347.00' y='2101.00'>jdk.int...</text>
+<g><title>jdk.internal.loader.BuiltinClassLoader.findClassOnClassPathOrNull (1 samples)</title><rect x='1344.00' y='2070.00' width='64.00' height='17' fill='hsl(72,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1347.00' y='2083.00'>jdk.int...</text>
+<g><title>jdk.internal.loader.BuiltinClassLoader.defineClass (1 samples)</title><rect x='1344.00' y='2052.00' width='64.00' height='17' fill='hsl(70,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1347.00' y='2065.00'>jdk.int...</text>
+<g><title>java.security.SecureClassLoader.defineClass (1 samples)</title><rect x='1344.00' y='2034.00' width='64.00' height='17' fill='hsl(245,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1347.00' y='2047.00'>java.se...</text>
+<g><title>java.lang.ClassLoader.defineClass (1 samples)</title><rect x='1344.00' y='2016.00' width='64.00' height='17' fill='hsl(57,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1347.00' y='2029.00'>java.la...</text>
+<g><title>java.lang.ClassLoader.defineClass1 (1 samples)</title><rect x='1344.00' y='1998.00' width='64.00' height='17' fill='hsl(283,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1347.00' y='2011.00'>java.la...</text>
+<g><title>java.lang.ClassLoader.loadClass (1 samples)</title><rect x='1344.00' y='1980.00' width='64.00' height='17' fill='hsl(264,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1347.00' y='1993.00'>java.la...</text>
+<g><title>jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass (1 samples)</title><rect x='1344.00' y='1962.00' width='64.00' height='17' fill='hsl(276,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1347.00' y='1975.00'>jdk.int...</text>
+<g><title>jdk.internal.loader.BuiltinClassLoader.loadClass (1 samples)</title><rect x='1344.00' y='1944.00' width='64.00' height='17' fill='hsl(66,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1347.00' y='1957.00'>jdk.int...</text>
+<g><title>jdk.internal.loader.BuiltinClassLoader.loadClassOrNull (1 samples)</title><rect x='1344.00' y='1926.00' width='64.00' height='17' fill='hsl(295,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1347.00' y='1939.00'>jdk.int...</text>
+<g><title>jdk.internal.loader.BuiltinClassLoader.findClassOnClassPathOrNull (1 samples)</title><rect x='1344.00' y='1908.00' width='64.00' height='17' fill='hsl(72,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1347.00' y='1921.00'>jdk.int...</text>
+<g><title>jdk.internal.loader.BuiltinClassLoader.defineClass (1 samples)</title><rect x='1344.00' y='1890.00' width='64.00' height='17' fill='hsl(70,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1347.00' y='1903.00'>jdk.int...</text>
+<g><title>java.security.SecureClassLoader.defineClass (1 samples)</title><rect x='1344.00' y='1872.00' width='64.00' height='17' fill='hsl(245,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1347.00' y='1885.00'>java.se...</text>
+<g><title>java.lang.ClassLoader.defineClass (1 samples)</title><rect x='1344.00' y='1854.00' width='64.00' height='17' fill='hsl(57,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1347.00' y='1867.00'>java.la...</text>
+<g><title>java.lang.ClassLoader.preDefineClass (1 samples)</title><rect x='1344.00' y='1836.00' width='64.00' height='17' fill='hsl(345,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1347.00' y='1849.00'>java.la...</text>
+<g><title>java.lang.ClassLoader.checkCerts (1 samples)</title><rect x='1344.00' y='1818.00' width='64.00' height='17' fill='hsl(92,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1347.00' y='1831.00'>java.la...</text>
+<g><title>java.util.concurrent.ConcurrentHashMap.putIfAbsent (1 samples)</title><rect x='1344.00' y='1800.00' width='64.00' height='17' fill='hsl(323,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1347.00' y='1813.00'>java.ut...</text>
+<g><title>java.util.concurrent.ConcurrentHashMap.putVal (1 samples)</title><rect x='1344.00' y='1782.00' width='64.00' height='17' fill='hsl(46,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1347.00' y='1795.00'>java.ut...</text>
+<g><title>org.apache.maven.surefire.booter.ForkedBooter.isDebugging (1 samples)</title><rect x='1408.00' y='2178.00' width='64.00' height='17' fill='hsl(293,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1411.00' y='2191.00'>org.apa...</text>
+<g><title>java.lang.management.ManagementFactory.getRuntimeMXBean (1 samples)</title><rect x='1408.00' y='2160.00' width='64.00' height='17' fill='hsl(310,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1411.00' y='2173.00'>java.la...</text>
+<g><title>java.lang.management.ManagementFactory.getPlatformMXBean (1 samples)</title><rect x='1408.00' y='2142.00' width='64.00' height='17' fill='hsl(64,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1411.00' y='2155.00'>java.la...</text>
+<g><title>sun.management.spi.PlatformMBeanProvider$PlatformComponent.getMBeans (1 samples)</title><rect x='1408.00' y='2124.00' width='64.00' height='17' fill='hsl(318,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1411.00' y='2137.00'>sun.man...</text>
+<g><title>java.util.stream.Collectors.toList (1 samples)</title><rect x='1408.00' y='2106.00' width='64.00' height='17' fill='hsl(139,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1411.00' y='2119.00'>java.ut...</text>
+<g><title>java.lang.invoke.MethodHandleNatives.linkMethodHandleConstant (1 samples)</title><rect x='1408.00' y='2088.00' width='64.00' height='17' fill='hsl(258,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1411.00' y='2101.00'>java.la...</text>
+<g><title>java.lang.invoke.MethodHandles$Lookup.linkMethodHandleConstant (1 samples)</title><rect x='1408.00' y='2070.00' width='64.00' height='17' fill='hsl(58,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1411.00' y='2083.00'>java.la...</text>
+<g><title>java.lang.invoke.MethodHandles$Lookup.getDirectMethodForConstant (1 samples)</title><rect x='1408.00' y='2052.00' width='64.00' height='17' fill='hsl(65,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1411.00' y='2065.00'>java.la...</text>
+<g><title>java.lang.invoke.MethodHandles$Lookup.getDirectMethodNoSecurityManager (1 samples)</title><rect x='1408.00' y='2034.00' width='64.00' height='17' fill='hsl(37,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1411.00' y='2047.00'>java.la...</text>
+<g><title>java.lang.invoke.MethodHandles$Lookup.getDirectMethodCommon (1 samples)</title><rect x='1408.00' y='2016.00' width='64.00' height='17' fill='hsl(73,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1411.00' y='2029.00'>java.la...</text>
+<g><title>java.lang.invoke.DirectMethodHandle.make (1 samples)</title><rect x='1408.00' y='1998.00' width='64.00' height='17' fill='hsl(325,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1411.00' y='2011.00'>java.la...</text>
+<g><title>java.lang.invoke.DirectMethodHandle.preparedLambdaForm (1 samples)</title><rect x='1408.00' y='1980.00' width='64.00' height='17' fill='hsl(205,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1411.00' y='1993.00'>java.la...</text>
+<g><title>java.lang.invoke.DirectMethodHandle.preparedLambdaForm (1 samples)</title><rect x='1408.00' y='1962.00' width='64.00' height='17' fill='hsl(205,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1411.00' y='1975.00'>java.la...</text>
+<g><title>java.lang.invoke.DirectMethodHandle.shouldBeInitialized (1 samples)</title><rect x='1408.00' y='1944.00' width='64.00' height='17' fill='hsl(230,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1411.00' y='1957.00'>java.la...</text>
+<g><title>java.lang.Thread.run (1 samples)</title><rect x='1472.00' y='2232.00' width='64.00' height='17' fill='hsl(86,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1475.00' y='2245.00'>java.la...</text>
+<g><title>java.util.concurrent.ThreadPoolExecutor$Worker.run (1 samples)</title><rect x='1472.00' y='2214.00' width='64.00' height='17' fill='hsl(236,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1475.00' y='2227.00'>java.ut...</text>
+<g><title>java.util.concurrent.ThreadPoolExecutor.runWorker (1 samples)</title><rect x='1472.00' y='2196.00' width='64.00' height='17' fill='hsl(149,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1475.00' y='2209.00'>java.ut...</text>
+<g><title>java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run (1 samples)</title><rect x='1472.00' y='2178.00' width='64.00' height='17' fill='hsl(204,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1475.00' y='2191.00'>java.ut...</text>
+<g><title>java.util.concurrent.FutureTask.runAndReset (1 samples)</title><rect x='1472.00' y='2160.00' width='64.00' height='17' fill='hsl(344,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1475.00' y='2173.00'>java.ut...</text>
+<g><title>jdk.jfr.internal.dcmd.AbstractDCmd.execute (1 samples)</title><rect x='1536.00' y='2232.00' width='64.00' height='17' fill='hsl(327,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1539.00' y='2245.00'>jdk.jfr...</text>
+<g><title>jdk.jfr.internal.dcmd.DCmdStart.execute (1 samples)</title><rect x='1536.00' y='2214.00' width='64.00' height='17' fill='hsl(127,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1539.00' y='2227.00'>jdk.jfr...</text>
+<g><title>jdk.jfr.Recording.start (1 samples)</title><rect x='1536.00' y='2196.00' width='64.00' height='17' fill='hsl(82,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1539.00' y='2209.00'>jdk.jfr...</text>
+<g><title>jdk.jfr.internal.PlatformRecording.start (1 samples)</title><rect x='1536.00' y='2178.00' width='64.00' height='17' fill='hsl(281,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1539.00' y='2191.00'>jdk.jfr...</text>
+<g><title>jdk.jfr.internal.PlatformRecorder.start (1 samples)</title><rect x='1536.00' y='2160.00' width='64.00' height='17' fill='hsl(139,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1539.00' y='2173.00'>jdk.jfr...</text>
+<g><title>jdk.jfr.internal.PlatformRecorder.writeMetaEvents (1 samples)</title><rect x='1536.00' y='2142.00' width='64.00' height='17' fill='hsl(263,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1539.00' y='2155.00'>jdk.jfr...</text>
+<g><title>jdk.jfr.internal.EventControl.writeActiveSettingEvent (1 samples)</title><rect x='1536.00' y='2124.00' width='64.00' height='17' fill='hsl(199,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1539.00' y='2137.00'>jdk.jfr...</text>
+<g><title>jdk.jfr.events.ActiveSettingEvent.commit (1 samples)</title><rect x='1536.00' y='2106.00' width='64.00' height='17' fill='hsl(306,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1539.00' y='2119.00'>jdk.jfr...</text>
+<g><title>jdk.jfr.internal.handlers.EventHandler1451_1774613501635-24444.write (1 samples)</title><rect x='1536.00' y='2088.00' width='64.00' height='17' fill='hsl(217,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1539.00' y='2101.00'>jdk.jfr...</text>
+<g><title>jdk.jfr.internal.EventWriter.putStackTrace (1 samples)</title><rect x='1536.00' y='2070.00' width='64.00' height='17' fill='hsl(35,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1539.00' y='2083.00'>jdk.jfr...</text>
+<g><title>jdk.jfr.internal.EventWriter.putLong (1 samples)</title><rect x='1536.00' y='2052.00' width='64.00' height='17' fill='hsl(215,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1539.00' y='2065.00'>jdk.jfr...</text>
+<g><title>jdk.jfr.internal.EventWriter.isValidForSize (1 samples)</title><rect x='1536.00' y='2034.00' width='64.00' height='17' fill='hsl(277,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1539.00' y='2047.00'>jdk.jfr...</text>
+</svg>

@@ -1,0 +1,1 @@
+[{"name":"org.apache.logging.log4j.web.WebLookup","methods":[{"name":"<init>","parameterTypes":[]}],"fields":[]},{"name":"org.apache.logging.log4j.web.appender.ServletAppender","methods":[{"name":"newBuilder","parameterTypes":[]}],"fields":[]},{"name":"org.apache.logging.log4j.web.appender.ServletAppender$Builder","methods":[],"fields":[{"name":"logThrowables"}]}]

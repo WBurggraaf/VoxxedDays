@@ -1,0 +1,24 @@
+Manifest-Version: 1.0
+Bundle-Description: MongoDB appender for Log4j using the MongoDB 5 dri
+ ver API.
+Bundle-License: "Apache-2.0";link="https://www.apache.org/licenses/LIC
+ ENSE-2.0.txt"
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache Log4j MongoDB Appender
+Bundle-SymbolicName: org.apache.logging.log4j.mongodb
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 2.26.0.SNAPSHOT
+Export-Package: org.apache.logging.log4j.mongodb;version="2.25.0";uses
+ :="org.apache.logging.log4j.mongodb4"
+Fragment-Host: org.apache.logging.log4j.core
+Implementation-Title: Apache Log4j MongoDB Appender
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Version: 2.26.0-SNAPSHOT
+Import-Package: java.lang,org.apache.logging.log4j.mongodb4;version="[
+ 2.25,3)"
+Multi-Release: false
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Specification-Title: Apache Log4j MongoDB Appender
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 2.26
+

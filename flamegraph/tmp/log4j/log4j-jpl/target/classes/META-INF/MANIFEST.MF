@@ -1,0 +1,31 @@
+Manifest-Version: 1.0
+Bundle-Description: The Apache Log4j implementation of java.lang.Syste
+ m.LoggerFinder
+Bundle-License: "Apache-2.0";link="https://www.apache.org/licenses/LIC
+ ENSE-2.0.txt"
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache Log4j JDK Platform Logging Adapter
+Bundle-SymbolicName: org.apache.logging.log4j.jpl
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 2.26.0.SNAPSHOT
+Export-Package: org.apache.logging.log4j.jpl;version="2.20.1";uses:="o
+ rg.apache.logging.log4j.spi"
+Implementation-Title: Apache Log4j JDK Platform Logging Adapter
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Version: 2.26.0-SNAPSHOT
+Import-Package: java.lang,java.util,java.util.function,org.apache.logg
+ ing.log4j;version="[2.20,3)",org.apache.logging.log4j.message;version
+ ="[2.24,3)",org.apache.logging.log4j.spi;version="[2.25,3)",org.apach
+ e.logging.log4j.util;version="[2.25,3)"
+Multi-Release: false
+Provide-Capability: osgi.service;objectClass:List<String>="java.lang.S
+ ystem$LoggerFinder";effective:=active,osgi.serviceloader;osgi.service
+ loader="java.lang.System$LoggerFinder";register:="org.apache.logging.
+ log4j.jpl.Log4jSystemLoggerFinder"
+Require-Capability: osgi.extender;filter:="(&(osgi.extender=osgi.servi
+ celoader.registrar)(version>=1.0.0)(!(version>=2.0.0)))";resolution:=
+ optional,osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=11))"
+Specification-Title: Apache Log4j JDK Platform Logging Adapter
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 2.26
+

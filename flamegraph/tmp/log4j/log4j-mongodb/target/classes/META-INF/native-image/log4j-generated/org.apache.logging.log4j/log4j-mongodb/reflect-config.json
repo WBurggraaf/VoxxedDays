@@ -1,0 +1,1 @@
+[{"name":"org.apache.logging.log4j.mongodb.MongoDbProvider","methods":[{"name":"newMongoDbBuilder","parameterTypes":[]}],"fields":[]}]

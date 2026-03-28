@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Bundle-Description: Connection source for the JDBC Appender using Apac
+ he Commons DBCP2.
+Bundle-License: "Apache-2.0";link="https://www.apache.org/licenses/LIC
+ ENSE-2.0.txt"
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache Log4j JDBC DBCP 2
+Bundle-SymbolicName: org.apache.logging.log4j.jdbc.dbcp2
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 2.26.0.SNAPSHOT
+Export-Package: org.apache.logging.log4j.core.appender.db.jdbc;version
+ ="2.20.1";uses:="org.apache.commons.dbcp2"
+Fragment-Host: org.apache.logging.log4j.core
+Implementation-Title: Apache Log4j JDBC DBCP 2
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Version: 2.26.0-SNAPSHOT
+Import-Package: java.lang,java.sql,java.util,java.util.concurrent,java
+ x.management,org.apache.commons.dbcp2;version="[2.13,3)",org.apache.c
+ ommons.pool2;version="[2.12,3)",org.apache.commons.pool2.impl;version
+ ="[2.12,3)",org.apache.logging.log4j.status;version="[2.25,3)",org.ap
+ ache.logging.log4j.util;version="[2.25,3)"
+Multi-Release: false
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Specification-Title: Apache Log4j JDBC DBCP 2
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 2.26
+

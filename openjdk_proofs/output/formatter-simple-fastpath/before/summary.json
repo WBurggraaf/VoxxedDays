@@ -1,0 +1,12 @@
+﻿{
+    "label":  "before",
+    "case":  "formatter-simple-fastpath",
+    "java_home":  "C:\\Program Files\\Microsoft\\jdk-17.0.14.7-hotspot",
+    "elapsed_ns":  115242300,
+    "ops":  60000,
+    "ns_per_op":  1920.705,
+    "threads":  1,
+    "sink":  2708120,
+    "stdout":  "C:\\VoxxedDays\\openjdk_proofs\\output\\formatter-simple-fastpath\\before\\stdout.txt",
+    "jfr":  null
+}

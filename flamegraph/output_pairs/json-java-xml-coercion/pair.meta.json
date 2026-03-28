@@ -1,0 +1,252 @@
+{
+  "id": "json-java-xml-coercion",
+  "repo_id": "json-java",
+  "command_id": "xml-parse-coercion",
+  "proof_id": "xml-string-to-value",
+  "title": "JSON-java / XML coercion path",
+  "repo_path": "C:\\VoxxedDays\\GitRepos\\JSON-java-master",
+  "patch_path": "C:\\VoxxedDays\\pr_patches\\794.patch",
+  "patch_subject": "Subject: [PATCH 3/3] #790 - Update XML with changes for string to number",
+  "focus_terms": [
+    "org.json.XML.parse",
+    "org.json.XML.stringToValue",
+    "org.json.XML.stringToNumber",
+    "org.json.JSONObject.accumulate"
+  ],
+  "generated_at": "2026-03-28T07:42:15.263673+00:00",
+  "before": {
+    "samples": 28,
+    "focused_samples": 11,
+    "svg": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-xml-coercion\\before\\before.svg",
+    "focused_svg": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-xml-coercion\\before\\before.focused.svg",
+    "folded": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-xml-coercion\\before\\before.folded.txt",
+    "focused_folded": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-xml-coercion\\before\\before.focused.folded.txt",
+    "runs": [
+      {
+        "iteration": 1,
+        "command": [
+          "mvn.cmd",
+          "-B",
+          "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+          "-Dtest=org.json.junit.XMLProofProfileTest",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-DfailIfNoTests=false",
+          "-DforkCount=1",
+          "-DreuseForks=false",
+          "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-xml-coercion\\before\\before-run01.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+          "test"
+        ],
+        "recording_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-xml-coercion\\before\\before-run01.jfr",
+        "log_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-xml-coercion\\before\\before-run01.log",
+        "duration_seconds": 19.661333
+      },
+      {
+        "iteration": 2,
+        "command": [
+          "mvn.cmd",
+          "-B",
+          "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+          "-Dtest=org.json.junit.XMLProofProfileTest",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-DfailIfNoTests=false",
+          "-DforkCount=1",
+          "-DreuseForks=false",
+          "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-xml-coercion\\before\\before-run02.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+          "test"
+        ],
+        "recording_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-xml-coercion\\before\\before-run02.jfr",
+        "log_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-xml-coercion\\before\\before-run02.log",
+        "duration_seconds": 13.627788
+      },
+      {
+        "iteration": 3,
+        "command": [
+          "mvn.cmd",
+          "-B",
+          "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+          "-Dtest=org.json.junit.XMLProofProfileTest",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-DfailIfNoTests=false",
+          "-DforkCount=1",
+          "-DreuseForks=false",
+          "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-xml-coercion\\before\\before-run03.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+          "test"
+        ],
+        "recording_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-xml-coercion\\before\\before-run03.jfr",
+        "log_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-xml-coercion\\before\\before-run03.log",
+        "duration_seconds": 11.291659
+      },
+      {
+        "iteration": 4,
+        "command": [
+          "mvn.cmd",
+          "-B",
+          "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+          "-Dtest=org.json.junit.XMLProofProfileTest",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-DfailIfNoTests=false",
+          "-DforkCount=1",
+          "-DreuseForks=false",
+          "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-xml-coercion\\before\\before-run04.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+          "test"
+        ],
+        "recording_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-xml-coercion\\before\\before-run04.jfr",
+        "log_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-xml-coercion\\before\\before-run04.log",
+        "duration_seconds": 11.235083
+      },
+      {
+        "iteration": 5,
+        "command": [
+          "mvn.cmd",
+          "-B",
+          "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+          "-Dtest=org.json.junit.XMLProofProfileTest",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-DfailIfNoTests=false",
+          "-DforkCount=1",
+          "-DreuseForks=false",
+          "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-xml-coercion\\before\\before-run05.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+          "test"
+        ],
+        "recording_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-xml-coercion\\before\\before-run05.jfr",
+        "log_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-xml-coercion\\before\\before-run05.log",
+        "duration_seconds": 11.135361
+      }
+    ],
+    "timing": {
+      "durations_ms": [
+        19661.333,
+        13627.788,
+        11291.659,
+        11235.083,
+        11135.361
+      ],
+      "average_ms": 13390.245,
+      "min_ms": 11135.361,
+      "max_ms": 19661.333
+    },
+    "patch": "C:\\VoxxedDays\\flamegraph\\pairs\\json-java-xml-coercion\\patches\\before.patch"
+  },
+  "after": {
+    "samples": 19,
+    "focused_samples": 10,
+    "svg": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-xml-coercion\\after\\after.svg",
+    "focused_svg": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-xml-coercion\\after\\after.focused.svg",
+    "folded": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-xml-coercion\\after\\after.folded.txt",
+    "focused_folded": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-xml-coercion\\after\\after.focused.folded.txt",
+    "runs": [
+      {
+        "iteration": 1,
+        "command": [
+          "mvn.cmd",
+          "-B",
+          "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+          "-Dtest=org.json.junit.XMLProofProfileTest",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-DfailIfNoTests=false",
+          "-DforkCount=1",
+          "-DreuseForks=false",
+          "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-xml-coercion\\after\\after-run01.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+          "test"
+        ],
+        "recording_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-xml-coercion\\after\\after-run01.jfr",
+        "log_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-xml-coercion\\after\\after-run01.log",
+        "duration_seconds": 14.02413
+      },
+      {
+        "iteration": 2,
+        "command": [
+          "mvn.cmd",
+          "-B",
+          "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+          "-Dtest=org.json.junit.XMLProofProfileTest",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-DfailIfNoTests=false",
+          "-DforkCount=1",
+          "-DreuseForks=false",
+          "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-xml-coercion\\after\\after-run02.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+          "test"
+        ],
+        "recording_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-xml-coercion\\after\\after-run02.jfr",
+        "log_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-xml-coercion\\after\\after-run02.log",
+        "duration_seconds": 11.246607
+      },
+      {
+        "iteration": 3,
+        "command": [
+          "mvn.cmd",
+          "-B",
+          "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+          "-Dtest=org.json.junit.XMLProofProfileTest",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-DfailIfNoTests=false",
+          "-DforkCount=1",
+          "-DreuseForks=false",
+          "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-xml-coercion\\after\\after-run03.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+          "test"
+        ],
+        "recording_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-xml-coercion\\after\\after-run03.jfr",
+        "log_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-xml-coercion\\after\\after-run03.log",
+        "duration_seconds": 11.186749
+      },
+      {
+        "iteration": 4,
+        "command": [
+          "mvn.cmd",
+          "-B",
+          "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+          "-Dtest=org.json.junit.XMLProofProfileTest",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-DfailIfNoTests=false",
+          "-DforkCount=1",
+          "-DreuseForks=false",
+          "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-xml-coercion\\after\\after-run04.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+          "test"
+        ],
+        "recording_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-xml-coercion\\after\\after-run04.jfr",
+        "log_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-xml-coercion\\after\\after-run04.log",
+        "duration_seconds": 11.187478
+      },
+      {
+        "iteration": 5,
+        "command": [
+          "mvn.cmd",
+          "-B",
+          "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+          "-Dtest=org.json.junit.XMLProofProfileTest",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-DfailIfNoTests=false",
+          "-DforkCount=1",
+          "-DreuseForks=false",
+          "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-xml-coercion\\after\\after-run05.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+          "test"
+        ],
+        "recording_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-xml-coercion\\after\\after-run05.jfr",
+        "log_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-xml-coercion\\after\\after-run05.log",
+        "duration_seconds": 11.233366
+      }
+    ],
+    "timing": {
+      "durations_ms": [
+        14024.13,
+        11246.607,
+        11186.749,
+        11187.478,
+        11233.366
+      ],
+      "average_ms": 11775.666,
+      "min_ms": 11186.749,
+      "max_ms": 14024.13
+    },
+    "patch": "C:\\VoxxedDays\\flamegraph\\pairs\\json-java-xml-coercion\\patches\\after.patch"
+  },
+  "delta": {
+    "average_ms_before": 13390.245,
+    "average_ms_after": 11775.666,
+    "average_ms_saved": 1614.579,
+    "average_ms_saved_pct": 12.06,
+    "focused_samples_before": 11,
+    "focused_samples_after": 10,
+    "focused_sample_delta": 1
+  }
+}

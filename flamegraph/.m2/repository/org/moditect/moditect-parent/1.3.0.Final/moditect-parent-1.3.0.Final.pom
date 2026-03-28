@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+     SPDX-License-Identifier: Apache-2.0
+
+     Copyright The original authors
+
+     Licensed under the Apache Software License version 2.0, available at http://www.apache.org/licenses/LICENSE-2.0
+
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.moditect</groupId>
+        <artifactId>moditect-org-parent</artifactId>
+        <version>1.4.0.Final</version>
+        <relativePath/>
+    </parent>
+
+    <artifactId>moditect-parent</artifactId>
+    <version>1.3.0.Final</version>
+    <packaging>pom</packaging>
+
+    <name>ModiTect Parent</name>
+    <url>https://github.com/moditect/moditect</url>
+    <description>Module system tooling</description>
+    <inceptionYear>2017</inceptionYear>
+
+    <properties>
+        <project.identifier>moditect</project.identifier>
+        <project.repository>moditect/moditect</project.repository>
+        <local.repository.path>/tmp/repository</local.repository.path>
+        <java.version>1.8</java.version>
+        <maven.version>3.9.6</maven.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <version.compiler.plugin>3.14.0</version.compiler.plugin>
+        <version.jar.plugin>3.4.2</version.jar.plugin>
+        <version.surefire.plugin>3.5.3</version.surefire.plugin>
+        <version.source.plugin>3.3.1</version.source.plugin>
+        <version.jreleaser.plugin>1.19.0</version.jreleaser.plugin>
+        <!-- value comes from property git.commit.author.time -->
+        <project.build.outputTimestamp>2025-07-20T09:06:18Z</project.build.outputTimestamp>
+    </properties>
+
+    <scm>
+        <connection>scm:git:${repository.url}</connection>
+        <developerConnection>scm:git:${repository.url}</developerConnection>
+        <url>${repository.url}</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>moditect</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.javaparser</groupId>
+                <artifactId>javaparser-core</artifactId>
+                <version>3.27.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.testing.compile</groupId>
+                <artifactId>compile-testing</artifactId>
+                <version>0.21.0</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>com.sun</groupId>
+                        <artifactId>tools</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.checkerframework</groupId>
+                <artifactId>checker-qual</artifactId>
+                <version>3.49.5</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>33.4.8-jre</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.errorprone</groupId>
+                <artifactId>error_prone_annotations</artifactId>
+                <version>2.26.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ow2.asm</groupId>
+                <artifactId>asm</artifactId>
+                <version>9.6</version>
+            </dependency>
+            <dependency>
+                <groupId>org.assertj</groupId>
+                <artifactId>assertj-core</artifactId>
+                <version>3.27.3</version>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.13.2</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>2.0.17</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-plugin-plugin</artifactId>
+                    <version>3.15.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-shade-plugin</artifactId>
+                    <version>3.6.0</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>build-helper-maven-plugin</artifactId>
+                    <version>3.6.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>${project.groupId}</groupId>
+                    <artifactId>moditect-maven-plugin</artifactId>
+                    <version>${project.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>com.mycila</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <configuration combine.self="override">
+                    <strictCheck>true</strictCheck>
+                    <licenseSets>
+                        <licenseSet>
+                            <header>${maven.multiModuleProjectDirectory}/etc/license.txt</header>
+                            <excludes>
+                                <exclude>README.md</exclude>
+                                <exclude>LICENSE.txt</exclude>
+                                <exclude>mvnw</exclude>
+                                <exclude>mvnw.cmd</exclude>
+                                <exclude>.mvn/wrapper/maven-wrapper.properties</exclude>
+                                <exclude>.mvn/wrapper/MavenWrapperDownloader.java</exclude>
+                            </excludes>
+                        </licenseSet>
+                    </licenseSets>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>stage</id>
+            <properties>
+                <altDeploymentRepository>local::file:${maven.multiModuleProjectDirectory}/target/staging-deploy</altDeploymentRepository>
+            </properties>
+            <build>
+                <defaultGoal>deploy</defaultGoal>
+            </build>
+        </profile>
+        <profile>
+            <id>jreleaser</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.jreleaser</groupId>
+                        <artifactId>jreleaser-maven-plugin</artifactId>
+                        <version>${version.jreleaser.plugin}</version>
+                        <inherited>false</inherited>
+                        <configuration>
+                            <gitRootSearch>true</gitRootSearch>
+                            <jreleaser>
+                                <project>
+                                    <name>ModiTect</name>
+                                    <links>
+                                        <homepage>https://github.com/moditect/moditect</homepage>
+                                        <documentation>https://github.com/moditect/moditect</documentation>
+                                    </links>
+                                </project>
+                                <signing>
+                                    <active>ALWAYS</active>
+                                    <armored>true</armored>
+                                </signing>
+                                <deploy>
+                                    <maven>
+                                        <mavenCentral>
+                                            <sonatype>
+                                                <active>ALWAYS</active>
+                                                <url>https://central.sonatype.com/api/v1/publisher</url>
+                                                <stagingRepositories>${maven.multiModuleProjectDirectory}/target/staging-deploy</stagingRepositories>
+                                            </sonatype>
+                                        </mavenCentral>
+                                    </maven>
+                                </deploy>
+                                <release>
+                                    <github>
+                                        <tagName>{{projectVersion}}</tagName>
+                                        <releaseName>{{projectVersion}}</releaseName>
+                                        <overwrite>true</overwrite>
+                                        <issues>
+                                            <enabled>true</enabled>
+                                        </issues>
+                                        <changelog>
+                                            <formatted>ALWAYS</formatted>
+                                            <formatted>ALWAYS</formatted>
+                                            <preset>conventional-commits</preset>
+                                            <skipMergeCommits>true</skipMergeCommits>
+                                            <contributors>
+                                                <format>- {{contributorName}}{{#contributorUsernameAsLink}} ({{.}}){{/contributorUsernameAsLink}}</format>
+                                            </contributors>
+                                            <hide>
+                                                <contributors>GitHub,dependabot,moditect-release-bot</contributors>
+                                            </hide>
+                                            <labelers>
+                                                <labeler>
+                                                    <label>dependencies</label>
+                                                    <title>regex:^(?:deps(?:\(.*\))?!?):\s.*</title>
+                                                    <order>130</order>
+                                                </labeler>
+                                            </labelers>
+                                            <categories>
+                                                <category>
+                                                    <title>⚙️  Dependencies</title>
+                                                    <key>dependencies</key>
+                                                    <order>80</order>
+                                                    <labels>dependencies</labels>
+                                                </category>
+                                            </categories>
+                                            <replacers>
+                                                <replacer>
+                                                    <search>deps: </search>
+                                                </replacer>
+                                            </replacers>
+                                        </changelog>
+                                    </github>
+                                </release>
+                            </jreleaser>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>

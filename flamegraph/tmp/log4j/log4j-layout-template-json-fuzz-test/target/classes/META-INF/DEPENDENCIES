@@ -1,0 +1,47 @@
+// ------------------------------------------------------------------
+// Transitive dependencies of this project determined from the
+// maven pom organized by organization.
+// ------------------------------------------------------------------
+
+Apache Log4j JSON Template Layout fuzz tests
+
+
+From: 'an unknown organization'
+
+  - Byte Buddy (without dependencies) (https://bytebuddy.net/byte-buddy) net.bytebuddy:byte-buddy:jar:1.15.11
+    License: Apache License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+
+  - AssertJ Core (https://assertj.github.io/doc/#assertj-core) org.assertj:assertj-core:jar:3.27.3
+    License: Apache-2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+
+  - JSON in Java (https://github.com/douglascrockford/JSON-java) org.json:json:bundle:20250517
+    License: Public Domain  (https://github.com/stleary/JSON-java/blob/master/LICENSE)
+
+
+From: 'Code Intelligence GmbH' (https://code-intelligence.com)
+
+  - Jazzer (https://github.com/CodeIntelligenceTesting/jazzer) com.code-intelligence:jazzer:jar:0.24.0
+    License: Apache-2.0 
+
+  - Jazzer API (https://github.com/CodeIntelligenceTesting/jazzer) com.code-intelligence:jazzer-api:jar:0.24.0
+    License: Apache-2.0 
+
+
+From: 'The Apache Software Foundation' (https://www.apache.org/)
+
+  - Apache Log4j API (https://logging.apache.org/log4j/2.x/) org.apache.logging.log4j:log4j-api:jar:2.26.0-SNAPSHOT
+    License: Apache-2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+
+  - Apache Log4j Core (https://logging.apache.org/log4j/2.x/) org.apache.logging.log4j:log4j-core:jar:2.26.0-SNAPSHOT
+    License: Apache-2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+
+  - Apache Log4j fuzz tests (https://logging.apache.org/log4j/2.x/) org.apache.logging.log4j:log4j-fuzz-test:jar:2.26.0-SNAPSHOT
+    License: Apache-2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+
+  - Apache Log4j JSON Template Layout (https://logging.apache.org/log4j/2.x/) org.apache.logging.log4j:log4j-layout-template-json:jar:2.26.0-SNAPSHOT
+    License: Apache-2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+
+
+
+
+

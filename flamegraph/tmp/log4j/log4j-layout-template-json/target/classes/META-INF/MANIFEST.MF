@@ -1,0 +1,41 @@
+Manifest-Version: 1.0
+Bundle-Description: Apache Log4j Layout for producing JSON output that
+  is structured according to a user-provided template.
+Bundle-License: "Apache-2.0";link="https://www.apache.org/licenses/LIC
+ ENSE-2.0.txt"
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache Log4j JSON Template Layout
+Bundle-SymbolicName: org.apache.logging.log4j.layout.template.json
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 2.26.0.SNAPSHOT
+Export-Package: org.apache.logging.log4j.layout.template.json;version=
+ "2.21.0";uses:="org.apache.logging.log4j.layout.template.json.util",o
+ rg.apache.logging.log4j.layout.template.json.resolver;version="2.21.0
+ ";uses:="org.apache.logging.log4j.layout.template.json,org.apache.log
+ ging.log4j.layout.template.json.util",org.apache.logging.log4j.layout
+ .template.json.util;version="2.25.3";uses:="org.apache.logging.log4j.
+ util"
+Fragment-Host: org.apache.logging.log4j.core
+Implementation-Title: Apache Log4j JSON Template Layout
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Version: 2.26.0-SNAPSHOT
+Import-Package: org.jctools.queues;resolution:=optional;version="[4.0,
+ 5)",java.io,java.lang,java.lang.annotation,java.lang.invoke,java.lang
+ .reflect,java.math,java.net,java.nio,java.nio.charset,java.nio.file,j
+ ava.text,java.time,java.time.format,java.time.temporal,java.util,java
+ .util.concurrent,java.util.concurrent.atomic,java.util.concurrent.loc
+ ks,java.util.function,java.util.regex,java.util.stream,org.apache.log
+ ging.log4j.layout.template.json;version="[2.21,3)",org.apache.logging
+ .log4j.layout.template.json.resolver;version="[2.21,3)",org.apache.lo
+ gging.log4j.layout.template.json.util;version="[2.25,3)",org.apache.l
+ ogging.log4j.message;version="[2.24,3)",org.apache.logging.log4j.spi;
+ version="[2.25,3)",org.apache.logging.log4j.status;version="[2.25,3)"
+ ,org.apache.logging.log4j.util;version="[2.25,3)"
+Multi-Release: false
+Private-Package: org.apache.logging.log4j.layout.template.json.interna
+ l.annotation
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Specification-Title: Apache Log4j JSON Template Layout
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 2.26
+

@@ -1,0 +1,17 @@
+org\apache\logging\log4j\util\StackLocator.class
+org\apache\logging\log4j\util\LoaderUtil.class
+org\apache\logging\log4j\util\internal\SerializationUtil.class
+org\apache\logging\log4j\message\Dummy.class
+org\apache\logging\log4j\message\ThreadDumpMessage$ThreadInfoFactory.class
+org\apache\logging\log4j\util\internal\DefaultObjectInputFilter.class
+org\apache\logging\log4j\message\ThreadDumpMessage.class
+org\apache\logging\log4j\simple\Dummy.class
+org\apache\logging\log4j\util\Base64Util.class
+org\apache\logging\log4j\util\SystemPropertiesPropertySource.class
+org\apache\logging\log4j\util\EnvironmentPropertySource.class
+org\apache\logging\log4j\util\PrivateSecurityManagerStackTraceUtil.class
+org\apache\logging\log4j\status\Dummy.class
+org\apache\logging\log4j\spi\Provider.class
+org\apache\logging\log4j\util\ProcessIdUtil.class
+org\apache\logging\log4j\util\PropertySource.class
+org\apache\logging\log4j\Dummy.class

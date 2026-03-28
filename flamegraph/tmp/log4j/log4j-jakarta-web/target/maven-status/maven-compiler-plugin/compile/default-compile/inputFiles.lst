@@ -1,0 +1,13 @@
+C:\VoxxedDays\GitRepos\logging-log4j2-2.x\log4j-jakarta-web\src\main\java\org\apache\logging\log4j\web\appender\package-info.java
+C:\VoxxedDays\GitRepos\logging-log4j2-2.x\log4j-jakarta-web\src\main\java\org\apache\logging\log4j\web\appender\ServletAppender.java
+C:\VoxxedDays\GitRepos\logging-log4j2-2.x\log4j-jakarta-web\src\main\java\org\apache\logging\log4j\web\Log4jServletContainerInitializer.java
+C:\VoxxedDays\GitRepos\logging-log4j2-2.x\log4j-jakarta-web\src\main\java\org\apache\logging\log4j\web\Log4jServletContextListener.java
+C:\VoxxedDays\GitRepos\logging-log4j2-2.x\log4j-jakarta-web\src\main\java\org\apache\logging\log4j\web\Log4jServletFilter.java
+C:\VoxxedDays\GitRepos\logging-log4j2-2.x\log4j-jakarta-web\src\main\java\org\apache\logging\log4j\web\Log4jShutdownOnContextDestroyedListener.java
+C:\VoxxedDays\GitRepos\logging-log4j2-2.x\log4j-jakarta-web\src\main\java\org\apache\logging\log4j\web\Log4jWebInitializerImpl.java
+C:\VoxxedDays\GitRepos\logging-log4j2-2.x\log4j-jakarta-web\src\main\java\org\apache\logging\log4j\web\Log4jWebLifeCycle.java
+C:\VoxxedDays\GitRepos\logging-log4j2-2.x\log4j-jakarta-web\src\main\java\org\apache\logging\log4j\web\Log4jWebSupport.java
+C:\VoxxedDays\GitRepos\logging-log4j2-2.x\log4j-jakarta-web\src\main\java\org\apache\logging\log4j\web\package-info.java
+C:\VoxxedDays\GitRepos\logging-log4j2-2.x\log4j-jakarta-web\src\main\java\org\apache\logging\log4j\web\ServletRequestThreadContext.java
+C:\VoxxedDays\GitRepos\logging-log4j2-2.x\log4j-jakarta-web\src\main\java\org\apache\logging\log4j\web\WebLoggerContextUtils.java
+C:\VoxxedDays\GitRepos\logging-log4j2-2.x\log4j-jakarta-web\src\main\java\org\apache\logging\log4j\web\WebLookup.java

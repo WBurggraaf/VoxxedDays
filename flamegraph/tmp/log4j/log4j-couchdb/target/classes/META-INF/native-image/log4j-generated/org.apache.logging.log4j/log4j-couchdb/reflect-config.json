@@ -1,0 +1,1 @@
+[{"name":"org.apache.logging.log4j.couchdb.CouchDbProvider","methods":[{"name":"createNoSqlProvider","parameterTypes":["java.lang.String","java.lang.String","java.lang.String","java.lang.String","java.lang.String","java.lang.String","java.lang.String","java.lang.String"]}],"fields":[]}]

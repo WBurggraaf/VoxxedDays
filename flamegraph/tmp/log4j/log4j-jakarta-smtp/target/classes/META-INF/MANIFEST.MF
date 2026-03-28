@@ -1,0 +1,33 @@
+Manifest-Version: 1.0
+Bundle-Description: Apache Log4j Simple Mail Transfer Protocol (SMTP) 
+ Appender, version for Jakarta EE 9.
+Bundle-License: "Apache-2.0";link="https://www.apache.org/licenses/LIC
+ ENSE-2.0.txt"
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache Log4j Jakarta SMTP
+Bundle-SymbolicName: org.apache.logging.log4j.jakarta.smtp
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 2.26.0.SNAPSHOT
+Export-Package: org.apache.logging.log4j.smtp;version="2.20.1";uses:="
+ jakarta.mail,jakarta.mail.internet"
+Fragment-Host: org.apache.logging.log4j.core
+Implementation-Title: Apache Log4j Jakarta SMTP
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Version: 2.26.0-SNAPSHOT
+Import-Package: jakarta.activation;version="[2.1,3)",jakarta.mail;vers
+ ion="[2.1,3)",jakarta.mail.internet;version="[2.1,3)",jakarta.mail.ut
+ il;version="[2.1,3)",java.io,java.lang,java.nio.charset,java.util,jav
+ ax.net.ssl,org.apache.logging.log4j.util;version="[2.25,3)"
+Multi-Release: false
+Provide-Capability: osgi.service;objectClass:List<String>="org.apache.
+ logging.log4j.core.net.MailManagerFactory";effective:=active,osgi.ser
+ viceloader;osgi.serviceloader="org.apache.logging.log4j.core.net.Mail
+ ManagerFactory";register:="org.apache.logging.log4j.smtp.SmtpManager$
+ SMTPManagerFactory"
+Require-Capability: osgi.extender;filter:="(&(osgi.extender=osgi.servi
+ celoader.registrar)(version>=1.0.0)(!(version>=2.0.0)))";resolution:=
+ optional,osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Specification-Title: Apache Log4j Jakarta SMTP
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 2.26
+

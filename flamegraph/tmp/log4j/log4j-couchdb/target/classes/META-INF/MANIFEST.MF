@@ -1,0 +1,24 @@
+Manifest-Version: 1.0
+Bundle-Description: CouchDB appender for Log4j.
+Bundle-License: "Apache-2.0";link="https://www.apache.org/licenses/LIC
+ ENSE-2.0.txt"
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache Log4j CouchDB
+Bundle-SymbolicName: org.apache.logging.log4j.couchdb
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 2.26.0.SNAPSHOT
+Export-Package: org.apache.logging.log4j.couchdb;version="2.20.1";uses
+ :="org.lightcouch"
+Fragment-Host: org.apache.logging.log4j.core
+Implementation-Title: Apache Log4j CouchDB
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Version: 2.26.0-SNAPSHOT
+Import-Package: java.lang,java.lang.reflect,java.net,java.util,org.apa
+ che.logging.log4j.status;version="[2.25,3)",org.apache.logging.log4j.
+ util;version="[2.25,3)",org.lightcouch
+Multi-Release: false
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Specification-Title: Apache Log4j CouchDB
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 2.26
+

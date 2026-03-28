@@ -1,0 +1,13 @@
+-------------------------------------------------------------------------------
+Test set: org.apache.logging.log4j.util.Unbox2ConfigurableTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.319 s <<< FAILURE! -- in org.apache.logging.log4j.util.Unbox2ConfigurableTest
+org.apache.logging.log4j.util.Unbox2ConfigurableTest -- Time elapsed: 0.319 s <<< ERROR!
+java.lang.NoSuchFieldException: modifiers
+	at java.base/java.lang.Class.getDeclaredField(Class.java:2610)
+	at org.apache.logging.log4j.util.Unbox2ConfigurableTest.afterClass(Unbox2ConfigurableTest.java:54)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.Collections$UnmodifiableCollection.forEach(Collections.java:1092)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+

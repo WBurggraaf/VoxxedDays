@@ -1,0 +1,7 @@
+org\apache\logging\log4j\fuzz\package-info.class
+org\apache\logging\log4j\fuzz\FuzzingUtil$LoggerFacade.class
+org\apache\logging\log4j\fuzz\EncodingAppender.class
+org\apache\logging\log4j\fuzz\JsonEncodingAppender.class
+org\apache\logging\log4j\fuzz\FuzzingUtil$Log4jLoggerFacade.class
+org\apache\logging\log4j\fuzz\FuzzingUtil.class
+org\apache\logging\log4j\fuzz\JsonUtil.class

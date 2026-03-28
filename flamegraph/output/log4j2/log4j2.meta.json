@@ -1,0 +1,9 @@
+{
+  "repo_id": "log4j2",
+  "display_name": "apache/logging-log4j2",
+  "repo_path": "C:\\VoxxedDays\\GitRepos\\logging-log4j2-2.x",
+  "generated_at": "2026-03-28T06:57:46.189846+00:00",
+  "status": "failed",
+  "error": "Command failed for log4j2: thread-context-copy iteration 1 (exit 1)",
+  "commands": []
+}

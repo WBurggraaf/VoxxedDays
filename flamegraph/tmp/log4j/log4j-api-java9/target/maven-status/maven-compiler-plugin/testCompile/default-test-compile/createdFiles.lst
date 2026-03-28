@@ -1,0 +1,7 @@
+org\apache\logging\log4j\util\java9\StackLocatorTest$Bar.class
+org\apache\logging\log4j\util\java9\StackLocatorTest$Foo.class
+org\apache\logging\log4j\util\java9\StackLocatorTest.class
+org\apache\logging\log4j\util\java9\StackLocatorTest$1.class
+org\apache\logging\log4j\util\java9\StackLocatorTest$ClassLocator.class
+org\apache\logging\log4j\util\java9\StackLocatorTest$Inner.class
+org\apache\logging\log4j\util\java9\ProcessIdUtilTest.class

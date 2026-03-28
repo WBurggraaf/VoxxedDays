@@ -1,0 +1,13 @@
+org\apache\logging\log4j\jul\test\CallerInformationTest.class
+org\apache\logging\log4j\jul\test\Log4jBridgeHandlerTest$CfgListener.class
+org\apache\logging\log4j\jul\test\AsyncLoggerThreadsTest.class
+org\apache\logging\log4j\jul\test\CoreLoggerTest.class
+org\apache\logging\log4j\jul\test\Log4jBridgeHandlerTest.class
+org\apache\logging\log4j\jul\test\ApiLoggerTest.class
+org\apache\logging\log4j\jul\test\Log4jLevelTranslatorTest.class
+org\apache\logging\log4j\jul\test\DefaultLevelConverterCustomJulLevelsTest$CustomLevel.class
+org\apache\logging\log4j\jul\test\JavaLevelTranslatorTest.class
+org\apache\logging\log4j\jul\test\BracketInNotInterpolatedMessageTest.class
+org\apache\logging\log4j\jul\test\AbstractLoggerTest.class
+org\apache\logging\log4j\jul\test\DefaultLevelConverterCustomJulLevelsTest.class
+org\apache\logging\log4j\jul\test\DefaultLevelConverterTest.class

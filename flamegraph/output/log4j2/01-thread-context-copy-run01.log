@@ -1,0 +1,123 @@
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Apache Log4j BOM                                                   [pom]
+[INFO] Apache Log4j Parent                                                [pom]
+[INFO] Apache Log4j API Java 9 support                                    [pom]
+[INFO] Apache Log4j API                                                   [jar]
+[INFO] Apache Log4j Implementation Java 9 support                         [pom]
+[INFO] Apache Log4j Core                                                  [jar]
+[INFO] Apache Log4j API Tests                                             [jar]
+[INFO] Apache Log4j Core Tests                                            [jar]
+[INFO] Apache Log4j 1.x Compatibility API                                 [jar]
+[INFO] Apache Log4j App Server Support                                    [jar]
+[INFO] Log4j API to SLF4J Adapter                                         [jar]
+[INFO] SLF4J 1 Binding for Log4j API                                      [jar]
+[INFO] Apache Log4j Cassandra                                             [jar]
+[INFO] Apache Log4j fuzz tests                                            [jar]
+[INFO] Apache Log4j Core fuzz tests                                       [jar]
+[INFO] Apache Log4j Core Integration Tests                                [jar]
+[INFO] Apache Log4j CouchDB                                               [jar]
+[INFO] Apache Log4j Docker Library                                        [jar]
+[INFO] Apache Log4j Streaming Interface                                   [jar]
+[INFO] Apache Log4j Jakarta JMS                                           [jar]
+[INFO] Apache Log4j Jakarta SMTP                                          [jar]
+[INFO] Apache Log4j Jakarta Web                                           [jar]
+[INFO] Apache Log4j Commons Logging Bridge                                [jar]
+[INFO] Apache Log4j JPA                                                   [jar]
+[INFO] Apache Log4j JDK Platform Logging Adapter                          [jar]
+[INFO] Apache Log4j JDBC DBCP 2                                           [jar]
+[INFO] Apache Log4j JUL Adapter                                           [jar]
+[INFO] Apache Log4j JSON Template Layout                                  [jar]
+[INFO] Apache Log4j JSON Template Layout fuzz tests                       [jar]
+[INFO] Apache Log4j JSON Template Layout tests                            [jar]
+[INFO] Apache Log4j MongoDB 4                                             [jar]
+[INFO] Apache Log4j MongoDB Appender                                      [jar]
+[INFO] Apache Log4j to JUL Bridge                                         [jar]
+[INFO] Apache Log4j OSGi tests                                            [jar]
+[INFO] Apache Log4J Performance Tests                                     [jar]
+[INFO] SLF4J 2 Provider for Log4j API                                     [jar]
+[INFO] SLF4J 2 Provider for Log4j API fuzz tests                          [jar]
+[INFO] Apache Log4j Spring Boot Support                                   [jar]
+[INFO] Apache Log4j Spring Cloud Config Client Support                    [jar]
+[INFO] Apache Log4j Web                                                   [jar]
+[INFO] Apache Log4j Tag Library                                           [jar]
+[INFO] 
+[INFO] -----------------< org.apache.logging.log4j:log4j-bom >-----------------
+[INFO] Building Apache Log4j BOM 2.26.0-SNAPSHOT                         [1/41]
+[INFO]   from pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-maven-version) @ log4j-bom ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-java-version) @ log4j-bom ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-upper-bound-deps) @ log4j-bom ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.RequireUpperBoundDeps passed
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (ban-wildcard-imports) @ log4j-bom ---
+[INFO] Rule 0: org.apache.maven.plugins.enforcer.RestrictImports passed
+[INFO] 
+[INFO] --- build-helper:3.6.1:parse-version (parse-version) @ log4j-bom ---
+[INFO] 
+[INFO] --- xml:1.1.0:validate (validate-changelog) @ log4j-bom ---
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Apache Log4j BOM 2.26.0-SNAPSHOT:
+[INFO] 
+[INFO] Apache Log4j BOM ................................... FAILURE [ 10.474 s]
+[INFO] Apache Log4j Parent ................................ SKIPPED
+[INFO] Apache Log4j API Java 9 support .................... SKIPPED
+[INFO] Apache Log4j API ................................... SKIPPED
+[INFO] Apache Log4j Implementation Java 9 support ......... SKIPPED
+[INFO] Apache Log4j Core .................................. SKIPPED
+[INFO] Apache Log4j API Tests ............................. SKIPPED
+[INFO] Apache Log4j Core Tests ............................ SKIPPED
+[INFO] Apache Log4j 1.x Compatibility API ................. SKIPPED
+[INFO] Apache Log4j App Server Support .................... SKIPPED
+[INFO] Log4j API to SLF4J Adapter ......................... SKIPPED
+[INFO] SLF4J 1 Binding for Log4j API ...................... SKIPPED
+[INFO] Apache Log4j Cassandra ............................. SKIPPED
+[INFO] Apache Log4j fuzz tests ............................ SKIPPED
+[INFO] Apache Log4j Core fuzz tests ....................... SKIPPED
+[INFO] Apache Log4j Core Integration Tests ................ SKIPPED
+[INFO] Apache Log4j CouchDB ............................... SKIPPED
+[INFO] Apache Log4j Docker Library ........................ SKIPPED
+[INFO] Apache Log4j Streaming Interface ................... SKIPPED
+[INFO] Apache Log4j Jakarta JMS ........................... SKIPPED
+[INFO] Apache Log4j Jakarta SMTP .......................... SKIPPED
+[INFO] Apache Log4j Jakarta Web ........................... SKIPPED
+[INFO] Apache Log4j Commons Logging Bridge ................ SKIPPED
+[INFO] Apache Log4j JPA ................................... SKIPPED
+[INFO] Apache Log4j JDK Platform Logging Adapter .......... SKIPPED
+[INFO] Apache Log4j JDBC DBCP 2 ........................... SKIPPED
+[INFO] Apache Log4j JUL Adapter ........................... SKIPPED
+[INFO] Apache Log4j JSON Template Layout .................. SKIPPED
+[INFO] Apache Log4j JSON Template Layout fuzz tests ....... SKIPPED
+[INFO] Apache Log4j JSON Template Layout tests ............ SKIPPED
+[INFO] Apache Log4j MongoDB 4 ............................. SKIPPED
+[INFO] Apache Log4j MongoDB Appender ...................... SKIPPED
+[INFO] Apache Log4j to JUL Bridge ......................... SKIPPED
+[INFO] Apache Log4j OSGi tests ............................ SKIPPED
+[INFO] Apache Log4J Performance Tests ..................... SKIPPED
+[INFO] SLF4J 2 Provider for Log4j API ..................... SKIPPED
+[INFO] SLF4J 2 Provider for Log4j API fuzz tests .......... SKIPPED
+[INFO] Apache Log4j Spring Boot Support ................... SKIPPED
+[INFO] Apache Log4j Spring Cloud Config Client Support .... SKIPPED
+[INFO] Apache Log4j Web ................................... SKIPPED
+[INFO] Apache Log4j Tag Library ........................... SKIPPED
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  11.247 s
+[INFO] Finished at: 2026-03-28T07:57:46+01:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.codehaus.mojo:xml-maven-plugin:1.1.0:validate (validate-changelog) on project log4j-bom: Failed to load schema with public ID https://logging.apache.org/xml/ns, system ID https://logging.apache.org/xml/ns/log4j-changelog-0.xsd: schema_reference.4: Failed to read schema document 'https://logging.apache.org/xml/ns/log4j-changelog-0.xsd', because 1) could not find the document; 2) the document could not be read; 3) the root element of the document is not <xsd:schema>. Permission denied: connect -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException

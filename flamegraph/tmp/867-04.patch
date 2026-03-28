@@ -1,0 +1,100 @@
+From 06778bd2d9ffe761812cc1040e67f89603ead4ca Mon Sep 17 00:00:00 2001
+From: Simulant <nfaupel.dev@gmail.com>
+Date: Sat, 24 Feb 2024 21:21:06 +0100
+Subject: [PATCH 04/20] #863 compute initial capacity for StringBuilderWriter
+
+---
+ src/main/java/org/json/JSONArray.java           |  5 ++++-
+ src/main/java/org/json/JSONObject.java          | 16 +++++++++++++---
+ src/main/java/org/json/StringBuilderWriter.java | 13 +++++++++++++
+ 3 files changed, 30 insertions(+), 4 deletions(-)
+
+diff --git a/src/main/java/org/json/JSONArray.java b/src/main/java/org/json/JSONArray.java
+index cda56944a..ba4c1d5cf 100644
+--- a/src/main/java/org/json/JSONArray.java
++++ b/src/main/java/org/json/JSONArray.java
+@@ -1694,7 +1694,10 @@ public String toString() {
+      */
+     @SuppressWarnings("resource")
+     public String toString(int indentFactor) throws JSONException {
+-        Writer sw = new StringBuilderWriter();
++        // each value requires a comma, so multiply the count my 2
++        // We don't want to oversize the initial capacity
++        int initialSize = myArrayList.size() * 2;
++        Writer sw = new StringBuilderWriter(Math.max(initialSize, 16));
+         return this.write(sw, indentFactor, 0).toString();
+     }
+ 
+diff --git a/src/main/java/org/json/JSONObject.java b/src/main/java/org/json/JSONObject.java
+index 36a7c7fe3..5980c87ab 100644
+--- a/src/main/java/org/json/JSONObject.java
++++ b/src/main/java/org/json/JSONObject.java
+@@ -2226,7 +2226,10 @@ public Object optQuery(JSONPointer jsonPointer) {
+      */
+     @SuppressWarnings("resource")
+     public static String quote(String string) {
+-        Writer sw = new StringBuilderWriter();
++        if (string == null || string.isEmpty()) {
++            return "\"\"";
++        }
++        Writer sw = new StringBuilderWriter(string.length() + 2);
+         try {
+             return quote(string, sw).toString();
+         } catch (IOException ignored) {
+@@ -2557,7 +2560,10 @@ public String toString() {
+      */
+     @SuppressWarnings("resource")
+     public String toString(int indentFactor) throws JSONException {
+-        Writer w = new StringBuilderWriter();
++        // 6 characters are the minimum to serialise a key value pair e.g.: "k":1,
++        // and we don't want to oversize the initial capacity
++        int initialSize = map.size() * 6;
++        Writer w = new StringBuilderWriter(Math.max(initialSize, 16));
+         return this.write(w, indentFactor, 0).toString();
+     }
+ 
+@@ -2699,6 +2705,10 @@ static final Writer writeValue(Writer writer, Object value,
+             int indentFactor, int indent) throws JSONException, IOException {
+         if (value == null || value.equals(null)) {
+             writer.write("null");
++        } else if (value instanceof String) {
++            // assuming most values are Strings, so testing it earlier
++            quote(value.toString(), writer);
++            return writer;
+         } else if (value instanceof JSONString) {
+             Object o;
+             try {
+@@ -2706,7 +2716,7 @@ static final Writer writeValue(Writer writer, Object value,
+             } catch (Exception e) {
+                 throw new JSONException(e);
+             }
+-            writer.write(o != null ? o.toString() : quote(value.toString()));
++            writer.write(o != null ? o.toString() : "\"\"");
+         } else if (value instanceof Number) {
+             // not all Numbers may match actual JSON Numbers. i.e. fractions or Imaginary
+             final String numberAsString = numberToString((Number) value);
+diff --git a/src/main/java/org/json/StringBuilderWriter.java b/src/main/java/org/json/StringBuilderWriter.java
+index 26b4c372b..b598482ef 100644
+--- a/src/main/java/org/json/StringBuilderWriter.java
++++ b/src/main/java/org/json/StringBuilderWriter.java
+@@ -18,6 +18,19 @@ class StringBuilderWriter extends Writer {
+         lock = builder;
+     }
+ 
++    /**
++     * Create a new string builder writer using the specified initial string-builder buffer size.
++     *
++     * @param initialSize The number of {@code char} values that will fit into this buffer
++     *                    before it is automatically expanded
++     *
++     * @throws IllegalArgumentException If {@code initialSize} is negative
++     */
++    StringBuilderWriter(int initialSize) {
++        builder = new StringBuilder(initialSize);
++        lock = builder;
++    }
++
+     @Override
+     public void write(int c) {
+         builder.append((char) c);
+

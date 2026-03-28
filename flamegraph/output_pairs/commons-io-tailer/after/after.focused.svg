@@ -1,0 +1,81 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='1600' height='270'>
+<style>
+text { font-family: Verdana, sans-serif; font-size: 12px; fill: #1f2937; }
+.title { font-size: 18px; font-weight: bold; }
+.meta { font-size: 11px; fill: #4b5563; }
+</style>
+<text class='title' x='12' y='22'>Commons IO / Tailer polling loop / after focused</text>
+<text class='meta' x='12' y='40'>Total samples: 54</text>
+<text class='meta' x='12' y='56'>focus=org.apache.commons.io.input.Tailer.run, org.apache.commons.io.input.Tailer.readLines, org.apache.commons.io.ThreadUtils.sleep, java.lang.Thread.sleep</text>
+<g><title>java.lang.Thread.run (54 samples)</title><rect x='0.00' y='234.00' width='1600.00' height='17' fill='hsl(86,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='247.00'>java.lang.Thread.run</text>
+<g><title>org.apache.commons.io.input.Tailer.run (52 samples)</title><rect x='0.00' y='216.00' width='1540.74' height='17' fill='hsl(183,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='229.00'>org.apache.commons.io.input.Tailer.run</text>
+<g><title>org.apache.commons.io.input.Tailer$TailablePath.getRandomAccess (21 samples)</title><rect x='0.00' y='198.00' width='622.22' height='17' fill='hsl(303,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='211.00'>org.apache.commons.io.input.Tailer$TailablePath.getRandomAccess</text>
+<g><title>java.nio.file.Path.toFile (16 samples)</title><rect x='0.00' y='180.00' width='474.07' height='17' fill='hsl(350,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='193.00'>java.nio.file.Path.toFile</text>
+<g><title>java.nio.file.FileSystems.getDefault (4 samples)</title><rect x='0.00' y='162.00' width='118.52' height='17' fill='hsl(58,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='175.00'>java.nio.file.F...</text>
+<g><title>jdk.internal.misc.VM.isModuleSystemInited (3 samples)</title><rect x='0.00' y='144.00' width='88.89' height='17' fill='hsl(255,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='157.00'>jdk.intern...</text>
+<g><title>jdk.internal.misc.VM.initLevel (2 samples)</title><rect x='0.00' y='126.00' width='59.26' height='17' fill='hsl(91,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='139.00'>jdk.in...</text>
+<g><title>java.io.File.&lt;init&gt; (1 samples)</title><rect x='118.52' y='162.00' width='29.63' height='17' fill='hsl(31,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<g><title>java.io.WinNTFileSystem.normalize (1 samples)</title><rect x='118.52' y='144.00' width='29.63' height='17' fill='hsl(271,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<g><title>org.apache.commons.io.input.Tailer$RandomAccessFileBridge.&lt;init&gt; (3 samples)</title><rect x='474.07' y='180.00' width='88.89' height='17' fill='hsl(282,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='477.07' y='193.00'>org.apache...</text>
+<g><title>org.apache.commons.io.input.Tailer$RandomAccessFileBridge.&lt;init&gt; (3 samples)</title><rect x='474.07' y='162.00' width='88.89' height='17' fill='hsl(282,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='477.07' y='175.00'>org.apache...</text>
+<g><title>java.io.RandomAccessFile.&lt;init&gt; (3 samples)</title><rect x='474.07' y='144.00' width='88.89' height='17' fill='hsl(359,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='477.07' y='157.00'>java.io.Ra...</text>
+<g><title>java.io.RandomAccessFile.&lt;init&gt; (3 samples)</title><rect x='474.07' y='126.00' width='88.89' height='17' fill='hsl(359,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='477.07' y='139.00'>java.io.Ra...</text>
+<g><title>java.io.FileDescriptor.&lt;init&gt; (1 samples)</title><rect x='474.07' y='108.00' width='29.63' height='17' fill='hsl(313,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<g><title>java.io.FileDescriptor.attach (1 samples)</title><rect x='503.70' y='108.00' width='29.63' height='17' fill='hsl(358,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<g><title>java.io.RandomAccessFile.open (1 samples)</title><rect x='533.33' y='108.00' width='29.63' height='17' fill='hsl(325,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<g><title>org.apache.commons.io.ThreadUtils.sleep (8 samples)</title><rect x='622.22' y='198.00' width='237.04' height='17' fill='hsl(251,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='625.22' y='211.00'>org.apache.commons.io.ThreadUtil...</text>
+<g><title>java.time.Duration.ofNanos (5 samples)</title><rect x='622.22' y='180.00' width='148.15' height='17' fill='hsl(251,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='625.22' y='193.00'>java.time.Duration....</text>
+<g><title>java.time.Duration.create (5 samples)</title><rect x='622.22' y='162.00' width='148.15' height='17' fill='hsl(193,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='625.22' y='175.00'>java.time.Duration....</text>
+<g><title>java.time.Duration.&lt;init&gt; (3 samples)</title><rect x='622.22' y='144.00' width='88.89' height='17' fill='hsl(71,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='625.22' y='157.00'>java.time....</text>
+<g><title>org.apache.commons.io.IOUtils.close (2 samples)</title><rect x='859.26' y='198.00' width='59.26' height='17' fill='hsl(180,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='862.26' y='211.00'>org.ap...</text>
+<g><title>org.apache.commons.io.input.Tailer$RandomAccessFileBridge.close (2 samples)</title><rect x='859.26' y='180.00' width='59.26' height='17' fill='hsl(331,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='862.26' y='193.00'>org.ap...</text>
+<g><title>java.io.RandomAccessFile.close (2 samples)</title><rect x='859.26' y='162.00' width='59.26' height='17' fill='hsl(120,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='862.26' y='175.00'>java.i...</text>
+<g><title>java.io.FileDescriptor.closeAll (1 samples)</title><rect x='859.26' y='144.00' width='29.63' height='17' fill='hsl(315,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<g><title>java.io.RandomAccessFile$1.close (1 samples)</title><rect x='859.26' y='126.00' width='29.63' height='17' fill='hsl(214,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<g><title>java.io.FileDescriptor.close (1 samples)</title><rect x='859.26' y='108.00' width='29.63' height='17' fill='hsl(122,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<g><title>java.io.FileDescriptor.unregisterCleanup (1 samples)</title><rect x='859.26' y='90.00' width='29.63' height='17' fill='hsl(31,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<g><title>org.apache.commons.io.input.Tailer$TailablePath.isNewer (2 samples)</title><rect x='918.52' y='198.00' width='59.26' height='17' fill='hsl(245,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='921.52' y='211.00'>org.ap...</text>
+<g><title>org.apache.commons.io.file.PathUtils.isNewer (2 samples)</title><rect x='918.52' y='180.00' width='59.26' height='17' fill='hsl(281,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='921.52' y='193.00'>org.ap...</text>
+<g><title>org.apache.commons.io.file.PathUtils.notExists (2 samples)</title><rect x='918.52' y='162.00' width='59.26' height='17' fill='hsl(131,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='921.52' y='175.00'>org.ap...</text>
+<g><title>java.nio.file.Files.notExists (2 samples)</title><rect x='918.52' y='144.00' width='59.26' height='17' fill='hsl(180,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='921.52' y='157.00'>java.n...</text>
+<g><title>sun.nio.fs.WindowsFileSystemProvider.checkAccess (2 samples)</title><rect x='918.52' y='126.00' width='59.26' height='17' fill='hsl(154,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='921.52' y='139.00'>sun.ni...</text>
+<g><title>sun.nio.fs.WindowsFileAttributes.get (2 samples)</title><rect x='918.52' y='108.00' width='59.26' height='17' fill='hsl(177,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='921.52' y='121.00'>sun.ni...</text>
+<g><title>sun.nio.fs.WindowsNativeDispatcher.GetFileAttributesEx (2 samples)</title><rect x='918.52' y='90.00' width='59.26' height='17' fill='hsl(270,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='921.52' y='103.00'>sun.ni...</text>
+<g><title>sun.nio.fs.WindowsNativeDispatcher.asNativeBuffer (1 samples)</title><rect x='918.52' y='72.00' width='29.63' height='17' fill='hsl(273,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<g><title>java.util.concurrent.ThreadPoolExecutor$Worker.run (1 samples)</title><rect x='1540.74' y='216.00' width='29.63' height='17' fill='hsl(236,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<g><title>java.util.concurrent.ThreadPoolExecutor.runWorker (1 samples)</title><rect x='1540.74' y='198.00' width='29.63' height='17' fill='hsl(149,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<g><title>java.util.concurrent.FutureTask.run (1 samples)</title><rect x='1540.74' y='180.00' width='29.63' height='17' fill='hsl(271,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<g><title>java.util.concurrent.Executors$RunnableAdapter.call (1 samples)</title><rect x='1540.74' y='162.00' width='29.63' height='17' fill='hsl(231,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<g><title>org.apache.commons.io.input.Tailer.run (1 samples)</title><rect x='1540.74' y='144.00' width='29.63' height='17' fill='hsl(183,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<g><title>org.apache.commons.io.IOUtils.close (1 samples)</title><rect x='1540.74' y='126.00' width='29.63' height='17' fill='hsl(180,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<g><title>org.apache.commons.io.input.TailerTest$NonStandardTailable$1.close (1 samples)</title><rect x='1540.74' y='108.00' width='29.63' height='17' fill='hsl(313,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<g><title>java.io.RandomAccessFile.close (1 samples)</title><rect x='1540.74' y='90.00' width='29.63' height='17' fill='hsl(120,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<g><title>java.io.FileDescriptor.closeAll (1 samples)</title><rect x='1540.74' y='72.00' width='29.63' height='17' fill='hsl(315,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<g><title>sun.security.provider.SeedGenerator$ThreadedSeedGenerator$BogusThread.run (1 samples)</title><rect x='1570.37' y='216.00' width='29.63' height='17' fill='hsl(174,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<g><title>java.lang.Thread.sleep (1 samples)</title><rect x='1570.37' y='198.00' width='29.63' height='17' fill='hsl(18,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+</svg>

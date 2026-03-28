@@ -1,0 +1,5 @@
+org\apache\logging\log4j\jpl\Log4jSystemLogger$1.class
+org\apache\logging\log4j\jpl\Log4jSystemLogger.class
+org\apache\logging\log4j\jpl\package-info.class
+org\apache\logging\log4j\jpl\Log4jSystemLoggerAdapter.class
+org\apache\logging\log4j\jpl\Log4jSystemLoggerFinder.class

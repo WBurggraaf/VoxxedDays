@@ -1,0 +1,18 @@
+allprojects {
+    tasks.withType(Test).configureEach {
+        def rawJvmArgs = gradle.startParameter.projectProperties.get("flamegraphJvmArgs")
+        if (rawJvmArgs != null && !rawJvmArgs.trim().isEmpty()) {
+            jvmArgs(rawJvmArgs.split("\\|\\|") as List)
+        }
+
+        def rawSystemProperties = gradle.startParameter.projectProperties.get("flamegraphSystemProperties")
+        if (rawSystemProperties != null && !rawSystemProperties.trim().isEmpty()) {
+            rawSystemProperties.split("\\|\\|").each { pair ->
+                def idx = pair.indexOf("=")
+                if (idx > 0) {
+                    systemProperty(pair.substring(0, idx), pair.substring(idx + 1))
+                }
+            }
+        }
+    }
+}

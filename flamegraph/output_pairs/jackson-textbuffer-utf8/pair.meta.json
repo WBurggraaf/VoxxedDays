@@ -1,0 +1,261 @@
+{
+  "id": "jackson-textbuffer-utf8",
+  "repo_id": "jackson-core",
+  "command_id": "textbuffer-utf8",
+  "proof_id": "textbuffer-reset-with-utf8",
+  "title": "Jackson-core / TextBuffer resetWithUTF8",
+  "repo_path": "C:\\VoxxedDays\\GitRepos\\jackson-core-3.x",
+  "patch_path": "C:\\VoxxedDays\\pr_patches_new\\jackson-1486.patch",
+  "patch_subject": "Subject: [PATCH 2/2] ...",
+  "focus_terms": [
+    "tools.jackson.core.util.TextBuffer.resetWithUTF8",
+    "tools.jackson.core.util.TextBuffer.contentsAsString",
+    "tools.jackson.core.util.TextBuffer.contentsToWriter"
+  ],
+  "generated_at": "2026-03-28T07:58:59.642357+00:00",
+  "before": {
+    "samples": 0,
+    "focused_samples": 0,
+    "svg": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-textbuffer-utf8\\before\\before.svg",
+    "focused_svg": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-textbuffer-utf8\\before\\before.focused.svg",
+    "folded": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-textbuffer-utf8\\before\\before.folded.txt",
+    "focused_folded": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-textbuffer-utf8\\before\\before.focused.folded.txt",
+    "runs": [
+      {
+        "iteration": 1,
+        "command": [
+          "mvn.cmd",
+          "-B",
+          "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+          "-Djacoco.skip=true",
+          "-Dtest=tools.jackson.core.unittest.util.TextBufferProofProfileTest",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-DfailIfNoTests=false",
+          "-DforkCount=1",
+          "-DreuseForks=false",
+          "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-textbuffer-utf8\\before\\before-run01.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+          "test"
+        ],
+        "recording_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-textbuffer-utf8\\before\\before-run01.jfr",
+        "log_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-textbuffer-utf8\\before\\before-run01.log",
+        "duration_seconds": 27.374949
+      },
+      {
+        "iteration": 2,
+        "command": [
+          "mvn.cmd",
+          "-B",
+          "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+          "-Djacoco.skip=true",
+          "-Dtest=tools.jackson.core.unittest.util.TextBufferProofProfileTest",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-DfailIfNoTests=false",
+          "-DforkCount=1",
+          "-DreuseForks=false",
+          "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-textbuffer-utf8\\before\\before-run02.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+          "test"
+        ],
+        "recording_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-textbuffer-utf8\\before\\before-run02.jfr",
+        "log_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-textbuffer-utf8\\before\\before-run02.log",
+        "duration_seconds": 27.805623
+      },
+      {
+        "iteration": 3,
+        "command": [
+          "mvn.cmd",
+          "-B",
+          "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+          "-Djacoco.skip=true",
+          "-Dtest=tools.jackson.core.unittest.util.TextBufferProofProfileTest",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-DfailIfNoTests=false",
+          "-DforkCount=1",
+          "-DreuseForks=false",
+          "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-textbuffer-utf8\\before\\before-run03.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+          "test"
+        ],
+        "recording_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-textbuffer-utf8\\before\\before-run03.jfr",
+        "log_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-textbuffer-utf8\\before\\before-run03.log",
+        "duration_seconds": 27.767264
+      },
+      {
+        "iteration": 4,
+        "command": [
+          "mvn.cmd",
+          "-B",
+          "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+          "-Djacoco.skip=true",
+          "-Dtest=tools.jackson.core.unittest.util.TextBufferProofProfileTest",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-DfailIfNoTests=false",
+          "-DforkCount=1",
+          "-DreuseForks=false",
+          "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-textbuffer-utf8\\before\\before-run04.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+          "test"
+        ],
+        "recording_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-textbuffer-utf8\\before\\before-run04.jfr",
+        "log_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-textbuffer-utf8\\before\\before-run04.log",
+        "duration_seconds": 27.636013
+      },
+      {
+        "iteration": 5,
+        "command": [
+          "mvn.cmd",
+          "-B",
+          "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+          "-Djacoco.skip=true",
+          "-Dtest=tools.jackson.core.unittest.util.TextBufferProofProfileTest",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-DfailIfNoTests=false",
+          "-DforkCount=1",
+          "-DreuseForks=false",
+          "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-textbuffer-utf8\\before\\before-run05.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+          "test"
+        ],
+        "recording_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-textbuffer-utf8\\before\\before-run05.jfr",
+        "log_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-textbuffer-utf8\\before\\before-run05.log",
+        "duration_seconds": 27.187093
+      }
+    ],
+    "timing": {
+      "durations_ms": [
+        27374.949,
+        27805.623,
+        27767.264,
+        27636.013,
+        27187.093
+      ],
+      "average_ms": 27554.188,
+      "min_ms": 27187.093,
+      "max_ms": 27805.623
+    },
+    "patch": "C:\\VoxxedDays\\flamegraph\\pairs\\jackson-textbuffer-utf8\\patches\\before.patch"
+  },
+  "after": {
+    "samples": 0,
+    "focused_samples": 0,
+    "svg": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-textbuffer-utf8\\after\\after.svg",
+    "focused_svg": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-textbuffer-utf8\\after\\after.focused.svg",
+    "folded": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-textbuffer-utf8\\after\\after.folded.txt",
+    "focused_folded": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-textbuffer-utf8\\after\\after.focused.folded.txt",
+    "runs": [
+      {
+        "iteration": 1,
+        "command": [
+          "mvn.cmd",
+          "-B",
+          "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+          "-Djacoco.skip=true",
+          "-Dtest=tools.jackson.core.unittest.util.TextBufferProofProfileTest",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-DfailIfNoTests=false",
+          "-DforkCount=1",
+          "-DreuseForks=false",
+          "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-textbuffer-utf8\\after\\after-run01.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+          "test"
+        ],
+        "recording_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-textbuffer-utf8\\after\\after-run01.jfr",
+        "log_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-textbuffer-utf8\\after\\after-run01.log",
+        "duration_seconds": 27.225861
+      },
+      {
+        "iteration": 2,
+        "command": [
+          "mvn.cmd",
+          "-B",
+          "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+          "-Djacoco.skip=true",
+          "-Dtest=tools.jackson.core.unittest.util.TextBufferProofProfileTest",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-DfailIfNoTests=false",
+          "-DforkCount=1",
+          "-DreuseForks=false",
+          "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-textbuffer-utf8\\after\\after-run02.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+          "test"
+        ],
+        "recording_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-textbuffer-utf8\\after\\after-run02.jfr",
+        "log_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-textbuffer-utf8\\after\\after-run02.log",
+        "duration_seconds": 27.416457
+      },
+      {
+        "iteration": 3,
+        "command": [
+          "mvn.cmd",
+          "-B",
+          "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+          "-Djacoco.skip=true",
+          "-Dtest=tools.jackson.core.unittest.util.TextBufferProofProfileTest",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-DfailIfNoTests=false",
+          "-DforkCount=1",
+          "-DreuseForks=false",
+          "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-textbuffer-utf8\\after\\after-run03.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+          "test"
+        ],
+        "recording_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-textbuffer-utf8\\after\\after-run03.jfr",
+        "log_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-textbuffer-utf8\\after\\after-run03.log",
+        "duration_seconds": 27.17823
+      },
+      {
+        "iteration": 4,
+        "command": [
+          "mvn.cmd",
+          "-B",
+          "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+          "-Djacoco.skip=true",
+          "-Dtest=tools.jackson.core.unittest.util.TextBufferProofProfileTest",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-DfailIfNoTests=false",
+          "-DforkCount=1",
+          "-DreuseForks=false",
+          "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-textbuffer-utf8\\after\\after-run04.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+          "test"
+        ],
+        "recording_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-textbuffer-utf8\\after\\after-run04.jfr",
+        "log_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-textbuffer-utf8\\after\\after-run04.log",
+        "duration_seconds": 27.255441
+      },
+      {
+        "iteration": 5,
+        "command": [
+          "mvn.cmd",
+          "-B",
+          "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+          "-Djacoco.skip=true",
+          "-Dtest=tools.jackson.core.unittest.util.TextBufferProofProfileTest",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-DfailIfNoTests=false",
+          "-DforkCount=1",
+          "-DreuseForks=false",
+          "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-textbuffer-utf8\\after\\after-run05.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+          "test"
+        ],
+        "recording_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-textbuffer-utf8\\after\\after-run05.jfr",
+        "log_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\jackson-textbuffer-utf8\\after\\after-run05.log",
+        "duration_seconds": 27.276267
+      }
+    ],
+    "timing": {
+      "durations_ms": [
+        27225.861,
+        27416.457,
+        27178.23,
+        27255.441,
+        27276.267
+      ],
+      "average_ms": 27270.451,
+      "min_ms": 27178.23,
+      "max_ms": 27416.457
+    },
+    "patch": "C:\\VoxxedDays\\flamegraph\\pairs\\jackson-textbuffer-utf8\\patches\\after.patch"
+  },
+  "delta": {
+    "average_ms_before": 27554.188,
+    "average_ms_after": 27270.451,
+    "average_ms_saved": 283.737,
+    "average_ms_saved_pct": 1.03,
+    "focused_samples_before": 0,
+    "focused_samples_after": 0,
+    "focused_sample_delta": 0
+  }
+}

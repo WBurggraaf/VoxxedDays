@@ -1,0 +1,252 @@
+{
+  "id": "json-java-jsonobject-tostring",
+  "repo_id": "json-java",
+  "command_id": "jsonobject-serialize",
+  "proof_id": "jsonobject-tostring",
+  "title": "JSON-java / JSONObject toString() path",
+  "repo_path": "C:\\VoxxedDays\\GitRepos\\JSON-java-master",
+  "patch_path": "C:\\VoxxedDays\\pr_patches\\867.patch",
+  "patch_subject": "Subject: [PATCH 04/20] #863 compute initial capacity for StringBuilderWriter",
+  "focus_terms": [
+    "org.json.JSONObject.toString",
+    "org.json.JSONObject.write",
+    "org.json.StringBuilderWriter.write",
+    "org.json.StringBuilderWriter.append"
+  ],
+  "generated_at": "2026-03-28T07:40:06.830752+00:00",
+  "before": {
+    "samples": 141,
+    "focused_samples": 130,
+    "svg": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-jsonobject-tostring\\before\\before.svg",
+    "focused_svg": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-jsonobject-tostring\\before\\before.focused.svg",
+    "folded": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-jsonobject-tostring\\before\\before.folded.txt",
+    "focused_folded": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-jsonobject-tostring\\before\\before.focused.folded.txt",
+    "runs": [
+      {
+        "iteration": 1,
+        "command": [
+          "mvn.cmd",
+          "-B",
+          "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+          "-Dtest=org.json.junit.JSONObjectProofProfileTest",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-DfailIfNoTests=false",
+          "-DforkCount=1",
+          "-DreuseForks=false",
+          "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-jsonobject-tostring\\before\\before-run01.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+          "test"
+        ],
+        "recording_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-jsonobject-tostring\\before\\before-run01.jfr",
+        "log_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-jsonobject-tostring\\before\\before-run01.log",
+        "duration_seconds": 36.482014
+      },
+      {
+        "iteration": 2,
+        "command": [
+          "mvn.cmd",
+          "-B",
+          "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+          "-Dtest=org.json.junit.JSONObjectProofProfileTest",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-DfailIfNoTests=false",
+          "-DforkCount=1",
+          "-DreuseForks=false",
+          "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-jsonobject-tostring\\before\\before-run02.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+          "test"
+        ],
+        "recording_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-jsonobject-tostring\\before\\before-run02.jfr",
+        "log_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-jsonobject-tostring\\before\\before-run02.log",
+        "duration_seconds": 14.62665
+      },
+      {
+        "iteration": 3,
+        "command": [
+          "mvn.cmd",
+          "-B",
+          "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+          "-Dtest=org.json.junit.JSONObjectProofProfileTest",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-DfailIfNoTests=false",
+          "-DforkCount=1",
+          "-DreuseForks=false",
+          "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-jsonobject-tostring\\before\\before-run03.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+          "test"
+        ],
+        "recording_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-jsonobject-tostring\\before\\before-run03.jfr",
+        "log_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-jsonobject-tostring\\before\\before-run03.log",
+        "duration_seconds": 15.067078
+      },
+      {
+        "iteration": 4,
+        "command": [
+          "mvn.cmd",
+          "-B",
+          "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+          "-Dtest=org.json.junit.JSONObjectProofProfileTest",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-DfailIfNoTests=false",
+          "-DforkCount=1",
+          "-DreuseForks=false",
+          "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-jsonobject-tostring\\before\\before-run04.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+          "test"
+        ],
+        "recording_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-jsonobject-tostring\\before\\before-run04.jfr",
+        "log_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-jsonobject-tostring\\before\\before-run04.log",
+        "duration_seconds": 15.254573
+      },
+      {
+        "iteration": 5,
+        "command": [
+          "mvn.cmd",
+          "-B",
+          "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+          "-Dtest=org.json.junit.JSONObjectProofProfileTest",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-DfailIfNoTests=false",
+          "-DforkCount=1",
+          "-DreuseForks=false",
+          "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-jsonobject-tostring\\before\\before-run05.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+          "test"
+        ],
+        "recording_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-jsonobject-tostring\\before\\before-run05.jfr",
+        "log_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-jsonobject-tostring\\before\\before-run05.log",
+        "duration_seconds": 15.242623
+      }
+    ],
+    "timing": {
+      "durations_ms": [
+        36482.014,
+        14626.65,
+        15067.078,
+        15254.573,
+        15242.623
+      ],
+      "average_ms": 19334.588,
+      "min_ms": 14626.65,
+      "max_ms": 36482.014
+    },
+    "patch": "C:\\VoxxedDays\\flamegraph\\pairs\\json-java-jsonobject-tostring\\patches\\before.patch"
+  },
+  "after": {
+    "samples": 85,
+    "focused_samples": 79,
+    "svg": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-jsonobject-tostring\\after\\after.svg",
+    "focused_svg": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-jsonobject-tostring\\after\\after.focused.svg",
+    "folded": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-jsonobject-tostring\\after\\after.folded.txt",
+    "focused_folded": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-jsonobject-tostring\\after\\after.focused.folded.txt",
+    "runs": [
+      {
+        "iteration": 1,
+        "command": [
+          "mvn.cmd",
+          "-B",
+          "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+          "-Dtest=org.json.junit.JSONObjectProofProfileTest",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-DfailIfNoTests=false",
+          "-DforkCount=1",
+          "-DreuseForks=false",
+          "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-jsonobject-tostring\\after\\after-run01.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+          "test"
+        ],
+        "recording_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-jsonobject-tostring\\after\\after-run01.jfr",
+        "log_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-jsonobject-tostring\\after\\after-run01.log",
+        "duration_seconds": 19.877888
+      },
+      {
+        "iteration": 2,
+        "command": [
+          "mvn.cmd",
+          "-B",
+          "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+          "-Dtest=org.json.junit.JSONObjectProofProfileTest",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-DfailIfNoTests=false",
+          "-DforkCount=1",
+          "-DreuseForks=false",
+          "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-jsonobject-tostring\\after\\after-run02.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+          "test"
+        ],
+        "recording_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-jsonobject-tostring\\after\\after-run02.jfr",
+        "log_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-jsonobject-tostring\\after\\after-run02.log",
+        "duration_seconds": 11.209471
+      },
+      {
+        "iteration": 3,
+        "command": [
+          "mvn.cmd",
+          "-B",
+          "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+          "-Dtest=org.json.junit.JSONObjectProofProfileTest",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-DfailIfNoTests=false",
+          "-DforkCount=1",
+          "-DreuseForks=false",
+          "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-jsonobject-tostring\\after\\after-run03.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+          "test"
+        ],
+        "recording_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-jsonobject-tostring\\after\\after-run03.jfr",
+        "log_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-jsonobject-tostring\\after\\after-run03.log",
+        "duration_seconds": 11.244672
+      },
+      {
+        "iteration": 4,
+        "command": [
+          "mvn.cmd",
+          "-B",
+          "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+          "-Dtest=org.json.junit.JSONObjectProofProfileTest",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-DfailIfNoTests=false",
+          "-DforkCount=1",
+          "-DreuseForks=false",
+          "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-jsonobject-tostring\\after\\after-run04.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+          "test"
+        ],
+        "recording_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-jsonobject-tostring\\after\\after-run04.jfr",
+        "log_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-jsonobject-tostring\\after\\after-run04.log",
+        "duration_seconds": 11.353144
+      },
+      {
+        "iteration": 5,
+        "command": [
+          "mvn.cmd",
+          "-B",
+          "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+          "-Dtest=org.json.junit.JSONObjectProofProfileTest",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-DfailIfNoTests=false",
+          "-DforkCount=1",
+          "-DreuseForks=false",
+          "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-jsonobject-tostring\\after\\after-run05.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+          "test"
+        ],
+        "recording_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-jsonobject-tostring\\after\\after-run05.jfr",
+        "log_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\json-java-jsonobject-tostring\\after\\after-run05.log",
+        "duration_seconds": 11.273303
+      }
+    ],
+    "timing": {
+      "durations_ms": [
+        19877.888,
+        11209.471,
+        11244.672,
+        11353.144,
+        11273.303
+      ],
+      "average_ms": 12991.696,
+      "min_ms": 11209.471,
+      "max_ms": 19877.888
+    },
+    "patch": "C:\\VoxxedDays\\flamegraph\\pairs\\json-java-jsonobject-tostring\\patches\\after.patch"
+  },
+  "delta": {
+    "average_ms_before": 19334.588,
+    "average_ms_after": 12991.696,
+    "average_ms_saved": 6342.892,
+    "average_ms_saved_pct": 32.81,
+    "focused_samples_before": 130,
+    "focused_samples_after": 79,
+    "focused_sample_delta": 51
+  }
+}

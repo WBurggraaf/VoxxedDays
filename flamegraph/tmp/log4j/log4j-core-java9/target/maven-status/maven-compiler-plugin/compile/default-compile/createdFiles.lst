@@ -1,0 +1,11 @@
+org\apache\logging\log4j\core\util\internal\UnsafeUtil.class
+org\apache\logging\log4j\core\impl\ExtendedClassInfo.class
+org\apache\logging\log4j\core\pattern\PlainTextRenderer.class
+org\apache\logging\log4j\core\jackson\StackTraceElementMixIn.class
+org\apache\logging\log4j\core\util\Integers.class
+org\apache\logging\log4j\core\jackson\StackTraceElementConstants.class
+org\apache\logging\log4j\core\impl\ExtendedStackTraceElement.class
+org\apache\logging\log4j\core\pattern\TextRenderer.class
+org\apache\logging\log4j\core\util\internal\UnsafeUtil$1.class
+org\apache\logging\log4j\core\jackson\Log4jStackTraceElementDeserializer.class
+org\apache\logging\log4j\core\jackson\ExtendedStackTraceElementMixIn.class

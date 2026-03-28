@@ -1,0 +1,4 @@
+org\apache\logging\log4j\jcl\LogFactoryImpl.class
+org\apache\logging\log4j\jcl\package-info.class
+org\apache\logging\log4j\jcl\Log4jLog.class
+org\apache\logging\log4j\jcl\LogAdapter.class

@@ -1,0 +1,5 @@
+org\apache\logging\log4j\cassandra\CassandraRule$1.class
+org\apache\logging\log4j\cassandra\CassandraAppenderIT.class
+org\apache\logging\log4j\cassandra\CassandraRule$EmbeddedCassandra.class
+org\apache\logging\log4j\cassandra\CassandraRule.class
+org\apache\logging\log4j\cassandra\CassandraRule$EmbeddedCassandra$1.class

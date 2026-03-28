@@ -1,0 +1,113 @@
+{
+  "repo_id": "commons-io",
+  "display_name": "apache/commons-io",
+  "repo_path": "C:\\VoxxedDays\\GitRepos\\commons-io-master",
+  "generated_at": "2026-03-28T06:49:08.579139+00:00",
+  "status": "ok",
+  "samples": 460,
+  "commands": [
+    {
+      "id": "tailer-polling",
+      "tests": [
+        "org.apache.commons.io.input.TailerTest"
+      ],
+      "iterations": 4,
+      "samples": 460,
+      "svg": "C:\\VoxxedDays\\flamegraph\\output\\commons-io\\01-tailer-polling.svg",
+      "folded": "C:\\VoxxedDays\\flamegraph\\output\\commons-io\\01-tailer-polling.folded.txt",
+      "proofs": [
+        {
+          "id": "tailer-run-loop",
+          "title": "Tailer polling loop",
+          "focus_terms": [
+            "org.apache.commons.io.input.Tailer.run",
+            "org.apache.commons.io.input.Tailer.readLines",
+            "org.apache.commons.io.ThreadUtils.sleep",
+            "java.lang.Thread.sleep"
+          ],
+          "samples": 20,
+          "svg": "C:\\VoxxedDays\\flamegraph\\output\\commons-io\\01-tailer-polling-tailer-run-loop.svg",
+          "folded": "C:\\VoxxedDays\\flamegraph\\output\\commons-io\\01-tailer-polling-tailer-run-loop.folded.txt"
+        }
+      ],
+      "runs": [
+        {
+          "iteration": 1,
+          "command": [
+            "mvn.cmd",
+            "-B",
+            "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+            "-Dtest=org.apache.commons.io.input.TailerTest",
+            "-Dsurefire.failIfNoSpecifiedTests=false",
+            "-DfailIfNoTests=false",
+            "-DforkCount=1",
+            "-DreuseForks=false",
+            "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output\\commons-io\\01-tailer-polling-run01.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+            "test"
+          ],
+          "recording_path": "C:\\VoxxedDays\\flamegraph\\output\\commons-io\\01-tailer-polling-run01.jfr",
+          "log_path": "C:\\VoxxedDays\\flamegraph\\output\\commons-io\\01-tailer-polling-run01.log",
+          "return_code": 0,
+          "duration_seconds": 64.515239
+        },
+        {
+          "iteration": 2,
+          "command": [
+            "mvn.cmd",
+            "-B",
+            "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+            "-Dtest=org.apache.commons.io.input.TailerTest",
+            "-Dsurefire.failIfNoSpecifiedTests=false",
+            "-DfailIfNoTests=false",
+            "-DforkCount=1",
+            "-DreuseForks=false",
+            "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output\\commons-io\\01-tailer-polling-run02.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+            "test"
+          ],
+          "recording_path": "C:\\VoxxedDays\\flamegraph\\output\\commons-io\\01-tailer-polling-run02.jfr",
+          "log_path": "C:\\VoxxedDays\\flamegraph\\output\\commons-io\\01-tailer-polling-run02.log",
+          "return_code": 0,
+          "duration_seconds": 54.555089
+        },
+        {
+          "iteration": 3,
+          "command": [
+            "mvn.cmd",
+            "-B",
+            "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+            "-Dtest=org.apache.commons.io.input.TailerTest",
+            "-Dsurefire.failIfNoSpecifiedTests=false",
+            "-DfailIfNoTests=false",
+            "-DforkCount=1",
+            "-DreuseForks=false",
+            "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output\\commons-io\\01-tailer-polling-run03.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+            "test"
+          ],
+          "recording_path": "C:\\VoxxedDays\\flamegraph\\output\\commons-io\\01-tailer-polling-run03.jfr",
+          "log_path": "C:\\VoxxedDays\\flamegraph\\output\\commons-io\\01-tailer-polling-run03.log",
+          "return_code": 0,
+          "duration_seconds": 53.606439
+        },
+        {
+          "iteration": 4,
+          "command": [
+            "mvn.cmd",
+            "-B",
+            "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+            "-Dtest=org.apache.commons.io.input.TailerTest",
+            "-Dsurefire.failIfNoSpecifiedTests=false",
+            "-DfailIfNoTests=false",
+            "-DforkCount=1",
+            "-DreuseForks=false",
+            "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output\\commons-io\\01-tailer-polling-run04.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+            "test"
+          ],
+          "recording_path": "C:\\VoxxedDays\\flamegraph\\output\\commons-io\\01-tailer-polling-run04.jfr",
+          "log_path": "C:\\VoxxedDays\\flamegraph\\output\\commons-io\\01-tailer-polling-run04.log",
+          "return_code": 0,
+          "duration_seconds": 51.572057
+        }
+      ]
+    }
+  ]
+}

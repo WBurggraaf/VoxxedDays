@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>de.skuzzle.enforcer</groupId>
+  <artifactId>restrict-imports-enforcer-rule</artifactId>
+  <version>2.6.1</version>
+  <name>Restrict Imports Enforcer Rule</name>
+  <description>restrict-imports-enforcer-rule</description>
+  <url>https://github.com/skuzzle/restrict-imports-enforcer-rule</url>
+  <licenses>
+    <license>
+      <name>The MIT License (MIT)</name>
+      <url>http://opensource.org/licenses/MIT</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <id>simont</id>
+      <name>Simon Taddiken</name>
+      <email>simon@taddiken.net</email>
+    </developer>
+  </developers>
+  <scm>
+    <connection>scm:git:git://github.com/skuzzle/restrict-imports-enforcer-rule</connection>
+    <developerConnection>scm:git:git://github.com/skuzzle/restrict-imports-enforcer-rule</developerConnection>
+    <url>https://github.com/skuzzle/restrict-imports-enforcer-rule</url>
+  </scm>
+  <dependencies/>
+</project>

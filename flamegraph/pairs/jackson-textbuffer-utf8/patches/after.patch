@@ -1,0 +1,120 @@
+From 591de62cabef39730b3cc388004cbf59a9455837 Mon Sep 17 00:00:00 2001
+From: Tatu Saloranta <tatu.saloranta@iki.fi>
+Date: Sat, 25 Oct 2025 20:16:01 -0700
+Subject: [PATCH 2/2] ...
+
+---
+ .../tools/jackson/core/util/TextBuffer.java   | 22 ++++++++++++----
+ .../core/unittest/util/TextBufferTest.java    | 25 +++++++++++++++++++
+ 2 files changed, 42 insertions(+), 5 deletions(-)
+
+diff --git a/src/main/java/tools/jackson/core/util/TextBuffer.java b/src/main/java/tools/jackson/core/util/TextBuffer.java
+index e5a28bd515..ce82dcb56d 100644
+--- a/src/main/java/tools/jackson/core/util/TextBuffer.java
++++ b/src/main/java/tools/jackson/core/util/TextBuffer.java
+@@ -323,9 +323,13 @@ public void resetWithString(String value) throws JacksonException
+     }
+ 
+     /**
++     * Init method called to reset buffer with contents of given ASCII byte array.
++     * Used to reduce JDK overhead in post-JDK8 world
++     * where {@code String} uses {@code byte[]} internally.
++     *
+      * @since 3.1
+      */
+-    public void resetWithASCII(byte[] buffer, int offset, int len) throws JacksonException
++    public String resetWithASCII(byte[] buffer, int offset, int len) throws JacksonException
+     {
+         _inputBuffer = null;
+         _inputStart = -1;
+@@ -333,19 +337,25 @@ public void resetWithASCII(byte[] buffer, int offset, int len) throws JacksonExc
+ 
+         validateStringLength(len);
+         // NOTE: we know it's US-Ascii, validated: ISO-8859-1 is a superset that maps without checks
+-        _resultString = new String(buffer, offset, len, java.nio.charset.StandardCharsets.ISO_8859_1);
++        String str = new String(buffer, offset, len, java.nio.charset.StandardCharsets.ISO_8859_1);
++        _resultString = str;
+         _resultArray = null;
+ 
+         if (_hasSegments) {
+             clearSegments();
+         }
+         _currentSize = 0;
++        return str;
+     }
+ 
+     /**
++     * Init method called to reset buffer with contents of given UTF-8 byte array.
++     * Used to reduce JDK overhead in post-JDK8 world
++     * where {@code String} uses {@code byte[]} internally.
++     *
+      * @since 3.1
+      */
+-    public void resetWithUTF8(byte[] buffer, int offset, int len) throws JacksonException
++    public String resetWithUTF8(byte[] buffer, int offset, int len) throws JacksonException
+     {
+         _inputBuffer = null;
+         _inputStart = -1;
+@@ -353,15 +363,17 @@ public void resetWithUTF8(byte[] buffer, int offset, int len) throws JacksonExce
+ 
+         validateStringLength(len);
+         // NOTE: could be ASCII, Latin-1; we know it's UTF-8, though
+-        _resultString = new String(buffer, offset, len, java.nio.charset.StandardCharsets.UTF_8);
++        String str = new String(buffer, offset, len, java.nio.charset.StandardCharsets.UTF_8);
++        _resultString = str;
+         _resultArray = null;
+ 
+         if (_hasSegments) {
+             clearSegments();
+         }
+         _currentSize = 0;
++        return str;
+     }
+-    
++
+     /**
+      * Method for accessing the currently active (last) content segment
+      * without changing state of the buffer
+diff --git a/src/test/java/tools/jackson/core/unittest/util/TextBufferTest.java b/src/test/java/tools/jackson/core/unittest/util/TextBufferTest.java
+index b44a1c26eb..0c0450cd55 100644
+--- a/src/test/java/tools/jackson/core/unittest/util/TextBufferTest.java
++++ b/src/test/java/tools/jackson/core/unittest/util/TextBufferTest.java
+@@ -1,6 +1,7 @@
+ package tools.jackson.core.unittest.util;
+ 
+ import java.io.IOException;
++import java.nio.charset.StandardCharsets;
+ 
+ import org.junit.jupiter.api.Test;
+ 
+@@ -197,6 +198,30 @@ void resetWithString() throws Exception {
+         assertEquals(0, textBuffer.getTextOffset());
+     }
+ 
++    // 3.1
++    @Test
++    void resetWithAsciiBytes() throws Exception {
++        BufferRecycler bufferRecycler = new BufferRecycler();
++        TextBuffer textBuffer = new TextBuffer(bufferRecycler);
++
++        assertEquals("abc", textBuffer.resetWithASCII(new byte[] { 'a', 'b', 'c' }, 0, 3));
++        assertEquals(0, textBuffer.getTextOffset());
++        assertEquals("abc", textBuffer.contentsAsString());
++    }
++
++    // 3.1
++    @Test
++    void resetWithUTF8Bytes() throws Exception {
++        BufferRecycler bufferRecycler = new BufferRecycler();
++        TextBuffer textBuffer = new TextBuffer(bufferRecycler);
++
++        final String UTF8_STR = "\u00E9\u00E8\u00E0"; // "éèà"
++        final byte[] BYTES = UTF8_STR.getBytes(StandardCharsets.UTF_8);
++        assertEquals(6, BYTES.length);
++        assertEquals(UTF8_STR, textBuffer.resetWithUTF8(BYTES, 0, BYTES.length));
++        assertEquals(UTF8_STR, textBuffer.contentsAsString());
++    }
++
+     @Test
+     void getCurrentSegmentSizeResetWith() {
+         TextBuffer textBuffer = new TextBuffer(null);

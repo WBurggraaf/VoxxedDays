@@ -1,0 +1,838 @@
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Apache Log4j BOM                                                   [pom]
+[INFO] Apache Log4j Parent                                                [pom]
+[INFO] Apache Log4j API                                                   [jar]
+[INFO] Apache Log4j Core                                                  [jar]
+[INFO] Apache Log4j API Tests                                             [jar]
+[INFO] Apache Log4j Core Tests                                            [jar]
+[INFO] 
+[INFO] -----------------< org.apache.logging.log4j:log4j-bom >-----------------
+[INFO] Building Apache Log4j BOM 2.26.0-SNAPSHOT                          [1/6]
+[INFO]   from pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-maven-version) @ log4j-bom ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-java-version) @ log4j-bom ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-upper-bound-deps) @ log4j-bom ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.RequireUpperBoundDeps passed
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (ban-wildcard-imports) @ log4j-bom ---
+[INFO] Rule 0: org.apache.maven.plugins.enforcer.RestrictImports passed
+[INFO] 
+[INFO] --- build-helper:3.6.1:parse-version (parse-version) @ log4j-bom ---
+[INFO] 
+[INFO] --- xml:1.1.0:validate (validate-changelog) @ log4j-bom ---
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ log4j-bom ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.7
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- flatten:1.7.0:flatten (flatten-revision) @ log4j-bom ---
+[INFO] Generating flattened POM of project org.apache.logging.log4j:log4j-bom:pom:2.26.0-SNAPSHOT...
+[INFO] 
+[INFO] --- flatten:1.7.0:flatten (flatten-bom) @ log4j-bom ---
+[INFO] Generating flattened POM of project org.apache.logging.log4j:log4j-bom:pom:2.26.0-SNAPSHOT...
+[INFO] 
+[INFO] --- clean:3.4.1:clean (delete-module-descriptor) @ log4j-bom ---
+[INFO] 
+[INFO] --- bnd:7.1.0:bnd-process (generate-module-descriptors) @ log4j-bom ---
+[INFO] 
+[INFO] -------------------< org.apache.logging.log4j:log4j >-------------------
+[INFO] Building Apache Log4j Parent 2.26.0-SNAPSHOT                       [2/6]
+[INFO]   from log4j-parent\pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-maven-version) @ log4j ---
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-java-version) @ log4j ---
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-upper-bound-deps) @ log4j ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.RequireUpperBoundDeps passed
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (ban-wildcard-imports) @ log4j ---
+[INFO] Rule 0: org.apache.maven.plugins.enforcer.RestrictImports passed
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (ban-logging-dependencies) @ log4j ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- build-helper:3.6.1:parse-version (parse-version) @ log4j ---
+[INFO] 
+[INFO] --- clean:3.4.1:clean (delete-module-descriptors) @ log4j ---
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ log4j ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.7
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- flatten:1.7.0:flatten (flatten-revision) @ log4j ---
+[INFO] Generating flattened POM of project org.apache.logging.log4j:log4j:pom:2.26.0-SNAPSHOT...
+[INFO] 
+[INFO] --- clean:3.4.1:clean (delete-module-descriptor) @ log4j ---
+[INFO] 
+[INFO] --- bnd:7.1.0:bnd-process (generate-module-descriptors) @ log4j ---
+[INFO] 
+[INFO] -----------------< org.apache.logging.log4j:log4j-api >-----------------
+[INFO] Building Apache Log4j API 2.26.0-SNAPSHOT                          [3/6]
+[INFO]   from log4j-api\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-maven-version) @ log4j-api ---
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-java-version) @ log4j-api ---
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-upper-bound-deps) @ log4j-api ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.RequireUpperBoundDeps passed
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (ban-wildcard-imports) @ log4j-api ---
+[INFO] Rule 0: org.apache.maven.plugins.enforcer.RestrictImports passed
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (ban-logging-dependencies) @ log4j-api ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- build-helper:3.6.1:parse-version (parse-version) @ log4j-api ---
+[INFO] 
+[INFO] --- build-helper:3.6.1:add-source (add-source) @ log4j-api ---
+[INFO] Source directory: C:\VoxxedDays\GitRepos\logging-log4j2-2.x\log4j-api\target\log4j-api-java9 added.
+[INFO] 
+[INFO] --- clean:3.4.1:clean (delete-module-descriptors) @ log4j-api ---
+[INFO] Deleting C:\VoxxedDays\GitRepos\logging-log4j2-2.x\log4j-api\target\classes (includes = [module-info.class, META-INF/versions/**], excludes = [])
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ log4j-api ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.7
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ log4j-api ---
+[WARNING] 2 problems were encountered while building the effective model for org.apache.yetus:audience-annotations:jar:0.5.0 during dependency collection step for plugin (use -X to see details)
+[INFO] Copying 2 resources from src\main\resources to target\classes
+[INFO] Copying 3 resources from target\maven-shared-archive-resources to target\classes
+[INFO] 
+[INFO] --- flatten:1.7.0:flatten (flatten-revision) @ log4j-api ---
+[INFO] Generating flattened POM of project org.apache.logging.log4j:log4j-api:jar:2.26.0-SNAPSHOT...
+[INFO] 
+[INFO] --- clean:3.4.1:clean (delete-module-descriptor) @ log4j-api ---
+[INFO] Deleting C:\VoxxedDays\GitRepos\logging-log4j2-2.x\log4j-api\target\classes (includes = [module-info.class], excludes = [])
+[INFO] 
+[INFO] --- compiler:3.14.0:compile (default-compile) @ log4j-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- bnd:7.1.0:bnd-process (generate-module-descriptors) @ log4j-api ---
+[WARNING] C:\VoxxedDays\GitRepos\logging-log4j2-2.x\log4j-api\.flattened-pom.xml [0:0]: jpms.jarname calculated module names from file name: [org.osgi.core-6.0.0, org.osgi.resource-1.0.0, org.osgi.service.serviceloader-1.0.0]
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ log4j-api ---
+[INFO] skip non existing resourceDirectory C:\VoxxedDays\GitRepos\logging-log4j2-2.x\log4j-api\src\test\resources
+[INFO] Copying 3 resources from target\maven-shared-archive-resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.14.0:testCompile (default-testCompile) @ log4j-api ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ log4j-api ---
+[INFO] Tests will run in random order. To reproduce ordering use flag -Dsurefire.runOrder.random.seed=23502946471500
+[INFO] 
+[INFO] ----------------< org.apache.logging.log4j:log4j-core >-----------------
+[INFO] Building Apache Log4j Core 2.26.0-SNAPSHOT                         [4/6]
+[INFO]   from log4j-core\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/javax/activation/javax.activation-api/1.2.0/javax.activation-api-1.2.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/javax/activation/javax.activation-api/1.2.0/javax.activation-api-1.2.0.pom (4.9 kB at 18 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/sun/activation/all/1.2.0/all-1.2.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/sun/activation/all/1.2.0/all-1.2.0.pom (18 kB at 227 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/javax/jms/javax.jms-api/2.0.1/javax.jms-api-2.0.1.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/javax/jms/javax.jms-api/2.0.1/javax.jms-api-2.0.1.pom (13 kB at 180 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/net/java/jvnet-parent/4/jvnet-parent-4.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/net/java/jvnet-parent/4/jvnet-parent-4.pom (7.8 kB at 123 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/javax/mail/javax.mail-api/1.6.2/javax.mail-api-1.6.2.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/javax/mail/javax.mail-api/1.6.2/javax.mail-api-1.6.2.pom (4.7 kB at 81 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/conversantmedia/disruptor/1.2.15/disruptor-1.2.15.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/conversantmedia/disruptor/1.2.15/disruptor-1.2.15.pom (11 kB at 146 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.13/slf4j-api-1.7.13.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.13/slf4j-api-1.7.13.pom (2.8 kB at 51 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-parent/1.7.13/slf4j-parent-1.7.13.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-parent/1.7.13/slf4j-parent-1.7.13.pom (13 kB at 207 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/lmax/disruptor/3.4.4/disruptor-3.4.4.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/lmax/disruptor/3.4.4/disruptor-3.4.4.pom (1.3 kB at 23 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformat-xml/2.19.2/jackson-dataformat-xml-2.19.2.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformat-xml/2.19.2/jackson-dataformat-xml-2.19.2.pom (9.2 kB at 125 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/woodstox/stax2-api/4.2.2/stax2-api-4.2.2.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/woodstox/stax2-api/4.2.2/stax2-api-4.2.2.pom (6.3 kB at 95 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/oss-parent/55/oss-parent-55.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/oss-parent/55/oss-parent-55.pom (24 kB at 347 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/woodstox/woodstox-core/7.1.1/woodstox-core-7.1.1.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/woodstox/woodstox-core/7.1.1/woodstox-core-7.1.1.pom (9.9 kB at 167 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/oss-parent/68/oss-parent-68.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/oss-parent/68/oss-parent-68.pom (24 kB at 358 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformat-yaml/2.19.2/jackson-dataformat-yaml-2.19.2.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformat-yaml/2.19.2/jackson-dataformat-yaml-2.19.2.pom (3.0 kB at 56 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformats-text/2.19.2/jackson-dataformats-text-2.19.2.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformats-text/2.19.2/jackson-dataformats-text-2.19.2.pom (3.5 kB at 63 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/yaml/snakeyaml/2.4/snakeyaml-2.4.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/yaml/snakeyaml/2.4/snakeyaml-2.4.pom (22 kB at 341 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/github/luben/zstd-jni/1.5.7-4/zstd-jni-1.5.7-4.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/github/luben/zstd-jni/1.5.7-4/zstd-jni-1.5.7-4.pom (2.0 kB at 39 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/javax/activation/javax.activation-api/1.2.0/javax.activation-api-1.2.0.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/javax/activation/javax.activation-api/1.2.0/javax.activation-api-1.2.0.jar (57 kB at 776 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/javax/jms/javax.jms-api/2.0.1/javax.jms-api-2.0.1.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/javax/mail/javax.mail-api/1.6.2/javax.mail-api-1.6.2.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/commons-codec/commons-codec/1.18.0/commons-codec-1.18.0.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/conversantmedia/disruptor/1.2.15/disruptor-1.2.15.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.13/slf4j-api-1.7.13.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/javax/mail/javax.mail-api/1.6.2/javax.mail-api-1.6.2.jar (219 kB at 2.2 MB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/lmax/disruptor/3.4.4/disruptor-3.4.4.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/javax/jms/javax.jms-api/2.0.1/javax.jms-api-2.0.1.jar (64 kB at 529 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformat-xml/2.19.2/jackson-dataformat-xml-2.19.2.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/conversantmedia/disruptor/1.2.15/disruptor-1.2.15.jar (134 kB at 934 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/woodstox/stax2-api/4.2.2/stax2-api-4.2.2.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/commons-codec/commons-codec/1.18.0/commons-codec-1.18.0.jar (373 kB at 2.3 MB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/woodstox/woodstox-core/7.1.1/woodstox-core-7.1.1.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/lmax/disruptor/3.4.4/disruptor-3.4.4.jar (85 kB at 470 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformat-yaml/2.19.2/jackson-dataformat-yaml-2.19.2.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformat-xml/2.19.2/jackson-dataformat-xml-2.19.2.jar (130 kB at 626 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/yaml/snakeyaml/2.4/snakeyaml-2.4.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/woodstox/stax2-api/4.2.2/stax2-api-4.2.2.jar (196 kB at 871 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/github/luben/zstd-jni/1.5.7-4/zstd-jni-1.5.7-4.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformat-yaml/2.19.2/jackson-dataformat-yaml-2.19.2.jar (60 kB at 232 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/yaml/snakeyaml/2.4/snakeyaml-2.4.jar (340 kB at 1.1 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/woodstox/woodstox-core/7.1.1/woodstox-core-7.1.1.jar (1.6 MB at 4.9 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.13/slf4j-api-1.7.13.jar (33 kB at 52 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/github/luben/zstd-jni/1.5.7-4/zstd-jni-1.5.7-4.jar (7.4 MB at 11 MB/s)
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-maven-version) @ log4j-core ---
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-java-version) @ log4j-core ---
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-upper-bound-deps) @ log4j-core ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.RequireUpperBoundDeps passed
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (ban-wildcard-imports) @ log4j-core ---
+[INFO] Rule 0: org.apache.maven.plugins.enforcer.RestrictImports passed
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (ban-logging-dependencies) @ log4j-core ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- build-helper:3.6.1:parse-version (parse-version) @ log4j-core ---
+[INFO] 
+[INFO] --- build-helper:3.6.1:add-source (add-source) @ log4j-core ---
+[INFO] Source directory: C:\VoxxedDays\GitRepos\logging-log4j2-2.x\log4j-core\target\log4j-core-java9 added.
+[INFO] 
+[INFO] --- clean:3.4.1:clean (delete-module-descriptors) @ log4j-core ---
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ log4j-core ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.7
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ log4j-core ---
+[INFO] Copying 5 resources from src\main\resources to target\classes
+[INFO] Copying 3 resources from target\maven-shared-archive-resources to target\classes
+[INFO] 
+[INFO] --- flatten:1.7.0:flatten (flatten-revision) @ log4j-core ---
+[INFO] Generating flattened POM of project org.apache.logging.log4j:log4j-core:jar:2.26.0-SNAPSHOT...
+[INFO] 
+[INFO] --- clean:3.4.1:clean (delete-module-descriptor) @ log4j-core ---
+[INFO] Deleting C:\VoxxedDays\GitRepos\logging-log4j2-2.x\log4j-core\target\classes (includes = [module-info.class], excludes = [])
+[INFO] 
+[INFO] --- build-helper:3.6.1:bsh-property (define-log4jDocgenDescriptorFilepath) @ log4j-core ---
+[INFO] 
+[INFO] --- compiler:3.14.0:compile (default-compile) @ log4j-core ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 741 source files with javac [debug parameters release 8] to target\classes
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/async/RingBufferLogEvent.java:[32,42] org.apache.logging.log4j.core.impl.ThrowableProxy in org.apache.logging.log4j.core.impl has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/mom/JmsAppender.java:[29,50] org.apache.logging.log4j.core.appender.mom.JmsManager in org.apache.logging.log4j.core.appender.mom has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/mom/JmsAppender.java:[29,50] org.apache.logging.log4j.core.appender.mom.JmsManager in org.apache.logging.log4j.core.appender.mom has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/mom/kafka/KafkaAppender.java:[37,44] org.apache.logging.log4j.core.layout.SerializedLayout in org.apache.logging.log4j.core.layout has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/impl/ContextDataInjectorFactory.java:[22,36] org.apache.logging.log4j.spi.CopyOnWrite in org.apache.logging.log4j.spi has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/jackson/ExtendedStackTraceElementMixIn.java:[25,42] org.apache.logging.log4j.core.impl.ExtendedClassInfo in org.apache.logging.log4j.core.impl has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/jackson/ExtendedStackTraceElementMixIn.java:[26,42] org.apache.logging.log4j.core.impl.ExtendedStackTraceElement in org.apache.logging.log4j.core.impl has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/jackson/Initializers.java:[30,42] org.apache.logging.log4j.core.impl.ExtendedStackTraceElement in org.apache.logging.log4j.core.impl has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/jackson/Initializers.java:[31,42] org.apache.logging.log4j.core.impl.ThrowableProxy in org.apache.logging.log4j.core.impl has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/jackson/LogEventMixIn.java:[47,42] org.apache.logging.log4j.core.impl.ThrowableProxy in org.apache.logging.log4j.core.impl has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/jackson/ThrowableProxyMixIn.java:[23,42] org.apache.logging.log4j.core.impl.ExtendedStackTraceElement in org.apache.logging.log4j.core.impl has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/jackson/ThrowableProxyMixIn.java:[24,42] org.apache.logging.log4j.core.impl.ThrowableProxy in org.apache.logging.log4j.core.impl has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/jackson/ThrowableProxyWithStacktraceAsStringMixIn.java:[23,42] org.apache.logging.log4j.core.impl.ExtendedStackTraceElement in org.apache.logging.log4j.core.impl has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/jackson/ThrowableProxyWithStacktraceAsStringMixIn.java:[24,42] org.apache.logging.log4j.core.impl.ThrowableProxy in org.apache.logging.log4j.core.impl has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/jackson/ThrowableProxyWithoutStacktraceMixIn.java:[23,42] org.apache.logging.log4j.core.impl.ExtendedStackTraceElement in org.apache.logging.log4j.core.impl has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/jackson/ThrowableProxyWithoutStacktraceMixIn.java:[24,42] org.apache.logging.log4j.core.impl.ThrowableProxy in org.apache.logging.log4j.core.impl has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/layout/AbstractJacksonLayout.java:[39,42] org.apache.logging.log4j.core.impl.ThrowableProxy in org.apache.logging.log4j.core.impl has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/pattern/DatePatternConverter.java:[32,51] org.apache.logging.log4j.core.util.datetime.FixedDateFormat in org.apache.logging.log4j.core.util.datetime has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/util/internal/instant/InstantPatternLegacyFormatter.java:[28,51] org.apache.logging.log4j.core.util.datetime.FastDateFormat in org.apache.logging.log4j.core.util.datetime has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/util/internal/instant/InstantPatternLegacyFormatter.java:[29,51] org.apache.logging.log4j.core.util.datetime.FixedDateFormat in org.apache.logging.log4j.core.util.datetime has been deprecated
+[WARNING] unknown enum constant java.lang.annotation.ElementType.MODULE
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/util/internal/InternalLoggerRegistry.java: unknown enum constant java.lang.annotation.ElementType.MODULE
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/util/datetime/package-info.java:[26,43] @Deprecated annotation has no effect on this package declaration
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/AbstractLogEvent.java:[117,27] getThrownProxy() in org.apache.logging.log4j.core.LogEvent has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/AbstractLogEvent.java:[57,32] getContextMap() in org.apache.logging.log4j.core.LogEvent has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/AbstractLogEvent.java:[117,12] org.apache.logging.log4j.core.impl.ThrowableProxy in org.apache.logging.log4j.core.impl has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/time/MutableInstant.java:[198,24] unchecked cast
+  required: R
+  found:    java.time.temporal.ChronoUnit
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/time/MutableInstant.java:[47,8] serializable class org.apache.logging.log4j.core.time.MutableInstant has no definition of serialVersionUID
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/async/AsyncLogger.java:[70,8] serializable class org.apache.logging.log4j.core.async.AsyncLogger has no definition of serialVersionUID
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/async/RingBufferLogEvent.java:[341,27] getThrownProxy() in org.apache.logging.log4j.core.LogEvent has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/async/RingBufferLogEvent.java:[355,32] getContextMap() in org.apache.logging.log4j.core.LogEvent has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/async/RingBufferLogEvent.java:[252,19] getFormat() in org.apache.logging.log4j.message.Message has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/async/RingBufferLogEvent.java:[147,37] getFormat() in org.apache.logging.log4j.message.Message has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/async/RingBufferLogEvent.java:[341,12] org.apache.logging.log4j.core.impl.ThrowableProxy in org.apache.logging.log4j.core.impl has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/async/RingBufferLogEvent.java:[342,37] org.apache.logging.log4j.core.impl.ThrowableProxy in org.apache.logging.log4j.core.impl has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/AsyncAppender.java:[299,19] found raw type: org.apache.logging.log4j.core.appender.AsyncAppender.Builder
+  missing type arguments for generic class org.apache.logging.log4j.core.appender.AsyncAppender.Builder<B>
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/AsyncAppender.java:[300,20] found raw type: org.apache.logging.log4j.core.appender.AsyncAppender.Builder
+  missing type arguments for generic class org.apache.logging.log4j.core.appender.AsyncAppender.Builder<B>
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/AsyncAppender.java:[339,16] found raw type: org.apache.logging.log4j.core.appender.AsyncAppender.Builder
+  missing type arguments for generic class org.apache.logging.log4j.core.appender.AsyncAppender.Builder<B>
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/AsyncAppender.java:[344,16] found raw type: org.apache.logging.log4j.core.appender.AsyncAppender.Builder
+  missing type arguments for generic class org.apache.logging.log4j.core.appender.AsyncAppender.Builder<B>
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/AsyncAppender.java:[349,16] found raw type: org.apache.logging.log4j.core.appender.AsyncAppender.Builder
+  missing type arguments for generic class org.apache.logging.log4j.core.appender.AsyncAppender.Builder<B>
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/AsyncAppender.java:[354,16] found raw type: org.apache.logging.log4j.core.appender.AsyncAppender.Builder
+  missing type arguments for generic class org.apache.logging.log4j.core.appender.AsyncAppender.Builder<B>
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/AsyncAppender.java:[359,16] found raw type: org.apache.logging.log4j.core.appender.AsyncAppender.Builder
+  missing type arguments for generic class org.apache.logging.log4j.core.appender.AsyncAppender.Builder<B>
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/AsyncAppender.java:[364,16] found raw type: org.apache.logging.log4j.core.appender.AsyncAppender.Builder
+  missing type arguments for generic class org.apache.logging.log4j.core.appender.AsyncAppender.Builder<B>
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/AsyncAppender.java:[369,16] found raw type: org.apache.logging.log4j.core.appender.AsyncAppender.Builder
+  missing type arguments for generic class org.apache.logging.log4j.core.appender.AsyncAppender.Builder<B>
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/AsyncAppender.java:[374,16] found raw type: org.apache.logging.log4j.core.appender.AsyncAppender.Builder
+  missing type arguments for generic class org.apache.logging.log4j.core.appender.AsyncAppender.Builder<B>
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/AsyncAppender.java:[379,16] found raw type: org.apache.logging.log4j.core.appender.AsyncAppender.Builder
+  missing type arguments for generic class org.apache.logging.log4j.core.appender.AsyncAppender.Builder<B>
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/AsyncAppender.java:[384,16] found raw type: org.apache.logging.log4j.core.appender.AsyncAppender.Builder
+  missing type arguments for generic class org.apache.logging.log4j.core.appender.AsyncAppender.Builder<B>
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/async/AsyncLoggerDisruptor.java:[60,45] unchecked cast
+  required: com.lmax.disruptor.EventHandler<org.apache.logging.log4j.core.async.RingBufferLogEvent>
+  found:    capture#1 of ?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/impl/Log4jLogEvent.java:[835,27] getThrownProxy() in org.apache.logging.log4j.core.LogEvent has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/impl/Log4jLogEvent.java:[872,32] getContextMap() in org.apache.logging.log4j.core.LogEvent has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/impl/Log4jLogEvent.java:[94,13] org.apache.logging.log4j.core.impl.ThrowableProxy in org.apache.logging.log4j.core.impl has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/impl/Log4jLogEvent.java:[835,12] org.apache.logging.log4j.core.impl.ThrowableProxy in org.apache.logging.log4j.core.impl has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/impl/Log4jLogEvent.java:[837,73] org.apache.logging.log4j.core.impl.ThrowableProxy in org.apache.logging.log4j.core.impl has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/impl/Log4jLogEvent.java:[1143,23] org.apache.logging.log4j.core.impl.ThrowableProxy in org.apache.logging.log4j.core.impl has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/impl/Log4jLogEvent.java:[1194,37] getThrownProxy() in org.apache.logging.log4j.core.LogEvent has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/AbstractManager.java:[199,24] unchecked cast
+  required: M
+  found:    org.apache.logging.log4j.core.appender.AbstractManager
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/MemoryMappedFileManager.java:[80,9] OutputStreamManager(java.io.OutputStream,java.lang.String,org.apache.logging.log4j.core.Layout<?>,boolean,java.nio.ByteBuffer) in org.apache.logging.log4j.core.appender.OutputStreamManager has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/SyslogAppender.java:[265,18] deprecated item is not annotated with @Deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/db/AbstractDatabaseManager.java:[49,19] deprecated item is not annotated with @Deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/db/jdbc/JdbcDatabaseManager.java:[90,13] AbstractFactoryData(int,org.apache.logging.log4j.core.Layout<? extends java.io.Serializable>) in org.apache.logging.log4j.core.appender.db.AbstractDatabaseManager.AbstractFactoryData has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/db/jdbc/JdbcDatabaseManager.java:[598,9] AbstractDatabaseManager(java.lang.String,int) in org.apache.logging.log4j.core.appender.db.AbstractDatabaseManager has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/mom/JmsAppender.java:[132,16] found raw type: org.apache.logging.log4j.core.appender.mom.JmsAppender.Builder
+  missing type arguments for generic class org.apache.logging.log4j.core.appender.mom.JmsAppender.Builder<B>
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/mom/JmsAppender.java:[137,16] found raw type: org.apache.logging.log4j.core.appender.mom.JmsAppender.Builder
+  missing type arguments for generic class org.apache.logging.log4j.core.appender.mom.JmsAppender.Builder<B>
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/mom/JmsAppender.java:[142,16] found raw type: org.apache.logging.log4j.core.appender.mom.JmsAppender.Builder
+  missing type arguments for generic class org.apache.logging.log4j.core.appender.mom.JmsAppender.Builder<B>
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/mom/JmsAppender.java:[147,16] found raw type: org.apache.logging.log4j.core.appender.mom.JmsAppender.Builder
+  missing type arguments for generic class org.apache.logging.log4j.core.appender.mom.JmsAppender.Builder<B>
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/mom/JmsAppender.java:[152,16] found raw type: org.apache.logging.log4j.core.appender.mom.JmsAppender.Builder
+  missing type arguments for generic class org.apache.logging.log4j.core.appender.mom.JmsAppender.Builder<B>
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/mom/JmsAppender.java:[157,16] found raw type: org.apache.logging.log4j.core.appender.mom.JmsAppender.Builder
+  missing type arguments for generic class org.apache.logging.log4j.core.appender.mom.JmsAppender.Builder<B>
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/mom/JmsAppender.java:[166,16] found raw type: org.apache.logging.log4j.core.appender.mom.JmsAppender.Builder
+  missing type arguments for generic class org.apache.logging.log4j.core.appender.mom.JmsAppender.Builder<B>
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/mom/JmsAppender.java:[171,16] found raw type: org.apache.logging.log4j.core.appender.mom.JmsAppender.Builder
+  missing type arguments for generic class org.apache.logging.log4j.core.appender.mom.JmsAppender.Builder<B>
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/mom/JmsAppender.java:[176,16] found raw type: org.apache.logging.log4j.core.appender.mom.JmsAppender.Builder
+  missing type arguments for generic class org.apache.logging.log4j.core.appender.mom.JmsAppender.Builder<B>
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/mom/JmsAppender.java:[181,16] found raw type: org.apache.logging.log4j.core.appender.mom.JmsAppender.Builder
+  missing type arguments for generic class org.apache.logging.log4j.core.appender.mom.JmsAppender.Builder<B>
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/mom/JmsAppender.java:[186,16] found raw type: org.apache.logging.log4j.core.appender.mom.JmsAppender.Builder
+  missing type arguments for generic class org.apache.logging.log4j.core.appender.mom.JmsAppender.Builder<B>
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/mom/JmsAppender.java:[191,16] found raw type: org.apache.logging.log4j.core.appender.mom.JmsAppender.Builder
+  missing type arguments for generic class org.apache.logging.log4j.core.appender.mom.JmsAppender.Builder<B>
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/mom/JmsAppender.java:[200,16] found raw type: org.apache.logging.log4j.core.appender.mom.JmsAppender.Builder
+  missing type arguments for generic class org.apache.logging.log4j.core.appender.mom.JmsAppender.Builder<B>
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/mom/JmsAppender.java:[205,16] found raw type: org.apache.logging.log4j.core.appender.mom.JmsAppender.Builder
+  missing type arguments for generic class org.apache.logging.log4j.core.appender.mom.JmsAppender.Builder<B>
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/mom/JmsAppender.java:[225,19] found raw type: org.apache.logging.log4j.core.appender.mom.JmsAppender.Builder
+  missing type arguments for generic class org.apache.logging.log4j.core.appender.mom.JmsAppender.Builder<B>
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/mom/JmsAppender.java:[226,20] found raw type: org.apache.logging.log4j.core.appender.mom.JmsAppender.Builder
+  missing type arguments for generic class org.apache.logging.log4j.core.appender.mom.JmsAppender.Builder<B>
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/mom/jeromq/JeroMqManager.java:[87,18] setBacklog(long) in org.zeromq.ZMQ.Socket has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/mom/jeromq/JeroMqManager.java:[88,18] setDelayAttachOnConnect(boolean) in org.zeromq.ZMQ.Socket has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/mom/jeromq/JeroMqManager.java:[92,18] setIPv4Only(boolean) in org.zeromq.ZMQ.Socket has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/mom/jeromq/JeroMqManager.java:[93,18] setLinger(long) in org.zeromq.ZMQ.Socket has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/mom/jeromq/JeroMqManager.java:[95,18] setRcvHWM(long) in org.zeromq.ZMQ.Socket has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/mom/jeromq/JeroMqManager.java:[96,18] setReceiveBufferSize(long) in org.zeromq.ZMQ.Socket has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/mom/jeromq/JeroMqManager.java:[98,18] setReconnectIVL(long) in org.zeromq.ZMQ.Socket has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/mom/jeromq/JeroMqManager.java:[99,18] setReconnectIVLMax(long) in org.zeromq.ZMQ.Socket has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/mom/jeromq/JeroMqManager.java:[100,18] setSendBufferSize(long) in org.zeromq.ZMQ.Socket has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/mom/jeromq/JeroMqManager.java:[102,18] setSndHWM(long) in org.zeromq.ZMQ.Socket has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/mom/kafka/KafkaAppender.java:[260,31] org.apache.logging.log4j.core.layout.SerializedLayout in org.apache.logging.log4j.core.layout has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/nosql/NoSqlDatabaseManager.java:[68,24] found raw type: org.apache.logging.log4j.core.appender.nosql.NoSqlDatabaseManager
+  missing type arguments for generic class org.apache.logging.log4j.core.appender.nosql.NoSqlDatabaseManager<W>
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/nosql/NoSqlDatabaseManager.java:[134,57] found raw type: org.apache.logging.log4j.core.appender.nosql.NoSqlObject
+  missing type arguments for generic class org.apache.logging.log4j.core.appender.nosql.NoSqlObject<W>
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/rolling/action/CommonsCompressAction.java:[110,20] copy(java.io.InputStream,java.io.OutputStream,int) in org.apache.commons.compress.utils.IOUtils has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/rolling/action/IfLastModified.java:[120,70] org.apache.logging.log4j.core.appender.rolling.action.Duration in org.apache.logging.log4j.core.appender.rolling.action has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/rolling/action/IfLastModified.java:[126,77] org.apache.logging.log4j.core.appender.rolling.action.Duration in org.apache.logging.log4j.core.appender.rolling.action has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/appender/routing/RoutingAppender.java:[204,72] unchecked cast
+  required: java.util.Map<java.lang.String,org.apache.logging.log4j.core.config.AppenderControl>
+  found:    java.util.Map<java.lang.String,capture#2 of ?>
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/impl/MutableLogEvent.java:[382,27] getThrownProxy() in org.apache.logging.log4j.core.LogEvent has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/impl/MutableLogEvent.java:[414,32] getContextMap() in org.apache.logging.log4j.core.LogEvent has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/impl/MutableLogEvent.java:[279,19] getFormat() in org.apache.logging.log4j.message.Message has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/impl/MutableLogEvent.java:[250,37] getFormat() in org.apache.logging.log4j.message.Message has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/impl/MutableLogEvent.java:[382,12] org.apache.logging.log4j.core.impl.ThrowableProxy in org.apache.logging.log4j.core.impl has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/impl/MutableLogEvent.java:[383,37] org.apache.logging.log4j.core.impl.ThrowableProxy in org.apache.logging.log4j.core.impl has been deprecated
+[INFO] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/config/json/JsonConfiguration.java: Some input files additionally use or override a deprecated API.
+[INFO] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/async/DisruptorUtil.java: Some input files additionally use unchecked or unsafe operations.
+[INFO] 
+[INFO] --- compiler:3.14.0:compile (generate-plugin-descriptors) @ log4j-core ---
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-docgen/0.9.0/log4j-docgen-0.9.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-docgen/0.9.0/log4j-docgen-0.9.0.pom (6.4 kB at 71 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-tools-parent/0.9.0/log4j-tools-parent-0.9.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-tools-parent/0.9.0/log4j-tools-parent-0.9.0.pom (6.1 kB at 30 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-tools-bom/0.9.0/log4j-tools-bom-0.9.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-tools-bom/0.9.0/log4j-tools-bom-0.9.0.pom (4.7 kB at 70 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/logging/logging-parent/11.0.0/logging-parent-11.0.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/logging/logging-parent/11.0.0/logging-parent-11.0.0.pom (52 kB at 489 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/asciidoctor/asciidoctorj-api/3.0.0-alpha.2/asciidoctorj-api-3.0.0-alpha.2.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/asciidoctor/asciidoctorj-api/3.0.0-alpha.2/asciidoctorj-api-3.0.0-alpha.2.pom (2.1 kB at 29 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-tools-internal-freemarker-util/0.9.0/log4j-tools-internal-freemarker-util-0.9.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-tools-internal-freemarker-util/0.9.0/log4j-tools-internal-freemarker-util-0.9.0.pom (2.1 kB at 11 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/freemarker/freemarker/2.3.32/freemarker-2.3.32.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/freemarker/freemarker/2.3.32/freemarker-2.3.32.pom (3.3 kB at 53 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-docgen/0.9.0/log4j-docgen-0.9.0.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-docgen/0.9.0/log4j-docgen-0.9.0.jar (122 kB at 1.3 MB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/asciidoctor/asciidoctorj-api/3.0.0-alpha.2/asciidoctorj-api-3.0.0-alpha.2.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-tools-internal-freemarker-util/0.9.0/log4j-tools-internal-freemarker-util-0.9.0.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/freemarker/freemarker/2.3.32/freemarker-2.3.32.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/asciidoctor/asciidoctorj-api/3.0.0-alpha.2/asciidoctorj-api-3.0.0-alpha.2.jar (60 kB at 648 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/freemarker/freemarker/2.3.32/freemarker-2.3.32.jar (1.7 MB at 11 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-tools-internal-freemarker-util/0.9.0/log4j-tools-internal-freemarker-util-0.9.0.jar (12 kB at 29 kB/s)
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 741 source files with javac [debug release 8] to target\classes
+[WARNING] unknown enum constant java.lang.annotation.ElementType.MODULE
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/util/internal/InternalLoggerRegistry.java: unknown enum constant java.lang.annotation.ElementType.MODULE
+[INFO] PluginProcessor: writing plugin descriptor for 500 Log4j Plugins to `META-INF/org/apache/logging/log4j/core/config/plugins/Log4j2Plugins.dat`.
+[INFO] GraalVmProcessor: writing GraalVM metadata for 291 Java classes to `META-INF/native-image/log4j-generated/org.apache.logging.log4j/log4j-core/reflect-config.json`.
+[INFO] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/async/RingBufferLogEvent.java: Some input files use or override a deprecated API.
+[INFO] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-core/src/main/java/org/apache/logging/log4j/core/async/RingBufferLogEvent.java: Recompile with -Xlint:deprecation for details.
+[INFO] 
+[INFO] --- bnd:7.1.0:bnd-process (generate-module-descriptors) @ log4j-core ---
+[WARNING] C:\VoxxedDays\GitRepos\logging-log4j2-2.x\log4j-core\.flattened-pom.xml [0:0]: jpms.jarname calculated module names from file name: [disruptor-1.2.15, javax.jms-api-2.0.1, javax.mail-api-1.6.2, jnacl-1.0.0, kafka-clients-3.9.1, org.osgi.core-6.0.0, org.osgi.resource-1.0.0, org.osgi.service.serviceloader-1.0.0, slf4j-api-1.7.13]
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ log4j-core ---
+[INFO] Not copying test resources
+[INFO] 
+[INFO] --- compiler:3.14.0:testCompile (default-testCompile) @ log4j-core ---
+[INFO] Not compiling test sources
+[INFO] 
+[INFO] --- compiler:3.14.0:testCompile (generate-plugin-descriptors) @ log4j-core ---
+[INFO] Not compiling test sources
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ log4j-core ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --------------< org.apache.logging.log4j:log4j-api-test >---------------
+[INFO] Building Apache Log4j API Tests 2.26.0-SNAPSHOT                    [5/6]
+[INFO]   from log4j-api-test\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-maven-version) @ log4j-api-test ---
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-java-version) @ log4j-api-test ---
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-upper-bound-deps) @ log4j-api-test ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.RequireUpperBoundDeps passed
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (ban-wildcard-imports) @ log4j-api-test ---
+[INFO] Rule 0: org.apache.maven.plugins.enforcer.RestrictImports passed
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (ban-logging-dependencies) @ log4j-api-test ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- build-helper:3.6.1:parse-version (parse-version) @ log4j-api-test ---
+[INFO] 
+[INFO] --- clean:3.4.1:clean (delete-module-descriptors) @ log4j-api-test ---
+[INFO] Deleting C:\VoxxedDays\GitRepos\logging-log4j2-2.x\log4j-api-test\target\classes (includes = [module-info.class, META-INF/versions/**], excludes = [])
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ log4j-api-test ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.7
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ log4j-api-test ---
+[INFO] Copying 2 resources from src\main\resources to target\classes
+[INFO] Copying 3 resources from target\maven-shared-archive-resources to target\classes
+[INFO] 
+[INFO] --- flatten:1.7.0:flatten (flatten-revision) @ log4j-api-test ---
+[INFO] Generating flattened POM of project org.apache.logging.log4j:log4j-api-test:jar:2.26.0-SNAPSHOT...
+[INFO] 
+[INFO] --- clean:3.4.1:clean (delete-module-descriptor) @ log4j-api-test ---
+[INFO] Deleting C:\VoxxedDays\GitRepos\logging-log4j2-2.x\log4j-api-test\target\classes (includes = [module-info.class], excludes = [])
+[INFO] 
+[INFO] --- compiler:3.14.0:compile (default-compile) @ log4j-api-test ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 52 source files with javac [debug parameters release 8] to target\classes
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/main/java/org/apache/logging/log4j/test/junit/StatusListenerExtension.java:[32,62] org.junit.jupiter.api.extension.ExtensionContext.Store.CloseableResource in org.junit.jupiter.api.extension.ExtensionContext.Store has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/main/java/org/apache/logging/log4j/test/junit/TempLoggingDirectory.java:[36,62] org.junit.jupiter.api.extension.ExtensionContext.Store.CloseableResource in org.junit.jupiter.api.extension.ExtensionContext.Store has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/main/java/org/apache/logging/log4j/test/junit/ThreadContextInitializer.java:[24,62] org.junit.jupiter.api.extension.ExtensionContext.Store.CloseableResource in org.junit.jupiter.api.extension.ExtensionContext.Store has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/main/java/org/apache/logging/log4j/test/junit/StatusListenerExtension.java:[112,62] org.junit.jupiter.api.extension.ExtensionContext.Store.CloseableResource in org.junit.jupiter.api.extension.ExtensionContext.Store has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/main/java/org/apache/logging/log4j/test/junit/StatusLoggerLevelExtension.java:[37,15] setLevel(org.apache.logging.log4j.Level) in org.apache.logging.log4j.status.StatusLogger has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/main/java/org/apache/logging/log4j/test/junit/StatusLoggerLevelExtension.java:[42,33] setLevel(org.apache.logging.log4j.Level) in org.apache.logging.log4j.status.StatusLogger has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/main/java/org/apache/logging/log4j/test/junit/TempLoggingDirectory.java:[176,48] org.junit.jupiter.api.extension.ExtensionContext.Store.CloseableResource in org.junit.jupiter.api.extension.ExtensionContext.Store has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/main/java/org/apache/logging/log4j/test/junit/ThreadContextInitializer.java:[50,21] org.junit.jupiter.api.extension.ExtensionContext.Store.CloseableResource in org.junit.jupiter.api.extension.ExtensionContext.Store has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/main/java/org/apache/logging/log4j/test/junit/ThreadContextMapExtension.java:[25,87] org.junit.jupiter.api.extension.ExtensionContext.Store.CloseableResource in org.junit.jupiter.api.extension.ExtensionContext.Store has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/main/java/org/apache/logging/log4j/test/TestLogger.java:[35,1] [MissingSummary] A summary line is required on public/protected Javadocs.
+    (see https://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/main/java/org/apache/logging/log4j/test/TestLoggerContext.java:[28,1] [MissingSummary] A summary line is required on public/protected Javadocs.
+    (see https://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/main/java/org/apache/logging/log4j/test/TestLoggerContextFactory.java:[26,1] [MissingSummary] A summary line is required on public/protected Javadocs.
+    (see https://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/main/java/org/apache/logging/log4j/test/ThreadContextHolder.java:[46,8] [EmptyBlockTag] A block tag (@param, @return, @throws, @deprecated) has an empty description. Block tags without descriptions don't add much value for future readers of the code; consider removing the tag entirely or adding a description.
+    (see https://google.github.io/styleguide/javaguide.html#s7.1.3-javadoc-block-tags)
+  Did you mean '*'?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/main/java/org/apache/logging/log4j/test/ThreadContextHolder.java:[47,8] [EmptyBlockTag] A block tag (@param, @return, @throws, @deprecated) has an empty description. Block tags without descriptions don't add much value for future readers of the code; consider removing the tag entirely or adding a description.
+    (see https://google.github.io/styleguide/javaguide.html#s7.1.3-javadoc-block-tags)
+  Did you mean '*'?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/main/java/org/apache/logging/log4j/test/junit/AbstractFileCleaner.java:[55,38] [UnnecessaryAsync] Variables which are initialized and do not escape the current scope do not need to worry about concurrency. Using the non-concurrent type will reduce overhead and verbosity.
+    (see https://errorprone.info/bugpattern/UnnecessaryAsync)
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/main/java/org/apache/logging/log4j/test/junit/BundleTestInfo.java:[37,40] [DefaultCharset] Implicit use of the platform default charset, which can result in differing behaviour between JVM executions or incorrect behavior if the encoding of the data source doesn't match expectations.
+    (see https://errorprone.info/bugpattern/DefaultCharset)
+  Did you mean 'try (final Reader reader = Files.newBufferedReader(Paths.get("pom.xml"), UTF_8)) {' or 'try (final Reader reader = Files.newBufferedReader(Paths.get("pom.xml"), Charset.defaultCharset())) {'?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/main/java/org/apache/logging/log4j/test/junit/SerialUtil.java:[73,25] [TypeParameterUnusedInFormals] Declaring a type parameter that is only used in the return type is a misuse of generics: operations on the type parameter are unchecked, it hides unsafe casts at invocations of the method, and it interacts badly with method overload resolution.
+    (see https://errorprone.info/bugpattern/TypeParameterUnusedInFormals)
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/main/java/org/apache/logging/log4j/test/junit/SetTestProperty.java:[35,4] [UnrecognisedJavadocTag] This Javadoc tag wasn't recognised by the parser. Is it malformed somehow, perhaps with mismatched braces?
+    (see https://errorprone.info/bugpattern/UnrecognisedJavadocTag)
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/main/java/org/apache/logging/log4j/test/util/OsgiServiceLocatorTest.java:[31,8] [EmptyBlockTag] A block tag (@param, @return, @throws, @deprecated) has an empty description. Block tags without descriptions don't add much value for future readers of the code; consider removing the tag entirely or adding a description.
+    (see https://google.github.io/styleguide/javaguide.html#s7.1.3-javadoc-block-tags)
+  Did you mean '*'?
+[INFO] 
+[INFO] --- bnd:7.1.0:bnd-process (generate-module-descriptors) @ log4j-api-test ---
+[WARNING] C:\VoxxedDays\GitRepos\logging-log4j2-2.x\log4j-api-test\.flattened-pom.xml [0:0]: jpms.jarname calculated module names from file name: [aopalliance-1.0, javax.inject-1, maven-artifact-3.9.10, maven-builder-support-3.9.10, maven-core-3.9.10, maven-model-3.9.10, maven-model-builder-3.9.10, maven-plugin-api-3.9.10, maven-repository-metadata-3.9.10, maven-resolver-provider-3.9.10, maven-settings-3.9.10, maven-settings-builder-3.9.10, maven-shared-utils-3.4.2, org.eclipse.sisu.inject-0.9.0.M4, org.eclipse.sisu.plexus-0.9.0.M4, org.osgi.resource-1.0.0, org.osgi.service.serviceloader-1.0.0, plexus-cipher-2.0, plexus-classworlds-2.9.0, plexus-component-annotations-2.2.0, plexus-interpolation-1.28, plexus-sec-dispatcher-2.0, plexus-utils-3.6.0]
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ log4j-api-test ---
+[INFO] Copying 15 resources from src\test\resources to target\test-classes
+[INFO] Copying 3 resources from target\maven-shared-archive-resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.14.0:testCompile (default-testCompile) @ log4j-api-test ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 93 source files with javac [debug parameters release 8] to target\test-classes
+[WARNING] Cannot find annotation method 'value()' in type 'edu.umd.cs.findbugs.annotations.SuppressFBWarnings': class file for edu.umd.cs.findbugs.annotations.SuppressFBWarnings not found
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/AbstractLoggerTest.java:[901,73] getStatusData() in org.apache.logging.log4j.status.StatusLogger has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/AbstractLoggerTest.java:[919,73] getStatusData() in org.apache.logging.log4j.status.StatusLogger has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/AbstractLoggerTest.java:[943,23] getFormat() in org.apache.logging.log4j.message.Message has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/AbstractLoggerTest.java:[928,26] serializable class org.apache.logging.log4j.AbstractLoggerTest.TestMessage has no definition of serialVersionUID
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/EventLoggerTest.java:[49,9] org.apache.logging.log4j.EventLogger in org.apache.logging.log4j has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/LambdaLoggerTest.java:[274,11] found raw type: org.apache.logging.log4j.util.Supplier
+  missing type arguments for generic class org.apache.logging.log4j.util.Supplier<T>
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/LambdaLoggerTest.java:[274,43] found raw type: org.apache.logging.log4j.util.Supplier
+  missing type arguments for generic class org.apache.logging.log4j.util.Supplier<T>
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/LambdaLoggerTest.java:[275,11] found raw type: org.apache.logging.log4j.util.Supplier
+  missing type arguments for generic class org.apache.logging.log4j.util.Supplier<T>
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/LambdaLoggerTest.java:[275,43] found raw type: org.apache.logging.log4j.util.Supplier
+  missing type arguments for generic class org.apache.logging.log4j.util.Supplier<T>
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/LoggerTest.java:[93,15] entry() in org.apache.logging.log4j.spi.AbstractLogger has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/LoggerTest.java:[94,15] exit() in org.apache.logging.log4j.spi.AbstractLogger has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/message/JsonMessage.java:[52,19] getFormat() in org.apache.logging.log4j.message.Message has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/message/MapMessageTest.java:[306,27] Time(int,int,int) in java.sql.Time has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/message/ObjectMessageTest.java:[89,9] Class NonSerializable overrides equals, but neither it nor any superclass overrides hashCode method
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/message/ParameterizedMessageTest.java:[164,9] Class NonSerializable overrides equals, but neither it nor any superclass overrides hashCode method
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/spi/DefaultThreadContextStackTest.java:[67,49] DefaultThreadContextStack(boolean) in org.apache.logging.log4j.spi.DefaultThreadContextStack has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/spi/DefaultThreadContextStackTest.java:[74,49] DefaultThreadContextStack(boolean) in org.apache.logging.log4j.spi.DefaultThreadContextStack has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/spi/DefaultThreadContextStackTest.java:[102,49] DefaultThreadContextStack(boolean) in org.apache.logging.log4j.spi.DefaultThreadContextStack has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/spi/DefaultThreadContextStackTest.java:[114,49] DefaultThreadContextStack(boolean) in org.apache.logging.log4j.spi.DefaultThreadContextStack has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/spi/DefaultThreadContextStackTest.java:[125,49] DefaultThreadContextStack(boolean) in org.apache.logging.log4j.spi.DefaultThreadContextStack has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/spi/DefaultThreadContextStackTest.java:[158,49] DefaultThreadContextStack(boolean) in org.apache.logging.log4j.spi.DefaultThreadContextStack has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/spi/DefaultThreadContextStackTest.java:[219,49] DefaultThreadContextStack(boolean) in org.apache.logging.log4j.spi.DefaultThreadContextStack has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/spi/DefaultThreadContextStackTest.java:[330,49] DefaultThreadContextStack(boolean) in org.apache.logging.log4j.spi.DefaultThreadContextStack has been deprecated
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/util/SortedArrayStringMapTest.java:[71,43] unchecked method invocation: constructor <init> in class org.apache.logging.log4j.util.SortedArrayStringMap is applied to given types
+  required: java.util.Map<java.lang.String,?>
+  found:    java.util.Map
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/util/SortedArrayStringMapTest.java:[71,68] unchecked conversion
+  required: java.util.Map<java.lang.String,?>
+  found:    java.util.Map
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/AbstractLoggerTest.java:[996,66] [InconsistentCapitalization] Found the field 'MARKER' with the same name as the parameter 'marker' but with different capitalization.
+    (see https://errorprone.info/bugpattern/InconsistentCapitalization)
+  Did you mean 'public boolean isEnabled(final Level level, final Marker MARKER, final Message data, final Throwable t) {'?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/AbstractLoggerTest.java:[1039,66] [InconsistentCapitalization] Found the field 'MARKER' with the same name as the parameter 'marker' but with different capitalization.
+    (see https://errorprone.info/bugpattern/InconsistentCapitalization)
+  Did you mean 'public boolean isEnabled(final Level level, final Marker MARKER, final CharSequence data, final Throwable t) {'?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/AbstractLoggerTest.java:[1045,66] [InconsistentCapitalization] Found the field 'MARKER' with the same name as the parameter 'marker' but with different capitalization.
+    (see https://errorprone.info/bugpattern/InconsistentCapitalization)
+  Did you mean 'public boolean isEnabled(final Level level, final Marker MARKER, final Object data, final Throwable t) {'?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/AbstractLoggerTest.java:[1051,66] [InconsistentCapitalization] Found the field 'MARKER' with the same name as the parameter 'marker' but with different capitalization.
+    (see https://errorprone.info/bugpattern/InconsistentCapitalization)
+  Did you mean 'public boolean isEnabled(final Level level, final Marker MARKER, final String data) {'?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/AbstractLoggerTest.java:[1056,66] [InconsistentCapitalization] Found the field 'MARKER' with the same name as the parameter 'marker' but with different capitalization.
+    (see https://errorprone.info/bugpattern/InconsistentCapitalization)
+  Did you mean 'public boolean isEnabled(final Level level, final Marker MARKER, final String data, final Object... p1) {'?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/AbstractLoggerTest.java:[1061,66] [InconsistentCapitalization] Found the field 'MARKER' with the same name as the parameter 'marker' but with different capitalization.
+    (see https://errorprone.info/bugpattern/InconsistentCapitalization)
+  Did you mean 'public boolean isEnabled(final Level level, final Marker MARKER, final String message, final Object p0) {'?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/AbstractLoggerTest.java:[1067,49] [InconsistentCapitalization] Found the field 'MARKER' with the same name as the parameter 'marker' but with different capitalization.
+    (see https://errorprone.info/bugpattern/InconsistentCapitalization)
+  Did you mean 'final Level level, final Marker MARKER, final String message, final Object p0, final Object p1) {'?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/AbstractLoggerTest.java:[1074,30] [InconsistentCapitalization] Found the field 'MARKER' with the same name as the parameter 'marker' but with different capitalization.
+    (see https://errorprone.info/bugpattern/InconsistentCapitalization)
+  Did you mean 'final Marker MARKER,'?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/AbstractLoggerTest.java:[1085,30] [InconsistentCapitalization] Found the field 'MARKER' with the same name as the parameter 'marker' but with different capitalization.
+    (see https://errorprone.info/bugpattern/InconsistentCapitalization)
+  Did you mean 'final Marker MARKER,'?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/AbstractLoggerTest.java:[1097,30] [InconsistentCapitalization] Found the field 'MARKER' with the same name as the parameter 'marker' but with different capitalization.
+    (see https://errorprone.info/bugpattern/InconsistentCapitalization)
+  Did you mean 'final Marker MARKER,'?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/AbstractLoggerTest.java:[1110,30] [InconsistentCapitalization] Found the field 'MARKER' with the same name as the parameter 'marker' but with different capitalization.
+    (see https://errorprone.info/bugpattern/InconsistentCapitalization)
+  Did you mean 'final Marker MARKER,'?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/AbstractLoggerTest.java:[1124,30] [InconsistentCapitalization] Found the field 'MARKER' with the same name as the parameter 'marker' but with different capitalization.
+    (see https://errorprone.info/bugpattern/InconsistentCapitalization)
+  Did you mean 'final Marker MARKER,'?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/AbstractLoggerTest.java:[1139,30] [InconsistentCapitalization] Found the field 'MARKER' with the same name as the parameter 'marker' but with different capitalization.
+    (see https://errorprone.info/bugpattern/InconsistentCapitalization)
+  Did you mean 'final Marker MARKER,'?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/AbstractLoggerTest.java:[1155,30] [InconsistentCapitalization] Found the field 'MARKER' with the same name as the parameter 'marker' but with different capitalization.
+    (see https://errorprone.info/bugpattern/InconsistentCapitalization)
+  Did you mean 'final Marker MARKER,'?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/AbstractLoggerTest.java:[1173,30] [InconsistentCapitalization] Found the field 'MARKER' with the same name as the parameter 'marker' but with different capitalization.
+    (see https://errorprone.info/bugpattern/InconsistentCapitalization)
+  Did you mean 'final Marker MARKER,'?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/AbstractLoggerTest.java:[1190,66] [InconsistentCapitalization] Found the field 'MARKER' with the same name as the parameter 'marker' but with different capitalization.
+    (see https://errorprone.info/bugpattern/InconsistentCapitalization)
+  Did you mean 'public boolean isEnabled(final Level level, final Marker MARKER, final String data, final Throwable t) {'?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/AbstractLoggerTest.java:[1196,68] [InconsistentCapitalization] Found the field 'MARKER' with the same name as the parameter 'marker' but with different capitalization.
+    (see https://errorprone.info/bugpattern/InconsistentCapitalization)
+  Did you mean 'final String fqcn, final Level level, final Marker MARKER, final Message data, final Throwable t) {'?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/AbstractLoggerTest.java:[1260,66] [InconsistentCapitalization] Found the field 'MARKER' with the same name as the parameter 'marker' but with different capitalization.
+    (see https://errorprone.info/bugpattern/InconsistentCapitalization)
+  Did you mean 'public boolean isEnabled(final Level level, final Marker MARKER, final Message message, final Throwable t) {'?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/AbstractLoggerTest.java:[1266,49] [InconsistentCapitalization] Found the field 'MARKER' with the same name as the parameter 'marker' but with different capitalization.
+    (see https://errorprone.info/bugpattern/InconsistentCapitalization)
+  Did you mean 'final Level level, final Marker MARKER, final CharSequence message, final Throwable t) {'?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/AbstractLoggerTest.java:[1271,66] [InconsistentCapitalization] Found the field 'MARKER' with the same name as the parameter 'marker' but with different capitalization.
+    (see https://errorprone.info/bugpattern/InconsistentCapitalization)
+  Did you mean 'public boolean isEnabled(final Level level, final Marker MARKER, final Object message, final Throwable t) {'?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/AbstractLoggerTest.java:[1276,66] [InconsistentCapitalization] Found the field 'MARKER' with the same name as the parameter 'marker' but with different capitalization.
+    (see https://errorprone.info/bugpattern/InconsistentCapitalization)
+  Did you mean 'public boolean isEnabled(final Level level, final Marker MARKER, final String message, final Throwable t) {'?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/AbstractLoggerTest.java:[1281,66] [InconsistentCapitalization] Found the field 'MARKER' with the same name as the parameter 'marker' but with different capitalization.
+    (see https://errorprone.info/bugpattern/InconsistentCapitalization)
+  Did you mean 'public boolean isEnabled(final Level level, final Marker MARKER, final String message) {'?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/AbstractLoggerTest.java:[1286,66] [InconsistentCapitalization] Found the field 'MARKER' with the same name as the parameter 'marker' but with different capitalization.
+    (see https://errorprone.info/bugpattern/InconsistentCapitalization)
+  Did you mean 'public boolean isEnabled(final Level level, final Marker MARKER, final String message, final Object... params) {'?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/AbstractLoggerTest.java:[1291,66] [InconsistentCapitalization] Found the field 'MARKER' with the same name as the parameter 'marker' but with different capitalization.
+    (see https://errorprone.info/bugpattern/InconsistentCapitalization)
+  Did you mean 'public boolean isEnabled(final Level level, final Marker MARKER, final String message, final Object p0) {'?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/AbstractLoggerTest.java:[1297,49] [InconsistentCapitalization] Found the field 'MARKER' with the same name as the parameter 'marker' but with different capitalization.
+    (see https://errorprone.info/bugpattern/InconsistentCapitalization)
+  Did you mean 'final Level level, final Marker MARKER, final String message, final Object p0, final Object p1) {'?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/AbstractLoggerTest.java:[1304,30] [InconsistentCapitalization] Found the field 'MARKER' with the same name as the parameter 'marker' but with different capitalization.
+    (see https://errorprone.info/bugpattern/InconsistentCapitalization)
+  Did you mean 'final Marker MARKER,'?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/AbstractLoggerTest.java:[1315,30] [InconsistentCapitalization] Found the field 'MARKER' with the same name as the parameter 'marker' but with different capitalization.
+    (see https://errorprone.info/bugpattern/InconsistentCapitalization)
+  Did you mean 'final Marker MARKER,'?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/AbstractLoggerTest.java:[1327,30] [InconsistentCapitalization] Found the field 'MARKER' with the same name as the parameter 'marker' but with different capitalization.
+    (see https://errorprone.info/bugpattern/InconsistentCapitalization)
+  Did you mean 'final Marker MARKER,'?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/AbstractLoggerTest.java:[1340,30] [InconsistentCapitalization] Found the field 'MARKER' with the same name as the parameter 'marker' but with different capitalization.
+    (see https://errorprone.info/bugpattern/InconsistentCapitalization)
+  Did you mean 'final Marker MARKER,'?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/AbstractLoggerTest.java:[1354,30] [InconsistentCapitalization] Found the field 'MARKER' with the same name as the parameter 'marker' but with different capitalization.
+    (see https://errorprone.info/bugpattern/InconsistentCapitalization)
+  Did you mean 'final Marker MARKER,'?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/AbstractLoggerTest.java:[1369,30] [InconsistentCapitalization] Found the field 'MARKER' with the same name as the parameter 'marker' but with different capitalization.
+    (see https://errorprone.info/bugpattern/InconsistentCapitalization)
+  Did you mean 'final Marker MARKER,'?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/AbstractLoggerTest.java:[1385,30] [InconsistentCapitalization] Found the field 'MARKER' with the same name as the parameter 'marker' but with different capitalization.
+    (see https://errorprone.info/bugpattern/InconsistentCapitalization)
+  Did you mean 'final Marker MARKER,'?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/AbstractLoggerTest.java:[1402,30] [InconsistentCapitalization] Found the field 'MARKER' with the same name as the parameter 'marker' but with different capitalization.
+    (see https://errorprone.info/bugpattern/InconsistentCapitalization)
+  Did you mean 'final Marker MARKER,'?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/AbstractLoggerTest.java:[1419,68] [InconsistentCapitalization] Found the field 'MARKER' with the same name as the parameter 'marker' but with different capitalization.
+    (see https://errorprone.info/bugpattern/InconsistentCapitalization)
+  Did you mean 'final String fqcn, final Level level, final Marker MARKER, final Message message, final Throwable t) {'?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/AbstractLoggerTest.java:[58,36] [StaticAssignmentOfThrowable] Saving instances of Throwable in static fields is discouraged, prefer to create them on-demand when an exception is thrown
+    (see https://errorprone.info/bugpattern/StaticAssignmentOfThrowable)
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/CloseableThreadContextTest.java:[261,60] auto-closeable resource ctc3 is never referenced in body of corresponding try statement
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/CloseableThreadContextTest.java:[258,56] auto-closeable resource ctc2 is never referenced in body of corresponding try statement
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/CloseableThreadContextTest.java:[257,52] auto-closeable resource ctc1 is never referenced in body of corresponding try statement
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/CloseableThreadContextTest.java:[293,60] auto-closeable resource ctc3 is never referenced in body of corresponding try statement
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/CloseableThreadContextTest.java:[290,56] auto-closeable resource ctc2 is never referenced in body of corresponding try statement
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/CloseableThreadContextTest.java:[289,52] auto-closeable resource ctc1 is never referenced in body of corresponding try statement
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/LogManagerTest.java:[129,29] [UnusedVariable] The local variable 'loggerContext' is never read.
+    (see https://errorprone.info/bugpattern/UnusedVariable)
+  Did you mean to remove this line or 'LogManager.getContext(false);'?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/LogManagerTest.java:[34,5] [ClassCanBeStatic] Inner class is non-static but does not reference enclosing class
+    (see https://errorprone.info/bugpattern/ClassCanBeStatic)
+  Did you mean 'static     class Inner {'?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/LogManagerTest.java:[39,5] [ClassCanBeStatic] Inner class is non-static but does not reference enclosing class
+    (see https://errorprone.info/bugpattern/ClassCanBeStatic)
+  Did you mean 'static     class InnerByClass {'?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/LoggerTest.java:[654,21] [UnusedMethod] Method 'setMessage' is never used.
+    (see https://errorprone.info/bugpattern/UnusedMethod)
+  Did you mean to remove this line?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/LoggerTest.java:[646,21] [UnusedMethod] Method 'setStatus' is never used.
+    (see https://errorprone.info/bugpattern/UnusedMethod)
+  Did you mean to remove this line?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/LoggerTest.java:[642,20] [UnusedMethod] Method 'getStatus' is never used.
+    (see https://errorprone.info/bugpattern/UnusedMethod)
+  Did you mean to remove this line?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/LoggerTest.java:[650,23] [UnusedMethod] Method 'getMessage' is never used.
+    (see https://errorprone.info/bugpattern/UnusedMethod)
+  Did you mean to remove this line?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/LoggerTest.java:[219,22] [JavaUtilDate] Date has a bad API that leads to bugs; prefer java.time.Instant or LocalDate.
+    (see https://errorprone.info/bugpattern/JavaUtilDate)
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/ThreadContextInheritanceTest.java:[131,16] [UnusedMethod] Constructor 'TestThread' is never used.
+    (see https://errorprone.info/bugpattern/UnusedMethod)
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/ThreadContextInheritanceTest.java:[127,20] [UnusedNestedClass] This nested class is unused, and can be removed.
+    (see https://errorprone.info/bugpattern/UnusedNestedClass)
+  Did you mean to remove this line?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/TraceLoggingTest.java:[70,34] [UnusedVariable] The field 'param' is never read.
+    (see https://errorprone.info/bugpattern/UnusedVariable)
+  Did you mean to remove this line or 'static { new ParameterizedMessage(pattern, p1, p2); }'?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/TraceLoggingTest.java:[66,34] [UnusedVariable] The field 'charSeq' is never read.
+    (see https://errorprone.info/bugpattern/UnusedVariable)
+  Did you mean to remove this line or 'static { new SimpleMessage(CHAR_SEQ); }'?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/TraceLoggingTest.java:[72,33] [UnusedVariable] The field 'marker' is never read.
+    (see https://errorprone.info/bugpattern/UnusedVariable)
+  Did you mean to remove this line?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/TraceLoggingTest.java:[38,17] [UnusedVariable] The field 'objectCount' is never read.
+    (see https://errorprone.info/bugpattern/UnusedVariable)
+  Did you mean to remove this line?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/TraceLoggingTest.java:[67,34] [UnusedVariable] The field 'simple' is never read.
+    (see https://errorprone.info/bugpattern/UnusedVariable)
+  Did you mean to remove this line or 'static { new SimpleMessage("Hello"); }'?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/TraceLoggingTest.java:[59,36] [UnusedVariable] The field 't' is never read.
+    (see https://errorprone.info/bugpattern/UnusedVariable)
+  Did you mean to remove this line or 'static { new UnsupportedOperationException("Test"); }'?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/TraceLoggingTest.java:[68,34] [UnusedVariable] The field 'object' is never read.
+    (see https://errorprone.info/bugpattern/UnusedVariable)
+  Did you mean to remove this line or 'static { new ObjectMessage(obj); }'?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/TraceLoggingTest.java:[37,17] [UnusedVariable] The field 'charSeqCount' is never read.
+    (see https://errorprone.info/bugpattern/UnusedVariable)
+  Did you mean to remove this line?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/TraceLoggingTest.java:[59,36] [StaticAssignmentOfThrowable] Saving instances of Throwable in static fields is discouraged, prefer to create them on-demand when an exception is thrown
+    (see https://errorprone.info/bugpattern/StaticAssignmentOfThrowable)
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/internal/map/UnmodifiableArrayBackedMapTest.java:[44,20] [NonApiType] Prefer a java.util.Map instead. 
+    (see https://errorprone.info/bugpattern/NonApiType)
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/internal/map/UnmodifiableArrayBackedMapTest.java:[48,20] [NonApiType] Prefer a java.util.Map instead. 
+    (see https://errorprone.info/bugpattern/NonApiType)
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/internal/map/UnmodifiableArrayBackedMapTest.java:[178,15] [EmptyCatch] Caught exceptions should not be ignored
+    (see https://google.github.io/styleguide/javaguide.html#s6.2-caught-exceptions)
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/internal/map/UnmodifiableArrayBackedMapTest.java:[183,29] [ModifyCollectionInEnhancedForLoop] Modifying a collection while iterating over it in a loop may cause a ConcurrentModificationException to be thrown or lead to undefined behavior.
+    (see https://errorprone.info/bugpattern/ModifyCollectionInEnhancedForLoop)
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/internal/map/UnmodifiableArrayBackedMapTest.java:[185,15] [EmptyCatch] Caught exceptions should not be ignored
+    (see https://google.github.io/styleguide/javaguide.html#s6.2-caught-exceptions)
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/internal/map/UnmodifiableArrayBackedMapTest.java:[190,32] [ModifyCollectionInEnhancedForLoop] Modifying a collection while iterating over it in a loop may cause a ConcurrentModificationException to be thrown or lead to undefined behavior.
+    (see https://errorprone.info/bugpattern/ModifyCollectionInEnhancedForLoop)
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/internal/map/UnmodifiableArrayBackedMapTest.java:[192,15] [EmptyCatch] Caught exceptions should not be ignored
+    (see https://google.github.io/styleguide/javaguide.html#s6.2-caught-exceptions)
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/internal/map/UnmodifiableArrayBackedMapTest.java:[303,11] [EmptyCatch] Caught exceptions should not be ignored
+    (see https://google.github.io/styleguide/javaguide.html#s6.2-caught-exceptions)
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/internal/map/UnmodifiableArrayBackedMapTest.java:[309,11] [EmptyCatch] Caught exceptions should not be ignored
+    (see https://google.github.io/styleguide/javaguide.html#s6.2-caught-exceptions)
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/internal/map/UnmodifiableArrayBackedMapTest.java:[315,11] [EmptyCatch] Caught exceptions should not be ignored
+    (see https://google.github.io/styleguide/javaguide.html#s6.2-caught-exceptions)
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/internal/map/UnmodifiableArrayBackedMapTest.java:[321,11] [EmptyCatch] Caught exceptions should not be ignored
+    (see https://google.github.io/styleguide/javaguide.html#s6.2-caught-exceptions)
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/message/MapMessageTest.java:[186,29] [JdkObsolete] It is very rare for LinkedList to out-perform ArrayList or ArrayDeque. Avoid it unless you're willing to invest a lot of time into benchmarking. Caveat: LinkedList supports null elements, but ArrayDeque does not.
+    (see https://errorprone.info/bugpattern/JdkObsolete)
+  Did you mean 'List<Object> list = new ArrayList<>();'?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/message/MapMessageTest.java:[190,20] [JdkObsolete] It is very rare for LinkedList to out-perform ArrayList or ArrayDeque. Avoid it unless you're willing to invest a lot of time into benchmarking. Caveat: LinkedList supports null elements, but ArrayDeque does not.
+    (see https://errorprone.info/bugpattern/JdkObsolete)
+  Did you mean 'list = new ArrayList<>(Collections.singletonList(list));'?
+[WARNING] /C:/VoxxedDays/GitRepos/logging-log4j2-2.x/log4j-api-test/src/test/java/org/apache/logging/log4j/message/ReusableMessageFactoryTest.java:[83,13] [BoxedPrimitiveConstructor] valueOf or autoboxing provides better time and space performance
+    (see https://errorprone.info/bugpattern/BoxedPrimitiveConstructor)
+  Did you mean '1,'?
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ log4j-api-test ---
+[INFO] Tests will run in random order. To reproduce ordering use flag -Dsurefire.runOrder.random.seed=23570885650000
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running org.apache.logging.log4j.LoggerTest
+Log line 1:  DEBUG Debug message {TestYear=2010} 
+log line 2:  DEBUG Debug message
+Mar 27, 2026 12:52:08 PM org.junit.jupiter.engine.descriptor.AbstractExtensionContext lambda$createCloseAction$1
+WARNING: Type implements CloseableResource but not AutoCloseable: org.apache.logging.log4j.test.junit.ThreadContextMapExtension$ThreadContextMapStore
+[ERROR] Tests run: 55, Failures: 0, Errors: 4, Skipped: 0, Time elapsed: 0.744 s <<< FAILURE! -- in org.apache.logging.log4j.LoggerTest
+[ERROR] org.apache.logging.log4j.LoggerTest.getLoggerByNullClass -- Time elapsed: 0.006 s <<< ERROR!
+java.lang.UnsupportedOperationException: No class provided, and an appropriate one cannot be found.
+	at org.apache.logging.log4j.LogManager.callerClass(LogManager.java:531)
+	at org.apache.logging.log4j.LogManager.getLogger(LogManager.java:556)
+	at org.apache.logging.log4j.LoggerTest.getLoggerByNullClass(LoggerTest.java:449)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+[ERROR] org.apache.logging.log4j.LoggerTest.getLoggerByNullObject -- Time elapsed: 0.002 s <<< ERROR!
+java.lang.UnsupportedOperationException: No class provided, and an appropriate one cannot be found.
+	at org.apache.logging.log4j.LogManager.callerClass(LogManager.java:531)
+	at org.apache.logging.log4j.LogManager.getLogger(LogManager.java:556)
+	at org.apache.logging.log4j.LogManager.getLogger(LogManager.java:598)
+	at org.apache.logging.log4j.LoggerTest.getLoggerByNullObject(LoggerTest.java:455)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+[ERROR] org.apache.logging.log4j.LoggerTest.getFormatterLogger -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.UnsupportedOperationException: No class provided, and an appropriate one cannot be found.
+	at org.apache.logging.log4j.LogManager.callerClass(LogManager.java:531)
+	at org.apache.logging.log4j.LogManager.getLogger(LogManager.java:572)
+	at org.apache.logging.log4j.LogManager.getFormatterLogger(LogManager.java:456)
+	at org.apache.logging.log4j.LogManager.getFormatterLogger(LogManager.java:425)
+	at org.apache.logging.log4j.LoggerTest.getFormatterLogger(LoggerTest.java:245)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+[ERROR] org.apache.logging.log4j.LoggerTest.getLoggerByNullString -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.UnsupportedOperationException: No class provided, and an appropriate one cannot be found.
+	at org.apache.logging.log4j.LogManager.callerClass(LogManager.java:531)
+	at org.apache.logging.log4j.LogManager.getLogger(LogManager.java:556)
+	at org.apache.logging.log4j.LogManager.getLogger(LogManager.java:624)
+	at org.apache.logging.log4j.LoggerTest.getLoggerByNullString(LoggerTest.java:461)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Errors: 
+[ERROR]   LoggerTest.getFormatterLogger:245 » UnsupportedOperation No class provided, and an appropriate one cannot be found.
+[ERROR]   LoggerTest.getLoggerByNullClass:449 » UnsupportedOperation No class provided, and an appropriate one cannot be found.
+[ERROR]   LoggerTest.getLoggerByNullObject:455 » UnsupportedOperation No class provided, and an appropriate one cannot be found.
+[ERROR]   LoggerTest.getLoggerByNullString:461 » UnsupportedOperation No class provided, and an appropriate one cannot be found.
+[INFO] 
+[ERROR] Tests run: 55, Failures: 0, Errors: 4, Skipped: 0
+[INFO] 
+[WARNING] Corrupted channel by directly writing to native stream in forked JVM 1. See FAQ web page and the dump file C:\VoxxedDays\GitRepos\logging-log4j2-2.x\log4j-api-test\target\surefire-reports\2026-03-27T12-50-57_139-jvmRun1.dumpstream
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Apache Log4j BOM 2.26.0-SNAPSHOT:
+[INFO] 
+[INFO] Apache Log4j BOM ................................... SUCCESS [  5.999 s]
+[INFO] Apache Log4j Parent ................................ SUCCESS [  0.163 s]
+[INFO] Apache Log4j API ................................... SUCCESS [  4.488 s]
+[INFO] Apache Log4j Core .................................. SUCCESS [ 51.710 s]
+[INFO] Apache Log4j API Tests ............................. FAILURE [ 19.960 s]
+[INFO] Apache Log4j Core Tests ............................ SKIPPED
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:23 min
+[INFO] Finished at: 2026-03-27T12:52:08+01:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.2.5:test (default-test) on project log4j-api-test: 
+[ERROR] 
+[ERROR] Please refer to C:\VoxxedDays\GitRepos\logging-log4j2-2.x\log4j-api-test\target\surefire-reports for the individual test results.
+[ERROR] Please refer to dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+[ERROR] 
+[ERROR] After correcting the problems, you can resume the build with the command
+[ERROR]   mvn <args> -rf :log4j-api-test

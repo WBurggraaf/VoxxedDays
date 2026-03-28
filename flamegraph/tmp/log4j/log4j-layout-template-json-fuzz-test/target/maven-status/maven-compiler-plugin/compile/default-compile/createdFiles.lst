@@ -1,0 +1,2 @@
+org\apache\logging\log4j\layout\template\json\fuzz\JsonTemplateLayoutCodecFuzzer.class
+org\apache\logging\log4j\layout\template\json\fuzz\JsonTemplateLayoutFuzzer.class

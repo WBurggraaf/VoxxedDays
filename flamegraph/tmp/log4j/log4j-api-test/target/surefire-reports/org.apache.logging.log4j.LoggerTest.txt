@@ -1,0 +1,44 @@
+-------------------------------------------------------------------------------
+Test set: org.apache.logging.log4j.LoggerTest
+-------------------------------------------------------------------------------
+Tests run: 55, Failures: 0, Errors: 4, Skipped: 0, Time elapsed: 0.744 s <<< FAILURE! -- in org.apache.logging.log4j.LoggerTest
+org.apache.logging.log4j.LoggerTest.getLoggerByNullClass -- Time elapsed: 0.006 s <<< ERROR!
+java.lang.UnsupportedOperationException: No class provided, and an appropriate one cannot be found.
+	at org.apache.logging.log4j.LogManager.callerClass(LogManager.java:531)
+	at org.apache.logging.log4j.LogManager.getLogger(LogManager.java:556)
+	at org.apache.logging.log4j.LoggerTest.getLoggerByNullClass(LoggerTest.java:449)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+org.apache.logging.log4j.LoggerTest.getLoggerByNullObject -- Time elapsed: 0.002 s <<< ERROR!
+java.lang.UnsupportedOperationException: No class provided, and an appropriate one cannot be found.
+	at org.apache.logging.log4j.LogManager.callerClass(LogManager.java:531)
+	at org.apache.logging.log4j.LogManager.getLogger(LogManager.java:556)
+	at org.apache.logging.log4j.LogManager.getLogger(LogManager.java:598)
+	at org.apache.logging.log4j.LoggerTest.getLoggerByNullObject(LoggerTest.java:455)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+org.apache.logging.log4j.LoggerTest.getFormatterLogger -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.UnsupportedOperationException: No class provided, and an appropriate one cannot be found.
+	at org.apache.logging.log4j.LogManager.callerClass(LogManager.java:531)
+	at org.apache.logging.log4j.LogManager.getLogger(LogManager.java:572)
+	at org.apache.logging.log4j.LogManager.getFormatterLogger(LogManager.java:456)
+	at org.apache.logging.log4j.LogManager.getFormatterLogger(LogManager.java:425)
+	at org.apache.logging.log4j.LoggerTest.getFormatterLogger(LoggerTest.java:245)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+org.apache.logging.log4j.LoggerTest.getLoggerByNullString -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.UnsupportedOperationException: No class provided, and an appropriate one cannot be found.
+	at org.apache.logging.log4j.LogManager.callerClass(LogManager.java:531)
+	at org.apache.logging.log4j.LogManager.getLogger(LogManager.java:556)
+	at org.apache.logging.log4j.LogManager.getLogger(LogManager.java:624)
+	at org.apache.logging.log4j.LoggerTest.getLoggerByNullString(LoggerTest.java:461)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+

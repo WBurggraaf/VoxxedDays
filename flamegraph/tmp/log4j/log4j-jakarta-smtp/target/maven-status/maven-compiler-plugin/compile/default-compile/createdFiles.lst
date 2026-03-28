@@ -1,0 +1,5 @@
+org\apache\logging\log4j\smtp\SmtpManager.class
+org\apache\logging\log4j\smtp\MimeMessageBuilder.class
+org\apache\logging\log4j\smtp\package-info.class
+org\apache\logging\log4j\smtp\SmtpManager$SMTPManagerFactory$1.class
+org\apache\logging\log4j\smtp\SmtpManager$SMTPManagerFactory.class

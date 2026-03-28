@@ -1,0 +1,9 @@
+﻿[0.552s][info][jfr,startup] Started recording 1. No limit specified, using maxsize=250MB as default.
+[0.552s][info][jfr,startup] 
+[0.552s][info][jfr,startup] Use jcmd 26720 JFR.dump name=1 to copy recording data to file.
+CASE=collections-bulk-copy
+ELAPSED_NS=5868400
+OPS=20000
+NS_PER_OP=293.420
+THREADS=1
+SINK=4560000

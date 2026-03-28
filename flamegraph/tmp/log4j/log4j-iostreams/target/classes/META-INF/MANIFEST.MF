@@ -1,0 +1,25 @@
+Manifest-Version: 1.0
+Bundle-Description: The Apache Log4j streams to log event converters
+Bundle-License: "Apache-2.0";link="https://www.apache.org/licenses/LIC
+ ENSE-2.0.txt"
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache Log4j Streaming Interface
+Bundle-SymbolicName: org.apache.logging.log4j.iostreams
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 2.26.0.SNAPSHOT
+Export-Package: org.apache.logging.log4j.io;version="2.20.1";uses:="or
+ g.apache.logging.log4j,org.apache.logging.log4j.spi"
+Implementation-Title: Apache Log4j Streaming Interface
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Version: 2.26.0-SNAPSHOT
+Import-Package: java.io,java.lang,java.nio,java.nio.charset,java.util,
+ org.apache.logging.log4j;version="[2.20,3)",org.apache.logging.log4j.
+ spi;version="[2.25,3)",org.apache.logging.log4j.util;version="[2.25,3
+ )"
+Multi-Release: false
+Private-Package: org.apache.logging.log4j.io.internal
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Specification-Title: Apache Log4j Streaming Interface
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 2.26
+

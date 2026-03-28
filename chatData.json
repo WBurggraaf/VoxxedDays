@@ -1,0 +1,349 @@
+{
+  "demoTitle": "Can GenAI Predict Code's Energy Use and Why Should We Care?",
+  "model": "Sparky · Java Energy Lens",
+  "thinkingDelay": 1800,
+  "messageDelay": 450,
+  "steps": [
+    {
+      "role": "user",
+      "stepNumber": 1,
+      "content": "Sparky, what is this demo about?"
+    },
+    {
+      "role": "assistant",
+      "stepNumber": 2,
+      "slide": "Opening",
+      "presentationStyle": "popup",
+      "content": "We use GenAI to spot energy waste in real Java libraries.\nSame behavior. Less CPU. Lower CO2."
+    },
+    {
+      "role": "user",
+      "stepNumber": 3,
+      "content": "Why does code waste energy in the first place?"
+    },
+    {
+      "role": "assistant",
+      "stepNumber": 4,
+      "slide": "The Model",
+      "content": "Hidden work: buffer resizing, idle polling, repeated copies.\nSmall loops × huge scale = real electricity."
+    },
+    {
+      "role": "user",
+      "stepNumber": 5,
+      "content": "How do you measure it?"
+    },
+    {
+      "role": "assistant",
+      "stepNumber": 6,
+      "slide": "The Model",
+      "content": "Count micro-ops → estimate mWh → multiply by grid carbon intensity.\nNot exact. Repeatable enough to compare."
+    },
+    {
+      "role": "user",
+      "stepNumber": 7,
+      "content": "Show us the first real example."
+    },
+    {
+      "role": "assistant",
+      "stepNumber": 8,
+      "slide": "JSON-java · toString()",
+      "presentationStyle": "popup",
+      "content": "Library: JSON-java — used by millions of projects.\nMethod: JSONObject.toString()\nEvery call starts with an undersized buffer."
+    },
+    {
+      "role": "user",
+      "stepNumber": 9,
+      "content": "What does the waste look like?"
+    },
+    {
+      "role": "assistant",
+      "stepNumber": 10,
+      "slide": "JSON-java · toString()",
+      "content": "The StringBuilderWriter starts empty, grows during serialization.\nEach resize = wasted allocation and copy work.",
+      "code": [
+        {
+          "language": "java",
+          "caption": "Annotated hotspot — ~280 uOps total per call",
+          "repo": "stleary/JSON-java",
+          "file": "src/main/java/org/json/JSONObject.java",
+          "intro": "JSONObject.toString() is the main JSON serialization entry point. It creates a Writer, calls write() recursively over all key-value pairs, then returns the assembled JSON string. Called on every serialization.",
+          "content": "public String toString(int indentFactor) throws JSONException {\n    Writer w = new StringBuilderWriter();\n    // Buffer starts empty → grows mid-write | ~30 uOps overhead\n    return this.write(w, indentFactor, 0).toString();\n    // Full serialization path fires here | ~250 uOps | ~0.00008 mWh\n}"
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "stepNumber": 11,
+      "content": "What did GenAI suggest?"
+    },
+    {
+      "role": "assistant",
+      "stepNumber": 12,
+      "slide": "JSON-java · toString()",
+      "content": "Pre-size the writer based on map entries. One estimate, zero mid-write resizes.",
+      "code": [
+        {
+          "language": "java",
+          "caption": "PR diff — pre-size the writer",
+          "repo": "stleary/JSON-java",
+          "file": "src/main/java/org/json/JSONObject.java",
+          "intro": "Same toString() method. The fix adds a capacity hint to StringBuilderWriter so the internal char[] is right-sized before serialization begins.",
+          "why": "Starting empty forces the buffer to grow 3× on average. Pre-sizing from map.size() × 6 eliminates all mid-write reallocations and the copy work they trigger.",
+          "energySaving": "~30 uOps saved · ~0.00001 mWh per call",
+          "content": "- Writer w = new StringBuilderWriter();\n+ // 6 chars = minimum for a key-value pair e.g. \"k\":1,\n+ int initialSize = map.size() * 6;\n+ Writer w = new StringBuilderWriter(Math.max(initialSize, 16));"
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "stepNumber": 13,
+      "content": "Next — any pointless search loops?"
+    },
+    {
+      "role": "assistant",
+      "stepNumber": 14,
+      "slide": "JSON-java · annotation search",
+      "content": "Annotation lookup walked every superclass — even past Object.\nEarly exit was missing.",
+      "code": [
+        {
+          "language": "java",
+          "caption": "PR diff — stop the walk at Object",
+          "repo": "stleary/JSON-java",
+          "file": "src/main/java/org/json/JSONObject.java",
+          "intro": "getAnnotation() walks the class hierarchy to find a matching annotation. Without a guard, the loop always climbs past java.lang.Object even though Object carries no user-defined annotations.",
+          "why": "Without the check, the loop always reaches java.lang.Object and continues one extra level unnecessarily. One null-check stops the walk as soon as no more annotations are possible.",
+          "energySaving": "~60 uOps saved per lookup · scales with call frequency",
+          "content": "  while (c != null) {\n+     // If superclass is Object, no annotations remain\n+     if (c.getSuperclass().equals(Object.class))\n+         return null;\n      for (Annotation ann : c.getDeclaredAnnotations()) {\n          // ~25 uOps / iter — runs until Object without the fix\n      }\n      c = c.getSuperclass();\n  }"
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "stepNumber": 15,
+      "content": "Simple fix — big difference?"
+    },
+    {
+      "role": "assistant",
+      "stepNumber": 16,
+      "slide": "JSON-java · annotation search",
+      "content": "One null-check saves ~60 uOps per lookup.\nAt library scale that path runs millions of times."
+    },
+    {
+      "role": "user",
+      "stepNumber": 17,
+      "content": "What about deeply nested XML input?"
+    },
+    {
+      "role": "assistant",
+      "stepNumber": 18,
+      "slide": "JSON-java · XML depth limit",
+      "content": "No depth cap → recursive parser runs forever on crafted input.\nCPU held hostage.",
+      "code": [
+        {
+          "language": "java",
+          "caption": "PR diff — fail fast on depth exceeded",
+          "repo": "stleary/JSON-java",
+          "file": "src/main/java/org/json/XML.java",
+          "intro": "XML.parse() is a recursive descent parser that converts XML to JSONObject. Each nested element opens a new stack frame. Without a depth limit, a deeply nested document can exhaust CPU and stack.",
+          "why": "Deeply nested XML is O(depth) in recursion. Without a cap, a crafted 10,000-level document monopolises the worker thread. The depth check throws early and releases the CPU immediately.",
+          "energySaving": "Prevents unbounded CPU use — worst-case O(n) → O(1) at depth limit",
+          "content": "- parse(x, jsonObject, tagName, config)\n+ parse(x, jsonObject, tagName, config, currentNestingDepth + 1)\n\n+ if (currentNestingDepth == config.getMaxNestingDepth()) {\n+     throw x.syntaxError(\n+         \"Maximum nesting depth of \"\n+         + config.getMaxNestingDepth() + \" reached\");\n+ }"
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "stepNumber": 19,
+      "content": "Any duplicate conversion work in JSON-java?"
+    },
+    {
+      "role": "assistant",
+      "stepNumber": 20,
+      "slide": "JSON-java · numeric paths",
+      "content": "String-to-number logic lived in multiple places.\nEvery caller paid the parse cost independently.",
+      "code": [
+        {
+          "language": "java",
+          "caption": "PR diff — one conversion path via utility",
+          "repo": "stleary/JSON-java",
+          "file": "src/main/java/org/json/JSONObject.java",
+          "intro": "stringToNumber() converts a JSON numeric string (e.g. \"3.14\") to the correct Java Number subtype. It was implemented both directly in JSONObject and in coercion helpers — two copies of the same parse logic.",
+          "why": "Duplicate logic means the same string gets parsed multiple times per access. Routing through NumberConversionUtil lets the JIT inline and optimise a single hot path instead of two.",
+          "energySaving": "~120 uOps · ~0.00004 mWh — paid once instead of per call-site",
+          "content": "- return JSONObject.stringToNumber(object.toString());\n+ return NumberConversionUtil.stringToNumber(object.toString());\n  // ~120 uOps | ~0.00004 mWh — now paid once, not duplicated"
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "stepNumber": 21,
+      "content": "Show us the idle waiting pattern."
+    },
+    {
+      "role": "assistant",
+      "stepNumber": 22,
+      "slide": "Commons IO · Tailer",
+      "presentationStyle": "popup",
+      "content": "Each Tailer spawned its own thread.\nIdle watchers still wake, poll file size, sleep — on repeat.\nAt scale: background CPU for nothing."
+    },
+    {
+      "role": "user",
+      "stepNumber": 23,
+      "content": "What does the polling loop look like?"
+    },
+    {
+      "role": "assistant",
+      "stepNumber": 24,
+      "slide": "Commons IO · Tailer",
+      "content": "Thread wakes, checks file size, finds nothing, sleeps — again.",
+      "code": [
+        {
+          "language": "java",
+          "caption": "Before — per-instance thread + sleep loop",
+          "repo": "apache/commons-io",
+          "file": "src/main/java/org/apache/commons/io/input/Tailer.java",
+          "intro": "Tailer.run() is the main polling loop for the unix-tail equivalent. It repeatedly reads new lines from a growing file and notifies a TailerListener. The old implementation gave each Tailer its own OS thread that woke on a fixed sleep interval regardless of file activity.",
+          "content": "while (getRun()) {\n    final long length = tailable.size();\n    // ~35 uOps / iter — repeated even when nothing changed\n    if (length > position) {\n        position = readLines(reader);\n    }\n    ThreadUtils.sleep(delayDuration);\n    // Wakes, polls, sleeps — endlessly\n}"
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "stepNumber": 25,
+      "content": "What is the fix?"
+    },
+    {
+      "role": "assistant",
+      "stepNumber": 26,
+      "slide": "Commons IO · Tailer",
+      "content": "Replace per-instance thread with a shared ScheduledExecutor.",
+      "code": [
+        {
+          "language": "java",
+          "caption": "PR diff — ScheduledExecutor replaces the sleep loop",
+          "repo": "apache/commons-io",
+          "file": "src/main/java/org/apache/commons/io/input/Tailer.java",
+          "intro": "The new run() delegates scheduling to a ScheduledExecutorService. The method blocks on a CountDownLatch instead of looping, and the executor handles the fixed-delay firing.",
+          "why": "Each dedicated thread consumes ~140 uOps of infrastructure just to exist. A shared ScheduledExecutor amortises that cost across all tailers and only wakes threads when work is actually due.",
+          "energySaving": "~140 uOps thread overhead eliminated + ~35 uOps × idle polls removed",
+          "content": "- RandomAccessFile reader = null;\n- while (getRun() && reader == null) {\n-     Thread.sleep(delayMillis);\n- }\n\n+ final ScheduledFuture<?> future =\n+     this.executor.scheduleWithFixedDelay(\n+         this.scheduled, 0, this.delayMillis,\n+         TimeUnit.MILLISECONDS);\n+ try {\n+     this.runTrigger.await();\n+ } finally {\n+     future.cancel(true);\n+     this.executor.shutdown();\n+ }"
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "stepNumber": 27,
+      "content": "Parser work — what did GenAI find in Jackson?"
+    },
+    {
+      "role": "assistant",
+      "stepNumber": 28,
+      "slide": "Jackson · readString(Writer)",
+      "content": "readString() materialised a text snapshot before streaming it.\nDirect streaming skips the intermediate copy.",
+      "code": [
+        {
+          "language": "java",
+          "caption": "PR diff — tighten exception scope, add reusable buffer",
+          "repo": "FasterXML/jackson-core",
+          "file": "src/main/java/com/fasterxml/jackson/core/json/ReaderBasedJsonParser.java",
+          "intro": "ReaderBasedJsonParser.readString(Writer) streams the current JSON string token directly into a caller-supplied Writer, bypassing string materialisation. It is the fast path for processing large string values without heap allocation.",
+          "why": "The original try-catch wrapped the entire VALUE_STRING branch, preventing the JIT from hoisting the token check outside the exception range. Narrowing the scope lets the happy path run without exception-table overhead; the reusable buffer avoids 100k+ temp array allocations.",
+          "energySaving": "~90 uOps hot path · reusable buffer saves ~3.5M uOps per 100k calls",
+          "content": "- try {\n-     if (t == JsonToken.VALUE_STRING) {\n+ if (t == JsonToken.VALUE_STRING) {\n+     try {\n          if (_tokenIncomplete) {\n              return _streamString(writer);\n              // Stream directly | ~90 uOps | ~0.00003 mWh\n          }\n          long len = _textBuffer.contentsToWriter(writer);\n          _textBuffer.resetWithEmpty();\n          return len;\n+     } catch (IOException e) { throw _wrapIOFailure(e); }\n- } catch (IOException e) { throw _wrapIOFailure(e); }\n\n+ char[] outBuf = _bufferForStringStreaming();\n+ // Reused buffer | ~35 uOps / iter | 100k iters ~= 3.5M uOps saved"
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "stepNumber": 29,
+      "content": "Any string decoding that gets thrown away?"
+    },
+    {
+      "role": "assistant",
+      "stepNumber": 30,
+      "slide": "Jackson · TextBuffer reset",
+      "content": "resetWithASCII() decoded a String then returned void.\nCallers fetched it again — paid twice.",
+      "code": [
+        {
+          "language": "java",
+          "caption": "PR diff — return the decoded String directly",
+          "repo": "FasterXML/jackson-core",
+          "file": "src/main/java/com/fasterxml/jackson/core/util/TextBuffer.java",
+          "intro": "TextBuffer.resetWithASCII() reinitialises the buffer with a pre-decoded ASCII/Latin-1 byte array. It is called on every JSON string token that can be decoded without escaping. The result is used by all callers as the token's string value.",
+          "why": "The decode step (~140 uOps) already produces the String object. Returning void forced every caller to invoke getText() as a follow-up, adding ~4–8 uOps per call. Returning the value directly removes that dead round-trip.",
+          "energySaving": "~140 uOps decode reused · ~4–8 uOps follow-up eliminated per call",
+          "content": "- public void resetWithASCII(byte[] buf, int off, int len)\n+ public String resetWithASCII(byte[] buf, int off, int len)\n  {\n      String str = new String(buf, off, len,\n          StandardCharsets.ISO_8859_1);\n      // ~140 uOps to decode | ~0.00005 mWh\n      _resultString = str;\n-     // caller must call getText() separately — ~4 uOps extra\n+     return str; // reuse the value, skip the follow-up fetch\n  }"
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "stepNumber": 31,
+      "content": "What about logging overhead?"
+    },
+    {
+      "role": "assistant",
+      "stepNumber": 32,
+      "slide": "Log4j2 · getCopy()",
+      "presentationStyle": "popup",
+      "content": "Every log event copies the thread context map.\nThe generic HashMap(Map) constructor hides a megamorphic call.\nHot path. Runs constantly."
+    },
+    {
+      "role": "user",
+      "stepNumber": 33,
+      "content": "Show the getCopy fix."
+    },
+    {
+      "role": "assistant",
+      "stepNumber": 34,
+      "slide": "Log4j2 · getCopy()",
+      "content": "Pre-size the target map. Iterate explicitly. JIT loves predictable paths.",
+      "code": [
+        {
+          "language": "java",
+          "caption": "PR diff — explicit pre-sized copy",
+          "repo": "apache/logging-log4j2",
+          "file": "log4j-core/src/main/java/org/apache/logging/log4j/core/impl/DefaultThreadContextMap.java",
+          "intro": "DefaultThreadContextMap.getCopy() returns a snapshot of the current thread's MDC (Mapped Diagnostic Context) map. It is called on every log event that uses context fields — potentially thousands of times per second in a busy application.",
+          "why": "HashMap(Map) uses a megamorphic copy path that the JIT cannot easily optimise. Pre-sizing with load-factor headroom (×1.35) eliminates the first resize, and explicit entry iteration gives the JIT a monomorphic loop it can inline and vectorise.",
+          "energySaving": "~25 uOps resize saved · ~30 uOps/iter × 100k iters = 3.0M uOps total",
+          "content": "- return new HashMap<>(getMap(state));\n\n+ final Map<String, String> map = getMap(state);\n+ if (map.isEmpty()) { return new HashMap<>(); }\n+ // Pre-size: ~25 uOps saved on first resize\n+ final HashMap<String, String> copy =\n+     new HashMap<>((int) (map.size() * 1.35));\n+ for (Map.Entry<String, String> e : map.entrySet()) {\n+     copy.put(e.getKey(), e.getValue());\n+     // ~30 uOps / iter | 100k iters ~= 3.0M uOps\n+ }"
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "stepNumber": 35,
+      "content": "How do we put this into practice?"
+    },
+    {
+      "role": "assistant",
+      "stepNumber": 36,
+      "slide": "The Playbook",
+      "content": "Eight patterns to look for:\n- Right-size buffers upfront\n- Add early exits to search loops\n- Cap recursive depth\n- Centralize repeated conversions\n- Replace polling with events\n- Stream instead of buffering\n- Return decoded values, don't re-fetch\n- Pre-size copies, iterate explicitly"
+    },
+    {
+      "role": "user",
+      "stepNumber": 37,
+      "content": "Where does GenAI fit in this workflow?"
+    },
+    {
+      "role": "assistant",
+      "stepNumber": 38,
+      "slide": "CI/CD Governance",
+      "content": "Run the lens on changed files in CI.\nAnnotate likely hotspots. Flag the pattern.\nRequire a human decision: accept, mitigate, or justify."
+    },
+    {
+      "role": "user",
+      "stepNumber": 39,
+      "content": "Give the audience one takeaway."
+    },
+    {
+      "role": "assistant",
+      "stepNumber": 40,
+      "slide": "Takeaway",
+      "presentationStyle": "popup",
+      "content": "Better software wastes less.\nSame behavior. Less CPU. Lower CO2.\nGenAI shows you where to look — you decide what to fix."
+    }
+  ]
+}

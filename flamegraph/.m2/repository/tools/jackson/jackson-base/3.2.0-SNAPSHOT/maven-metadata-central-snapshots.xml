@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata modelVersion="1.1.0">
+  <groupId>tools.jackson</groupId>
+  <artifactId>jackson-base</artifactId>
+  <versioning>
+    <lastUpdated>20260317233151</lastUpdated>
+    <snapshot>
+      <timestamp>20260317.233151</timestamp>
+      <buildNumber>4</buildNumber>
+    </snapshot>
+    <snapshotVersions>
+      <snapshotVersion>
+        <extension>pom</extension>
+        <value>3.2.0-20260317.233151-4</value>
+        <updated>20260317233151</updated>
+      </snapshotVersion>
+    </snapshotVersions>
+  </versioning>
+  <version>3.2.0-SNAPSHOT</version>
+</metadata>

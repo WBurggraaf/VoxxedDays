@@ -1,0 +1,8 @@
+org\apache\logging\log4j\mongodb4\MongoDb4Connection.class
+org\apache\logging\log4j\mongodb4\MongoDb4DocumentObject.class
+org\apache\logging\log4j\mongodb4\MongoDb4Provider$Builder.class
+org\apache\logging\log4j\mongodb4\MongoDb4LevelCodec.class
+org\apache\logging\log4j\mongodb4\MongoDb4DocumentObjectCodec.class
+org\apache\logging\log4j\mongodb4\package-info.class
+org\apache\logging\log4j\mongodb4\MongoDb4Provider.class
+org\apache\logging\log4j\mongodb4\MongoDb4Provider$1.class

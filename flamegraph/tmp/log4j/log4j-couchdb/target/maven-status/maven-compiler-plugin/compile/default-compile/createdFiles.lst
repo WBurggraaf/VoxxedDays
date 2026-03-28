@@ -1,0 +1,3 @@
+org\apache\logging\log4j\couchdb\CouchDbConnection.class
+org\apache\logging\log4j\couchdb\package-info.class
+org\apache\logging\log4j\couchdb\CouchDbProvider.class

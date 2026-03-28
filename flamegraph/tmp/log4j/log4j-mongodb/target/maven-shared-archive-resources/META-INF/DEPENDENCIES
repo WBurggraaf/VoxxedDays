@@ -1,0 +1,38 @@
+// ------------------------------------------------------------------
+// Transitive dependencies of this project determined from the
+// maven pom organized by organization.
+// ------------------------------------------------------------------
+
+Apache Log4j MongoDB Appender
+
+
+From: 'an unknown organization'
+
+  - BSON (https://bsonspec.org) org.mongodb:bson:jar:5.6.1
+    License: The Apache License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+
+  - BSON Record Codec (https://bsonspec.org) org.mongodb:bson-record-codec:jar:5.6.1
+    License: The Apache License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+
+  - MongoDB Java Driver Core (https://www.mongodb.com/) org.mongodb:mongodb-driver-core:jar:5.6.1
+    License: The Apache License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+
+  - MongoDB Driver (https://www.mongodb.com/) org.mongodb:mongodb-driver-sync:jar:5.6.1
+    License: The Apache License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+
+
+From: 'The Apache Software Foundation' (https://www.apache.org/)
+
+  - Apache Log4j API (https://logging.apache.org/log4j/2.x/) org.apache.logging.log4j:log4j-api:jar:2.26.0-SNAPSHOT
+    License: Apache-2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+
+  - Apache Log4j Core (https://logging.apache.org/log4j/2.x/) org.apache.logging.log4j:log4j-core:jar:2.26.0-SNAPSHOT
+    License: Apache-2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+
+  - Apache Log4j MongoDB 4 (https://logging.apache.org/log4j/2.x/) org.apache.logging.log4j:log4j-mongodb4:jar:2.26.0-SNAPSHOT
+    License: Apache-2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+
+
+
+
+

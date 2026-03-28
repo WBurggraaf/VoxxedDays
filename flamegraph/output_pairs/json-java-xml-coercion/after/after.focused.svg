@@ -1,0 +1,112 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='1600' height='792'>
+<style>
+text { font-family: Verdana, sans-serif; font-size: 12px; fill: #1f2937; }
+.title { font-size: 18px; font-weight: bold; }
+.meta { font-size: 11px; fill: #4b5563; }
+</style>
+<text class='title' x='12' y='22'>JSON-java / XML coercion path / after focused</text>
+<text class='meta' x='12' y='40'>Total samples: 10</text>
+<text class='meta' x='12' y='56'>focus=org.json.XML.parse, org.json.XML.stringToValue, org.json.XML.stringToNumber, org.json.JSONObject.accumulate</text>
+<g><title>org.apache.maven.surefire.booter.ForkedBooter.main (10 samples)</title><rect x='0.00' y='756.00' width='1600.00' height='17' fill='hsl(131,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='769.00'>org.apache.maven.surefire.booter.ForkedBooter.main</text>
+<g><title>org.apache.maven.surefire.booter.ForkedBooter.run (10 samples)</title><rect x='0.00' y='738.00' width='1600.00' height='17' fill='hsl(31,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='751.00'>org.apache.maven.surefire.booter.ForkedBooter.run</text>
+<g><title>org.apache.maven.surefire.booter.ForkedBooter.execute (10 samples)</title><rect x='0.00' y='720.00' width='1600.00' height='17' fill='hsl(185,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='733.00'>org.apache.maven.surefire.booter.ForkedBooter.execute</text>
+<g><title>org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess (10 samples)</title><rect x='0.00' y='702.00' width='1600.00' height='17' fill='hsl(265,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='715.00'>org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess</text>
+<g><title>org.apache.maven.surefire.junit4.JUnit4Provider.invoke (10 samples)</title><rect x='0.00' y='684.00' width='1600.00' height='17' fill='hsl(90,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='697.00'>org.apache.maven.surefire.junit4.JUnit4Provider.invoke</text>
+<g><title>org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet (10 samples)</title><rect x='0.00' y='666.00' width='1600.00' height='17' fill='hsl(226,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='679.00'>org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet</text>
+<g><title>org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun (10 samples)</title><rect x='0.00' y='648.00' width='1600.00' height='17' fill='hsl(159,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='661.00'>org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun</text>
+<g><title>org.apache.maven.surefire.junit4.JUnit4Provider.execute (10 samples)</title><rect x='0.00' y='630.00' width='1600.00' height='17' fill='hsl(38,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='643.00'>org.apache.maven.surefire.junit4.JUnit4Provider.execute</text>
+<g><title>org.junit.runners.ParentRunner.run (10 samples)</title><rect x='0.00' y='612.00' width='1600.00' height='17' fill='hsl(4,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='625.00'>org.junit.runners.ParentRunner.run</text>
+<g><title>org.junit.runners.ParentRunner$3.evaluate (10 samples)</title><rect x='0.00' y='594.00' width='1600.00' height='17' fill='hsl(257,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='607.00'>org.junit.runners.ParentRunner$3.evaluate</text>
+<g><title>org.junit.runners.ParentRunner$2.evaluate (10 samples)</title><rect x='0.00' y='576.00' width='1600.00' height='17' fill='hsl(225,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='589.00'>org.junit.runners.ParentRunner$2.evaluate</text>
+<g><title>org.junit.runners.ParentRunner.access$100 (10 samples)</title><rect x='0.00' y='558.00' width='1600.00' height='17' fill='hsl(309,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='571.00'>org.junit.runners.ParentRunner.access$100</text>
+<g><title>org.junit.runners.ParentRunner.runChildren (10 samples)</title><rect x='0.00' y='540.00' width='1600.00' height='17' fill='hsl(343,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='553.00'>org.junit.runners.ParentRunner.runChildren</text>
+<g><title>org.junit.runners.ParentRunner$1.schedule (10 samples)</title><rect x='0.00' y='522.00' width='1600.00' height='17' fill='hsl(171,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='535.00'>org.junit.runners.ParentRunner$1.schedule</text>
+<g><title>org.junit.runners.ParentRunner$4.run (10 samples)</title><rect x='0.00' y='504.00' width='1600.00' height='17' fill='hsl(318,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='517.00'>org.junit.runners.ParentRunner$4.run</text>
+<g><title>org.junit.runners.BlockJUnit4ClassRunner.runChild (10 samples)</title><rect x='0.00' y='486.00' width='1600.00' height='17' fill='hsl(65,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='499.00'>org.junit.runners.BlockJUnit4ClassRunner.runChild</text>
+<g><title>org.junit.runners.BlockJUnit4ClassRunner.runChild (10 samples)</title><rect x='0.00' y='468.00' width='1600.00' height='17' fill='hsl(65,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='481.00'>org.junit.runners.BlockJUnit4ClassRunner.runChild</text>
+<g><title>org.junit.runners.ParentRunner.runLeaf (10 samples)</title><rect x='0.00' y='450.00' width='1600.00' height='17' fill='hsl(85,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='463.00'>org.junit.runners.ParentRunner.runLeaf</text>
+<g><title>org.junit.runners.BlockJUnit4ClassRunner$1.evaluate (10 samples)</title><rect x='0.00' y='432.00' width='1600.00' height='17' fill='hsl(346,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='445.00'>org.junit.runners.BlockJUnit4ClassRunner$1.evaluate</text>
+<g><title>org.junit.runners.ParentRunner$3.evaluate (10 samples)</title><rect x='0.00' y='414.00' width='1600.00' height='17' fill='hsl(257,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='427.00'>org.junit.runners.ParentRunner$3.evaluate</text>
+<g><title>org.junit.internal.runners.statements.InvokeMethod.evaluate (10 samples)</title><rect x='0.00' y='396.00' width='1600.00' height='17' fill='hsl(31,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='409.00'>org.junit.internal.runners.statements.InvokeMethod.evaluate</text>
+<g><title>org.junit.runners.model.FrameworkMethod.invokeExplosively (10 samples)</title><rect x='0.00' y='378.00' width='1600.00' height='17' fill='hsl(81,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='391.00'>org.junit.runners.model.FrameworkMethod.invokeExplosively</text>
+<g><title>org.junit.internal.runners.model.ReflectiveCallable.run (10 samples)</title><rect x='0.00' y='360.00' width='1600.00' height='17' fill='hsl(183,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='373.00'>org.junit.internal.runners.model.ReflectiveCallable.run</text>
+<g><title>org.junit.runners.model.FrameworkMethod$1.runReflectiveCall (10 samples)</title><rect x='0.00' y='342.00' width='1600.00' height='17' fill='hsl(36,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='355.00'>org.junit.runners.model.FrameworkMethod$1.runReflectiveCall</text>
+<g><title>java.lang.reflect.Method.invoke (10 samples)</title><rect x='0.00' y='324.00' width='1600.00' height='17' fill='hsl(343,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='337.00'>java.lang.reflect.Method.invoke</text>
+<g><title>jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (10 samples)</title><rect x='0.00' y='306.00' width='1600.00' height='17' fill='hsl(337,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='319.00'>jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke</text>
+<g><title>jdk.internal.reflect.NativeMethodAccessorImpl.invoke (10 samples)</title><rect x='0.00' y='288.00' width='1600.00' height='17' fill='hsl(317,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='301.00'>jdk.internal.reflect.NativeMethodAccessorImpl.invoke</text>
+<g><title>jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (10 samples)</title><rect x='0.00' y='270.00' width='1600.00' height='17' fill='hsl(341,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='283.00'>jdk.internal.reflect.NativeMethodAccessorImpl.invoke0</text>
+<g><title>org.json.junit.XMLProofProfileTest.profileStringToValuePath (10 samples)</title><rect x='0.00' y='252.00' width='1600.00' height='17' fill='hsl(239,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='265.00'>org.json.junit.XMLProofProfileTest.profileStringToValuePath</text>
+<g><title>org.json.XML.toJSONObject (10 samples)</title><rect x='0.00' y='234.00' width='1600.00' height='17' fill='hsl(197,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='247.00'>org.json.XML.toJSONObject</text>
+<g><title>org.json.XML.toJSONObject (10 samples)</title><rect x='0.00' y='216.00' width='1600.00' height='17' fill='hsl(197,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='229.00'>org.json.XML.toJSONObject</text>
+<g><title>org.json.XML.toJSONObject (10 samples)</title><rect x='0.00' y='198.00' width='1600.00' height='17' fill='hsl(197,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='211.00'>org.json.XML.toJSONObject</text>
+<g><title>org.json.XML.parse (10 samples)</title><rect x='0.00' y='180.00' width='1600.00' height='17' fill='hsl(140,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='193.00'>org.json.XML.parse</text>
+<g><title>org.json.XML.parse (10 samples)</title><rect x='0.00' y='162.00' width='1600.00' height='17' fill='hsl(140,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='175.00'>org.json.XML.parse</text>
+<g><title>org.json.XMLTokener.nextToken (4 samples)</title><rect x='0.00' y='144.00' width='640.00' height='17' fill='hsl(172,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='157.00'>org.json.XMLTokener.nextToken</text>
+<g><title>java.lang.StringBuilder.append (1 samples)</title><rect x='0.00' y='126.00' width='160.00' height='17' fill='hsl(151,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='139.00'>java.lang.StringBuild...</text>
+<g><title>java.lang.AbstractStringBuilder.append (1 samples)</title><rect x='0.00' y='108.00' width='160.00' height='17' fill='hsl(274,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='121.00'>java.lang.AbstractStr...</text>
+<g><title>java.lang.AbstractStringBuilder.ensureCapacityInternal (1 samples)</title><rect x='0.00' y='90.00' width='160.00' height='17' fill='hsl(219,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='103.00'>java.lang.AbstractStr...</text>
+<g><title>java.util.Arrays.copyOf (1 samples)</title><rect x='0.00' y='72.00' width='160.00' height='17' fill='hsl(174,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='3.00' y='85.00'>java.util.Arrays.copy...</text>
+<g><title>java.lang.StringBuilder.toString (1 samples)</title><rect x='160.00' y='126.00' width='160.00' height='17' fill='hsl(9,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='163.00' y='139.00'>java.lang.StringBuild...</text>
+<g><title>java.lang.StringLatin1.newString (1 samples)</title><rect x='160.00' y='108.00' width='160.00' height='17' fill='hsl(279,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='163.00' y='121.00'>java.lang.StringLatin...</text>
+<g><title>org.json.JSONTokener.back (1 samples)</title><rect x='320.00' y='126.00' width='160.00' height='17' fill='hsl(351,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='323.00' y='139.00'>org.json.JSONTokener....</text>
+<g><title>org.json.XML.stringToValue (2 samples)</title><rect x='640.00' y='144.00' width='320.00' height='17' fill='hsl(333,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='643.00' y='157.00'>org.json.XML.stringToValue</text>
+<g><title>org.json.XML.stringToNumber (2 samples)</title><rect x='640.00' y='126.00' width='320.00' height='17' fill='hsl(4,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='643.00' y='139.00'>org.json.XML.stringToNumber</text>
+<g><title>java.lang.Double.valueOf (1 samples)</title><rect x='640.00' y='108.00' width='160.00' height='17' fill='hsl(128,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='643.00' y='121.00'>java.lang.Double.valu...</text>
+<g><title>java.lang.Double.parseDouble (1 samples)</title><rect x='640.00' y='90.00' width='160.00' height='17' fill='hsl(118,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='643.00' y='103.00'>java.lang.Double.pars...</text>
+<g><title>java.math.BigInteger.intValue (1 samples)</title><rect x='800.00' y='108.00' width='160.00' height='17' fill='hsl(95,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='803.00' y='121.00'>java.math.BigInteger....</text>
+<g><title>org.json.JSONObject.accumulate (1 samples)</title><rect x='960.00' y='144.00' width='160.00' height='17' fill='hsl(6,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='963.00' y='157.00'>org.json.JSONObject.a...</text>
+<g><title>org.json.XML.parse (1 samples)</title><rect x='1120.00' y='144.00' width='160.00' height='17' fill='hsl(140,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1123.00' y='157.00'>org.json.XML.parse</text>
+<g><title>org.json.XMLTokener.nextToken (1 samples)</title><rect x='1120.00' y='126.00' width='160.00' height='17' fill='hsl(172,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1123.00' y='139.00'>org.json.XMLTokener.n...</text>
+<g><title>java.lang.StringBuilder.append (1 samples)</title><rect x='1120.00' y='108.00' width='160.00' height='17' fill='hsl(151,65%,70%)' stroke='#ffffff' stroke-width='0.5'/></g>
+<text x='1123.00' y='121.00'>java.lang.StringBuild...</text>
+</svg>

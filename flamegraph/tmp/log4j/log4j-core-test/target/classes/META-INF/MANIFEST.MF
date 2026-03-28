@@ -1,0 +1,86 @@
+Manifest-Version: 1.0
+Bundle-Description: The Apache Log4j Implementation Tests
+Bundle-License: "Apache-2.0";link="https://www.apache.org/licenses/LIC
+ ENSE-2.0.txt"
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache Log4j Core Tests
+Bundle-SymbolicName: org.apache.logging.log4j.core.test
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 2.26.0.SNAPSHOT
+Export-Package: org.apache.logging.log4j.core.test;version="2.26.0";us
+ es:="org.apache.logging.log4j,org.apache.logging.log4j.core,org.apach
+ e.logging.log4j.core.config,org.apache.logging.log4j.core.config.plug
+ ins,org.junit.rules,org.junit.runner,org.junit.runners.model",org.apa
+ che.logging.log4j.core.test.appender;version="2.20.1";uses:="org.apac
+ he.logging.log4j.core,org.apache.logging.log4j.core.appender,org.apac
+ he.logging.log4j.core.config.plugins,org.apache.logging.log4j.core.co
+ nfig.plugins.validation.constraints,org.apache.logging.log4j.core.fil
+ ter,org.apache.logging.log4j.core.util",org.apache.logging.log4j.core
+ .test.appender.db.jdbc;version="2.25.3";uses:="org.apache.logging.log
+ 4j.core.appender.db.jdbc",org.apache.logging.log4j.core.test.appender
+ .rolling.action;version="2.20.1",org.apache.logging.log4j.core.test.c
+ ategories;version="2.20.2",org.apache.logging.log4j.core.test.hamcres
+ t;version="2.20.1";uses:="org.hamcrest",org.apache.logging.log4j.core
+ .test.junit;version="2.25.3";uses:="org.apache.logging.log4j.core,org
+ .apache.logging.log4j.core.appender.db.jdbc,org.apache.logging.log4j.
+ core.config,org.apache.logging.log4j.core.config.plugins,org.apache.l
+ ogging.log4j.core.lookup,org.apache.logging.log4j.core.selector,org.a
+ pache.logging.log4j.core.test.appender,org.apache.logging.log4j.test.
+ junit,org.junit.jupiter.api,org.junit.jupiter.api.extension,org.junit
+ .rules,org.junit.runner,org.junit.runners.model",org.apache.logging.l
+ og4j.core.test.layout;version="2.20.1";uses:="org.apache.logging.log4
+ j.core.test.categories,org.apache.logging.log4j.core.test.junit,org.j
+ unit,org.junit.experimental.categories",org.apache.logging.log4j.core
+ .test.net.mock;version="2.25.3";uses:="javax.net.ssl,org.apache.loggi
+ ng.log4j,org.apache.logging.log4j.core.test.net.ssl",org.apache.loggi
+ ng.log4j.core.test.net.ssl;version="2.25.3",org.apache.logging.log4j.
+ core.test.smtp;version="2.25.3",org.apache.logging.log4j.core.test.ut
+ il;version="2.20.1"
+Implementation-Title: Apache Log4j Core Tests
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Version: 2.26.0-SNAPSHOT
+Import-Package: org.junit;resolution:=optional,org.junit.experimental.
+ categories;resolution:=optional,org.junit.jupiter.api;resolution:=opt
+ ional;version="[5.13,6)",org.junit.jupiter.api.extension;resolution:=
+ optional;version="[5.13,6)",org.junit.platform.commons.support;resolu
+ tion:=optional;version="[1.13,2)",org.junit.rules;resolution:=optiona
+ l,org.junit.runner;resolution:=optional,org.junit.runners.model;resol
+ ution:=optional,org.hamcrest;resolution:=optional;version="[3.0,4)",o
+ rg.hamcrest.core;resolution:=optional;version="[3.0,4)",org.hamcrest.
+ number;resolution:=optional;version="[3.0,4)",com.google.monitoring.r
+ untime.instrumentation;resolution:=optional,javax.tools;resolution:=o
+ ptional,org.assertj.core.api;resolution:=optional;version="[3.27,4)",
+ org.awaitility;resolution:=optional;version="[4.3,5)",org.awaitility.
+ core;resolution:=optional;version="[4.3,5)",org.springframework.mock.
+ jndi;resolution:=optional,java.io,java.lang,java.lang.annotation,java
+ .lang.invoke,java.lang.reflect,java.net,java.nio,java.nio.charset,jav
+ a.nio.file,java.nio.file.attribute,java.sql,java.util,java.util.concu
+ rrent,java.util.concurrent.atomic,java.util.function,java.util.regex,
+ java.util.stream,javax.net.ssl,org.apache.commons.lang3;version="[3.1
+ 8,4)",org.apache.logging.log4j;version="[2.20,3)",org.apache.logging.
+ log4j.core;version="[2.25,3)",org.apache.logging.log4j.core.appender;
+ version="[2.26,3)",org.apache.logging.log4j.core.appender.db.jdbc;ver
+ sion="[2.25,3)",org.apache.logging.log4j.core.config;version="[2.26,3
+ )",org.apache.logging.log4j.core.config.plugins;version="[2.20,3)",or
+ g.apache.logging.log4j.core.config.plugins.validation.constraints;ver
+ sion="[2.20,3)",org.apache.logging.log4j.core.filter;version="[2.25,3
+ )",org.apache.logging.log4j.core.layout;version="[2.26,3)",org.apache
+ .logging.log4j.core.lookup;version="[2.26,3)",org.apache.logging.log4
+ j.core.selector;version="[2.20,3)",org.apache.logging.log4j.core.test
+ .appender;version="[2.20,3)",org.apache.logging.log4j.core.test.categ
+ ories;version="[2.20,3)",org.apache.logging.log4j.core.test.junit;ver
+ sion="[2.25,3)",org.apache.logging.log4j.core.test.net.ssl;version="[
+ 2.25,3)",org.apache.logging.log4j.core.util;version="[2.25,3)",org.ap
+ ache.logging.log4j.message;version="[2.24,3)",org.apache.logging.log4
+ j.spi;version="[2.25,3)",org.apache.logging.log4j.status;version="[2.
+ 25,3)",org.apache.logging.log4j.test;version="[2.25,3)",org.apache.lo
+ gging.log4j.test.junit;version="[2.25,3)",org.apache.logging.log4j.ut
+ il;version="[2.25,3)"
+Multi-Release: false
+Private-Package: org.apache.logging.log4j.core.test.internal.annotatio
+ n
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Specification-Title: Apache Log4j Core Tests
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 2.26
+

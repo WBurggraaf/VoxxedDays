@@ -1,0 +1,83 @@
+// ------------------------------------------------------------------
+// Transitive dependencies of this project determined from the
+// maven pom organized by organization.
+// ------------------------------------------------------------------
+
+Apache Log4j Core Tests
+
+
+From: 'an unknown organization'
+
+  - Byte Buddy (without dependencies) (https://bytebuddy.net/byte-buddy) net.bytebuddy:byte-buddy:jar:1.15.11
+    License: Apache License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+
+  - org.apiguardian:apiguardian-api (https://github.com/apiguardian-team/apiguardian) org.apiguardian:apiguardian-api:jar:1.1.2
+    License: The Apache License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+
+  - AssertJ Core (https://assertj.github.io/doc/#assertj-core) org.assertj:assertj-core:jar:3.27.3
+    License: Apache-2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+
+  - Awaitility (http://awaitility.org) org.awaitility:awaitility:jar:4.3.0
+    License: Apache 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+
+  - Hamcrest (http://hamcrest.org/JavaHamcrest/) org.hamcrest:hamcrest:jar:3.0
+    License: BSD-3-Clause  (https://raw.githubusercontent.com/hamcrest/JavaHamcrest/master/LICENSE)
+
+  - Hamcrest Core (http://hamcrest.org/JavaHamcrest/) org.hamcrest:hamcrest-core:jar:3.0
+    License: BSD-3-Clause  (https://raw.githubusercontent.com/hamcrest/JavaHamcrest/master/LICENSE)
+
+  - JUnit Jupiter API (https://junit.org/) org.junit.jupiter:junit-jupiter-api:jar:5.13.4
+    License: Eclipse Public License v2.0  (https://www.eclipse.org/legal/epl-v20.html)
+
+  - JUnit Platform Commons (https://junit.org/) org.junit.platform:junit-platform-commons:jar:1.13.4
+    License: Eclipse Public License v2.0  (https://www.eclipse.org/legal/epl-v20.html)
+
+  - org.opentest4j:opentest4j (https://github.com/ota4j-team/opentest4j) org.opentest4j:opentest4j:jar:1.3.0
+    License: The Apache License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+
+
+From: 'Google, Inc.' (http://www.google.com)
+
+  - java-allocation-instrumenter (https://github.com/google/allocation-instrumenter/) com.google.code.java-allocation-instrumenter:java-allocation-instrumenter:jar:3.3.4
+    License: The Apache Software License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+
+
+From: 'JUnit' (http://www.junit.org)
+
+  - JUnit (http://junit.org) junit:junit:jar:4.13.2
+    License: Eclipse Public License 1.0  (http://www.eclipse.org/legal/epl-v10.html)
+
+
+From: 'Spring IO' (https://spring.io/projects/spring-framework)
+
+  - Spring Core (https://github.com/spring-projects/spring-framework) org.springframework:spring-core:jar:5.3.39
+    License: Apache License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0)
+
+  - Spring TestContext Framework (https://github.com/spring-projects/spring-framework) org.springframework:spring-test:jar:5.3.39
+    License: Apache License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0)
+
+
+From: 'The Apache Software Foundation' (https://www.apache.org/)
+
+  - Apache Commons IO (https://commons.apache.org/proper/commons-io/) commons-io:commons-io:jar:2.19.0
+    License: Apache-2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+
+  - Apache Commons Lang (https://commons.apache.org/proper/commons-lang/) org.apache.commons:commons-lang3:jar:3.18.0
+    License: Apache-2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+
+  - Apache Log4j API (https://logging.apache.org/log4j/2.x/) org.apache.logging.log4j:log4j-api:jar:2.26.0-SNAPSHOT
+    License: Apache-2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+
+  - Apache Log4j API Tests (https://logging.apache.org/log4j/2.x/) org.apache.logging.log4j:log4j-api-test:jar:2.26.0-SNAPSHOT
+    License: Apache-2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+
+  - Apache Log4j Core (https://logging.apache.org/log4j/2.x/) org.apache.logging.log4j:log4j-core:jar:2.26.0-SNAPSHOT
+    License: Apache-2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+
+  - Maven Model (https://maven.apache.org/ref/3.9.10/maven-model/) org.apache.maven:maven-model:jar:3.9.10
+    License: Apache-2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+
+
+
+
+

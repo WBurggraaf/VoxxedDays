@@ -1,0 +1,26 @@
+Manifest-Version: 1.0
+Bundle-Description: Apache Log4j Docker Support
+Bundle-License: "Apache-2.0";link="https://www.apache.org/licenses/LIC
+ ENSE-2.0.txt"
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache Log4j Docker Library
+Bundle-SymbolicName: org.apache.logging.log4j.docker
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 2.26.0.SNAPSHOT
+Export-Package: org.apache.logging.log4j.docker;version="2.20.1"
+Fragment-Host: org.apache.logging.log4j.core
+Implementation-Title: Apache Log4j Docker Library
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Version: 2.26.0-SNAPSHOT
+Import-Package: com.fasterxml.jackson.annotation;version="[2.19,3)",co
+ m.fasterxml.jackson.core.type;version="[2.19,3)",com.fasterxml.jackso
+ n.databind;version="[2.19,3)",java.io,java.lang,java.net,java.util,or
+ g.apache.logging.log4j.status;version="[2.25,3)",org.apache.logging.l
+ og4j.util;version="[2.25,3)"
+Multi-Release: false
+Private-Package: org.apache.logging.log4j.docker.model
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Specification-Title: Apache Log4j Docker Library
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 2.26
+

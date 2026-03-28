@@ -1,0 +1,168 @@
+{
+  "recording": {
+    "settings": "profile",
+    "stack_depth": 128
+  },
+  "repos": [
+    {
+      "id": "json-java",
+      "display_name": "stleary/JSON-java",
+      "repo_path": "GitRepos/JSON-java-master",
+      "build_tool": "maven",
+      "commands": [
+        {
+          "id": "jsonobject-serialize",
+          "goal": "test",
+          "test_property": "test",
+          "iterations": 6,
+          "tests": [
+            "org.json.junit.JSONObjectTest",
+            "org.json.junit.EnumTest",
+            "org.json.junit.JSONObjectRecordTest"
+          ],
+          "proofs": [
+            {
+              "id": "jsonobject-tostring",
+              "title": "JSONObject toString/write path",
+              "focus_terms": [
+                "org.json.JSONObject.toString",
+                "org.json.JSONObject.write",
+                "org.json.StringBuilderWriter.write",
+                "org.json.StringBuilderWriter.append"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "xml-parse-coercion",
+          "goal": "test",
+          "test_property": "test",
+          "iterations": 6,
+          "tests": [
+            "org.json.junit.XMLTest",
+            "org.json.junit.JSONMLTest",
+            "org.json.junit.XMLConfigurationTest"
+          ],
+          "proofs": [
+            {
+              "id": "xml-string-to-value",
+              "title": "XML parse coercion path",
+              "focus_terms": [
+                "org.json.XML.parse",
+                "org.json.XML.stringToValue",
+                "org.json.XML.stringToNumber",
+                "org.json.JSONObject.accumulate"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "commons-io",
+      "display_name": "apache/commons-io",
+      "repo_path": "GitRepos/commons-io-master",
+      "build_tool": "maven",
+      "commands": [
+        {
+          "id": "tailer-polling",
+          "goal": "test",
+          "test_property": "test",
+          "iterations": 4,
+          "tests": [
+            "org.apache.commons.io.input.TailerTest"
+          ],
+          "proofs": [
+            {
+              "id": "tailer-run-loop",
+              "title": "Tailer polling loop",
+              "focus_terms": [
+                "org.apache.commons.io.input.Tailer.run",
+                "org.apache.commons.io.input.Tailer.readLines",
+                "org.apache.commons.io.ThreadUtils.sleep",
+                "java.lang.Thread.sleep"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "jackson-core",
+      "display_name": "FasterXML/jackson-core",
+      "repo_path": "GitRepos/jackson-core-3.x",
+      "build_tool": "maven",
+      "commands": [
+        {
+          "id": "reader-string-streaming",
+          "goal": "test",
+          "test_property": "test",
+          "iterations": 8,
+          "tests": [
+            "tools.jackson.core.unittest.read.ReadStringStreamingTest"
+          ],
+          "proofs": [
+            {
+              "id": "readerbasedjsonparser-readstring",
+              "title": "ReaderBasedJsonParser string streaming",
+              "focus_terms": [
+                "tools.jackson.core.json.ReaderBasedJsonParser.readString",
+                "tools.jackson.core.json.ReaderBasedJsonParser._streamString",
+                "tools.jackson.core.util.TextBuffer.contentsToWriter"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "textbuffer-utf8",
+          "goal": "test",
+          "test_property": "test",
+          "iterations": 8,
+          "tests": [
+            "tools.jackson.core.unittest.util.TextBufferTest"
+          ],
+          "proofs": [
+            {
+              "id": "textbuffer-reset-with-utf8",
+              "title": "TextBuffer UTF-8 decode reuse",
+              "focus_terms": [
+                "tools.jackson.core.util.TextBuffer.resetWithUTF8",
+                "tools.jackson.core.util.TextBuffer.contentsAsString",
+                "tools.jackson.core.util.TextBuffer.contentsToWriter"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "log4j2",
+      "display_name": "apache/logging-log4j2",
+      "repo_path": "GitRepos/logging-log4j2-2.x",
+      "build_tool": "maven",
+      "commands": [
+        {
+          "id": "thread-context-copy",
+          "goal": "test",
+          "test_property": "test",
+          "iterations": 5,
+          "tests": [
+            "org.apache.logging.log4j.ThreadContextTest",
+            "org.apache.logging.log4j.spi.DefaultThreadContextMapTest"
+          ],
+          "proofs": [
+            {
+              "id": "defaultthreadcontextmap-getcopy",
+              "title": "DefaultThreadContextMap getCopy",
+              "focus_terms": [
+                "org.apache.logging.log4j.ThreadContext.getContext",
+                "org.apache.logging.log4j.spi.DefaultThreadContextMap.getCopy",
+                "java.util.HashMap.put"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+Manifest-Version: 1.0
+Bundle-Description: Apache Log4j Parent
+Bundle-License: "Apache-2.0";link="https://www.apache.org/licenses/LIC
+ ENSE-2.0.txt"
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache Log4j fuzz tests
+Bundle-SymbolicName: org.apache.logging.log4j.fuzz.test
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 2.26.0.SNAPSHOT
+Implementation-Title: Apache Log4j fuzz tests
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Version: 2.26.0-SNAPSHOT
+Import-Package: com.code_intelligence.jazzer.api,java.io,java.lang,jav
+ a.lang.invoke,java.nio.charset,java.util,java.util.function,java.util
+ .stream,org.apache.logging.log4j;version="[2.20,3)",org.apache.loggin
+ g.log4j.core;version="[2.25,3)",org.apache.logging.log4j.core.appende
+ r;version="[2.26,3)",org.apache.logging.log4j.core.config;version="[2
+ .26,3)",org.apache.logging.log4j.core.config.builder.api;version="[2.
+ 25,3)",org.apache.logging.log4j.core.config.plugins;version="[2.20,3)
+ ",org.apache.logging.log4j.spi;version="[2.25,3)",org.apache.logging.
+ log4j.util;version="[2.25,3)",org.assertj.core.api;version="[3.27,4)"
+ ,org.json;version="[20250517.0,20250518)",org.jspecify.annotations;ve
+ rsion="[1.0,2)"
+Multi-Release: false
+Private-Package: org.apache.logging.log4j.fuzz
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Specification-Title: Apache Log4j fuzz tests
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 2.26
+

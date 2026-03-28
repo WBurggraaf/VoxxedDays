@@ -1,0 +1,1 @@
+[{"name":"org.apache.logging.log4j.fuzz.EncodingAppender","methods":[{"name":"createAppender","parameterTypes":["java.lang.String","org.apache.logging.log4j.core.Layout"]}],"fields":[]},{"name":"org.apache.logging.log4j.fuzz.JsonEncodingAppender","methods":[{"name":"createAppender","parameterTypes":["java.lang.String","org.apache.logging.log4j.core.Layout"]}],"fields":[]}]

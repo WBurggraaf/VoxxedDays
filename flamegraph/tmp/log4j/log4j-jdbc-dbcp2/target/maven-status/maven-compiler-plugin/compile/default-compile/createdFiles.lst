@@ -1,0 +1,7 @@
+org\apache\logging\log4j\core\appender\db\jdbc\package-info.class
+org\apache\logging\log4j\core\appender\db\jdbc\PoolingDriverConnectionSource$Builder.class
+org\apache\logging\log4j\core\appender\db\jdbc\PoolingDriverConnectionSource.class
+org\apache\logging\log4j\core\appender\db\jdbc\PoolingDriverConnectionSource$1.class
+org\apache\logging\log4j\core\appender\db\jdbc\PoolableConnectionFactoryConfig$Builder.class
+org\apache\logging\log4j\core\appender\db\jdbc\PoolableConnectionFactoryConfig$1.class
+org\apache\logging\log4j\core\appender\db\jdbc\PoolableConnectionFactoryConfig.class

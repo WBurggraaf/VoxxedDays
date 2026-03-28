@@ -1,0 +1,2 @@
+org\apache\logging\log4j\layout\template\json\BlackHoleByteBufferDestination.class
+org\apache\logging\log4j\layout\template\json\LogEventFixture.class

@@ -1,0 +1,73 @@
+[INFO] Scanning for projects...
+[INFO] Inspecting build with total of 1 modules
+[INFO] Installing Central Publishing features
+[INFO] 
+[INFO] ------------------< tools.jackson.core:jackson-core >-------------------
+[INFO] Building Jackson-core 3.2.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- build-helper:3.6.1:regex-property (regex-property) @ jackson-core ---
+[INFO] 
+[INFO] --- enforcer:3.6.2:enforce (enforce-java) @ jackson-core ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[INFO] Rule 1: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[INFO] Rule 2: org.apache.maven.enforcer.rules.RequirePluginVersions passed
+[INFO] 
+[INFO] --- enforcer:3.6.2:enforce (enforce-properties) @ jackson-core ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.property.RequireProperty passed
+[INFO] Rule 1: org.apache.maven.enforcer.rules.property.RequireProperty passed
+[INFO] 
+[INFO] --- jacoco:0.8.14:prepare-agent (default) @ jackson-core ---
+[INFO] argLine set to -javaagent:C:\\VoxxedDays\\flamegraph\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.8.14\\org.jacoco.agent-0.8.14-runtime.jar=destfile=C:\\VoxxedDays\\GitRepos\\jackson-core-3.x\\target\\jacoco.exec
+[INFO] 
+[INFO] --- replacer:1.5.3:replace (process-packageVersion) @ jackson-core ---
+[INFO] Replacement run on 1 file.
+[INFO] 
+[INFO] --- build-helper:3.6.1:add-source (add-generated-sources) @ jackson-core ---
+[INFO] Source directory: C:\VoxxedDays\GitRepos\jackson-core-3.x\target\generated-sources added.
+[INFO] 
+[INFO] --- build-helper:3.6.1:add-resource (add-resource) @ jackson-core ---
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ jackson-core ---
+[INFO] Copying 3 resources from src\main\resources to target\classes
+[INFO] Copying 1 resource from . to target\classes\META-INF
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ jackson-core ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 139 source files with javac [debug:lines,source,vars deprecation target 17 module-path] to target\classes
+[INFO] JDK-8318913 workaround: patched module-info.class requires version from [17.0.14] to [null] on 1 JDK modules [java.base]
+[INFO] /C:/VoxxedDays/GitRepos/jackson-core-3.x/src/main/java/tools/jackson/core/json/JsonFactory.java: C:\VoxxedDays\GitRepos\jackson-core-3.x\src\main\java\tools\jackson\core\json\JsonFactory.java uses unchecked or unsafe operations.
+[INFO] /C:/VoxxedDays/GitRepos/jackson-core-3.x/src/main/java/tools/jackson/core/json/JsonFactory.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- bundle:5.1.9:manifest (bundle-manifest) @ jackson-core ---
+[INFO] Writing manifest: C:\VoxxedDays\GitRepos\jackson-core-3.x\target\classes\META-INF\MANIFEST.MF
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ jackson-core ---
+[INFO] Copying 6 resources from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ jackson-core ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 258 source files with javac [debug:lines,source,vars deprecation target 17 module-path] to target\test-classes
+[INFO] JDK-8318913 workaround: patched module-info.class requires version from [17.0.14] to [null] on 1 JDK modules [java.base]
+[WARNING] /C:/VoxxedDays/GitRepos/jackson-core-3.x/src/test/java/tools/jackson/core/unittest/json/InputStreamInitTest.java:[44,31] _optimizedStreamFromURL(java.net.URL) in tools.jackson.core.TokenStreamFactory has been deprecated
+[INFO] 
+[INFO] --- surefire:3.5.5:test (default-test) @ jackson-core ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running tools.jackson.core.unittest.util.TextBufferTest
+[INFO] Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.440 s -- in tools.jackson.core.unittest.util.TextBufferTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 17, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  30.828 s
+[INFO] Finished at: 2026-03-28T07:54:52+01:00
+[INFO] ------------------------------------------------------------------------

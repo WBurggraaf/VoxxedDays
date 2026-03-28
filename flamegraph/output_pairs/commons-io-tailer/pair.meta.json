@@ -1,0 +1,176 @@
+{
+  "id": "commons-io-tailer",
+  "repo_id": "commons-io",
+  "command_id": "tailer-polling",
+  "proof_id": "tailer-run-loop",
+  "title": "Commons IO / Tailer polling loop",
+  "repo_path": "C:\\VoxxedDays\\GitRepos\\commons-io-master",
+  "patch_path": "C:\\VoxxedDays\\pr_patches\\commonsio-2.patch",
+  "patch_subject": null,
+  "focus_terms": [
+    "org.apache.commons.io.input.Tailer.run",
+    "org.apache.commons.io.input.Tailer.readLines",
+    "org.apache.commons.io.ThreadUtils.sleep",
+    "java.lang.Thread.sleep"
+  ],
+  "generated_at": "2026-03-28T07:47:02.525736+00:00",
+  "before": {
+    "samples": 346,
+    "focused_samples": 33,
+    "svg": "C:\\VoxxedDays\\flamegraph\\output_pairs\\commons-io-tailer\\before\\before.svg",
+    "focused_svg": "C:\\VoxxedDays\\flamegraph\\output_pairs\\commons-io-tailer\\before\\before.focused.svg",
+    "folded": "C:\\VoxxedDays\\flamegraph\\output_pairs\\commons-io-tailer\\before\\before.folded.txt",
+    "focused_folded": "C:\\VoxxedDays\\flamegraph\\output_pairs\\commons-io-tailer\\before\\before.focused.folded.txt",
+    "runs": [
+      {
+        "iteration": 1,
+        "command": [
+          "mvn.cmd",
+          "-B",
+          "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+          "-Dtest=org.apache.commons.io.input.TailerTest",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-DfailIfNoTests=false",
+          "-DforkCount=1",
+          "-DreuseForks=false",
+          "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output_pairs\\commons-io-tailer\\before\\before-run01.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+          "test"
+        ],
+        "recording_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\commons-io-tailer\\before\\before-run01.jfr",
+        "log_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\commons-io-tailer\\before\\before-run01.log",
+        "duration_seconds": 55.971749
+      },
+      {
+        "iteration": 2,
+        "command": [
+          "mvn.cmd",
+          "-B",
+          "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+          "-Dtest=org.apache.commons.io.input.TailerTest",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-DfailIfNoTests=false",
+          "-DforkCount=1",
+          "-DreuseForks=false",
+          "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output_pairs\\commons-io-tailer\\before\\before-run02.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+          "test"
+        ],
+        "recording_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\commons-io-tailer\\before\\before-run02.jfr",
+        "log_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\commons-io-tailer\\before\\before-run02.log",
+        "duration_seconds": 43.714891
+      },
+      {
+        "iteration": 3,
+        "command": [
+          "mvn.cmd",
+          "-B",
+          "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+          "-Dtest=org.apache.commons.io.input.TailerTest",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-DfailIfNoTests=false",
+          "-DforkCount=1",
+          "-DreuseForks=false",
+          "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output_pairs\\commons-io-tailer\\before\\before-run03.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+          "test"
+        ],
+        "recording_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\commons-io-tailer\\before\\before-run03.jfr",
+        "log_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\commons-io-tailer\\before\\before-run03.log",
+        "duration_seconds": 43.763471
+      }
+    ],
+    "timing": {
+      "durations_ms": [
+        55971.749,
+        43714.891,
+        43763.471
+      ],
+      "average_ms": 47816.704,
+      "min_ms": 43714.891,
+      "max_ms": 55971.749
+    },
+    "patch": "C:\\VoxxedDays\\flamegraph\\pairs\\commons-io-tailer\\patches\\before.patch"
+  },
+  "after": {
+    "samples": 368,
+    "focused_samples": 54,
+    "svg": "C:\\VoxxedDays\\flamegraph\\output_pairs\\commons-io-tailer\\after\\after.svg",
+    "focused_svg": "C:\\VoxxedDays\\flamegraph\\output_pairs\\commons-io-tailer\\after\\after.focused.svg",
+    "folded": "C:\\VoxxedDays\\flamegraph\\output_pairs\\commons-io-tailer\\after\\after.folded.txt",
+    "focused_folded": "C:\\VoxxedDays\\flamegraph\\output_pairs\\commons-io-tailer\\after\\after.focused.folded.txt",
+    "runs": [
+      {
+        "iteration": 1,
+        "command": [
+          "mvn.cmd",
+          "-B",
+          "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+          "-Dtest=org.apache.commons.io.input.TailerTest",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-DfailIfNoTests=false",
+          "-DforkCount=1",
+          "-DreuseForks=false",
+          "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output_pairs\\commons-io-tailer\\after\\after-run01.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+          "test"
+        ],
+        "recording_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\commons-io-tailer\\after\\after-run01.jfr",
+        "log_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\commons-io-tailer\\after\\after-run01.log",
+        "duration_seconds": 51.76464
+      },
+      {
+        "iteration": 2,
+        "command": [
+          "mvn.cmd",
+          "-B",
+          "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+          "-Dtest=org.apache.commons.io.input.TailerTest",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-DfailIfNoTests=false",
+          "-DforkCount=1",
+          "-DreuseForks=false",
+          "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output_pairs\\commons-io-tailer\\after\\after-run02.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+          "test"
+        ],
+        "recording_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\commons-io-tailer\\after\\after-run02.jfr",
+        "log_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\commons-io-tailer\\after\\after-run02.log",
+        "duration_seconds": 44.747551
+      },
+      {
+        "iteration": 3,
+        "command": [
+          "mvn.cmd",
+          "-B",
+          "-Dmaven.repo.local=C:\\VoxxedDays\\flamegraph\\.m2\\repository",
+          "-Dtest=org.apache.commons.io.input.TailerTest",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-DfailIfNoTests=false",
+          "-DforkCount=1",
+          "-DreuseForks=false",
+          "-DargLine=-XX:StartFlightRecording=filename=C:\\VoxxedDays\\flamegraph\\output_pairs\\commons-io-tailer\\after\\after-run03.jfr,dumponexit=true,settings=profile -XX:FlightRecorderOptions=stackdepth=128",
+          "test"
+        ],
+        "recording_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\commons-io-tailer\\after\\after-run03.jfr",
+        "log_path": "C:\\VoxxedDays\\flamegraph\\output_pairs\\commons-io-tailer\\after\\after-run03.log",
+        "duration_seconds": 43.875611
+      }
+    ],
+    "timing": {
+      "durations_ms": [
+        51764.64,
+        44747.551,
+        43875.611
+      ],
+      "average_ms": 46795.934,
+      "min_ms": 43875.611,
+      "max_ms": 51764.64
+    },
+    "patch": "C:\\VoxxedDays\\flamegraph\\pairs\\commons-io-tailer\\patches\\after.patch"
+  },
+  "delta": {
+    "average_ms_before": 47816.704,
+    "average_ms_after": 46795.934,
+    "average_ms_saved": 1020.77,
+    "average_ms_saved_pct": 2.13,
+    "focused_samples_before": 33,
+    "focused_samples_after": 54,
+    "focused_sample_delta": -21
+  }
+}

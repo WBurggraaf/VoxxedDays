@@ -1,0 +1,2 @@
+META-INF\org\apache\logging\log4j\core\config\plugins\Log4j2Plugins.dat
+META-INF\native-image\log4j-generated\org.apache.logging.log4j\log4j-mongodb4\reflect-config.json

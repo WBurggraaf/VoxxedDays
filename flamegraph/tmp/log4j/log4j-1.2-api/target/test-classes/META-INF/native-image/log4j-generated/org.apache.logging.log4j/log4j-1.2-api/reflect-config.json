@@ -1,0 +1,1 @@
+[{"name":"org.apache.log4j.builders.Log4j2ListAppenderBuilder","methods":[{"name":"<init>","parameterTypes":[]},{"name":"<init>","parameterTypes":["java.lang.String","java.util.Properties"]}],"fields":[]}]

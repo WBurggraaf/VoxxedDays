@@ -1,0 +1,3 @@
+org\apache\logging\log4j\smtp\SmtpAppenderTest.class
+org\apache\logging\log4j\smtp\SmtpManagerTest.class
+org\apache\logging\log4j\smtp\SmtpAppenderAsyncTest.class

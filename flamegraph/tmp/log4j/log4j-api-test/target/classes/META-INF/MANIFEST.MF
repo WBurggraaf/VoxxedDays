@@ -1,0 +1,58 @@
+Manifest-Version: 1.0
+Bundle-Description: The Apache Log4j API Test
+Bundle-License: "Apache-2.0";link="https://www.apache.org/licenses/LIC
+ ENSE-2.0.txt"
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache Log4j API Tests
+Bundle-SymbolicName: org.apache.logging.log4j.api.test
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 2.26.0.SNAPSHOT
+Export-Package: org.apache.logging.log4j.test;version="2.25.3";uses:="
+ org.apache.logging.log4j,org.apache.logging.log4j.message,org.apache.
+ logging.log4j.spi,org.apache.logging.log4j.status,org.hamcrest,org.ju
+ nit,org.junit.runner,org.junit.runners",org.apache.logging.log4j.test
+ .junit;version="2.25.3";uses:="org.apache.logging.log4j,org.apache.lo
+ gging.log4j.spi,org.apache.logging.log4j.test,org.apache.logging.log4
+ j.util,org.junit.jupiter.api.extension,org.junit.jupiter.api.io,org.j
+ unit.jupiter.api.parallel,org.junit.rules,org.junit.runner,org.junit.
+ runners.model,org.junitpioneer.jupiter",org.apache.logging.log4j.test
+ .util;version="2.20.1";uses:="org.apache.logging.log4j.spi,org.apache
+ .logging.log4j.util"
+Implementation-Title: Apache Log4j API Tests
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Version: 2.26.0-SNAPSHOT
+Import-Package: org.apache.commons.lang3;resolution:=optional;version=
+ "[3.18,4)",org.assertj.core.api;resolution:=optional;version="[3.27,4
+ )",org.assertj.core.data;resolution:=optional;version="[3.27,4)",org.
+ junit;resolution:=optional,org.junit.jupiter.api;resolution:=optional
+ ;version="[5.13,6)",org.junit.jupiter.api.extension;resolution:=optio
+ nal;version="[5.13,6)",org.junit.jupiter.api.function;resolution:=opt
+ ional;version="[5.13,6)",org.junit.jupiter.api.io;resolution:=optiona
+ l;version="[5.13,6)",org.junit.jupiter.api.parallel;resolution:=optio
+ nal;version="[5.13,6)",org.junit.platform.commons;resolution:=optiona
+ l;version="[1.13,2)",org.junit.platform.commons.support;resolution:=o
+ ptional;version="[1.13,2)",org.junit.rules;resolution:=optional,org.j
+ unit.runner;resolution:=optional,org.junit.runners;resolution:=option
+ al,org.junit.runners.model;resolution:=optional,org.hamcrest;resoluti
+ on:=optional;version="[3.0,4)",org.hamcrest.core;resolution:=optional
+ ;version="[3.0,4)",org.junitpioneer.jupiter;resolution:=optional,org.
+ apache.maven.model;resolution:=optional,org.apache.maven.model.io.xpp
+ 3;resolution:=optional,org.apache.maven.project;resolution:=optional,
+ org.codehaus.plexus.util.xml.pull;resolution:=optional,org.mockito;re
+ solution:=optional;version="[4.11,5)",org.mockito.stubbing;resolution
+ :=optional;version="[4.11,5)",java.io,java.lang,java.lang.annotation,
+ java.lang.invoke,java.lang.reflect,java.net,java.nio.file,java.nio.fi
+ le.attribute,java.time,java.util,java.util.concurrent,java.util.funct
+ ion,java.util.stream,org.apache.logging.log4j;version="[2.20,3)",org.
+ apache.logging.log4j.message;version="[2.24,3)",org.apache.logging.lo
+ g4j.spi;version="[2.25,3)",org.apache.logging.log4j.status;version="[
+ 2.25,3)",org.apache.logging.log4j.test;version="[2.25,2.26)",org.apac
+ he.logging.log4j.util;version="[2.25,3)"
+Multi-Release: false
+Private-Package: org.apache.logging.log4j.test.internal.annotation,org
+ .apache.logging.log4j.test.spi
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Specification-Title: Apache Log4j API Tests
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 2.26
+

@@ -1,0 +1,9 @@
+# Created at 2026-03-27T13:11:42.613
+Corrupted channel by directly writing to native stream in forked JVM 1. Stream '[1.235s][info][jfr,startup] Started recording 1. No limit specified, using maxsize=250MB as default.'.
+
+# Created at 2026-03-27T13:11:42.614
+Corrupted channel by directly writing to native stream in forked JVM 1. Stream '[1.235s][info][jfr,startup] '.
+
+# Created at 2026-03-27T13:11:44.262
+Corrupted channel by directly writing to native stream in forked JVM 1. Stream '[1.235s][info][jfr,startup] Use jcmd 42872 JFR.dump name=1 to copy recording data to file.'.
+

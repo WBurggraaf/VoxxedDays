@@ -1,0 +1,9 @@
+org\apache\logging\log4j\cassandra\CassandraAppender$1.class
+org\apache\logging\log4j\cassandra\CassandraManager$FactoryData.class
+org\apache\logging\log4j\cassandra\CassandraManager.class
+org\apache\logging\log4j\cassandra\CassandraAppender.class
+org\apache\logging\log4j\cassandra\package-info.class
+org\apache\logging\log4j\cassandra\CassandraManager$1.class
+org\apache\logging\log4j\cassandra\CassandraManager$CassandraManagerFactory.class
+org\apache\logging\log4j\cassandra\CassandraAppender$Builder.class
+org\apache\logging\log4j\cassandra\ClockTimestampGenerator.class
