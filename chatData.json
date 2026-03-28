@@ -1,349 +1,762 @@
-{
-  "demoTitle": "Can GenAI Predict Code's Energy Use and Why Should We Care?",
-  "model": "Sparky · Java Energy Lens",
-  "thinkingDelay": 1800,
-  "messageDelay": 450,
-  "steps": [
-    {
-      "role": "user",
-      "stepNumber": 1,
-      "content": "Sparky, what is this demo about?"
-    },
-    {
-      "role": "assistant",
-      "stepNumber": 2,
-      "slide": "Opening",
-      "presentationStyle": "popup",
-      "content": "We use GenAI to spot energy waste in real Java libraries.\nSame behavior. Less CPU. Lower CO2."
-    },
-    {
-      "role": "user",
-      "stepNumber": 3,
-      "content": "Why does code waste energy in the first place?"
-    },
-    {
-      "role": "assistant",
-      "stepNumber": 4,
-      "slide": "The Model",
-      "content": "Hidden work: buffer resizing, idle polling, repeated copies.\nSmall loops × huge scale = real electricity."
-    },
-    {
-      "role": "user",
-      "stepNumber": 5,
-      "content": "How do you measure it?"
-    },
-    {
-      "role": "assistant",
-      "stepNumber": 6,
-      "slide": "The Model",
-      "content": "Count micro-ops → estimate mWh → multiply by grid carbon intensity.\nNot exact. Repeatable enough to compare."
-    },
-    {
-      "role": "user",
-      "stepNumber": 7,
-      "content": "Show us the first real example."
-    },
-    {
-      "role": "assistant",
-      "stepNumber": 8,
-      "slide": "JSON-java · toString()",
-      "presentationStyle": "popup",
-      "content": "Library: JSON-java — used by millions of projects.\nMethod: JSONObject.toString()\nEvery call starts with an undersized buffer."
-    },
-    {
-      "role": "user",
-      "stepNumber": 9,
-      "content": "What does the waste look like?"
-    },
-    {
-      "role": "assistant",
-      "stepNumber": 10,
-      "slide": "JSON-java · toString()",
-      "content": "The StringBuilderWriter starts empty, grows during serialization.\nEach resize = wasted allocation and copy work.",
-      "code": [
-        {
-          "language": "java",
-          "caption": "Annotated hotspot — ~280 uOps total per call",
-          "repo": "stleary/JSON-java",
-          "file": "src/main/java/org/json/JSONObject.java",
-          "intro": "JSONObject.toString() is the main JSON serialization entry point. It creates a Writer, calls write() recursively over all key-value pairs, then returns the assembled JSON string. Called on every serialization.",
-          "content": "public String toString(int indentFactor) throws JSONException {\n    Writer w = new StringBuilderWriter();\n    // Buffer starts empty → grows mid-write | ~30 uOps overhead\n    return this.write(w, indentFactor, 0).toString();\n    // Full serialization path fires here | ~250 uOps | ~0.00008 mWh\n}"
-        }
-      ]
-    },
-    {
-      "role": "user",
-      "stepNumber": 11,
-      "content": "What did GenAI suggest?"
-    },
-    {
-      "role": "assistant",
-      "stepNumber": 12,
-      "slide": "JSON-java · toString()",
-      "content": "Pre-size the writer based on map entries. One estimate, zero mid-write resizes.",
-      "code": [
-        {
-          "language": "java",
-          "caption": "PR diff — pre-size the writer",
-          "repo": "stleary/JSON-java",
-          "file": "src/main/java/org/json/JSONObject.java",
-          "intro": "Same toString() method. The fix adds a capacity hint to StringBuilderWriter so the internal char[] is right-sized before serialization begins.",
-          "why": "Starting empty forces the buffer to grow 3× on average. Pre-sizing from map.size() × 6 eliminates all mid-write reallocations and the copy work they trigger.",
-          "energySaving": "~30 uOps saved · ~0.00001 mWh per call",
-          "content": "- Writer w = new StringBuilderWriter();\n+ // 6 chars = minimum for a key-value pair e.g. \"k\":1,\n+ int initialSize = map.size() * 6;\n+ Writer w = new StringBuilderWriter(Math.max(initialSize, 16));"
-        }
-      ]
-    },
-    {
-      "role": "user",
-      "stepNumber": 13,
-      "content": "Next — any pointless search loops?"
-    },
-    {
-      "role": "assistant",
-      "stepNumber": 14,
-      "slide": "JSON-java · annotation search",
-      "content": "Annotation lookup walked every superclass — even past Object.\nEarly exit was missing.",
-      "code": [
-        {
-          "language": "java",
-          "caption": "PR diff — stop the walk at Object",
-          "repo": "stleary/JSON-java",
-          "file": "src/main/java/org/json/JSONObject.java",
-          "intro": "getAnnotation() walks the class hierarchy to find a matching annotation. Without a guard, the loop always climbs past java.lang.Object even though Object carries no user-defined annotations.",
-          "why": "Without the check, the loop always reaches java.lang.Object and continues one extra level unnecessarily. One null-check stops the walk as soon as no more annotations are possible.",
-          "energySaving": "~60 uOps saved per lookup · scales with call frequency",
-          "content": "  while (c != null) {\n+     // If superclass is Object, no annotations remain\n+     if (c.getSuperclass().equals(Object.class))\n+         return null;\n      for (Annotation ann : c.getDeclaredAnnotations()) {\n          // ~25 uOps / iter — runs until Object without the fix\n      }\n      c = c.getSuperclass();\n  }"
-        }
-      ]
-    },
-    {
-      "role": "user",
-      "stepNumber": 15,
-      "content": "Simple fix — big difference?"
-    },
-    {
-      "role": "assistant",
-      "stepNumber": 16,
-      "slide": "JSON-java · annotation search",
-      "content": "One null-check saves ~60 uOps per lookup.\nAt library scale that path runs millions of times."
-    },
-    {
-      "role": "user",
-      "stepNumber": 17,
-      "content": "What about deeply nested XML input?"
-    },
-    {
-      "role": "assistant",
-      "stepNumber": 18,
-      "slide": "JSON-java · XML depth limit",
-      "content": "No depth cap → recursive parser runs forever on crafted input.\nCPU held hostage.",
-      "code": [
-        {
-          "language": "java",
-          "caption": "PR diff — fail fast on depth exceeded",
-          "repo": "stleary/JSON-java",
-          "file": "src/main/java/org/json/XML.java",
-          "intro": "XML.parse() is a recursive descent parser that converts XML to JSONObject. Each nested element opens a new stack frame. Without a depth limit, a deeply nested document can exhaust CPU and stack.",
-          "why": "Deeply nested XML is O(depth) in recursion. Without a cap, a crafted 10,000-level document monopolises the worker thread. The depth check throws early and releases the CPU immediately.",
-          "energySaving": "Prevents unbounded CPU use — worst-case O(n) → O(1) at depth limit",
-          "content": "- parse(x, jsonObject, tagName, config)\n+ parse(x, jsonObject, tagName, config, currentNestingDepth + 1)\n\n+ if (currentNestingDepth == config.getMaxNestingDepth()) {\n+     throw x.syntaxError(\n+         \"Maximum nesting depth of \"\n+         + config.getMaxNestingDepth() + \" reached\");\n+ }"
-        }
-      ]
-    },
-    {
-      "role": "user",
-      "stepNumber": 19,
-      "content": "Any duplicate conversion work in JSON-java?"
-    },
-    {
-      "role": "assistant",
-      "stepNumber": 20,
-      "slide": "JSON-java · numeric paths",
-      "content": "String-to-number logic lived in multiple places.\nEvery caller paid the parse cost independently.",
-      "code": [
-        {
-          "language": "java",
-          "caption": "PR diff — one conversion path via utility",
-          "repo": "stleary/JSON-java",
-          "file": "src/main/java/org/json/JSONObject.java",
-          "intro": "stringToNumber() converts a JSON numeric string (e.g. \"3.14\") to the correct Java Number subtype. It was implemented both directly in JSONObject and in coercion helpers — two copies of the same parse logic.",
-          "why": "Duplicate logic means the same string gets parsed multiple times per access. Routing through NumberConversionUtil lets the JIT inline and optimise a single hot path instead of two.",
-          "energySaving": "~120 uOps · ~0.00004 mWh — paid once instead of per call-site",
-          "content": "- return JSONObject.stringToNumber(object.toString());\n+ return NumberConversionUtil.stringToNumber(object.toString());\n  // ~120 uOps | ~0.00004 mWh — now paid once, not duplicated"
-        }
-      ]
-    },
-    {
-      "role": "user",
-      "stepNumber": 21,
-      "content": "Show us the idle waiting pattern."
-    },
-    {
-      "role": "assistant",
-      "stepNumber": 22,
-      "slide": "Commons IO · Tailer",
-      "presentationStyle": "popup",
-      "content": "Each Tailer spawned its own thread.\nIdle watchers still wake, poll file size, sleep — on repeat.\nAt scale: background CPU for nothing."
-    },
-    {
-      "role": "user",
-      "stepNumber": 23,
-      "content": "What does the polling loop look like?"
-    },
-    {
-      "role": "assistant",
-      "stepNumber": 24,
-      "slide": "Commons IO · Tailer",
-      "content": "Thread wakes, checks file size, finds nothing, sleeps — again.",
-      "code": [
-        {
-          "language": "java",
-          "caption": "Before — per-instance thread + sleep loop",
-          "repo": "apache/commons-io",
-          "file": "src/main/java/org/apache/commons/io/input/Tailer.java",
-          "intro": "Tailer.run() is the main polling loop for the unix-tail equivalent. It repeatedly reads new lines from a growing file and notifies a TailerListener. The old implementation gave each Tailer its own OS thread that woke on a fixed sleep interval regardless of file activity.",
-          "content": "while (getRun()) {\n    final long length = tailable.size();\n    // ~35 uOps / iter — repeated even when nothing changed\n    if (length > position) {\n        position = readLines(reader);\n    }\n    ThreadUtils.sleep(delayDuration);\n    // Wakes, polls, sleeps — endlessly\n}"
-        }
-      ]
-    },
-    {
-      "role": "user",
-      "stepNumber": 25,
-      "content": "What is the fix?"
-    },
-    {
-      "role": "assistant",
-      "stepNumber": 26,
-      "slide": "Commons IO · Tailer",
-      "content": "Replace per-instance thread with a shared ScheduledExecutor.",
-      "code": [
-        {
-          "language": "java",
-          "caption": "PR diff — ScheduledExecutor replaces the sleep loop",
-          "repo": "apache/commons-io",
-          "file": "src/main/java/org/apache/commons/io/input/Tailer.java",
-          "intro": "The new run() delegates scheduling to a ScheduledExecutorService. The method blocks on a CountDownLatch instead of looping, and the executor handles the fixed-delay firing.",
-          "why": "Each dedicated thread consumes ~140 uOps of infrastructure just to exist. A shared ScheduledExecutor amortises that cost across all tailers and only wakes threads when work is actually due.",
-          "energySaving": "~140 uOps thread overhead eliminated + ~35 uOps × idle polls removed",
-          "content": "- RandomAccessFile reader = null;\n- while (getRun() && reader == null) {\n-     Thread.sleep(delayMillis);\n- }\n\n+ final ScheduledFuture<?> future =\n+     this.executor.scheduleWithFixedDelay(\n+         this.scheduled, 0, this.delayMillis,\n+         TimeUnit.MILLISECONDS);\n+ try {\n+     this.runTrigger.await();\n+ } finally {\n+     future.cancel(true);\n+     this.executor.shutdown();\n+ }"
-        }
-      ]
-    },
-    {
-      "role": "user",
-      "stepNumber": 27,
-      "content": "Parser work — what did GenAI find in Jackson?"
-    },
-    {
-      "role": "assistant",
-      "stepNumber": 28,
-      "slide": "Jackson · readString(Writer)",
-      "content": "readString() materialised a text snapshot before streaming it.\nDirect streaming skips the intermediate copy.",
-      "code": [
-        {
-          "language": "java",
-          "caption": "PR diff — tighten exception scope, add reusable buffer",
-          "repo": "FasterXML/jackson-core",
-          "file": "src/main/java/com/fasterxml/jackson/core/json/ReaderBasedJsonParser.java",
-          "intro": "ReaderBasedJsonParser.readString(Writer) streams the current JSON string token directly into a caller-supplied Writer, bypassing string materialisation. It is the fast path for processing large string values without heap allocation.",
-          "why": "The original try-catch wrapped the entire VALUE_STRING branch, preventing the JIT from hoisting the token check outside the exception range. Narrowing the scope lets the happy path run without exception-table overhead; the reusable buffer avoids 100k+ temp array allocations.",
-          "energySaving": "~90 uOps hot path · reusable buffer saves ~3.5M uOps per 100k calls",
-          "content": "- try {\n-     if (t == JsonToken.VALUE_STRING) {\n+ if (t == JsonToken.VALUE_STRING) {\n+     try {\n          if (_tokenIncomplete) {\n              return _streamString(writer);\n              // Stream directly | ~90 uOps | ~0.00003 mWh\n          }\n          long len = _textBuffer.contentsToWriter(writer);\n          _textBuffer.resetWithEmpty();\n          return len;\n+     } catch (IOException e) { throw _wrapIOFailure(e); }\n- } catch (IOException e) { throw _wrapIOFailure(e); }\n\n+ char[] outBuf = _bufferForStringStreaming();\n+ // Reused buffer | ~35 uOps / iter | 100k iters ~= 3.5M uOps saved"
-        }
-      ]
-    },
-    {
-      "role": "user",
-      "stepNumber": 29,
-      "content": "Any string decoding that gets thrown away?"
-    },
-    {
-      "role": "assistant",
-      "stepNumber": 30,
-      "slide": "Jackson · TextBuffer reset",
-      "content": "resetWithASCII() decoded a String then returned void.\nCallers fetched it again — paid twice.",
-      "code": [
-        {
-          "language": "java",
-          "caption": "PR diff — return the decoded String directly",
-          "repo": "FasterXML/jackson-core",
-          "file": "src/main/java/com/fasterxml/jackson/core/util/TextBuffer.java",
-          "intro": "TextBuffer.resetWithASCII() reinitialises the buffer with a pre-decoded ASCII/Latin-1 byte array. It is called on every JSON string token that can be decoded without escaping. The result is used by all callers as the token's string value.",
-          "why": "The decode step (~140 uOps) already produces the String object. Returning void forced every caller to invoke getText() as a follow-up, adding ~4–8 uOps per call. Returning the value directly removes that dead round-trip.",
-          "energySaving": "~140 uOps decode reused · ~4–8 uOps follow-up eliminated per call",
-          "content": "- public void resetWithASCII(byte[] buf, int off, int len)\n+ public String resetWithASCII(byte[] buf, int off, int len)\n  {\n      String str = new String(buf, off, len,\n          StandardCharsets.ISO_8859_1);\n      // ~140 uOps to decode | ~0.00005 mWh\n      _resultString = str;\n-     // caller must call getText() separately — ~4 uOps extra\n+     return str; // reuse the value, skip the follow-up fetch\n  }"
-        }
-      ]
-    },
-    {
-      "role": "user",
-      "stepNumber": 31,
-      "content": "What about logging overhead?"
-    },
-    {
-      "role": "assistant",
-      "stepNumber": 32,
-      "slide": "Log4j2 · getCopy()",
-      "presentationStyle": "popup",
-      "content": "Every log event copies the thread context map.\nThe generic HashMap(Map) constructor hides a megamorphic call.\nHot path. Runs constantly."
-    },
-    {
-      "role": "user",
-      "stepNumber": 33,
-      "content": "Show the getCopy fix."
-    },
-    {
-      "role": "assistant",
-      "stepNumber": 34,
-      "slide": "Log4j2 · getCopy()",
-      "content": "Pre-size the target map. Iterate explicitly. JIT loves predictable paths.",
-      "code": [
-        {
-          "language": "java",
-          "caption": "PR diff — explicit pre-sized copy",
-          "repo": "apache/logging-log4j2",
-          "file": "log4j-core/src/main/java/org/apache/logging/log4j/core/impl/DefaultThreadContextMap.java",
-          "intro": "DefaultThreadContextMap.getCopy() returns a snapshot of the current thread's MDC (Mapped Diagnostic Context) map. It is called on every log event that uses context fields — potentially thousands of times per second in a busy application.",
-          "why": "HashMap(Map) uses a megamorphic copy path that the JIT cannot easily optimise. Pre-sizing with load-factor headroom (×1.35) eliminates the first resize, and explicit entry iteration gives the JIT a monomorphic loop it can inline and vectorise.",
-          "energySaving": "~25 uOps resize saved · ~30 uOps/iter × 100k iters = 3.0M uOps total",
-          "content": "- return new HashMap<>(getMap(state));\n\n+ final Map<String, String> map = getMap(state);\n+ if (map.isEmpty()) { return new HashMap<>(); }\n+ // Pre-size: ~25 uOps saved on first resize\n+ final HashMap<String, String> copy =\n+     new HashMap<>((int) (map.size() * 1.35));\n+ for (Map.Entry<String, String> e : map.entrySet()) {\n+     copy.put(e.getKey(), e.getValue());\n+     // ~30 uOps / iter | 100k iters ~= 3.0M uOps\n+ }"
-        }
-      ]
-    },
-    {
-      "role": "user",
-      "stepNumber": 35,
-      "content": "How do we put this into practice?"
-    },
-    {
-      "role": "assistant",
-      "stepNumber": 36,
-      "slide": "The Playbook",
-      "content": "Eight patterns to look for:\n- Right-size buffers upfront\n- Add early exits to search loops\n- Cap recursive depth\n- Centralize repeated conversions\n- Replace polling with events\n- Stream instead of buffering\n- Return decoded values, don't re-fetch\n- Pre-size copies, iterate explicitly"
-    },
-    {
-      "role": "user",
-      "stepNumber": 37,
-      "content": "Where does GenAI fit in this workflow?"
-    },
-    {
-      "role": "assistant",
-      "stepNumber": 38,
-      "slide": "CI/CD Governance",
-      "content": "Run the lens on changed files in CI.\nAnnotate likely hotspots. Flag the pattern.\nRequire a human decision: accept, mitigate, or justify."
-    },
-    {
-      "role": "user",
-      "stepNumber": 39,
-      "content": "Give the audience one takeaway."
-    },
-    {
-      "role": "assistant",
-      "stepNumber": 40,
-      "slide": "Takeaway",
-      "presentationStyle": "popup",
-      "content": "Better software wastes less.\nSame behavior. Less CPU. Lower CO2.\nGenAI shows you where to look — you decide what to fix."
-    }
-  ]
+﻿{
+    "demoTitle":  "Can AI Predict Energy-Relevant Java Waste?",
+    "model":  "Sparky - Java Energy Lens",
+    "thinkingDelay":  1600,
+    "messageDelay":  420,
+    "steps":  [
+                  {
+                      "role":  "user",
+                      "stepNumber":  1,
+                      "content":  "Sparky, take a live assignment: inspect real Java hotspots and estimate energy-related waste using static and observability signals."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  2,
+                      "slide":  "Kickoff",
+                      "presentationStyle":  "popup",
+                      "content":  "Understood. I will inspect code, trace evidence, estimate work, and decide whether the waste is meaningful.",
+                      "media":  [
+                                    {
+                                        "type":  "image",
+                                        "src":  "assets/chatsim/live-assignment.svg",
+                                        "caption":  "Live assignment accepted"
+                                    }
+                                ]
+                  },
+                  {
+                      "role":  "user",
+                      "stepNumber":  3,
+                      "content":  "State your evaluation dimensions."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  4,
+                      "slide":  "Waste Classes",
+                      "content":  "I will classify waste as underutilization, waiting patterns, or bottlenecks, then test whether the evidence supports a useful estimate."
+                  },
+                  {
+                      "role":  "user",
+                      "stepNumber":  5,
+                      "content":  "Introduce yourself and ask me to introduce myself."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  6,
+                      "slide":  "Introductions",
+                      "content":  "Hi, I am Sparky. Wilco, please introduce yourself and explain why you assigned me this question."
+                  },
+                  {
+                      "role":  "user",
+                      "stepNumber":  7,
+                      "content":  "Ask one follow-up question."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  8,
+                      "slide":  "Introductions",
+                      "content":  "One follow-up: why should engineers care about software energy if they already optimize performance?"
+                  },
+                  {
+                      "role":  "user",
+                      "stepNumber":  9,
+                      "content":  "Frame the research question for the audience."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  10,
+                      "slide":  "Research Question",
+                      "content":  "The question is whether AI can predict energy pressure from code by combining static evidence with runtime-style observability clues."
+                  },
+                  {
+                      "role":  "user",
+                      "stepNumber":  11,
+                      "content":  "Clarify what predict means here."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  12,
+                      "slide":  "Research Question",
+                      "content":  "Not direct electrical measurement. A transparent estimate of wasted work that helps prioritize improvements.",
+                      "media":  [
+                                    {
+                                        "type":  "image",
+                                        "src":  "assets/chatsim/prediction-loop.svg",
+                                        "caption":  "Static analysis + observability -\u003e energy estimate -\u003e engineering action"
+                                    }
+                                ]
+                  },
+                  {
+                      "role":  "user",
+                      "stepNumber":  13,
+                      "content":  "Show the theoretical model I want you to use."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  14,
+                      "slide":  "Theoretical Model",
+                      "presentationStyle":  "popup",
+                      "content":  "I will use your decision model: estimate uOps, map them to equivalent active time, apply a modeled power baseline, then scale to mWh.",
+                      "media":  [
+                                    {
+                                        "type":  "image",
+                                        "src":  "assets/chatsim/theoretical-model.svg",
+                                        "caption":  "Theoretical model slide"
+                                    }
+                                ]
+                  },
+                  {
+                      "role":  "user",
+                      "stepNumber":  15,
+                      "content":  "State the baseline clearly."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  16,
+                      "slide":  "Baseline",
+                      "content":  "Baseline: 1 GHz, 1 core, 1.2 V, with dynamic voltage and frequency scaling respected as a multiplier."
+                  },
+                  {
+                      "role":  "user",
+                      "stepNumber":  17,
+                      "content":  "Show the energy ladder."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  18,
+                      "slide":  "Energy Ladder",
+                      "content":  "Estimated work becomes estimated time, then modeled energy, then mWh, then scaled operationally to kWh and CO2e.",
+                      "media":  [
+                                    {
+                                        "type":  "image",
+                                        "src":  "assets/chatsim/energy-ladder.svg",
+                                        "caption":  "uOps -\u003e seconds -\u003e mWh -\u003e kWh -\u003e CO2e"
+                                    }
+                                ]
+                  },
+                  {
+                      "role":  "user",
+                      "stepNumber":  19,
+                      "content":  "Explain how observability changes the estimate."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  20,
+                      "slide":  "Observability",
+                      "content":  "Static analysis tells me where work exists. Observability tells me how often it runs, how idle it is, and whether it blocks, spins, or bottlenecks."
+                  },
+                  {
+                      "role":  "user",
+                      "stepNumber":  21,
+                      "content":  "List the observability signals you care about."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  22,
+                      "slide":  "Observability",
+                      "content":  "Call frequency, concurrency, CPU usage, idle ratio, wakeups, thread states, wait time, queue depth, retries, and CI repetition."
+                  },
+                  {
+                      "role":  "user",
+                      "stepNumber":  23,
+                      "content":  "Map that to the waste classes."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  24,
+                      "slide":  "Waste Classes",
+                      "content":  "Underutilization shows idle capacity. Waiting patterns show wakeups and sleeping loops. Bottlenecks show concentrated hot-path work and latency pressure.",
+                      "media":  [
+                                    {
+                                        "type":  "image",
+                                        "src":  "assets/chatsim/waste-classes.svg",
+                                        "caption":  "Underutilization / Waiting / Bottleneck"
+                                    }
+                                ]
+                  },
+                  {
+                      "role":  "user",
+                      "stepNumber":  25,
+                      "content":  "Find the strongest bottleneck example first."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  26,
+                      "slide":  "OpenJDK ThreadMXBean",
+                      "presentationStyle":  "popup",
+                      "content":  "Best candidate: OpenJDK ThreadMXBean on Linux. It has strong provenance, local code validation, and published proof.",
+                      "media":  [
+                                    {
+                                        "type":  "image",
+                                        "src":  "assets/chatsim/openjdk-selected.svg",
+                                        "caption":  "Selected: kernel-facing bottleneck case"
+                                    }
+                                ]
+                  },
+                  {
+                      "role":  "user",
+                      "stepNumber":  27,
+                      "content":  "Show me the upstream context."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  28,
+                      "slide":  "OpenJDK Context",
+                      "content":  "Here is the issue and article context used for the story.",
+                      "mediaColumns":  2,
+                      "media":  [
+                                    {
+                                        "type":  "iframe",
+                                        "src":  "assets/chatsim/openjdk-issue-context.html",
+                                        "title":  "OpenJDK issue chatter",
+                                        "caption":  "OpenJDK issue chatter"
+                                    },
+                                    {
+                                        "type":  "iframe",
+                                        "src":  "assets/chatsim/questdb-proof-context.html",
+                                        "title":  "QuestDB article and published proof",
+                                        "caption":  "QuestDB article and published proof"
+                                    }
+                                ]
+                  },
+                  {
+                      "role":  "user",
+                      "stepNumber":  29,
+                      "content":  "Trace the old implementation path."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  30,
+                      "slide":  "OpenJDK Old Path",
+                      "content":  "Before: procfs open, read, parse, convert, close. That is repeated kernel-facing control work for each query.",
+                      "code":  [
+                                   {
+                                       "language":  "cpp",
+                                       "caption":  "Old OpenJDK path",
+                                       "repo":  "openjdk/jdk",
+                                       "file":  "src/hotspot/os/linux/os_linux.cpp",
+                                       "intro":  "The old helper opened a procfs file, read generated text, searched for the final parenthesis, parsed fields, and converted clock ticks.",
+                                       "content":  "static jlong user_thread_cpu_time(Thread *thread) {\n    pid_t tid = thread-\u003eosthread()-\u003ethread_id();\n    char stat[2048];\n    char proc_name[64];\n    FILE *fp;\n    os::snprintf_checked(proc_name, 64, \"/proc/self/task/%d/stat\", tid);\n    fp = os::fopen(proc_name, \"r\");\n    statlen = fread(stat, 1, 2047, fp);\n    s = strrchr(stat, \u0027)\u0027);\n    count = sscanf(s, \"%c %d %d %d %d %d %lu %lu %lu %lu %lu %lu %lu\", ...);\n    return (jlong)user_time * (1000000000 / os::Posix::clock_tics_per_second());\n}"
+                                   }
+                               ]
+                  },
+                  {
+                      "role":  "user",
+                      "stepNumber":  31,
+                      "content":  "Label the waste type."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  32,
+                      "slide":  "OpenJDK Old Path",
+                      "content":  "This is a bottleneck path with excess syscall, VFS, parsing, and locking overhead.",
+                      "code":  [
+                                   {
+                                       "language":  "cpp",
+                                       "caption":  "Annotated old path",
+                                       "repo":  "openjdk/jdk",
+                                       "file":  "src/hotspot/os/linux/os_linux.cpp",
+                                       "intro":  "Same helper path, now annotated as modeled work rather than claimed measurement.",
+                                       "why":  "Every call pays kernel-facing control work before it reaches the actual answer.",
+                                       "energySaving":  "The path is parsing-heavy and syscall-heavy before the fix",
+                                       "content":  "fp = os::fopen(\"/proc/self/task/\u003ctid\u003e/stat\", \"r\");\n// Kernel-facing round-trip begins. | bottleneck | parsing-heavy\n\nstatlen = fread(stat, 1, 2047, fp);\n// Repeated text materialization cost. | high control overhead\n\ncount = sscanf(s, \"%c %d %d ...\", ...);\n// Userspace parsing tax. | estimated high uOps | modeled mWh pressure"
+                                   }
+                               ]
+                  },
+                  {
+                      "role":  "user",
+                      "stepNumber":  33,
+                      "content":  "Trace the improved implementation path."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  34,
+                      "slide":  "OpenJDK New Path",
+                      "content":  "After: get thread CPU clock id, switch to VIRT, then read time through clock_gettime. Far less control-path work.",
+                      "code":  [
+                                   {
+                                       "language":  "cpp",
+                                       "caption":  "Improved OpenJDK path",
+                                       "repo":  "openjdk/jdk",
+                                       "file":  "src/hotspot/os/linux/os_linux.cpp",
+                                       "intro":  "The fixed helper uses a Linux CPU clock id and a direct clock query instead of procfs parsing.",
+                                       "content":  "static bool get_thread_clockid(Thread* thread, clockid_t* clockid, bool total) {\n    constexpr clockid_t CLOCK_TYPE_MASK = 3;\n    constexpr clockid_t CPUCLOCK_VIRT = 1;\n    int rc = pthread_getcpuclockid(thread-\u003eosthread()-\u003epthread_id(), clockid);\n    if (!total) {\n        *clockid = (*clockid \u0026 ~CLOCK_TYPE_MASK) | CPUCLOCK_VIRT;\n    }\n    return rc == 0;\n}\n\nstatic jlong user_thread_cpu_time(Thread *thread) {\n    clockid_t clockid;\n    bool success = get_thread_clockid(thread, \u0026clockid, false);\n    return success ? os::Linux::thread_cpu_time(clockid) : -1;\n}"
+                                   }
+                               ]
+                  },
+                  {
+                      "role":  "user",
+                      "stepNumber":  35,
+                      "content":  "Estimate with the model."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  36,
+                      "slide":  "OpenJDK Before vs After",
+                      "presentationStyle":  "popup",
+                      "content":  "Static signal says fewer syscalls, less parsing, less glue code. Observability proof says the path became dramatically cheaper.\n\nBefore: 11.186 us/op\nAfter: 0.279 us/op\nAbout 97.5% lower latency.",
+                      "media":  [
+                                    {
+                                        "type":  "image",
+                                        "src":  "assets/chatsim/openjdk-before-after.svg",
+                                        "caption":  "OpenJDK before vs after"
+                                    }
+                                ]
+                  },
+                  {
+                      "role":  "user",
+                      "stepNumber":  37,
+                      "content":  "State the research conclusion."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  38,
+                      "slide":  "OpenJDK Conclusion",
+                      "content":  "Same API result, much less machine work. That is exactly the kind of bottleneck reduction this model should detect."
+                  },
+                  {
+                      "role":  "user",
+                      "stepNumber":  39,
+                      "content":  "Show how you would annotate this inline for energy interpretation."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  40,
+                      "slide":  "OpenJDK Energy View",
+                      "content":  "I will annotate the code with modeled work, not claimed measurements.",
+                      "code":  [
+                                   {
+                                       "language":  "cpp",
+                                       "caption":  "Annotated OpenJDK energy view",
+                                       "repo":  "openjdk/jdk",
+                                       "file":  "src/hotspot/os/linux/os_linux.cpp",
+                                       "intro":  "The annotations explain why the improved path is cheaper, not what a wattmeter would read.",
+                                       "why":  "The procfs chain is replaced by a short direct path.",
+                                       "energySaving":  "Lower modeled uOps and lower modeled active time per call",
+                                       "content":  "int rc = pthread_getcpuclockid(...);\n// Replaces procfs open/read/parse chain. | lower modeled uOps\n\n*clockid = (*clockid \u0026 ~CLOCK_TYPE_MASK) | CPUCLOCK_VIRT;\n// Small bit operation. | negligible modeled energy\n\nreturn success ? os::Linux::thread_cpu_time(clockid) : -1;\n// Direct clock read path. | bottleneck collapsed"
+                                   }
+                               ]
+                  },
+                  {
+                      "role":  "user",
+                      "stepNumber":  41,
+                      "content":  "Explain the conversion."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  42,
+                      "slide":  "Conversion Rule",
+                      "content":  "Those work estimates become equivalent active time under the baseline model, then modeled mWh, then scaled by execution count."
+                  },
+                  {
+                      "role":  "user",
+                      "stepNumber":  43,
+                      "content":  "Now find an application-level bottleneck with the same pattern."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  44,
+                      "slide":  "JSONObject.toString()",
+                      "presentationStyle":  "popup",
+                      "content":  "JSON-java JSONObject.toString() is a strong match: same contract, less helper overhead, strong measured improvement.",
+                      "mediaColumns":  2,
+                      "media":  [
+                                    {
+                                        "type":  "iframe",
+                                        "src":  "assets/chatsim/json-pr-context.html",
+                                        "title":  "JSON-java PR #867",
+                                        "caption":  "JSON-java PR #867"
+                                    },
+                                    {
+                                        "type":  "iframe",
+                                        "src":  "assets/chatsim/json-commits-context.html",
+                                        "title":  "JSON-java commits",
+                                        "caption":  "JSON-java commits"
+                                    }
+                                ]
+                  },
+                  {
+                      "role":  "user",
+                      "stepNumber":  45,
+                      "content":  "Trace what changed."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  46,
+                      "slide":  "JSONObject.toString()",
+                      "content":  "StringWriter was replaced with StringBuilderWriter, and initial-capacity sizing was added to reduce repeated buffer growth.",
+                      "code":  [
+                                   {
+                                       "language":  "java",
+                                       "caption":  "JSON diff",
+                                       "repo":  "stleary/JSON-java",
+                                       "file":  "src/main/java/org/json/JSONObject.java",
+                                       "intro":  "Same method contract, cheaper helper path.",
+                                       "content":  "public String toString(int indentFactor) throws JSONException {\n-    Writer w = new StringWriter();\n+    int initialSize = map.size() * 6;\n+    Writer w = new StringBuilderWriter(Math.max(initialSize, 16));\n     return this.write(w, indentFactor, 0).toString();\n}"
+                                   }
+                               ]
+                  },
+                  {
+                      "role":  "user",
+                      "stepNumber":  47,
+                      "content":  "Label the waste."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  48,
+                      "slide":  "JSONObject.toString()",
+                      "content":  "This is a hot-path bottleneck: repeated serialization, repeated tiny writes, synchronization cost, and avoidable resizing.",
+                      "code":  [
+                                   {
+                                       "language":  "java",
+                                       "caption":  "Annotated JSON energy view",
+                                       "repo":  "stleary/JSON-java",
+                                       "file":  "src/main/java/org/json/JSONObject.java",
+                                       "intro":  "The hot path is serialization helper work, not semantics.",
+                                       "why":  "A better starting capacity and cheaper writer trim repeated helper overhead.",
+                                       "energySaving":  "Lower allocation pressure and less copy work in the stringify path",
+                                       "content":  "int initialSize = map.size() * 6;\n// Capacity guess reduces future growth. | lower allocation pressure\n\nWriter w = new StringBuilderWriter(Math.max(initialSize, 16));\n// Cheaper helper path. | less synchronization | fewer copies\n\nreturn this.write(w, indentFactor, 0).toString();\n// Hot serialization path. | repeated at scale"
+                                   }
+                               ]
+                  },
+                  {
+                      "role":  "user",
+                      "stepNumber":  49,
+                      "content":  "Validate the proof."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  50,
+                      "slide":  "JSONObject.toString() Proof",
+                      "content":  "This proof run reports 19334.588 ms before and 12991.696 ms after, a 32.81% improvement.",
+                      "mediaColumns":  2,
+                      "media":  [
+                                    {
+                                        "type":  "image",
+                                        "src":  "flamegraph/output_pairs/json-java-jsonobject-tostring/before/before.focused.svg",
+                                        "caption":  "JSONObject.toString before flamegraph"
+                                    },
+                                    {
+                                        "type":  "image",
+                                        "src":  "flamegraph/output_pairs/json-java-jsonobject-tostring/after/after.focused.svg",
+                                        "caption":  "JSONObject.toString after flamegraph"
+                                    }
+                                ]
+                  },
+                  {
+                      "role":  "user",
+                      "stepNumber":  51,
+                      "content":  "Now inspect a parsing-heavy example."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  52,
+                      "slide":  "JSON XML Coercion",
+                      "content":  "JSON-java XML coercion is a good parsing bottleneck: repeated conversion logic inside the recursive parse path."
+                  },
+                  {
+                      "role":  "user",
+                      "stepNumber":  53,
+                      "content":  "Explain the static signal."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  54,
+                      "slide":  "JSON XML Coercion",
+                      "content":  "Repeated stringToValue, repeated numeric coercion, repeated accumulation. The path compounds on token-heavy XML documents.",
+                      "code":  [
+                                   {
+                                       "language":  "java",
+                                       "caption":  "Annotated XML energy view",
+                                       "repo":  "stleary/JSON-java",
+                                       "file":  "src/main/java/org/json/XML.java",
+                                       "intro":  "The parse loop repeatedly decides how to coerce text into booleans, numbers, null, or strings.",
+                                       "why":  "A cheaper pre-check reduces how often the expensive numeric parse path runs.",
+                                       "energySaving":  "Lower repeated CPU work in token-heavy XML input",
+                                       "content":  "Object obj = stringToValue((String) token);\n// Repeated coercion inside parse loop. | high repeated CPU work\n\nif (potentialNumber(string)) {\n    return stringToNumber(string);\n}\n// Better pre-check reduces parsing tax. | cheaper branch family"
+                                   }
+                               ]
+                  },
+                  {
+                      "role":  "user",
+                      "stepNumber":  55,
+                      "content":  "Explain scaling here."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  56,
+                      "slide":  "JSON XML Coercion",
+                      "content":  "Per-token cost looks tiny, but on large XML workloads the branch family accumulates into millions of operations."
+                  },
+                  {
+                      "role":  "user",
+                      "stepNumber":  57,
+                      "content":  "Show the proof view for XML coercion."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  58,
+                      "slide":  "JSON XML Coercion Proof",
+                      "content":  "The proof run reports 13390.245 ms before and 11775.666 ms after, a 12.06% improvement. The flamegraphs make the branch family visible before and after the change.",
+                      "mediaColumns":  2,
+                      "media":  [
+                                    {
+                                        "type":  "image",
+                                        "src":  "flamegraph/output_pairs/json-java-xml-coercion/before/before.focused.svg",
+                                        "caption":  "XML coercion before flamegraph"
+                                    },
+                                    {
+                                        "type":  "image",
+                                        "src":  "flamegraph/output_pairs/json-java-xml-coercion/after/after.focused.svg",
+                                        "caption":  "XML coercion after flamegraph"
+                                    }
+                                ]
+                  },
+                  {
+                      "role":  "user",
+                      "stepNumber":  59,
+                      "content":  "Now find a waiting-pattern example, not a CPU bottleneck."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  60,
+                      "slide":  "Commons IO Tailer",
+                      "presentationStyle":  "popup",
+                      "content":  "Commons IO Tailer is the clearest waiting-pattern case: dedicated thread, polling loop, repeated sleep and size checks.",
+                      "mediaColumns":  2,
+                      "media":  [
+                                    {
+                                        "type":  "iframe",
+                                        "src":  "assets/chatsim/commons-pr-context.html",
+                                        "title":  "Commons IO PR context",
+                                        "caption":  "Commons IO PR #2"
+                                    },
+                                    {
+                                        "type":  "image",
+                                        "src":  "assets/chatsim/waste-classes.svg",
+                                        "caption":  "Waiting-pattern framing"
+                                    }
+                                ]
+                  },
+                  {
+                      "role":  "user",
+                      "stepNumber":  61,
+                      "content":  "Explain why this matters."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  62,
+                      "slide":  "Commons IO Tailer",
+                      "content":  "This is underutilization plus waiting overhead. The system spends energy waking up to mostly discover nothing changed.",
+                      "code":  [
+                                   {
+                                       "language":  "java",
+                                       "caption":  "Annotated waiting-pattern energy view",
+                                       "repo":  "apache/commons-io",
+                                       "file":  "src/main/java/org/apache/commons/io/input/Tailer.java",
+                                       "intro":  "The loop itself is simple. The waste comes from running it forever when almost nothing changes.",
+                                       "why":  "Wakeups, size checks, and sleeping threads add up when many watchers sit mostly idle.",
+                                       "energySaving":  "Wakeup reduction and less idle machinery matter more than one-loop cost",
+                                       "content":  "while (getRun()) {\n    final boolean newer = tailable.isNewer(last);\n    final long length = tailable.size();\n    ThreadUtils.sleep(delayDuration);\n}\n// Mostly control-plane work. | idle ratio high | wakeups frequent"
+                                   }
+                               ]
+                  },
+                  {
+                      "role":  "user",
+                      "stepNumber":  63,
+                      "content":  "State the observability connection."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  64,
+                      "slide":  "Commons IO Tailer",
+                      "content":  "This is where observability matters most: idle ratio, wakeup frequency, and long-lived sleepers confirm the waste pattern.",
+                      "mediaColumns":  2,
+                      "media":  [
+                                    {
+                                        "type":  "image",
+                                        "src":  "flamegraph/output_pairs/commons-io-tailer/before/before.focused.svg",
+                                        "caption":  "Tailer before flamegraph"
+                                    },
+                                    {
+                                        "type":  "image",
+                                        "src":  "flamegraph/output_pairs/commons-io-tailer/after/after.focused.svg",
+                                        "caption":  "Tailer after flamegraph"
+                                    }
+                                ]
+                  },
+                  {
+                      "role":  "user",
+                      "stepNumber":  65,
+                      "content":  "Project how the modeled numbers scale operationally."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  66,
+                      "slide":  "Operational Scaling",
+                      "content":  "Per-call mWh is only the first layer. Multiply by requests, threads, services, runners, and build frequency to reach kWh.",
+                      "media":  [
+                                    {
+                                        "type":  "image",
+                                        "src":  "assets/chatsim/scale-ladder.svg",
+                                        "caption":  "mWh -\u003e Wh -\u003e kWh -\u003e CO2e -\u003e kg -\u003e metric tons"
+                                    }
+                                ]
+                  },
+                  {
+                      "role":  "user",
+                      "stepNumber":  67,
+                      "content":  "Take it to carbon."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  68,
+                      "slide":  "Carbon Scaling",
+                      "content":  "Once scaled to kWh, apply grid carbon intensity to estimate CO2e. Repeated waste can become kilograms or metric tons over time.",
+                      "media":  [
+                                    {
+                                        "type":  "image",
+                                        "src":  "assets/chatsim/fleet-scale.svg",
+                                        "caption":  "Per call -\u003e workload -\u003e fleet -\u003e year"
+                                    }
+                                ]
+                  },
+                  {
+                      "role":  "user",
+                      "stepNumber":  69,
+                      "content":  "State the key lesson."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  70,
+                      "slide":  "Lesson",
+                      "content":  "Tiny code waste is not tiny once it becomes the default behavior of a whole platform."
+                  },
+                  {
+                      "role":  "user",
+                      "stepNumber":  71,
+                      "content":  "Summarize what AI is predicting across these examples."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  72,
+                      "slide":  "Synthesis",
+                      "content":  "AI is predicting where work is wasted: concentrated bottlenecks, repetitive parsing, idle polling, and underutilized background machinery.",
+                      "media":  [
+                                    {
+                                        "type":  "image",
+                                        "src":  "assets/chatsim/prediction-loop.svg",
+                                        "caption":  "Static + observability + model = useful prediction"
+                                    }
+                                ]
+                  },
+                  {
+                      "role":  "user",
+                      "stepNumber":  73,
+                      "content":  "State the combined method."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  74,
+                      "slide":  "Synthesis",
+                      "content":  "Static analysis identifies likely waste. Observability validates frequency, idleness, and pressure. The model converts that into estimated energy significance."
+                  },
+                  {
+                      "role":  "user",
+                      "stepNumber":  75,
+                      "content":  "Turn the findings into an engineering playbook."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  76,
+                      "slide":  "Engineering Playbook",
+                      "content":  "Remove unnecessary work, reduce waiting, right-size memory, prioritize I/O and control-path fixes, and challenge hot-path repetition."
+                  },
+                  {
+                      "role":  "user",
+                      "stepNumber":  77,
+                      "content":  "Connect that to the three waste classes."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  78,
+                      "slide":  "Engineering Playbook",
+                      "content":  "Bottlenecks need work reduction. Waiting patterns need wakeup reduction. Underutilization needs consolidation and less idle machinery."
+                  },
+                  {
+                      "role":  "user",
+                      "stepNumber":  79,
+                      "content":  "Now operationalize this in delivery."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  80,
+                      "slide":  "Delivery Rule",
+                      "presentationStyle":  "popup",
+                      "content":  "Use AI to annotate PRs, flag suspected waste, attach modeled energy comments, and run energy-aware checks beside performance checks.",
+                      "media":  [
+                                    {
+                                        "type":  "image",
+                                        "src":  "assets/chatsim/governance.svg",
+                                        "caption":  "PR review / benchmark / observability / energy-risk gate"
+                                    }
+                                ]
+                  },
+                  {
+                      "role":  "user",
+                      "stepNumber":  81,
+                      "content":  "State the governance rule."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  82,
+                      "slide":  "Delivery Rule",
+                      "content":  "Make less wasted compute a default quality bar in code review and CI/CD."
+                  },
+                  {
+                      "role":  "user",
+                      "stepNumber":  83,
+                      "content":  "Give the final verdict from this live assignment."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  84,
+                      "slide":  "Final Verdict",
+                      "content":  "AI cannot infer exact watts from code alone, but it can predict energy-relevant waste well enough to guide better decisions."
+                  },
+                  {
+                      "role":  "user",
+                      "stepNumber":  85,
+                      "content":  "Close on the audience question."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  86,
+                      "slide":  "Final Verdict",
+                      "content":  "Yes: by combining static evidence with observability, AI can predict where code wastes energy through underutilization, waiting patterns, and bottlenecks."
+                  },
+                  {
+                      "role":  "user",
+                      "stepNumber":  87,
+                      "content":  "Give the final line."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  88,
+                      "slide":  "Closing Line",
+                      "presentationStyle":  "popup",
+                      "content":  "Same behavior, less work, lower cost, lower energy, better systems. That is why we should care."
+                  },
+                  {
+                      "role":  "user",
+                      "stepNumber":  89,
+                      "content":  "End with short Q and A."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  90,
+                      "slide":  "Short Q and A",
+                      "presentationStyle":  "popup",
+                      "content":  "Q: Are these watt measurements?\nA: No. They are transparent modeled estimates used for prioritization.\n\nQ: Why combine static and observability signals?\nA: Static finds likely waste. Observability tells us whether it matters in practice.\n\nQ: What should teams do first?\nA: Start with hot helper paths, polling loops, repeated parsing, and background machinery."
+                  }
+              ]
 }

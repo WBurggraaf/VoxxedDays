@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -82,7 +82,8 @@
     .media-stack.columns-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .media-card, .code-card { margin: 0; padding: 12px; border-radius: 18px; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08); }
     .media-card { display: grid; justify-items: center; }
-    .media-card img, .media-card video { width: 100%; max-width: 100%; max-height: 50vh; display: block; border-radius: 12px; background: #0c0f11; object-fit: contain; }
+    .media-card img, .media-card video, .media-card iframe { width: 100%; max-width: 100%; max-height: 50vh; display: block; border-radius: 12px; background: #0c0f11; object-fit: contain; }
+    .media-card iframe { min-height: 420px; border: 0; object-fit: initial; }
     .media-card img.robot-float { animation: robotFloat 3.2s ease-in-out infinite; transform-origin: center; filter: drop-shadow(0 16px 30px rgba(16,163,127,.18)); }
     .code-card { padding: 0; overflow: hidden; background: #10161c; border-color: rgba(83, 205, 171, .16); }
     .code-header { display: flex; justify-content: space-between; gap: 12px; align-items: center; padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,.08); background: linear-gradient(180deg, rgba(22,30,38,.96), rgba(16,22,28,.96)); }
@@ -99,28 +100,28 @@
     .tok-operator { color: #ffb86b; }
     .tok-plain { color: #dce8f2; }
     .media-caption, .code-caption { margin-top: 8px; color: var(--muted); font-size: 14px; }
-    /* ── Diff line colouring ─────────────────────────── */
+    /* â”€â”€ Diff line colouring â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .diff-add-line { display: block; background: rgba(16,163,127,.13); border-left: 2px solid rgba(16,163,127,.55); }
     .diff-del-line { display: block; background: rgba(220,60,60,.11); border-left: 2px solid rgba(220,80,80,.5); }
     .diff-add-sym  { color: #53cdab; font-weight: 700; user-select: none; }
     .diff-del-sym  { color: #ff7a7a; font-weight: 700; user-select: none; }
-    /* ── File / repo bar ─────────────────────────────── */
+    /* â”€â”€ File / repo bar â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .code-file-bar { display: flex; align-items: center; gap: 8px; padding: 6px 14px; border-bottom: 1px solid rgba(255,255,255,.06); background: rgba(10,14,18,.72); font-size: 12px; flex-wrap: wrap; }
     .code-file-path { color: #a8c7e0; font-family: Consolas, "Courier New", monospace; font-size: 12px; opacity: .88; }
     .code-repo-tag { margin-left: auto; display: inline-flex; align-items: center; gap: 4px; padding: 2px 9px; border-radius: 999px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.09); color: var(--muted); font-size: 11px; font-weight: 600; letter-spacing: .02em; white-space: nowrap; }
-    /* ── Why / energy panel ──────────────────────────── */
+    /* â”€â”€ Why / energy panel â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .code-why { display: flex; gap: 10px; align-items: flex-start; padding: 10px 14px; background: rgba(16,163,127,.07); border-top: 1px solid rgba(16,163,127,.15); }
     .code-why-icon { font-size: 15px; line-height: 1.4; flex-shrink: 0; }
     .code-why-body { flex: 1; min-width: 0; }
     .code-why-label { font-size: 10px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: #6fe3b8; margin-bottom: 4px; }
     .code-why-text { font-size: 13px; line-height: 1.55; color: #c8d8d0; }
     .code-energy { display: inline-flex; align-items: center; gap: 4px; padding: 2px 9px; border-radius: 999px; background: rgba(255,168,0,.1); border: 1px solid rgba(255,168,0,.22); color: #ffc84a; font-size: 11px; font-weight: 700; margin-top: 5px; }
-    /* ── About / intro panel ─────────────────────────── */
+    /* â”€â”€ About / intro panel â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .code-intro { display: flex; gap: 9px; align-items: flex-start; padding: 9px 14px; background: rgba(124,199,255,.05); border-bottom: 1px solid rgba(124,199,255,.10); }
     .code-intro-icon { font-size: 14px; flex-shrink: 0; line-height: 1.5; }
     .code-intro-label { font-size: 10px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: #7cc7ff; margin-bottom: 3px; }
     .code-intro-text { font-size: 13px; line-height: 1.55; color: #b8c8d8; }
-    /* ── Side-by-side split diff ─────────────────────── */
+    /* â”€â”€ Side-by-side split diff â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .diff-split-wrap { overflow-x: auto; }
     .diff-split-headers { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid rgba(255,255,255,.08); }
     .diff-split-hdr { padding: 5px 14px; font-size: 11px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
@@ -173,8 +174,9 @@
     .popup-inline .popup-text { font-size: clamp(22px, 2.9vw, 38px); margin-bottom: 0; }
     .popup-card .media-stack, .popup-inline .media-stack { margin-top: 0; }
     .popup-card .media-card, .popup-inline .media-card { background: rgba(255,255,255,.04); }
-    .popup-card .media-card img, .popup-card .media-card video { max-height: 30vh; object-fit: contain; }
-    .popup-inline .media-card img, .popup-inline .media-card video { max-height: 280px; object-fit: contain; }
+    .popup-card .media-card img, .popup-card .media-card video, .popup-card .media-card iframe { max-height: 30vh; object-fit: contain; }
+    .popup-inline .media-card img, .popup-inline .media-card video, .popup-inline .media-card iframe { max-height: 280px; object-fit: contain; }
+    .popup-card .media-card iframe, .popup-inline .media-card iframe { object-fit: initial; }
     .toolbar-btn { border: 1px solid var(--border); background: rgba(255,255,255,.04); color: var(--text); border-radius: 12px; padding: 10px 14px; font-weight: 700; cursor: pointer; }
     .toolbar-btn:hover { background: rgba(255,255,255,.08); }
     .toolbar-btn.active { border-color: rgba(16,163,127,.4); background: rgba(16,163,127,.16); color: #d9fff3; }
@@ -247,6 +249,7 @@
   </main>
   <script>
     let chatData = null;
+    let sourceData = null;
     let currentDataPath = "./chatData.json";
     let currentDataFileName = "chatData.json";
 
@@ -555,6 +558,13 @@
       while (i < lines.length) {
         const t = lines[i].trim();
         if (!t) { i += 1; continue; }
+        if (/^#{1,6}\s/.test(t)) {
+          const level = Math.min(6, (t.match(/^#+/) || ["#"])[0].length);
+          const text = t.replace(/^#{1,6}\s+/, "");
+          out.push(`<h${level}>${inline(esc(text))}</h${level}>`);
+          i += 1;
+          continue;
+        }
         if (t.startsWith("> ")) { out.push(`<blockquote>${inline(esc(t.slice(2)))}</blockquote>`); i += 1; continue; }
         if (/^[-*] /.test(t)) {
           const items = [];
@@ -587,6 +597,10 @@
         if (item.type === "video") {
           const autoplayAttr = autoplay ? ' data-autoplay-once="true"' : "";
           return `<figure class="media-card"><video controls playsinline preload="metadata"${autoplayAttr} src="${attr(item.src)}"></video>${caption}</figure>`;
+        }
+        if (item.type === "iframe") {
+          const title = attr(item.title || item.caption || `Embedded frame ${index + 1}`);
+          return `<figure class="media-card"><iframe src="${attr(item.src)}" title="${title}" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>${caption}</figure>`;
         }
         const imageClass = item.className ? ` class="${attr(item.className)}"` : "";
         return `<figure class="media-card"><img${imageClass} src="${attr(item.src)}" alt="${attr(item.alt || item.caption || "slide media")}" data-caption="${attr(item.caption || "")}">${caption}</figure>`;
@@ -766,33 +780,33 @@
         const isDiff = (block.content || "").split("\n").some(l =>
           (l.startsWith("+") && !l.startsWith("+++")) || (l.startsWith("-") && !l.startsWith("---")));
 
-        // ── Header: language pill + caption ──────────────
+        // â”€â”€ Header: language pill + caption â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         const langPill = lang ? `<span class="code-language">${esc(lang)}</span>` : "";
         const captionText = block.caption ? `<span class="code-caption">${esc(block.caption)}</span>` : "";
         const header = (langPill || captionText)
           ? `<div class="code-header">${langPill}<span style="flex:1;min-width:0">${captionText}</span></div>`
           : "";
 
-        // ── File / repo bar ───────────────────────────────
+        // â”€â”€ File / repo bar â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         const filePart = block.file ? `${FILE_ICON}<span class="code-file-path">${esc(block.file)}</span>` : "";
-        const repoPart = block.repo ? `<span class="code-repo-tag">⎇ ${esc(block.repo)}</span>` : "";
+        const repoPart = block.repo ? `<span class="code-repo-tag">Repo: ${esc(block.repo)}</span>` : "";
         const fileBar = (filePart || repoPart) ? `<div class="code-file-bar">${filePart}${repoPart}</div>` : "";
 
-        // ── About / intro panel (for non-diff context code) ──
+        // â”€â”€ About / intro panel (for non-diff context code) â”€â”€
         const introHtml = block.intro
-          ? `<div class="code-intro"><div class="code-intro-icon">📌</div><div><div class="code-intro-label">About this code</div><div class="code-intro-text">${esc(block.intro)}</div></div></div>`
+          ? `<div class="code-intro"><div class="code-intro-icon">INFO</div><div><div class="code-intro-label">About this code</div><div class="code-intro-text">${esc(block.intro)}</div></div></div>`
           : "";
 
-        // ── Code body: split diff or plain ────────────────
+        // â”€â”€ Code body: split diff or plain â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         const codeBody = isDiff
           ? renderDiffSplit(block.content || "", lang)
           : `<pre><code>${highlightCode(block.content || "", lang)}</code></pre>`;
 
-        // ── Why / energy panel ────────────────────────────
+        // â”€â”€ Why / energy panel â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         const energyBadge = block.energySaving
-          ? `<div class="code-energy">⚡ ${esc(block.energySaving)}</div>` : "";
+          ? `<div class="code-energy">Energy: ${esc(block.energySaving)}</div>` : "";
         const whyHtml = block.why
-          ? `<div class="code-why"><div class="code-why-icon">💡</div><div class="code-why-body"><div class="code-why-label">Why it helps</div><div class="code-why-text">${esc(block.why)}</div>${energyBadge}</div></div>`
+          ? `<div class="code-why"><div class="code-why-icon">WHY</div><div class="code-why-body"><div class="code-why-label">Why it helps</div><div class="code-why-text">${esc(block.why)}</div>${energyBadge}</div></div>`
           : (energyBadge ? `<div class="code-why"><div class="code-why-body">${energyBadge}</div></div>` : "");
 
         return `<figure class="code-card">${header}${fileBar}${introHtml}${codeBody}${whyHtml}</figure>`;
@@ -854,7 +868,8 @@
     }
 
     function serializeChatData() {
-      return JSON.stringify(chatData, null, 2);
+      const exportData = Array.isArray(sourceData) ? sourceData : chatData;
+      return JSON.stringify(exportData, null, 2);
     }
 
     function resolveDataPath() {
@@ -1569,6 +1584,7 @@
         const response = await fetch(currentDataPath, { cache: "no-store" });
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         const loaded = await response.json();
+        sourceData = loaded;
         updateSaveStatus(`Loaded ${currentDataFileName}`, true);
         if (Array.isArray(loaded)) {
           showDemoPicker(loaded);
@@ -1594,4 +1610,5 @@
   </script>
 </body>
 </html>
+
 
