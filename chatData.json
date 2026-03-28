@@ -1,21 +1,24 @@
 ﻿{
     "demoTitle":  "Can AI Predict Energy-Relevant Java Waste?",
     "model":  "Sparky - Java Energy Lens",
-    "thinkingDelay":  1600,
-    "messageDelay":  420,
+    "thinkingDelay":  900,
+    "messageDelay":  250,
+    "streamDelayMultiplier":  3.525,
     "steps":  [
                   {
                       "role":  "user",
                       "stepNumber":  1,
                       "content":  "Sparky, take a live assignment: inspect real Java hotspots and estimate energy-related waste using static and observability signals."
                   },
-                  {
-                      "role":  "assistant",
-                      "stepNumber":  2,
-                      "slide":  "Kickoff",
-                      "presentationStyle":  "popup",
-                      "content":  "Understood. I will inspect code, trace evidence, estimate work, and decide whether the waste is meaningful.",
-                      "media":  [
+                    {
+                        "role":  "assistant",
+                        "stepNumber":  2,
+                        "slide":  "Kickoff",
+                        "presentationStyle":  "popup",
+                        "deferMediaUntilSpeechDone":  true,
+                        "openImageFullscreenOnAdvance":  true,
+                        "content":  "Understood. I will inspect code, trace evidence, estimate work, and decide whether the waste is meaningful.",
+                        "media":  [
                                     {
                                         "type":  "image",
                                         "src":  "assets/chatsim/live-assignment.svg",
@@ -76,6 +79,7 @@
                       "role":  "assistant",
                       "stepNumber":  12,
                       "slide":  "Research Question",
+                      "openImageFullscreenOnAdvance":  true,
                       "content":  "Not direct electrical measurement. A transparent estimate of wasted work that helps prioritize improvements.",
                       "media":  [
                                     {
