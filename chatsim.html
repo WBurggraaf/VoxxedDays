@@ -162,6 +162,12 @@
     .image-lightbox-inner { width: calc(100vw - 24px); height: calc(100vh - 24px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
     .image-lightbox img { flex: 1 1 auto; width: auto; height: auto; max-width: 100%; max-height: 100%; border-radius: 18px; display: block; object-fit: contain; background: #0c0f11; }
     .image-lightbox-caption { color: var(--muted); font-size: 18px; text-align: center; }
+    .code-lightbox { position: fixed; inset: 0; background: rgba(5,7,8,.96); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity .22s ease; z-index: 210; padding: 12px; }
+    .code-lightbox.visible { opacity: 1; pointer-events: auto; }
+    .code-lightbox-inner { width: calc(100vw - 24px); height: calc(100vh - 24px); display: flex; align-items: stretch; justify-content: stretch; }
+    .code-lightbox .code-stack { width: 100%; height: 100%; margin: 0; }
+    .code-lightbox .code-card { width: 100%; height: 100%; display: flex; flex-direction: column; border-radius: 22px; }
+    .code-lightbox .code-card pre { flex: 1 1 auto; overflow: auto; }
     .speaker-widget { position: absolute; right: 16px; bottom: 146px; width: min(150px, 16vw); min-width: 104px; padding: 10px; border-radius: 20px; border: 1px solid rgba(16,163,127,.24); background: rgba(12,16,18,.9); box-shadow: 0 14px 30px rgba(0,0,0,.28); display: grid; gap: 8px; justify-items: center; opacity: 0; transform: translateY(8px) scale(.96); pointer-events: none; transition: opacity .18s ease, transform .18s ease; z-index: 40; }
     .speaker-widget.visible { opacity: 1; transform: translateY(0) scale(1); }
     .speaker-widget.speaking { box-shadow: 0 18px 38px rgba(16,163,127,.16), 0 0 0 1px rgba(16,163,127,.08); }
@@ -231,7 +237,7 @@
     </div>
     <footer>
       <div class="progress" id="progress"><div class="dots" id="dots"></div><span id="progress-label"></span></div>
-      <div class="controls" id="controls"><span class="fake-input" id="fake-input">Ask Sparky about Java energy...</span><button class="primary" id="continue-btn" type="button">Start</button></div>
+      <div class="controls" id="controls"><span class="fake-input" id="fake-input">Ask Sparky about energy in code...</span><button class="primary" id="continue-btn" type="button">Start</button></div>
       <div class="hint">Press Space or Right Arrow to advance. Press R to restart.</div>
     </footer>
     <div class="editor-overlay" id="editor-overlay">
@@ -251,6 +257,9 @@
         <img id="image-lightbox-img" alt="">
         <div class="image-lightbox-caption" id="image-lightbox-caption"></div>
       </div>
+    </div>
+    <div class="code-lightbox" id="code-lightbox" aria-hidden="true">
+      <div class="code-lightbox-inner" id="code-lightbox-inner"></div>
     </div>
   </main>
   <script>
@@ -285,6 +294,8 @@
     const imageLightbox = document.getElementById("image-lightbox");
     const imageLightboxImg = document.getElementById("image-lightbox-img");
     const imageLightboxCaption = document.getElementById("image-lightbox-caption");
+    const codeLightbox = document.getElementById("code-lightbox");
+    const codeLightboxInner = document.getElementById("code-lightbox-inner");
     const speakerWidget = document.getElementById("speaker-widget");
     let step = 0;
     let appState = State.IDLE;
@@ -403,13 +414,13 @@
       currentInputId += 1;
       userTypeTimer = clearTimer(userTypeTimer);
       userSubmitTimer = clearTimer(userSubmitTimer);
-      if (resetInput) setFakeInputText("Ask Sparky about Java energy...");
+      if (resetInput) setFakeInputText("Ask Sparky about energy in code...");
       else fakeInput.classList.remove("typing");
     }
 
     function completeUserPrompt(item, stepIndex, simulationId) {
       if (simulationId !== currentInputId) return;
-      setFakeInputText("Ask Sparky about Java energy...");
+      setFakeInputText("Ask Sparky about energy in code...");
       appendUser(item.content, stepIndex);
       step += 1;
       appState = State.IDLE;
@@ -597,6 +608,12 @@
       imageLightboxCaption.textContent = "";
     }
 
+    function closeCodeLightbox() {
+      codeLightbox.classList.remove("visible");
+      codeLightbox.setAttribute("aria-hidden", "true");
+      codeLightboxInner.innerHTML = "";
+    }
+
     function openImageLightbox(src, alt = "", caption = "") {
       if (!src) return;
       imageLightboxImg.src = src;
@@ -609,6 +626,14 @@
     function openImageFromElement(img) {
       if (!img) return;
       openImageLightbox(img.currentSrc || img.src, img.alt || "", img.dataset.caption || "");
+    }
+
+    function openCodeLightbox(code = []) {
+      const html = renderCode(code);
+      if (!html) return;
+      codeLightboxInner.innerHTML = html;
+      codeLightbox.setAttribute("aria-hidden", "false");
+      requestAnimationFrame(() => codeLightbox.classList.add("visible"));
     }
 
     function activateAssistantMediaAfterSpeech(scope, item, speechToken) {
@@ -1132,13 +1157,17 @@
       const renderedIndex = currentRenderedStepIndex();
       const currentStepIndex = Math.max(0, Math.min(renderedIndex, Math.max(0, totalSteps - 1)));
       const seenSteps = Math.max(0, Math.min(step, totalSteps));
-      chatData.steps.forEach((_, index) => {
+      const stepsPerDot = 2;
+      const totalDots = Math.max(1, Math.ceil(totalSteps / stepsPerDot));
+      const currentDotIndex = Math.floor(currentStepIndex / stepsPerDot);
+      const seenDots = Math.ceil(seenSteps / stepsPerDot);
+      for (let index = 0; index < totalDots; index += 1) {
         const dot = document.createElement("span");
         dot.className = "dot";
-        if (index < seenSteps) dot.classList.add("done");
-        if (index === currentStepIndex) dot.classList.add("current");
+        if (index < seenDots) dot.classList.add("done");
+        if (index === currentDotIndex) dot.classList.add("current");
         dots.appendChild(dot);
-      });
+      }
       progressLabel.textContent = `${Math.min(seenSteps, totalSteps)} / ${totalSteps}`;
       syncSidebar();
     }
@@ -1156,7 +1185,7 @@
         return;
       }
       setButton("Continue", false);
-      setFakeInputText("Ask Sparky about Java energy...");
+      setFakeInputText("Ask Sparky about energy in code...");
     }
 
     function buildSidebar() {
@@ -1498,7 +1527,7 @@
       showWelcome();
       syncProgress();
       setButton("Start", false);
-      setFakeInputText("Ask Sparky about Java energy...");
+      setFakeInputText("Ask Sparky about energy in code...");
     }
 
     function replayMediaForStepIndex(stepIndex) {
@@ -1521,6 +1550,10 @@
           openImageFromElement(img);
           return true;
         }
+      }
+      if (item.openCodeFullscreenOnAdvance && item.code) {
+        openCodeLightbox(item.code);
+        return true;
       }
       return false;
     }
@@ -1604,37 +1637,44 @@
     imageLightbox.addEventListener("click", (event) => {
       if (event.target === imageLightbox || event.target === imageLightboxImg) closeImageLightbox();
     });
+    codeLightbox.addEventListener("click", (event) => {
+      if (event.target === codeLightbox || event.target === codeLightboxInner) closeCodeLightbox();
+    });
     function handleGlobalKeydown(event) {
       const isEditableTarget = event.target?.matches?.("input, textarea, select, [contenteditable='true'], [contenteditable='']");
-      if (imageLightbox.classList.contains("visible")) {
+      if (imageLightbox.classList.contains("visible") || codeLightbox.classList.contains("visible")) {
+        const closeFullscreenOverlay = () => {
+          closeImageLightbox();
+          closeCodeLightbox();
+        };
         if (event.key === "r" || event.key === "R") {
           event.preventDefault();
-          closeImageLightbox();
+          closeFullscreenOverlay();
           restartDemo();
         } else if (event.key === "Home") {
           event.preventDefault();
-          closeImageLightbox();
+          closeFullscreenOverlay();
           goToFirstStepAction();
         } else if (event.key === "End") {
           event.preventDefault();
-          closeImageLightbox();
+          closeFullscreenOverlay();
           goToLastStepAction();
         } else if (event.key === "Escape") {
           event.preventDefault();
-          closeImageLightbox();
+          closeFullscreenOverlay();
           continueBtn.focus({ preventScroll: true });
         } else if (event.key === "ArrowLeft" || event.key === "ArrowUp" || event.key === "PageUp" || event.key === "Backspace") {
           event.preventDefault();
-          closeImageLightbox();
+          closeFullscreenOverlay();
           goBackAction();
         } else if (event.key === " " || event.key === "ArrowRight" || event.key === "ArrowDown" || event.key === "PageDown" || event.key === "Enter" || event.key === "n" || event.key === "N") {
           event.preventDefault();
-          closeImageLightbox();
+          closeFullscreenOverlay();
           continueBtn.focus({ preventScroll: true });
           continueAction();
         } else if (event.key === "p" || event.key === "P") {
           event.preventDefault();
-          closeImageLightbox();
+          closeFullscreenOverlay();
           goBackAction();
         }
         return;
@@ -1733,6 +1773,7 @@
   </script>
 </body>
 </html>
+
 
 
 
