@@ -1,6 +1,6 @@
-﻿{
+{
     "demoTitle":  "Can AI Predict Energy-Relevant Java Waste?",
-    "model":  "Sparky - Java Energy Lens",
+    "model":  "Sparky",
     "thinkingDelay":  900,
     "messageDelay":  250,
     "streamDelayMultiplier":  3.525,
@@ -8,95 +8,100 @@
                   {
                       "role":  "user",
                       "stepNumber":  1,
-                      "content":  "Sparky, take a live assignment: inspect real Java hotspots and estimate energy-related waste using static and observability signals."
+                      "content":  "Introduce yourself. Who is Sparky?"
                   },
-                    {
-                        "role":  "assistant",
-                        "stepNumber":  2,
-                        "slide":  "Kickoff",
-                        "presentationStyle":  "popup",
-                        "deferMediaUntilSpeechDone":  true,
-                        "openImageFullscreenOnAdvance":  true,
-                        "content":  "Understood. I will inspect code, trace evidence, estimate work, and decide whether the waste is meaningful.",
-                        "media":  [
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  2,
+                      "slide":  "Meet Sparky",
+                      "presentationStyle":  "popup",
+                      "content":  "I am Sparky, your AI assistant for this analysis. I inspect Java code, connect it to runtime evidence, estimate wasted machine work, and help decide whether that waste is likely to matter.",
+                      "media":  [
                                     {
                                         "type":  "image",
-                                        "src":  "assets/chatsim/live-assignment.svg",
-                                        "caption":  "Live assignment accepted"
+                                        "src":  "assets/chatsim/sparky-intro-scan.svg",
+                                        "caption":  "Sparky introduces itself"
+                                    }
+                                ]
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  3,
+                      "slide":  "Introductions",
+                      "content":  "Wilco, please introduce yourself, explain why this topic matters to you, and tell us what evidence you brought."
+                  },
+                  {
+                      "role":  "user",
+                      "stepNumber":  4,
+                      "content":  "Frame the main question before we touch the examples."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  5,
+                      "slide":  "Research Question",
+                      "content":  "The question is simple: can AI predict energy-relevant software waste well enough to guide engineering decisions before or alongside direct measurement?"
+                  },
+                  {
+                      "role":  "user",
+                      "stepNumber":  6,
+                      "content":  "Clarify what predict means here, because that word can mislead people."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  7,
+                      "slide":  "Research Question",
+                      "content":  "Predict does not mean I can read code and output a true watt number. It means I can produce a transparent estimate of wasted work, connect that estimate to runtime evidence, and help prioritize where deeper measurement is worth doing."
+                  },
+                  {
+                      "role":  "user",
+                      "stepNumber":  8,
+                      "content":  "Show the loop from code evidence to engineering action."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  9,
+                      "slide":  "Research Question",
+                      "deferMediaUntilSpeechDone":  true,
+                      "openImageFullscreenOnAdvance":  true,
+                      "content":  "This is the operating loop for the analysis: static analysis plus observability produce an energy-relevance estimate, and that estimate is only useful if it leads to better engineering choices.",
+                      "media":  [
+                                    {
+                                        "caption":  "From code evidence to engineering conclusion",
+                                        "type":  "image",
+                                        "src":  "assets/step2.png"
                                     }
                                 ]
                   },
                   {
                       "role":  "user",
-                      "stepNumber":  3,
+                      "stepNumber":  10,
                       "content":  "State your evaluation dimensions."
                   },
                   {
                       "role":  "assistant",
-                      "stepNumber":  4,
+                      "stepNumber":  11,
                       "slide":  "Waste Classes",
                       "content":  "I will classify waste as underutilization, waiting patterns, or bottlenecks, then test whether the evidence supports a useful estimate."
                   },
                   {
                       "role":  "user",
-                      "stepNumber":  5,
-                      "content":  "Introduce yourself and ask me to introduce myself."
-                  },
-                  {
-                      "role":  "assistant",
-                      "stepNumber":  6,
-                      "slide":  "Introductions",
-                      "content":  "Hi, I am Sparky. Wilco, please introduce yourself and explain why you assigned me this question."
-                  },
-                  {
-                      "role":  "user",
-                      "stepNumber":  7,
-                      "content":  "Ask one follow-up question."
-                  },
-                  {
-                      "role":  "assistant",
-                      "stepNumber":  8,
-                      "slide":  "Introductions",
-                      "content":  "One follow-up: why should engineers care about software energy if they already optimize performance?"
-                  },
-                  {
-                      "role":  "user",
-                      "stepNumber":  9,
-                      "content":  "Frame the research question for the audience."
-                  },
-                  {
-                      "role":  "assistant",
-                      "stepNumber":  10,
-                      "slide":  "Research Question",
-                      "content":  "The question is whether AI can predict energy pressure from code by combining static evidence with runtime-style observability clues."
-                  },
-                  {
-                      "role":  "user",
-                      "stepNumber":  11,
-                      "content":  "Clarify what predict means here."
-                  },
-                  {
-                      "role":  "assistant",
                       "stepNumber":  12,
-                      "slide":  "Research Question",
-                      "openImageFullscreenOnAdvance":  true,
-                      "content":  "Not direct electrical measurement. A transparent estimate of wasted work that helps prioritize improvements.",
-                      "media":  [
-                                    {
-                                        "type":  "image",
-                                        "src":  "assets/chatsim/prediction-loop.svg",
-                                        "caption":  "Static analysis + observability -\u003e energy estimate -\u003e engineering action"
-                                    }
-                                ]
-                  },
-                  {
-                      "role":  "user",
-                      "stepNumber":  13,
-                      "content":  "Show the theoretical model I want you to use."
+                      "content":  "Map those categories to something concrete."
                   },
                   {
                       "role":  "assistant",
+                      "stepNumber":  13,
+                      "slide":  "Waste Classes",
+                      "content":  "Underutilization means capacity sits idle while still consuming resources. Waiting patterns mean wakeups, sleeps, polling, and control work dominate. Bottlenecks mean concentrated hot-path work where small improvements can collapse a large amount of repeated machine effort."
+                  },
+                  {
+                      "role":  "user",
                       "stepNumber":  14,
+                      "content":  "Now show the theoretical model you are using."
+                  },
+                  {
+                      "role":  "assistant",
+                      "stepNumber":  15,
                       "slide":  "Theoretical Model",
                       "presentationStyle":  "popup",
                       "content":  "I will use your decision model: estimate uOps, map them to equivalent active time, apply a modeled power baseline, then scale to mWh.",
@@ -110,25 +115,25 @@
                   },
                   {
                       "role":  "user",
-                      "stepNumber":  15,
+                      "stepNumber":  16,
                       "content":  "State the baseline clearly."
                   },
                   {
                       "role":  "assistant",
-                      "stepNumber":  16,
+                      "stepNumber":  17,
                       "slide":  "Baseline",
                       "content":  "Baseline: 1 GHz, 1 core, 1.2 V, with dynamic voltage and frequency scaling respected as a multiplier."
                   },
                   {
                       "role":  "user",
-                      "stepNumber":  17,
-                      "content":  "Show the energy ladder."
+                      "stepNumber":  18,
+                      "content":  "Show the energy ladder and explain where observability fits."
                   },
                   {
                       "role":  "assistant",
-                      "stepNumber":  18,
+                      "stepNumber":  19,
                       "slide":  "Energy Ladder",
-                      "content":  "Estimated work becomes estimated time, then modeled energy, then mWh, then scaled operationally to kWh and CO2e.",
+                      "content":  "Estimated work becomes estimated time, then modeled energy, then mWh, then scaled operationally to kWh and CO2e. Static analysis tells me where work exists. Observability tells me how often it runs, how idle it is, and whether it blocks, spins, or bottlenecks.",
                       "media":  [
                                     {
                                         "type":  "image",
@@ -139,36 +144,14 @@
                   },
                   {
                       "role":  "user",
-                      "stepNumber":  19,
-                      "content":  "Explain how observability changes the estimate."
-                  },
-                  {
-                      "role":  "assistant",
                       "stepNumber":  20,
-                      "slide":  "Observability",
-                      "content":  "Static analysis tells me where work exists. Observability tells me how often it runs, how idle it is, and whether it blocks, spins, or bottlenecks."
+                      "content":  "List the observability signals you care about, then take the live assignment."
                   },
                   {
-                      "role":  "user",
+                      "role":  "assistant",
                       "stepNumber":  21,
-                      "content":  "List the observability signals you care about."
-                  },
-                  {
-                      "role":  "assistant",
-                      "stepNumber":  22,
                       "slide":  "Observability",
-                      "content":  "Call frequency, concurrency, CPU usage, idle ratio, wakeups, thread states, wait time, queue depth, retries, and CI repetition."
-                  },
-                  {
-                      "role":  "user",
-                      "stepNumber":  23,
-                      "content":  "Map that to the waste classes."
-                  },
-                  {
-                      "role":  "assistant",
-                      "stepNumber":  24,
-                      "slide":  "Waste Classes",
-                      "content":  "Underutilization shows idle capacity. Waiting patterns show wakeups and sleeping loops. Bottlenecks show concentrated hot-path work and latency pressure.",
+                      "content":  "Call frequency, concurrency, CPU usage, idle ratio, wakeups, thread states, wait time, queue depth, retries, and CI repetition. With that framing in place, I am ready to inspect real Java hotspots and estimate energy-related waste using static and observability signals.",
                       "media":  [
                                     {
                                         "type":  "image",
@@ -179,12 +162,12 @@
                   },
                   {
                       "role":  "user",
-                      "stepNumber":  25,
+                      "stepNumber":  22,
                       "content":  "Find the strongest bottleneck example first."
                   },
                   {
                       "role":  "assistant",
-                      "stepNumber":  26,
+                      "stepNumber":  23,
                       "slide":  "OpenJDK ThreadMXBean",
                       "presentationStyle":  "popup",
                       "content":  "Best candidate: OpenJDK ThreadMXBean on Linux. It has strong provenance, local code validation, and published proof.",
@@ -198,12 +181,12 @@
                   },
                   {
                       "role":  "user",
-                      "stepNumber":  27,
+                      "stepNumber":  24,
                       "content":  "Show me the upstream context."
                   },
                   {
                       "role":  "assistant",
-                      "stepNumber":  28,
+                      "stepNumber":  25,
                       "slide":  "OpenJDK Context",
                       "content":  "Here is the issue and article context used for the story.",
                       "mediaColumns":  2,
@@ -224,12 +207,12 @@
                   },
                   {
                       "role":  "user",
-                      "stepNumber":  29,
+                      "stepNumber":  26,
                       "content":  "Trace the old implementation path."
                   },
                   {
                       "role":  "assistant",
-                      "stepNumber":  30,
+                      "stepNumber":  27,
                       "slide":  "OpenJDK Old Path",
                       "content":  "Before: procfs open, read, parse, convert, close. That is repeated kernel-facing control work for each query.",
                       "code":  [
@@ -245,12 +228,12 @@
                   },
                   {
                       "role":  "user",
-                      "stepNumber":  31,
+                      "stepNumber":  28,
                       "content":  "Label the waste type."
                   },
                   {
                       "role":  "assistant",
-                      "stepNumber":  32,
+                      "stepNumber":  29,
                       "slide":  "OpenJDK Old Path",
                       "content":  "This is a bottleneck path with excess syscall, VFS, parsing, and locking overhead.",
                       "code":  [
@@ -268,12 +251,12 @@
                   },
                   {
                       "role":  "user",
-                      "stepNumber":  33,
+                      "stepNumber":  30,
                       "content":  "Trace the improved implementation path."
                   },
                   {
                       "role":  "assistant",
-                      "stepNumber":  34,
+                      "stepNumber":  31,
                       "slide":  "OpenJDK New Path",
                       "content":  "After: get thread CPU clock id, switch to VIRT, then read time through clock_gettime. Far less control-path work.",
                       "code":  [
@@ -289,12 +272,12 @@
                   },
                   {
                       "role":  "user",
-                      "stepNumber":  35,
+                      "stepNumber":  32,
                       "content":  "Estimate with the model."
                   },
                   {
                       "role":  "assistant",
-                      "stepNumber":  36,
+                      "stepNumber":  33,
                       "slide":  "OpenJDK Before vs After",
                       "presentationStyle":  "popup",
                       "content":  "Static signal says fewer syscalls, less parsing, less glue code. Observability proof says the path became dramatically cheaper.\n\nBefore: 11.186 us/op\nAfter: 0.279 us/op\nAbout 97.5% lower latency.",
@@ -308,23 +291,23 @@
                   },
                   {
                       "role":  "user",
-                      "stepNumber":  37,
+                      "stepNumber":  34,
                       "content":  "State the research conclusion."
                   },
                   {
                       "role":  "assistant",
-                      "stepNumber":  38,
+                      "stepNumber":  35,
                       "slide":  "OpenJDK Conclusion",
                       "content":  "Same API result, much less machine work. That is exactly the kind of bottleneck reduction this model should detect."
                   },
                   {
                       "role":  "user",
-                      "stepNumber":  39,
+                      "stepNumber":  36,
                       "content":  "Show how you would annotate this inline for energy interpretation."
                   },
                   {
                       "role":  "assistant",
-                      "stepNumber":  40,
+                      "stepNumber":  37,
                       "slide":  "OpenJDK Energy View",
                       "content":  "I will annotate the code with modeled work, not claimed measurements.",
                       "code":  [
@@ -342,23 +325,23 @@
                   },
                   {
                       "role":  "user",
-                      "stepNumber":  41,
+                      "stepNumber":  38,
                       "content":  "Explain the conversion."
                   },
                   {
                       "role":  "assistant",
-                      "stepNumber":  42,
+                      "stepNumber":  39,
                       "slide":  "Conversion Rule",
                       "content":  "Those work estimates become equivalent active time under the baseline model, then modeled mWh, then scaled by execution count."
                   },
                   {
                       "role":  "user",
-                      "stepNumber":  43,
+                      "stepNumber":  40,
                       "content":  "Now find an application-level bottleneck with the same pattern."
                   },
                   {
                       "role":  "assistant",
-                      "stepNumber":  44,
+                      "stepNumber":  41,
                       "slide":  "JSONObject.toString()",
                       "presentationStyle":  "popup",
                       "content":  "JSON-java JSONObject.toString() is a strong match: same contract, less helper overhead, strong measured improvement.",
@@ -380,12 +363,12 @@
                   },
                   {
                       "role":  "user",
-                      "stepNumber":  45,
+                      "stepNumber":  42,
                       "content":  "Trace what changed."
                   },
                   {
                       "role":  "assistant",
-                      "stepNumber":  46,
+                      "stepNumber":  43,
                       "slide":  "JSONObject.toString()",
                       "content":  "StringWriter was replaced with StringBuilderWriter, and initial-capacity sizing was added to reduce repeated buffer growth.",
                       "code":  [
@@ -401,12 +384,12 @@
                   },
                   {
                       "role":  "user",
-                      "stepNumber":  47,
+                      "stepNumber":  44,
                       "content":  "Label the waste."
                   },
                   {
                       "role":  "assistant",
-                      "stepNumber":  48,
+                      "stepNumber":  45,
                       "slide":  "JSONObject.toString()",
                       "content":  "This is a hot-path bottleneck: repeated serialization, repeated tiny writes, synchronization cost, and avoidable resizing.",
                       "code":  [
@@ -424,12 +407,12 @@
                   },
                   {
                       "role":  "user",
-                      "stepNumber":  49,
+                      "stepNumber":  46,
                       "content":  "Validate the proof."
                   },
                   {
                       "role":  "assistant",
-                      "stepNumber":  50,
+                      "stepNumber":  47,
                       "slide":  "JSONObject.toString() Proof",
                       "content":  "This proof run reports 19334.588 ms before and 12991.696 ms after, a 32.81% improvement.",
                       "mediaColumns":  2,
@@ -448,23 +431,23 @@
                   },
                   {
                       "role":  "user",
-                      "stepNumber":  51,
+                      "stepNumber":  48,
                       "content":  "Now inspect a parsing-heavy example."
                   },
                   {
                       "role":  "assistant",
-                      "stepNumber":  52,
+                      "stepNumber":  49,
                       "slide":  "JSON XML Coercion",
                       "content":  "JSON-java XML coercion is a good parsing bottleneck: repeated conversion logic inside the recursive parse path."
                   },
                   {
                       "role":  "user",
-                      "stepNumber":  53,
+                      "stepNumber":  50,
                       "content":  "Explain the static signal."
                   },
                   {
                       "role":  "assistant",
-                      "stepNumber":  54,
+                      "stepNumber":  51,
                       "slide":  "JSON XML Coercion",
                       "content":  "Repeated stringToValue, repeated numeric coercion, repeated accumulation. The path compounds on token-heavy XML documents.",
                       "code":  [
@@ -482,23 +465,23 @@
                   },
                   {
                       "role":  "user",
-                      "stepNumber":  55,
+                      "stepNumber":  52,
                       "content":  "Explain scaling here."
                   },
                   {
                       "role":  "assistant",
-                      "stepNumber":  56,
+                      "stepNumber":  53,
                       "slide":  "JSON XML Coercion",
                       "content":  "Per-token cost looks tiny, but on large XML workloads the branch family accumulates into millions of operations."
                   },
                   {
                       "role":  "user",
-                      "stepNumber":  57,
+                      "stepNumber":  54,
                       "content":  "Show the proof view for XML coercion."
                   },
                   {
                       "role":  "assistant",
-                      "stepNumber":  58,
+                      "stepNumber":  55,
                       "slide":  "JSON XML Coercion Proof",
                       "content":  "The proof run reports 13390.245 ms before and 11775.666 ms after, a 12.06% improvement. The flamegraphs make the branch family visible before and after the change.",
                       "mediaColumns":  2,
@@ -517,12 +500,12 @@
                   },
                   {
                       "role":  "user",
-                      "stepNumber":  59,
+                      "stepNumber":  56,
                       "content":  "Now find a waiting-pattern example, not a CPU bottleneck."
                   },
                   {
                       "role":  "assistant",
-                      "stepNumber":  60,
+                      "stepNumber":  57,
                       "slide":  "Commons IO Tailer",
                       "presentationStyle":  "popup",
                       "content":  "Commons IO Tailer is the clearest waiting-pattern case: dedicated thread, polling loop, repeated sleep and size checks.",
@@ -543,12 +526,12 @@
                   },
                   {
                       "role":  "user",
-                      "stepNumber":  61,
+                      "stepNumber":  58,
                       "content":  "Explain why this matters."
                   },
                   {
                       "role":  "assistant",
-                      "stepNumber":  62,
+                      "stepNumber":  59,
                       "slide":  "Commons IO Tailer",
                       "content":  "This is underutilization plus waiting overhead. The system spends energy waking up to mostly discover nothing changed.",
                       "code":  [
@@ -566,12 +549,12 @@
                   },
                   {
                       "role":  "user",
-                      "stepNumber":  63,
+                      "stepNumber":  60,
                       "content":  "State the observability connection."
                   },
                   {
                       "role":  "assistant",
-                      "stepNumber":  64,
+                      "stepNumber":  61,
                       "slide":  "Commons IO Tailer",
                       "content":  "This is where observability matters most: idle ratio, wakeup frequency, and long-lived sleepers confirm the waste pattern.",
                       "mediaColumns":  2,
@@ -590,12 +573,12 @@
                   },
                   {
                       "role":  "user",
-                      "stepNumber":  65,
+                      "stepNumber":  62,
                       "content":  "Project how the modeled numbers scale operationally."
                   },
                   {
                       "role":  "assistant",
-                      "stepNumber":  66,
+                      "stepNumber":  63,
                       "slide":  "Operational Scaling",
                       "content":  "Per-call mWh is only the first layer. Multiply by requests, threads, services, runners, and build frequency to reach kWh.",
                       "media":  [
@@ -608,12 +591,12 @@
                   },
                   {
                       "role":  "user",
-                      "stepNumber":  67,
+                      "stepNumber":  64,
                       "content":  "Take it to carbon."
                   },
                   {
                       "role":  "assistant",
-                      "stepNumber":  68,
+                      "stepNumber":  65,
                       "slide":  "Carbon Scaling",
                       "content":  "Once scaled to kWh, apply grid carbon intensity to estimate CO2e. Repeated waste can become kilograms or metric tons over time.",
                       "media":  [
@@ -626,23 +609,23 @@
                   },
                   {
                       "role":  "user",
-                      "stepNumber":  69,
+                      "stepNumber":  66,
                       "content":  "State the key lesson."
                   },
                   {
                       "role":  "assistant",
-                      "stepNumber":  70,
+                      "stepNumber":  67,
                       "slide":  "Lesson",
                       "content":  "Tiny code waste is not tiny once it becomes the default behavior of a whole platform."
                   },
                   {
                       "role":  "user",
-                      "stepNumber":  71,
+                      "stepNumber":  68,
                       "content":  "Summarize what AI is predicting across these examples."
                   },
                   {
                       "role":  "assistant",
-                      "stepNumber":  72,
+                      "stepNumber":  69,
                       "slide":  "Synthesis",
                       "content":  "AI is predicting where work is wasted: concentrated bottlenecks, repetitive parsing, idle polling, and underutilized background machinery.",
                       "media":  [
@@ -655,45 +638,45 @@
                   },
                   {
                       "role":  "user",
-                      "stepNumber":  73,
+                      "stepNumber":  70,
                       "content":  "State the combined method."
                   },
                   {
                       "role":  "assistant",
-                      "stepNumber":  74,
+                      "stepNumber":  71,
                       "slide":  "Synthesis",
                       "content":  "Static analysis identifies likely waste. Observability validates frequency, idleness, and pressure. The model converts that into estimated energy significance."
                   },
                   {
                       "role":  "user",
-                      "stepNumber":  75,
+                      "stepNumber":  72,
                       "content":  "Turn the findings into an engineering playbook."
                   },
                   {
                       "role":  "assistant",
-                      "stepNumber":  76,
+                      "stepNumber":  73,
                       "slide":  "Engineering Playbook",
                       "content":  "Remove unnecessary work, reduce waiting, right-size memory, prioritize I/O and control-path fixes, and challenge hot-path repetition."
                   },
                   {
                       "role":  "user",
-                      "stepNumber":  77,
+                      "stepNumber":  74,
                       "content":  "Connect that to the three waste classes."
                   },
                   {
                       "role":  "assistant",
-                      "stepNumber":  78,
+                      "stepNumber":  75,
                       "slide":  "Engineering Playbook",
                       "content":  "Bottlenecks need work reduction. Waiting patterns need wakeup reduction. Underutilization needs consolidation and less idle machinery."
                   },
                   {
                       "role":  "user",
-                      "stepNumber":  79,
+                      "stepNumber":  76,
                       "content":  "Now operationalize this in delivery."
                   },
                   {
                       "role":  "assistant",
-                      "stepNumber":  80,
+                      "stepNumber":  77,
                       "slide":  "Delivery Rule",
                       "presentationStyle":  "popup",
                       "content":  "Use AI to annotate PRs, flag suspected waste, attach modeled energy comments, and run energy-aware checks beside performance checks.",
@@ -707,57 +690,57 @@
                   },
                   {
                       "role":  "user",
-                      "stepNumber":  81,
+                      "stepNumber":  78,
                       "content":  "State the governance rule."
                   },
                   {
                       "role":  "assistant",
-                      "stepNumber":  82,
+                      "stepNumber":  79,
                       "slide":  "Delivery Rule",
                       "content":  "Make less wasted compute a default quality bar in code review and CI/CD."
                   },
                   {
                       "role":  "user",
-                      "stepNumber":  83,
+                      "stepNumber":  80,
                       "content":  "Give the final verdict from this live assignment."
                   },
                   {
                       "role":  "assistant",
-                      "stepNumber":  84,
+                      "stepNumber":  81,
                       "slide":  "Final Verdict",
                       "content":  "AI cannot infer exact watts from code alone, but it can predict energy-relevant waste well enough to guide better decisions."
                   },
                   {
                       "role":  "user",
-                      "stepNumber":  85,
-                      "content":  "Close on the audience question."
+                      "stepNumber":  82,
+                      "content":  "Close on the main question."
                   },
                   {
                       "role":  "assistant",
-                      "stepNumber":  86,
+                      "stepNumber":  83,
                       "slide":  "Final Verdict",
                       "content":  "Yes: by combining static evidence with observability, AI can predict where code wastes energy through underutilization, waiting patterns, and bottlenecks."
                   },
                   {
                       "role":  "user",
-                      "stepNumber":  87,
+                      "stepNumber":  84,
                       "content":  "Give the final line."
                   },
                   {
                       "role":  "assistant",
-                      "stepNumber":  88,
+                      "stepNumber":  85,
                       "slide":  "Closing Line",
                       "presentationStyle":  "popup",
                       "content":  "Same behavior, less work, lower cost, lower energy, better systems. That is why we should care."
                   },
                   {
                       "role":  "user",
-                      "stepNumber":  89,
+                      "stepNumber":  86,
                       "content":  "End with short Q and A."
                   },
                   {
                       "role":  "assistant",
-                      "stepNumber":  90,
+                      "stepNumber":  87,
                       "slide":  "Short Q and A",
                       "presentationStyle":  "popup",
                       "content":  "Q: Are these watt measurements?\nA: No. They are transparent modeled estimates used for prioritization.\n\nQ: Why combine static and observability signals?\nA: Static finds likely waste. Observability tells us whether it matters in practice.\n\nQ: What should teams do first?\nA: Start with hot helper paths, polling loops, repeated parsing, and background machinery."

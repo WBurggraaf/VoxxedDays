@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ChatSim Demo</title>
+  <title>Sparky</title>
   <style>
     :root {
       --bg: #212121;
@@ -36,10 +36,13 @@
     main { flex: 1; display: flex; flex-direction: column; min-width: 0; position: relative; }
     header { min-height: 60px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 10px 18px; }
     .header-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
-    .pill { border: 1px solid var(--border); padding: 9px 14px; border-radius: 999px; }
     .menu-wrap { position: relative; }
     .menu-panel { position: absolute; top: calc(100% + 8px); right: 0; min-width: 220px; padding: 10px; border-radius: 16px; border: 1px solid var(--border); background: rgba(17,19,21,.98); box-shadow: 0 12px 30px rgba(0,0,0,.28); display: none; z-index: 35; }
     .menu-panel.visible { display: grid; gap: 8px; }
+    .menu-field { display: grid; gap: 6px; padding: 4px 2px; }
+    .menu-label { color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+    .menu-select { width: 100%; border: 1px solid var(--border); background: rgba(255,255,255,.04); color: var(--text); border-radius: 12px; padding: 10px 12px; font: inherit; }
+    .menu-select:disabled { color: var(--muted); cursor: not-allowed; opacity: .75; }
     .menu-status { padding: 4px 6px 0; color: var(--muted); font-size: 12px; }
     #messages { flex: 1; overflow: auto; padding: 24px; }
     .welcome { min-height: 100%; display: grid; place-items: center; text-align: center; color: var(--muted); }
@@ -100,28 +103,28 @@
     .tok-operator { color: #ffb86b; }
     .tok-plain { color: #dce8f2; }
     .media-caption, .code-caption { margin-top: 8px; color: var(--muted); font-size: 14px; }
-    /* â”€â”€ Diff line colouring â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    /* ── Diff line colouring ─────────────────────────── */
     .diff-add-line { display: block; background: rgba(16,163,127,.13); border-left: 2px solid rgba(16,163,127,.55); }
     .diff-del-line { display: block; background: rgba(220,60,60,.11); border-left: 2px solid rgba(220,80,80,.5); }
     .diff-add-sym  { color: #53cdab; font-weight: 700; user-select: none; }
     .diff-del-sym  { color: #ff7a7a; font-weight: 700; user-select: none; }
-    /* â”€â”€ File / repo bar â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    /* ── File / repo bar ─────────────────────────────── */
     .code-file-bar { display: flex; align-items: center; gap: 8px; padding: 6px 14px; border-bottom: 1px solid rgba(255,255,255,.06); background: rgba(10,14,18,.72); font-size: 12px; flex-wrap: wrap; }
     .code-file-path { color: #a8c7e0; font-family: Consolas, "Courier New", monospace; font-size: 12px; opacity: .88; }
     .code-repo-tag { margin-left: auto; display: inline-flex; align-items: center; gap: 4px; padding: 2px 9px; border-radius: 999px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.09); color: var(--muted); font-size: 11px; font-weight: 600; letter-spacing: .02em; white-space: nowrap; }
-    /* â”€â”€ Why / energy panel â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    /* ── Why / energy panel ──────────────────────────── */
     .code-why { display: flex; gap: 10px; align-items: flex-start; padding: 10px 14px; background: rgba(16,163,127,.07); border-top: 1px solid rgba(16,163,127,.15); }
     .code-why-icon { font-size: 15px; line-height: 1.4; flex-shrink: 0; }
     .code-why-body { flex: 1; min-width: 0; }
     .code-why-label { font-size: 10px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: #6fe3b8; margin-bottom: 4px; }
     .code-why-text { font-size: 13px; line-height: 1.55; color: #c8d8d0; }
     .code-energy { display: inline-flex; align-items: center; gap: 4px; padding: 2px 9px; border-radius: 999px; background: rgba(255,168,0,.1); border: 1px solid rgba(255,168,0,.22); color: #ffc84a; font-size: 11px; font-weight: 700; margin-top: 5px; }
-    /* â”€â”€ About / intro panel â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    /* ── About / intro panel ─────────────────────────── */
     .code-intro { display: flex; gap: 9px; align-items: flex-start; padding: 9px 14px; background: rgba(124,199,255,.05); border-bottom: 1px solid rgba(124,199,255,.10); }
     .code-intro-icon { font-size: 14px; flex-shrink: 0; line-height: 1.5; }
     .code-intro-label { font-size: 10px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: #7cc7ff; margin-bottom: 3px; }
     .code-intro-text { font-size: 13px; line-height: 1.55; color: #b8c8d8; }
-    /* â”€â”€ Side-by-side split diff â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    /* ── Side-by-side split diff ─────────────────────── */
     .diff-split-wrap { overflow-x: auto; }
     .diff-split-headers { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid rgba(255,255,255,.08); }
     .diff-split-hdr { padding: 5px 14px; font-size: 11px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
@@ -198,7 +201,7 @@
 </head>
 <body>
   <aside>
-    <div>ChatSim Presentation</div>
+    <div>Sparky</div>
     <div class="sidebar-list" id="sidebar"></div>
     <div class="sidebar-timer" id="sidebar-timer">00:00</div>
   </aside>
@@ -206,10 +209,13 @@
     <header>
       <div id="demo-title"></div>
       <div class="header-actions">
-        <div class="pill" id="model-label"></div>
         <div class="menu-wrap">
           <button class="toolbar-btn" id="tools-menu-btn" type="button">Tools</button>
           <div class="menu-panel" id="tools-menu">
+            <label class="menu-field" for="voice-select">
+              <span class="menu-label">Voice</span>
+              <select class="menu-select" id="voice-select"></select>
+            </label>
             <button class="toolbar-btn" id="edit-mode-btn" type="button">Edit Mode</button>
             <button class="toolbar-btn" id="save-json-btn" type="button">Export JSON</button>
             <div class="menu-status" id="save-status">Loading data...</div>
@@ -225,7 +231,7 @@
     </div>
     <footer>
       <div class="progress" id="progress"><div class="dots" id="dots"></div><span id="progress-label"></span></div>
-      <div class="controls" id="controls"><span class="fake-input" id="fake-input">Ask ChatGPT anything...</span><button class="primary" id="continue-btn" type="button">Start Demo</button></div>
+      <div class="controls" id="controls"><span class="fake-input" id="fake-input">Ask Sparky about Java energy...</span><button class="primary" id="continue-btn" type="button">Start</button></div>
       <div class="hint">Press Space or Right Arrow to advance. Press R to restart.</div>
     </footer>
     <div class="editor-overlay" id="editor-overlay">
@@ -266,6 +272,7 @@
     const mainEl = document.querySelector("main");
     const toolsMenuBtn = document.getElementById("tools-menu-btn");
     const toolsMenu = document.getElementById("tools-menu");
+    const voiceSelect = document.getElementById("voice-select");
     const editModeBtn = document.getElementById("edit-mode-btn");
     const saveJsonBtn = document.getElementById("save-json-btn");
     const saveStatus = document.getElementById("save-status");
@@ -300,8 +307,10 @@
     let completedSpeechToken = 0;
     let currentUtterance = null;
     let selectedVoice = null;
+    let preferredVoiceKey = null;
     let speakerWidgetToken = 0;
     let pendingFullscreenStepIndex = null;
+    const VOICE_STORAGE_KEY = "chatsim.preferredVoice";
     const clearTimer = (timer) => { if (timer) clearTimeout(timer); return null; };
     const setFakeInputText = (text, typing = false) => {
       fakeInput.textContent = text;
@@ -362,9 +371,11 @@
     }
     const promptCharDelay = (char) => /\s/.test(char) ? 55 : /[,.!?]/.test(char) ? 170 : 95;
     const speechSupported = "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
+    const FEMALE_VOICE_NAME_RE = /female|aria|jenny|sara|libby|sonia|natasha|ava|susan|zira|hazel|catherine|serena|emma|olivia|michelle/i;
+    const FEMALE_VOICE_LANG_RE = /^en/i;
 
     function showSpeakerWidget(token, item) {
-      if (!speakerWidget || item?.presentationStyle === "popup") return;
+      if (!speakerWidget) return;
       speakerWidgetToken = token;
       speakerWidget.classList.add("visible", "speaking");
       speakerWidget.setAttribute("aria-hidden", "false");
@@ -392,13 +403,13 @@
       currentInputId += 1;
       userTypeTimer = clearTimer(userTypeTimer);
       userSubmitTimer = clearTimer(userSubmitTimer);
-      if (resetInput) setFakeInputText("Ask ChatGPT anything...");
+      if (resetInput) setFakeInputText("Ask Sparky about Java energy...");
       else fakeInput.classList.remove("typing");
     }
 
     function completeUserPrompt(item, stepIndex, simulationId) {
       if (simulationId !== currentInputId) return;
-      setFakeInputText("Ask ChatGPT anything...");
+      setFakeInputText("Ask Sparky about Java energy...");
       appendUser(item.content, stepIndex);
       step += 1;
       appState = State.IDLE;
@@ -430,15 +441,67 @@
       userTypeTimer = setTimeout(tick, 220);
     }
 
+    function voiceLooksFemale(voice) {
+      return !!voice && FEMALE_VOICE_NAME_RE.test(`${voice.name || ""} ${voice.voiceURI || ""}`);
+    }
+
+    function voiceKey(voice) {
+      if (!voice) return "";
+      return `${voice.name || ""}||${voice.lang || ""}||${voice.voiceURI || ""}`;
+    }
+
+    function labelVoice(voice) {
+      if (!voice) return "Auto";
+      const localSuffix = voice.localService ? " local" : "";
+      return `${voice.name} (${voice.lang}${localSuffix})`;
+    }
+
+    function getAvailableVoices() {
+      if (!speechSupported) return [];
+      return window.speechSynthesis.getVoices().filter((voice) => FEMALE_VOICE_LANG_RE.test(voice.lang) && voiceLooksFemale(voice));
+    }
+
     function selectPreferredVoice() {
-      if (!speechSupported) return null;
-      const voices = window.speechSynthesis.getVoices();
+      const voices = getAvailableVoices();
       if (!voices.length) return null;
-      return voices.find((voice) => /microsoft|edge/i.test(voice.name) && /female|aria|jenny|sara|libby|sonia|natasha|ava/i.test(voice.name) && /^en/i.test(voice.lang))
-        || voices.find((voice) => /^en/i.test(voice.lang) && /female|aria|jenny|sara|libby|sonia|natasha|ava/i.test(voice.name))
-        || voices.find((voice) => /microsoft|edge/i.test(voice.name) && /^en/i.test(voice.lang))
-        || voices.find((voice) => /^en/i.test(voice.lang))
-        || voices[0];
+      if (preferredVoiceKey) {
+        const exact = voices.find((voice) => voiceKey(voice) === preferredVoiceKey);
+        if (exact) return exact;
+      }
+      return voices.find((voice) => voice.localService && /jenny/i.test(`${voice.name || ""} ${voice.voiceURI || ""}`) && FEMALE_VOICE_LANG_RE.test(voice.lang))
+        || voices.find((voice) => /jenny/i.test(`${voice.name || ""} ${voice.voiceURI || ""}`) && FEMALE_VOICE_LANG_RE.test(voice.lang))
+        || voices.find((voice) => voice.localService && /aria/i.test(`${voice.name || ""} ${voice.voiceURI || ""}`) && FEMALE_VOICE_LANG_RE.test(voice.lang))
+        || voices.find((voice) => /aria/i.test(`${voice.name || ""} ${voice.voiceURI || ""}`) && FEMALE_VOICE_LANG_RE.test(voice.lang))
+        || voices.find((voice) => voice.localService && /microsoft|edge/i.test(voice.name) && FEMALE_VOICE_LANG_RE.test(voice.lang) && voiceLooksFemale(voice))
+        || voices.find((voice) => voice.localService && FEMALE_VOICE_LANG_RE.test(voice.lang) && voiceLooksFemale(voice))
+        || voices.find((voice) => /microsoft|edge/i.test(voice.name) && FEMALE_VOICE_LANG_RE.test(voice.lang) && voiceLooksFemale(voice))
+        || voices.find((voice) => FEMALE_VOICE_LANG_RE.test(voice.lang) && voiceLooksFemale(voice))
+        || null;
+    }
+
+    function refreshVoiceSelector() {
+      if (!voiceSelect) return;
+      if (!speechSupported) {
+        voiceSelect.innerHTML = `<option value="">Speech unavailable</option>`;
+        voiceSelect.disabled = true;
+        return;
+      }
+      const voices = getAvailableVoices();
+      const options = [`<option value="">Auto (${labelVoice(selectPreferredVoice())})</option>`]
+        .concat(voices.map((voice) => `<option value="${attr(voiceKey(voice))}">${esc(labelVoice(voice))}</option>`));
+      voiceSelect.innerHTML = options.join("");
+      voiceSelect.disabled = voices.length === 0;
+      voiceSelect.value = preferredVoiceKey && voices.some((voice) => voiceKey(voice) === preferredVoiceKey) ? preferredVoiceKey : "";
+    }
+
+    function applyPreferredVoice(nextKey) {
+      preferredVoiceKey = nextKey || null;
+      if (preferredVoiceKey) localStorage.setItem(VOICE_STORAGE_KEY, preferredVoiceKey);
+      else localStorage.removeItem(VOICE_STORAGE_KEY);
+      selectedVoice = selectPreferredVoice();
+      refreshVoiceSelector();
+      const currentLabel = selectedVoice ? labelVoice(selectedVoice) : "No matching voice";
+      updateSaveStatus(`Voice: ${currentLabel}`, true);
     }
 
     function stripSpeechText(text = "") {
@@ -470,6 +533,21 @@
       window.speechSynthesis.cancel();
     }
 
+    function isAssistantSpeechActive() {
+      return !!currentUtterance && speechSupported && completedSpeechToken !== activeSpeechToken;
+    }
+
+    function refreshPostSpeechUi(token) {
+      if (activeSpeechToken !== token) return;
+      currentUtterance = null;
+      if (appState === State.POPUP) return;
+      if (step >= (chatData?.steps?.length || 0)) {
+        completeDemo();
+        return;
+      }
+      if (appState === State.IDLE || appState === State.COMPLETE) syncInputState();
+    }
+
     function speakAssistantText(item) {
       const speechText = stripSpeechText(item.content || "");
       const token = ++activeSpeechToken;
@@ -483,7 +561,8 @@
         utterance.voice = selectedVoice;
         utterance.lang = selectedVoice.lang;
       } else {
-        utterance.lang = "en-US";
+        hideSpeakerWidget(token);
+        return token;
       }
       utterance.rate = estimateSpeechRate(item.content || "");
       utterance.pitch = 1;
@@ -493,10 +572,13 @@
         completedSpeechToken = token;
         hideSpeakerWidget(token);
         document.dispatchEvent(new CustomEvent("assistant-speech-done", { detail: { token } }));
+        refreshPostSpeechUi(token);
       };
       utterance.onerror = () => {
         if (activeSpeechToken !== token) return;
+        completedSpeechToken = token;
         hideSpeakerWidget(token);
+        refreshPostSpeechUi(token);
       };
       currentUtterance = utterance;
       window.speechSynthesis.speak(utterance);
@@ -806,29 +888,29 @@
         const isDiff = (block.content || "").split("\n").some(l =>
           (l.startsWith("+") && !l.startsWith("+++")) || (l.startsWith("-") && !l.startsWith("---")));
 
-        // â”€â”€ Header: language pill + caption â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+        // ── Header: language pill + caption ──────────────
         const langPill = lang ? `<span class="code-language">${esc(lang)}</span>` : "";
         const captionText = block.caption ? `<span class="code-caption">${esc(block.caption)}</span>` : "";
         const header = (langPill || captionText)
           ? `<div class="code-header">${langPill}<span style="flex:1;min-width:0">${captionText}</span></div>`
           : "";
 
-        // â”€â”€ File / repo bar â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+        // ── File / repo bar ───────────────────────────────
         const filePart = block.file ? `${FILE_ICON}<span class="code-file-path">${esc(block.file)}</span>` : "";
         const repoPart = block.repo ? `<span class="code-repo-tag">Repo: ${esc(block.repo)}</span>` : "";
         const fileBar = (filePart || repoPart) ? `<div class="code-file-bar">${filePart}${repoPart}</div>` : "";
 
-        // â”€â”€ About / intro panel (for non-diff context code) â”€â”€
+        // ── About / intro panel (for non-diff context code) ──
         const introHtml = block.intro
           ? `<div class="code-intro"><div class="code-intro-icon">INFO</div><div><div class="code-intro-label">About this code</div><div class="code-intro-text">${esc(block.intro)}</div></div></div>`
           : "";
 
-        // â”€â”€ Code body: split diff or plain â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+        // ── Code body: split diff or plain ────────────────
         const codeBody = isDiff
           ? renderDiffSplit(block.content || "", lang)
           : `<pre><code>${highlightCode(block.content || "", lang)}</code></pre>`;
 
-        // â”€â”€ Why / energy panel â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+        // ── Why / energy panel ────────────────────────────
         const energyBadge = block.energySaving
           ? `<div class="code-energy">Energy: ${esc(block.energySaving)}</div>` : "";
         const whyHtml = block.why
@@ -1046,35 +1128,35 @@
 
     function syncProgress() {
       dots.innerHTML = "";
-      const userStepIndexes = chatData.steps
-        .map((item, index) => item.role === "user" ? index : -1)
-        .filter((index) => index >= 0);
-      const seenUsers = chatData.steps.slice(0, step).filter((item) => item.role === "user").length;
-      let currentUserIndex = Math.min(seenUsers, Math.max(0, userStepIndexes.length - 1));
+      const totalSteps = chatData.steps.length;
       const renderedIndex = currentRenderedStepIndex();
-      const renderedUserIndex = userStepIndexes.findIndex((index) => index === renderedIndex);
-      if (renderedUserIndex >= 0) currentUserIndex = renderedUserIndex;
-      userStepIndexes.forEach((_, userIndex) => {
+      const currentStepIndex = Math.max(0, Math.min(renderedIndex, Math.max(0, totalSteps - 1)));
+      const seenSteps = Math.max(0, Math.min(step, totalSteps));
+      chatData.steps.forEach((_, index) => {
         const dot = document.createElement("span");
         dot.className = "dot";
-        if (userIndex < seenUsers) dot.classList.add("done");
-        if (userIndex === currentUserIndex) dot.classList.add("current");
+        if (index < seenSteps) dot.classList.add("done");
+        if (index === currentStepIndex) dot.classList.add("current");
         dots.appendChild(dot);
       });
-      const users = chatData.steps.filter((item) => item.role === "user").length;
-      progressLabel.textContent = `${seenUsers} / ${users}`;
+      progressLabel.textContent = `${Math.min(seenSteps, totalSteps)} / ${totalSteps}`;
       syncSidebar();
     }
 
     function syncInputState() {
       if (appState === State.POPUP) return;
+      if (isAssistantSpeechActive()) {
+        setButton("Continue", false);
+        setFakeInputText("Sparky Responding...");
+        return;
+      }
       if (step >= chatData.steps.length) {
         setButton("Complete", true);
         setFakeInputText("Demo complete");
         return;
       }
       setButton("Continue", false);
-      setFakeInputText("Ask ChatGPT anything...");
+      setFakeInputText("Ask Sparky about Java energy...");
     }
 
     function buildSidebar() {
@@ -1090,29 +1172,28 @@
     }
 
     function showWelcome() {
-      messages.innerHTML = `<div class="welcome"><div><h2>What can I help with?</h2><p>Press <strong>Start Demo</strong> to begin the conversation.</p></div></div>`;
+      messages.innerHTML = `<div class="welcome"><div><h2>Sparky is ready</h2><p>Press <strong>Start</strong> to begin.</p></div></div>`;
     }
 
     function showDemoPicker(demos) {
-      setButton("Select a Demo", true);
-      setFakeInputText("Choose a demo to begin...");
+      setButton("Select a Flow", true);
+      setFakeInputText("Choose a flow to begin...");
       const cards = demos.map((d, i) => `
         <button class="demo-card" type="button" data-demo-index="${i}">
-          <div class="demo-card-title">${esc(d.demoTitle || `Demo ${i + 1}`)}</div>
+          <div class="demo-card-title">${esc(d.demoTitle || `Flow ${i + 1}`)}</div>
           <div class="demo-card-meta">${esc(d.model || "")} &middot; ${d.steps?.length ?? 0} steps</div>
         </button>`).join("");
-      messages.innerHTML = `<div class="demo-picker"><div class="demo-picker-inner"><h2>Select a Demo</h2><p>Choose which presentation to run.</p><div class="demo-cards">${cards}</div></div></div>`;
+      messages.innerHTML = `<div class="demo-picker"><div class="demo-picker-inner"><h2>Select a Flow</h2><p>Choose which flow to run.</p><div class="demo-cards">${cards}</div></div></div>`;
       messages.querySelectorAll(".demo-card").forEach(btn => {
         btn.addEventListener("click", () => {
           chatData = demos[Number(btn.dataset.demoIndex)];
           document.getElementById("demo-title").textContent = chatData.demoTitle;
-          document.getElementById("model-label").textContent = chatData.model;
-          updateSaveStatus(`Loaded demo ${Number(btn.dataset.demoIndex) + 1}`, true);
+          updateSaveStatus(`Loaded flow ${Number(btn.dataset.demoIndex) + 1}`, true);
           buildSidebar();
           showWelcome();
           renderPresentationTimer();
           syncProgress();
-          setButton("Start Demo", false);
+          setButton("Start", false);
         });
       });
     }
@@ -1155,7 +1236,7 @@
       activeAssistantContentEl = null;
       appState = State.THINKING;
       setButton("...", true);
-      setFakeInputText(`${chatData.model} is thinking...`);
+      setFakeInputText("Sparky Thinking...");
       thinkTimer = setTimeout(() => showTyping(current), chatData.messageDelay);
     }
 
@@ -1186,7 +1267,7 @@
       let snapshot = "";
       appState = State.STREAMING;
       setButton("Writing...", true);
-      setFakeInputText(`${chatData.model} is responding...`);
+      setFakeInputText("Sparky Responding...");
       function tick() {
         if (streamId !== currentStreamId) return;
         rendered += tokens[index];
@@ -1416,8 +1497,8 @@
       progress.style.display = "none";
       showWelcome();
       syncProgress();
-      setButton("Start Demo", false);
-      setFakeInputText("Ask ChatGPT anything...");
+      setButton("Start", false);
+      setFakeInputText("Ask Sparky about Java energy...");
     }
 
     function replayMediaForStepIndex(stepIndex) {
@@ -1501,6 +1582,9 @@
     });
     editModeBtn.addEventListener("click", toggleEditMode);
     saveJsonBtn.addEventListener("click", saveJsonAction);
+    voiceSelect.addEventListener("change", () => {
+      applyPreferredVoice(voiceSelect.value);
+    });
     editorSaveBtn.addEventListener("click", saveStepEdit);
     editorCancelBtn.addEventListener("click", closeEditor);
     mainEl.addEventListener("click", (event) => {
@@ -1611,10 +1695,15 @@
         currentDataPath = resolveDataPath();
         currentDataFileName = currentDataPath.split("/").pop() || "chatData.json";
         if (speechSupported) {
+          preferredVoiceKey = localStorage.getItem(VOICE_STORAGE_KEY);
           selectedVoice = selectPreferredVoice();
+          refreshVoiceSelector();
           window.speechSynthesis.addEventListener?.("voiceschanged", () => {
             selectedVoice = selectPreferredVoice();
+            refreshVoiceSelector();
           });
+        } else {
+          refreshVoiceSelector();
         }
         const response = await fetch(currentDataPath, { cache: "no-store" });
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
@@ -1626,12 +1715,11 @@
         } else {
           chatData = loaded;
           document.getElementById("demo-title").textContent = chatData.demoTitle;
-          document.getElementById("model-label").textContent = chatData.model;
           buildSidebar();
           showWelcome();
           renderPresentationTimer();
           syncProgress();
-          setButton("Start Demo", false);
+          setButton("Start", false);
         }
       } catch (error) {
         messages.innerHTML = `<div class="welcome"><div><h2>Unable to load ${esc(currentDataFileName)}</h2><p>Run <strong>npm start</strong> in this folder, then open <strong>http://localhost:3000/chatsim.html</strong>.</p></div></div>`;
@@ -1645,6 +1733,7 @@
   </script>
 </body>
 </html>
+
 
 
 
