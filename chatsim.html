@@ -32,6 +32,7 @@
     .sidebar-timer { margin-top: auto; padding-top: 10px; border-top: 1px solid var(--border); font-family: Poppins, "Segoe UI", Arial, sans-serif; font-size: 40px; font-weight: 700; line-height: 1; color: #fff; letter-spacing: .02em; }
     .sidebar-item { width: 100%; border: 1px solid transparent; background: transparent; color: var(--muted); text-align: left; border-radius: 12px; padding: 10px; cursor: pointer; }
     .sidebar-item.active, .sidebar-item:hover { color: var(--text); background: rgba(255,255,255,0.04); border-color: rgba(16,163,127,0.25); }
+    .sidebar-step-meta { color: var(--muted); font-size: 11px; margin-left: 6px; }
     .role { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 4px; }
     main { flex: 1; display: flex; flex-direction: column; min-width: 0; position: relative; }
     header { min-height: 60px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 10px 18px; }
@@ -157,6 +158,16 @@
     .popup-overlay.visible { opacity: 1; }
     .popup-card { width: min(80vw, 1200px); min-height: min(80vh, 760px); border-radius: 28px; padding: clamp(36px, 5vw, 72px); text-align: center; display: flex; flex-direction: column; justify-content: center; background: radial-gradient(circle at top, rgba(16,163,127,.14), transparent 35%), linear-gradient(180deg, rgba(31,35,38,.98), rgba(20,22,24,.98)); border: 1px solid rgba(255,255,255,.08); transform: translateY(18px) scale(.98); transition: transform .28s ease; }
     .popup-overlay.visible .popup-card { transform: translateY(0) scale(1); }
+    .popup-card.popup-card-media-fullscreen { width: min(88vw, 1280px); max-width: calc(100vw - 24px); min-height: min(78vh, 860px); height: min(78vh, 860px); padding: 20px; justify-content: flex-start; overflow: hidden; }
+    .popup-card.popup-card-media-fullscreen .popup-text { font-size: clamp(18px, 2vw, 28px); margin-bottom: 14px; }
+    .popup-card.popup-card-media-fullscreen .popup-media-slot { flex: 1 1 auto; display: flex; min-height: 0; min-width: 0; width: 100%; }
+    .popup-card.popup-card-media-fullscreen .media-stack { width: 100%; height: 100%; min-width: 0; }
+    .popup-card.popup-card-media-fullscreen .media-card { width: 100%; height: 100%; min-width: 0; padding: 10px; overflow: hidden; }
+    .popup-card.popup-card-media-fullscreen .media-card video,
+    .popup-card.popup-card-media-fullscreen .media-card img,
+    .popup-card.popup-card-media-fullscreen .media-card iframe { max-height: 100%; height: auto; object-fit: contain; }
+    .popup-close-btn { position: absolute; top: 16px; right: 16px; width: 42px; height: 42px; border-radius: 999px; border: 1px solid rgba(255,255,255,.14); background: rgba(7,10,12,.72); color: var(--text); font-size: 22px; line-height: 1; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; }
+    .popup-close-btn:hover { background: rgba(255,255,255,.08); border-color: rgba(16,163,127,.4); }
     .image-lightbox { position: fixed; inset: 0; background: rgba(5,7,8,.94); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity .22s ease; z-index: 200; padding: 12px; }
     .image-lightbox.visible { opacity: 1; pointer-events: auto; }
     .image-lightbox-inner { width: calc(100vw - 24px); height: calc(100vh - 24px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
@@ -168,6 +179,7 @@
     .code-lightbox .code-stack { width: 100%; height: 100%; margin: 0; }
     .code-lightbox .code-card { width: 100%; height: 100%; display: flex; flex-direction: column; border-radius: 22px; }
     .code-lightbox .code-card pre { flex: 1 1 auto; overflow: auto; }
+    .code-lightbox .code-card pre code { font-size: 19.2px; line-height: 1.45; }
     .speaker-widget { position: absolute; right: 16px; bottom: 146px; width: min(150px, 16vw); min-width: 104px; padding: 10px; border-radius: 20px; border: 1px solid rgba(16,163,127,.24); background: rgba(12,16,18,.9); box-shadow: 0 14px 30px rgba(0,0,0,.28); display: grid; gap: 8px; justify-items: center; opacity: 0; transform: translateY(8px) scale(.96); pointer-events: none; transition: opacity .18s ease, transform .18s ease; z-index: 40; }
     .speaker-widget.visible { opacity: 1; transform: translateY(0) scale(1); }
     .speaker-widget.speaking { box-shadow: 0 18px 38px rgba(16,163,127,.16), 0 0 0 1px rgba(16,163,127,.08); }
@@ -183,7 +195,9 @@
     .popup-inline .popup-text { font-size: clamp(22px, 2.9vw, 38px); margin-bottom: 0; }
     .popup-card .media-stack, .popup-inline .media-stack { margin-top: 0; }
     .popup-card .media-card, .popup-inline .media-card { background: rgba(255,255,255,.04); }
-    .popup-card .media-card img, .popup-card .media-card video, .popup-card .media-card iframe { max-height: 30vh; object-fit: contain; }
+    .popup-card:not(.popup-card-media-fullscreen) .media-card img,
+    .popup-card:not(.popup-card-media-fullscreen) .media-card video,
+    .popup-card:not(.popup-card-media-fullscreen) .media-card iframe { max-height: 30vh; object-fit: contain; }
     .popup-inline .media-card img, .popup-inline .media-card video, .popup-inline .media-card iframe { max-height: 280px; object-fit: contain; }
     .popup-card .media-card iframe, .popup-inline .media-card iframe { object-fit: initial; }
     .toolbar-btn { border: 1px solid var(--border); background: rgba(255,255,255,.04); color: var(--text); border-radius: 12px; padding: 10px 14px; font-weight: 700; cursor: pointer; }
@@ -408,6 +422,10 @@
       const stepIndex = pendingFullscreenStepIndex;
       clearPendingFullscreen();
       return replayMediaForStepIndex(stepIndex);
+    }
+
+    function shouldOpenOverlayOnAdvance(item) {
+      return !!(item?.openImageFullscreenOnAdvance || item?.openCodeFullscreenOnAdvance);
     }
 
     function stopUserPromptSimulation(resetInput = false) {
@@ -729,7 +747,8 @@
         const caption = item.caption ? `<div class="media-caption">${esc(item.caption)}</div>` : "";
         if (item.type === "video") {
           const autoplayAttr = autoplay ? ' data-autoplay-once="true"' : "";
-          return `<figure class="media-card"><video controls playsinline preload="metadata"${autoplayAttr} src="${attr(item.src)}"></video>${caption}</figure>`;
+          const fullscreenAttr = item.fullscreenOnPlay ? ' data-fullscreen-on-play="true"' : "";
+          return `<figure class="media-card"><video controls playsinline preload="metadata"${autoplayAttr}${fullscreenAttr} src="${attr(item.src)}"></video>${caption}</figure>`;
         }
         if (item.type === "iframe") {
           const title = attr(item.title || item.caption || `Embedded frame ${index + 1}`);
@@ -745,6 +764,28 @@
 
     function activateAutoplayVideos(scope = document) {
       scope.querySelectorAll('video[data-autoplay-once="true"]:not([data-autoplay-done="true"])').forEach((video) => {
+        const enterNativeFullscreen = () => {
+          if (video.dataset.fullscreenRequested === "true") return;
+          video.dataset.fullscreenRequested = "true";
+          try {
+            if (typeof video.requestFullscreen === "function") {
+              const fullscreenAttempt = video.requestFullscreen();
+              if (fullscreenAttempt && typeof fullscreenAttempt.catch === "function") fullscreenAttempt.catch(() => {});
+              return;
+            }
+            if (typeof video.webkitEnterFullscreen === "function") {
+              video.webkitEnterFullscreen();
+            }
+          } catch (_) {}
+        };
+        const exitNativeFullscreen = () => {
+          try {
+            if (document.fullscreenElement === video && typeof document.exitFullscreen === "function") {
+              const exitAttempt = document.exitFullscreen();
+              if (exitAttempt && typeof exitAttempt.catch === "function") exitAttempt.catch(() => {});
+            }
+          } catch (_) {}
+        };
         const playVideo = () => {
           if (video.dataset.autoplayDone === "true") return;
           video.dataset.autoplayDone = "true";
@@ -755,6 +796,11 @@
           const playAttempt = video.play();
           if (playAttempt && typeof playAttempt.catch === "function") {
             playAttempt.catch(() => {});
+          }
+          if (video.dataset.fullscreenOnPlay === "true") {
+            if (playAttempt && typeof playAttempt.then === "function") playAttempt.then(() => enterNativeFullscreen()).catch(() => {});
+            else enterNativeFullscreen();
+            video.addEventListener("ended", exitNativeFullscreen, { once: true });
           }
           keepScrolledToBottom();
         };
@@ -958,6 +1004,13 @@
       return fallbackIndex + 1;
     }
 
+    function getStepLabel(item, index) {
+      const sequenceLabel = index + 1;
+      const customLabel = getStepNumber(item, index);
+      if (customLabel == null || String(customLabel) === String(sequenceLabel)) return `${sequenceLabel}`;
+      return `${sequenceLabel} <span class="sidebar-step-meta">(id ${esc(String(customLabel))})</span>`;
+    }
+
     function getMediaLayout(item) {
       if (!item || (item.mediaLayout !== "left" && item.mediaLayout !== "right")) return "stack";
       const media = Array.isArray(item.media) ? item.media : [];
@@ -989,7 +1042,7 @@
       sidebarFocusIndex = null;
       activeAssistantItem = null;
       activeAssistantContentEl = null;
-      if (finishedItem?.openImageFullscreenOnAdvance && finishedItem?.__stepIndex != null) {
+      if (shouldOpenOverlayOnAdvance(finishedItem) && finishedItem?.__stepIndex != null) {
         pendingFullscreenStepIndex = finishedItem.__stepIndex;
       }
       step += 1;
@@ -1110,9 +1163,13 @@
       refreshCurrentView();
     }
 
-    function popupInner(item, inlineCard = false, { autoplayMedia = false } = {}) {
+    function popupInner(item, inlineCard = false, { autoplayMedia = false, includeMedia = true } = {}) {
       const button = inlineCard ? "" : `<div><button class="popup-btn" id="popup-btn" type="button" disabled>Continue</button></div>`;
-      return `<div class="${inlineCard ? "popup-inline" : "popup-card"}">${renderEditButton(item.__stepIndex)}<div class="popup-text">${esc(item.content)}</div>${renderMedia(item.media, { autoplay: autoplayMedia, columns: item.mediaColumns })}${inlineCard ? "" : button}</div>`;
+      const closeBtn = inlineCard ? "" : `<button class="popup-close-btn" id="popup-close-btn" type="button" aria-label="Close popup">×</button>`;
+      const mediaHtml = includeMedia ? renderMedia(item.media, { autoplay: autoplayMedia, columns: item.mediaColumns }) : "";
+      const codeHtml = renderCode(item.code);
+      const popupClass = inlineCard ? "popup-inline" : `popup-card${item.popupFullscreenMedia ? " popup-card-media-fullscreen" : ""}`;
+      return `<div class="${popupClass}">${closeBtn}${renderEditButton(item.__stepIndex)}<div class="popup-text">${renderAssistantText(item.content || "", item.slide)}</div><div class="popup-media-slot">${mediaHtml}</div>${codeHtml}${inlineCard ? "" : button}</div>`;
     }
 
     function setButton(label, disabled) {
@@ -1194,7 +1251,7 @@
         const button = document.createElement("button");
         button.type = "button";
         button.className = "sidebar-item";
-        button.innerHTML = `<span class="role">${item.role}</span><span>${getStepNumber(item, index)}. ${truncate((item.content || "").replace(/\s+/g, " "))}</span>`;
+        button.innerHTML = `<span class="role">${item.role}</span><span>${getStepLabel(item, index)}. ${truncate((item.content || "").replace(/\s+/g, " "))}</span>`;
         button.addEventListener("click", () => jumpToStep(index));
         sidebar.appendChild(button);
       });
@@ -1369,22 +1426,49 @@
     }
 
     function showPopup(item) {
+      const deferMedia = !!(item.deferMediaUntilSpeechDone && item.media?.length);
       const overlay = document.createElement("div");
       overlay.className = "popup-overlay";
       overlay.id = "popup-overlay";
-      overlay.innerHTML = popupInner(item, false, { autoplayMedia: true });
+      overlay.innerHTML = popupInner(item, false, { autoplayMedia: !deferMedia, includeMedia: !deferMedia });
       mainEl.appendChild(overlay);
-      activateAutoplayVideos(overlay);
+      const speechToken = speakAssistantText(item);
+      const speechActive = speechToken && isAssistantSpeechActive();
+      if (!deferMedia) activateAutoplayVideos(overlay);
       requestAnimationFrame(() => overlay.classList.add("visible"));
       const popupBtn = overlay.querySelector("#popup-btn");
+      const popupCloseBtn = overlay.querySelector("#popup-close-btn");
       popupBtn.addEventListener("click", dismissPopup);
+      popupCloseBtn?.addEventListener("click", () => dismissPopup(false));
       popupBtn.disabled = false;
       popupBtn.focus();
+      if (deferMedia) {
+        const showDeferredMedia = () => {
+          if (!overlay.isConnected) return;
+          const mediaSlot = overlay.querySelector(".popup-media-slot");
+          if (!mediaSlot || mediaSlot.childElementCount) return;
+          mediaSlot.innerHTML = renderMedia(item.media, { autoplay: true, columns: item.mediaColumns });
+          activateAutoplayVideos(overlay);
+        };
+        if (!speechSupported || !speechActive || completedSpeechToken === speechToken) {
+          showDeferredMedia();
+        } else {
+          const handler = (event) => {
+            if (event.detail?.token !== speechToken) return;
+            document.removeEventListener("assistant-speech-done", handler);
+            showDeferredMedia();
+          };
+          document.addEventListener("assistant-speech-done", handler);
+        }
+      }
     }
 
     function dismissPopup(advanceAfter = true) {
       const overlay = document.getElementById("popup-overlay");
       if (!overlay) return;
+      cancelAssistantSpeech(true);
+      const popupStepIndexValue = popupStepIndex();
+      const popupItem = popupStepIndexValue >= 0 ? chatData.steps[popupStepIndexValue] : null;
       sidebarFocusIndex = null;
       pausePlayingVideos(overlay);
       overlay.classList.remove("visible");
@@ -1392,9 +1476,14 @@
       popupTimer = setTimeout(() => {
         overlay.remove();
         popupTimer = null;
+        const shouldOpenFullscreen = !!(shouldOpenOverlayOnAdvance(popupItem) && popupStepIndexValue >= 0);
         appState = State.IDLE;
         syncInputState();
         scrollBottom();
+        if (shouldOpenFullscreen) {
+          replayMediaForStepIndex(popupStepIndexValue);
+          return;
+        }
         if (advanceAfter && step < chatData.steps.length) {
           advance();
           return;
@@ -1405,20 +1494,22 @@
 
     function continueAction() {
       replayBackStepIndex = null;
+      cancelAssistantSpeech(true);
       if (appState === State.POPUP) {
         dismissPopup(true);
         return;
       }
-      if (appState === State.THINKING || appState === State.STREAMING || pendingFullscreenStepIndex != null) {
-        cancelAssistantSpeech(true);
-      }
       if (consumePendingFullscreen()) return;
-      if (flushAssistantResponse()) return;
+      if (flushAssistantResponse()) {
+        if (consumePendingFullscreen()) return;
+        return;
+      }
       interruptActivePlayback();
       advance();
     }
 
     function advance() {
+      cancelAssistantSpeech(true);
       if (appState !== State.IDLE) return;
       replayBackStepIndex = null;
       sidebarFocusIndex = null;
@@ -1428,7 +1519,7 @@
       const item = chatData.steps[step];
       if (item.role === "popup") {
         appState = State.POPUP;
-        appendPopupInline(item, step);
+        appendPopupInline(item, step, { autoplayMedia: false });
         step += 1;
         syncProgress();
         setButton("Waiting...", false);
