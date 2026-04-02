@@ -73,7 +73,7 @@
     .content blockquote { border-left: 3px solid var(--accent); padding-left: 12px; color: #d7e7e3; }
     .content code { background: rgba(255,255,255,.08); border-radius: 6px; padding: 2px 6px; font-size: .95em; }
     .content pre { margin: 0 0 16px; padding: 16px 18px; border-radius: 16px; overflow: auto; background: rgba(7,10,12,.85); border: 1px solid rgba(255,255,255,.08); }
-    .content pre code { background: transparent; padding: 0; border-radius: 0; display: block; color: #dce8f2; font-size: 16px; line-height: 1.5; }
+    .content pre code { background: transparent; padding: 0; border-radius: 0; display: block; color: #dce8f2; font-size: 14px; line-height: 1.5; }
     .slide-ref { display: inline-block; margin-bottom: 12px; padding: 6px 11px; border-radius: 999px; border: 1px solid rgba(16,163,127,.3); background: rgba(16,163,127,.12); color: #c6f7ea; font-size: 14px; font-weight: 700; letter-spacing: .03em; }
     .message-layout { display: grid; gap: 18px; align-items: center; }
     .message-layout.media-left, .message-layout.media-right { grid-template-columns: minmax(0, 1.25fr) minmax(260px, .9fr); }
@@ -182,7 +182,7 @@
     .code-lightbox .code-stack { width: 100%; height: 100%; margin: 0; }
     .code-lightbox .code-card { width: 100%; height: 100%; display: flex; flex-direction: column; border-radius: 22px; }
     .code-lightbox .code-card pre { flex: 1 1 auto; overflow: auto; }
-    .code-lightbox .code-card pre code { font-size: 19.2px; line-height: 1.45; }
+    .code-lightbox .code-card pre code { font-size: 18px; line-height: 1.45; }
     .speaker-widget { position: absolute; right: 16px; bottom: 146px; width: min(150px, 16vw); min-width: 104px; padding: 10px; border-radius: 20px; border: 1px solid rgba(16,163,127,.24); background: rgba(12,16,18,.9); box-shadow: 0 14px 30px rgba(0,0,0,.28); display: grid; gap: 8px; justify-items: center; opacity: 0; transform: translateY(8px) scale(.96); pointer-events: none; transition: opacity .18s ease, transform .18s ease; z-index: 40; }
     .speaker-widget.visible { opacity: 1; transform: translateY(0) scale(1); }
     .speaker-widget.speaking { box-shadow: 0 18px 38px rgba(16,163,127,.16), 0 0 0 1px rgba(16,163,127,.08); }
@@ -256,7 +256,7 @@
     </div>
     <footer>
       <div class="progress" id="progress"><div class="dots" id="dots"></div><span id="progress-label"></span></div>
-      <div class="controls" id="controls"><span class="fake-input" id="fake-input">Ask Sparky about energy in code...</span><select class="thinking-select" id="thinking-select" aria-label="AI thinking mode"><option>Super AI Thinking</option><option>Pattern Hunt</option><option>Hotspot Scan</option><option>Green Code Mode</option></select><button class="primary" id="continue-btn" type="button">Start</button></div>
+      <div class="controls" id="controls"><span class="fake-input" id="fake-input">Ask Sparky about energy in code...</span><select class="thinking-select" id="thinking-select" aria-label="AI thinking mode"><option>Sustainable Super AI Thinking</option><option>Sustainable Pattern Thinking</option><option>Sustainable Hotspot Thinking</option><option>Sustainable Green Thinking</option></select><button class="primary" id="continue-btn" type="button">Start</button></div>
       <div class="hint">Press Space or Right Arrow to advance. Press R to restart.</div>
     </footer>
     <div class="editor-overlay" id="editor-overlay">
@@ -342,10 +342,11 @@
     let preferredVoiceKey = null;
     let speakerWidgetToken = 0;
     let pendingFullscreenStepIndex = null;
+    let popupSessionToken = 0;
     let thinkingSelectTimer = null;
     let thinkingSelectIndex = 0;
     const VOICE_STORAGE_KEY = "chatsim.preferredVoice";
-    const THINKING_SELECT_LABELS = ["Super AI Thinking", "Pattern Hunt", "Hotspot Scan", "Green Code Mode"];
+    const THINKING_SELECT_LABELS = ["Sustainable Super AI Thinking", "Sustainable Pattern Thinking", "Sustainable Hotspot Thinking", "Sustainable Green Thinking"];
     const clearTimer = (timer) => { if (timer) clearTimeout(timer); return null; };
     const setFakeInputText = (text, typing = false) => {
       fakeInput.textContent = text;
@@ -454,6 +455,20 @@
 
     function shouldOpenOverlayOnAdvance(item) {
       return !!(item?.openImageFullscreenOnAdvance || item?.openCodeFullscreenOnAdvance);
+    }
+
+    function queueOverlayOnAdvance(item) {
+      if (shouldOpenOverlayOnAdvance(item) && item?.__stepIndex != null) {
+        pendingFullscreenStepIndex = item.__stepIndex;
+        return true;
+      }
+      clearPendingFullscreen();
+      return false;
+    }
+
+    function invalidatePopupSession() {
+      popupSessionToken += 1;
+      popupTimer = clearTimer(popupTimer);
     }
 
     function stopUserPromptSimulation(resetInput = false) {
@@ -592,9 +607,14 @@
 
     function cancelAssistantSpeech(markCompleted = false) {
       if (!speechSupported) return;
+      if (markCompleted) {
+        completedSpeechToken = activeSpeechToken;
+        activeSpeechToken += 1;
+      }
       currentUtterance = null;
       hideSpeakerWidget();
       window.speechSynthesis.cancel();
+      refreshThinkingSelectState();
     }
 
     function isAssistantSpeechActive() {
@@ -712,6 +732,14 @@
       codeLightbox.classList.remove("visible");
       codeLightbox.setAttribute("aria-hidden", "true");
       codeLightboxInner.innerHTML = "";
+    }
+
+    function isImageLightboxOpen() {
+      return imageLightbox.getAttribute("aria-hidden") === "false";
+    }
+
+    function isCodeLightboxOpen() {
+      return codeLightbox.getAttribute("aria-hidden") === "false";
     }
 
     function openImageLightbox(src, alt = "", caption = "") {
@@ -1139,9 +1167,7 @@
       sidebarFocusIndex = null;
       activeAssistantItem = null;
       activeAssistantContentEl = null;
-      if (allowOverlayOnAdvance && shouldOpenOverlayOnAdvance(finishedItem) && finishedItem?.__stepIndex != null) {
-        pendingFullscreenStepIndex = finishedItem.__stepIndex;
-      }
+      if (allowOverlayOnAdvance) queueOverlayOnAdvance(finishedItem);
       step += 1;
       appState = State.IDLE;
       syncProgress();
@@ -1489,11 +1515,11 @@
     }
 
     function interruptActivePlayback() {
+      invalidatePopupSession();
       cancelAssistantSpeech(true);
       stopStreaming();
       stopUserPromptSimulation(true);
       clearPendingFullscreen();
-      popupTimer = clearTimer(popupTimer);
       stopAllVideoPlayback();
       document.getElementById("popup-overlay")?.remove();
       closeImageLightbox();
@@ -1527,8 +1553,9 @@
         activeAssistantContentEl = wrapper.querySelector(".content");
         keepScrolledToBottom();
         finishAssistantStep(false);
+        const queuedOverlay = queueOverlayOnAdvance(item);
         if (shouldOpenFullscreen && item.__stepIndex != null) pendingFullscreenStepIndex = item.__stepIndex;
-        else clearPendingFullscreen();
+        else if (!queuedOverlay) clearPendingFullscreen();
         return true;
       }
       if (appState === State.STREAMING && activeAssistantItem && activeAssistantContentEl) {
@@ -1539,8 +1566,9 @@
         activeAssistantContentEl.innerHTML = `${renderEditButton(activeAssistantItem.__stepIndex)}${renderAssistantFull(activeAssistantItem, { autoplayMedia: false })}`;
         keepScrolledToBottom();
         finishAssistantStep(false);
+        const queuedOverlay = queueOverlayOnAdvance(activeAssistantItem);
         if (shouldOpenFullscreen && stepIndex != null) pendingFullscreenStepIndex = stepIndex;
-        else clearPendingFullscreen();
+        else if (!queuedOverlay) clearPendingFullscreen();
         return true;
       }
       return false;
@@ -1571,6 +1599,8 @@
     }
 
     function showPopup(item) {
+      invalidatePopupSession();
+      const popupToken = popupSessionToken;
       const deferMedia = !!(item.deferMediaUntilSpeechDone && item.media?.length);
       const overlay = document.createElement("div");
       overlay.className = "popup-overlay";
@@ -1580,7 +1610,10 @@
       const speechToken = speakAssistantText(item);
       const speechActive = speechToken && isAssistantSpeechActive();
       if (!deferMedia) activateAutoplayVideos(overlay);
-      requestAnimationFrame(() => overlay.classList.add("visible"));
+      requestAnimationFrame(() => {
+        if (popupToken !== popupSessionToken || !overlay.isConnected) return;
+        overlay.classList.add("visible");
+      });
       const popupBtn = overlay.querySelector("#popup-btn");
       const popupCloseBtn = overlay.querySelector("#popup-close-btn");
       popupBtn.addEventListener("click", dismissPopup);
@@ -1589,6 +1622,7 @@
       popupBtn.focus();
       if (deferMedia) {
         const showDeferredMedia = () => {
+          if (popupToken !== popupSessionToken) return;
           if (!overlay.isConnected) return;
           const mediaSlot = overlay.querySelector(".popup-media-slot");
           if (!mediaSlot || mediaSlot.childElementCount) return;
@@ -1601,6 +1635,7 @@
           const handler = (event) => {
             if (event.detail?.token !== speechToken) return;
             document.removeEventListener("assistant-speech-done", handler);
+            if (popupToken !== popupSessionToken) return;
             showDeferredMedia();
           };
           document.addEventListener("assistant-speech-done", handler);
@@ -1611,6 +1646,7 @@
     function dismissPopup(advanceAfter = true) {
       const overlay = document.getElementById("popup-overlay");
       if (!overlay) return;
+      const popupToken = popupSessionToken;
       cancelAssistantSpeech(true);
       const popupStepIndexValue = popupStepIndex();
       const popupItem = popupStepIndexValue >= 0 ? chatData.steps[popupStepIndexValue] : null;
@@ -1620,6 +1656,7 @@
       overlay.classList.remove("visible");
       popupTimer = clearTimer(popupTimer);
       popupTimer = setTimeout(() => {
+        if (popupToken !== popupSessionToken) return;
         overlay.remove();
         popupTimer = null;
         const shouldOpenFullscreen = !!(shouldOpenOverlayOnAdvance(popupItem) && popupStepIndexValue >= 0);
@@ -1715,12 +1752,14 @@
       if (targetStep < 0 || targetStep >= chatData.steps.length) return;
       replayBackStepIndex = null;
       thinkTimer = clearTimer(thinkTimer);
-      popupTimer = clearTimer(popupTimer);
+      invalidatePopupSession();
       stopUserPromptSimulation(false);
       stopStreaming();
       cancelAssistantSpeech(true);
+      stopAllVideoPlayback();
       document.getElementById("popup-overlay")?.remove();
       closeImageLightbox();
+      closeCodeLightbox();
       document.querySelectorAll(".badge, .restart-btn").forEach((el) => el.remove());
       const targetItem = chatData.steps[targetStep];
       const renderedSteps = Math.min(targetStep + 1, chatData.steps.length);
@@ -1807,9 +1846,26 @@
       return false;
     }
 
+    function hasReplayableStepEndpoint(item) {
+      if (!item || item.role === "popup") return false;
+      return !!(hasVideo(item.media) || item.openImageFullscreenAfterSpeech || item.openImageFullscreenOnAdvance || (item.openCodeFullscreenOnAdvance && item.code));
+    }
+
     function goBackAction() {
       if (!chatData?.steps?.length) return;
-      if (step === 0 && !messages.querySelector(".message")) return;
+      if (step === 0 && !messages.querySelector(".message") && appState !== State.USER_TYPING) return;
+      if (appState === State.USER_TYPING) {
+        const previousRendered = [...messages.querySelectorAll(".message[data-step-index]")].at(-1);
+        const previousIndex = previousRendered ? Number(previousRendered.dataset.stepIndex) : -1;
+        interruptActivePlayback();
+        replayBackStepIndex = null;
+        if (!Number.isFinite(previousIndex) || previousIndex < 0) {
+          restartDemo();
+          return;
+        }
+        jumpToStep(previousIndex);
+        return;
+      }
       if (appState === State.THINKING || appState === State.STREAMING || pendingFullscreenStepIndex != null) {
         cancelAssistantSpeech(true);
       }
@@ -1825,18 +1881,6 @@
         return;
       }
       if (consumePendingFullscreen()) return;
-      if (appState === State.USER_TYPING) {
-        const previousRendered = [...messages.querySelectorAll(".message[data-step-index]")].at(-1);
-        const previousIndex = previousRendered ? Number(previousRendered.dataset.stepIndex) : -1;
-        interruptActivePlayback();
-        replayBackStepIndex = null;
-        if (!Number.isFinite(previousIndex) || previousIndex < 0) {
-          restartDemo();
-          return;
-        }
-        jumpToStep(previousIndex);
-        return;
-      }
       if (flushAssistantResponse()) return;
       interruptActivePlayback();
       const currentIndex = currentRenderedStepIndex();
@@ -1846,14 +1890,21 @@
         return;
       }
       const currentItem = chatData.steps[currentIndex];
-      if (currentItem && hasVideo(currentItem.media) && replayBackStepIndex !== currentIndex) {
+      if (currentItem && currentItem.role !== "popup" && hasVideo(currentItem.media) && replayBackStepIndex !== currentIndex) {
         jumpToStep(currentIndex);
         replayBackStepIndex = currentIndex;
         replayMediaForStepIndex(currentIndex);
         return;
       }
-      replayBackStepIndex = null;
       const previousIndex = Math.max(0, currentIndex - 1);
+      const previousItem = chatData.steps[previousIndex];
+      if (previousIndex !== currentIndex && hasReplayableStepEndpoint(previousItem) && replayBackStepIndex !== previousIndex) {
+        jumpToStep(previousIndex);
+        replayBackStepIndex = previousIndex;
+        replayMediaForStepIndex(previousIndex);
+        return;
+      }
+      replayBackStepIndex = null;
       jumpToStep(previousIndex);
     }
 
@@ -1903,7 +1954,7 @@
     });
     function handleGlobalKeydown(event) {
       const isEditableTarget = event.target?.matches?.("input, textarea, select, [contenteditable='true'], [contenteditable='']");
-      if (imageLightbox.classList.contains("visible") || codeLightbox.classList.contains("visible")) {
+      if (isImageLightboxOpen() || isCodeLightboxOpen()) {
         const closeFullscreenOverlay = () => {
           closeImageLightbox();
           closeCodeLightbox();
