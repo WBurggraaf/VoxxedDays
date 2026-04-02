@@ -29,7 +29,11 @@
     body { display: flex; overflow: hidden; }
     aside { width: 250px; background: var(--panel); border-right: 1px solid var(--border); padding: 16px; display: flex; flex-direction: column; gap: 12px; }
     .sidebar-list { display: flex; flex-direction: column; gap: 8px; overflow: auto; }
-    .sidebar-timer { margin-top: auto; padding-top: 10px; border-top: 1px solid var(--border); font-family: Poppins, "Segoe UI", Arial, sans-serif; font-size: 40px; font-weight: 700; line-height: 1; color: #fff; letter-spacing: .02em; }
+    .sidebar-timer-wrap { margin-top: auto; padding-top: 10px; border-top: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+    .sidebar-timer { font-family: Poppins, "Segoe UI", Arial, sans-serif; font-size: 40px; font-weight: 700; line-height: 1; color: #fff; letter-spacing: .02em; }
+    .sidebar-timer-btn { width: 38px; height: 38px; border: 1px solid var(--border); border-radius: 12px; background: rgba(255,255,255,.04); color: var(--text); font: 700 14px/1 "Segoe UI", Arial, sans-serif; cursor: pointer; flex: 0 0 auto; }
+    .sidebar-timer-btn:hover { background: rgba(255,255,255,.08); }
+    .sidebar-timer-btn.active { border-color: rgba(16,163,127,.4); background: rgba(16,163,127,.16); color: #d9fff3; }
     .sidebar-item { width: 100%; border: 1px solid transparent; background: transparent; color: var(--muted); text-align: left; border-radius: 12px; padding: 10px; cursor: pointer; }
     .sidebar-item.active, .sidebar-item:hover { color: var(--text); background: rgba(255,255,255,0.04); border-color: rgba(16,163,127,0.25); }
     .sidebar-step-meta { color: var(--muted); font-size: 11px; margin-left: 6px; }
@@ -146,12 +150,11 @@
     .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,.18); }
     .dot.done { background: var(--accent); }
     .dot.current { background: #fff; }
-    .controls { display: flex; gap: 12px; align-items: center; border: 1px solid var(--border); border-radius: 22px; padding: 14px 16px; background: rgba(58,58,58,.88); }
+    .controls { display: flex; gap: 12px; align-items: center; border: 1px solid var(--border); border-radius: 22px; padding: 14px 16px; background: rgba(58,58,58,.88); transition: border-color .18s ease, box-shadow .18s ease, background .18s ease; }
+    .controls.user-prompt-ready { border-color: rgba(16,163,127,.62); background: linear-gradient(180deg, rgba(19,58,48,.96), rgba(58,58,58,.9)); box-shadow: 0 0 0 1px rgba(16,163,127,.18), 0 0 28px rgba(16,163,127,.12); }
+    .controls.user-prompt-ready .fake-input { color: #d9fff3; }
     .fake-input { flex: 1; min-width: 0; color: #fff; font-size: 28px; font-weight: 700; }
     .fake-input.typing::after { content: ""; display: inline-block; width: 2px; height: 1.05em; margin-left: 4px; vertical-align: -0.12em; background: rgba(255,255,255,.86); animation: caretBlink .9s steps(1) infinite; }
-    .thinking-select { width: min(260px, 32vw); min-width: 180px; border: 1px solid rgba(255,255,255,.12); background: rgba(12,16,18,.92); color: var(--text); border-radius: 14px; padding: 12px 14px; font: 700 14px/1.2 "Segoe UI", Arial, sans-serif; letter-spacing: .02em; transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease, background .18s ease; }
-    .thinking-select.thinking-active { border-color: rgba(16,163,127,.48); background: linear-gradient(135deg, rgba(16,163,127,.18), rgba(12,16,18,.94)); box-shadow: 0 0 0 1px rgba(16,163,127,.16), 0 0 24px rgba(16,163,127,.12); animation: thinkSelectPulse 1.2s ease-in-out infinite; }
-    .thinking-select:focus { outline: none; border-color: rgba(16,163,127,.55); box-shadow: 0 0 0 2px rgba(16,163,127,.18); }
     button.primary, .restart-btn, .popup-btn { border: none; border-radius: 12px; background: var(--accent); color: #fff; font-weight: 700; padding: 12px 16px; cursor: pointer; }
     button.primary:hover, .restart-btn:hover, .popup-btn:hover:not(:disabled) { background: var(--accent-hover); }
     button.primary:disabled, .popup-btn:disabled { background: rgba(255,255,255,.08); color: var(--muted); cursor: not-allowed; }
@@ -220,14 +223,17 @@
     @keyframes thinkSelectPulse { 0%, 100% { transform: translateY(0); box-shadow: 0 0 0 1px rgba(16,163,127,.16), 0 0 18px rgba(16,163,127,.10); } 50% { transform: translateY(-1px); box-shadow: 0 0 0 1px rgba(16,163,127,.24), 0 0 30px rgba(16,163,127,.18); } }
     @keyframes caretBlink { 0%,49% { opacity: 1; } 50%,100% { opacity: 0; } }
     @keyframes robotFloat { 0%,100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-10px) scale(1.015); } }
-    @media (max-width: 900px) { body { flex-direction: column; } aside { width: 100%; max-height: 190px; border-right: none; border-bottom: 1px solid var(--border); } .popup-card { width: 92vw; min-height: 70vh; } .popup-text { font-size: clamp(24px, 6vw, 38px); } header { align-items: flex-start; } .header-actions { width: 100%; justify-content: flex-start; } .menu-panel { left: 0; right: auto; } .message-layout.media-left, .message-layout.media-right { grid-template-columns: 1fr; } .message-layout.media-left .message-media, .message-layout.media-right .message-media { order: 0; } .media-stack.columns-2, .media-stack.columns-3 { grid-template-columns: 1fr; } .speaker-widget { width: min(132px, 28vw); right: 12px; bottom: 138px; padding: 8px; } .controls { flex-wrap: wrap; } .thinking-select { width: 100%; min-width: 0; order: 2; } }
+    @media (max-width: 900px) { body { flex-direction: column; } aside { width: 100%; max-height: 190px; border-right: none; border-bottom: 1px solid var(--border); } .popup-card { width: 92vw; min-height: 70vh; } .popup-text { font-size: clamp(24px, 6vw, 38px); } header { align-items: flex-start; } .header-actions { width: 100%; justify-content: flex-start; } .menu-panel { left: 0; right: auto; } .message-layout.media-left, .message-layout.media-right { grid-template-columns: 1fr; } .message-layout.media-left .message-media, .message-layout.media-right .message-media { order: 0; } .media-stack.columns-2, .media-stack.columns-3 { grid-template-columns: 1fr; } .speaker-widget { width: min(132px, 28vw); right: 12px; bottom: 138px; padding: 8px; } .controls { flex-wrap: wrap; } }
   </style>
 </head>
 <body>
   <aside>
     <div>Sparky</div>
     <div class="sidebar-list" id="sidebar"></div>
-    <div class="sidebar-timer" id="sidebar-timer">00:00</div>
+    <div class="sidebar-timer-wrap">
+      <div class="sidebar-timer" id="sidebar-timer">00:00</div>
+      <button class="sidebar-timer-btn" id="timer-pause-btn" type="button" aria-pressed="false" aria-label="Pause timer">II</button>
+    </div>
   </aside>
   <main>
     <header>
@@ -256,7 +262,7 @@
     </div>
     <footer>
       <div class="progress" id="progress"><div class="dots" id="dots"></div><span id="progress-label"></span></div>
-      <div class="controls" id="controls"><span class="fake-input" id="fake-input">Ask Sparky about energy in code...</span><select class="thinking-select" id="thinking-select" aria-label="AI thinking mode"><option>Sustainable Super AI Thinking</option><option>Sustainable Pattern Thinking</option><option>Sustainable Hotspot Thinking</option><option>Sustainable Green Thinking</option></select><button class="primary" id="continue-btn" type="button">Start</button></div>
+      <div class="controls" id="controls"><span class="fake-input" id="fake-input">Ask Sparky about energy in code...</span><button class="primary" id="continue-btn" type="button">Start</button></div>
       <div class="hint">Press Space or Right Arrow to advance. Press R to restart.</div>
     </footer>
     <div class="editor-overlay" id="editor-overlay">
@@ -295,9 +301,9 @@
     const dots = document.getElementById("dots");
     const progressLabel = document.getElementById("progress-label");
     const sidebarTimer = document.getElementById("sidebar-timer");
+    const timerPauseBtn = document.getElementById("timer-pause-btn");
     const fakeInput = document.getElementById("fake-input");
     const controls = document.getElementById("controls");
-    const thinkingSelect = document.getElementById("thinking-select");
     const mainEl = document.querySelector("main");
     const toolsMenuBtn = document.getElementById("tools-menu-btn");
     const toolsMenu = document.getElementById("tools-menu");
@@ -329,6 +335,8 @@
     let currentInputId = 0;
     let presentationTimer = null;
     let presentationStartedAt = null;
+    let presentationElapsedMs = 0;
+    let presentationPaused = false;
     let sidebarFocusIndex = null;
     let replayBackStepIndex = null;
     let editMode = false;
@@ -343,32 +351,14 @@
     let speakerWidgetToken = 0;
     let pendingFullscreenStepIndex = null;
     let popupSessionToken = 0;
-    let thinkingSelectTimer = null;
-    let thinkingSelectIndex = 0;
     const VOICE_STORAGE_KEY = "chatsim.preferredVoice";
-    const THINKING_SELECT_LABELS = ["Sustainable Super AI Thinking", "Sustainable Pattern Thinking", "Sustainable Hotspot Thinking", "Sustainable Green Thinking"];
     const clearTimer = (timer) => { if (timer) clearTimeout(timer); return null; };
     const setFakeInputText = (text, typing = false) => {
       fakeInput.textContent = text;
       fakeInput.classList.toggle("typing", typing);
     };
     function refreshThinkingSelectState() {
-      if (!thinkingSelect) return;
-      const shouldAnimate = appState === State.THINKING || appState === State.STREAMING || isAssistantSpeechActive();
-      thinkingSelect.classList.toggle("thinking-active", shouldAnimate);
-      if (shouldAnimate) {
-        if (thinkingSelectTimer) return;
-        thinkingSelectIndex = Math.max(0, THINKING_SELECT_LABELS.indexOf(thinkingSelect.value));
-        thinkingSelectTimer = setInterval(() => {
-          thinkingSelectIndex = (thinkingSelectIndex + 1) % THINKING_SELECT_LABELS.length;
-          thinkingSelect.value = THINKING_SELECT_LABELS[thinkingSelectIndex];
-        }, 850);
-        return;
-      }
-      if (thinkingSelectTimer) {
-        clearInterval(thinkingSelectTimer);
-        thinkingSelectTimer = null;
-      }
+      return;
     }
     const formatElapsed = (elapsedMs) => {
       const totalSeconds = Math.max(0, Math.floor(elapsedMs / 1000));
@@ -378,23 +368,54 @@
     };
     function renderPresentationTimer() {
       if (!sidebarTimer) return;
-      if (!presentationStartedAt) {
+      if (!presentationStartedAt && presentationElapsedMs === 0) {
         sidebarTimer.textContent = "00:00";
         return;
       }
-      sidebarTimer.textContent = formatElapsed(Date.now() - presentationStartedAt);
+      const elapsedMs = presentationPaused || !presentationStartedAt
+        ? presentationElapsedMs
+        : presentationElapsedMs + (Date.now() - presentationStartedAt);
+      sidebarTimer.textContent = formatElapsed(elapsedMs);
     }
     function stopPresentationTimer(reset = false) {
       if (presentationTimer) clearInterval(presentationTimer);
       presentationTimer = null;
-      if (reset) presentationStartedAt = null;
+      if (reset) {
+        presentationStartedAt = null;
+        presentationElapsedMs = 0;
+        presentationPaused = false;
+        updateTimerPauseButton();
+      }
       renderPresentationTimer();
     }
     function startPresentationTimer() {
-      if (presentationStartedAt) return;
+      if (presentationStartedAt || presentationPaused) return;
       presentationStartedAt = Date.now();
       renderPresentationTimer();
       presentationTimer = setInterval(renderPresentationTimer, 1000);
+    }
+    function updateTimerPauseButton() {
+      if (!timerPauseBtn) return;
+      timerPauseBtn.classList.toggle("active", presentationPaused);
+      timerPauseBtn.setAttribute("aria-pressed", presentationPaused ? "true" : "false");
+      timerPauseBtn.setAttribute("aria-label", presentationPaused ? "Resume timer" : "Pause timer");
+      timerPauseBtn.textContent = presentationPaused ? ">" : "II";
+    }
+    function togglePresentationPause() {
+      if (!presentationStartedAt && presentationElapsedMs === 0) return;
+      if (presentationPaused) {
+        presentationPaused = false;
+        presentationStartedAt = Date.now();
+        presentationTimer = setInterval(renderPresentationTimer, 1000);
+      } else {
+        presentationElapsedMs += presentationStartedAt ? Date.now() - presentationStartedAt : 0;
+        presentationStartedAt = null;
+        presentationPaused = true;
+        if (presentationTimer) clearInterval(presentationTimer);
+        presentationTimer = null;
+      }
+      updateTimerPauseButton();
+      renderPresentationTimer();
     }
     const scrollBottom = (passes = 1) => {
       requestAnimationFrame(() => {
@@ -1324,6 +1345,18 @@
       return currentDisplayStepIndex();
     }
 
+    function nextClickStartsUserPrompt() {
+      if (!chatData?.steps?.length) return false;
+      if (appState !== State.IDLE) return false;
+      if (pendingFullscreenStepIndex != null) return false;
+      if (step < 0 || step >= chatData.steps.length) return false;
+      return chatData.steps[step]?.role === "user";
+    }
+
+    function refreshPromptReadyCue() {
+      controls.classList.toggle("user-prompt-ready", nextClickStartsUserPrompt());
+    }
+
     function syncSidebar() {
       const activeIndex = currentDisplayStepIndex();
       [...sidebar.children].forEach((item, index) => item.classList.toggle("active", index === activeIndex));
@@ -1354,6 +1387,7 @@
 
     function syncInputState() {
       refreshThinkingSelectState();
+      refreshPromptReadyCue();
       if (appState === State.POPUP) return;
       if (isAssistantSpeechActive()) {
         setButton("Continue", false);
@@ -1383,6 +1417,7 @@
 
     function showWelcome() {
       messages.innerHTML = `<div class="welcome"><div><h2>Sparky is ready</h2><p>Press <strong>Start</strong> to begin.</p></div></div>`;
+      refreshPromptReadyCue();
     }
 
     function showDemoPicker(demos) {
@@ -1920,6 +1955,7 @@
     }
 
     continueBtn.addEventListener("click", continueAction);
+    timerPauseBtn?.addEventListener("click", togglePresentationPause);
     toolsMenuBtn.addEventListener("click", (event) => {
       event.stopPropagation();
       setToolsMenu(!toolsMenu.classList.contains("visible"));
@@ -2084,6 +2120,7 @@
       }
     }
 
+    updateTimerPauseButton();
     initApp();
   </script>
 </body>
